@@ -3,7 +3,7 @@
 > **Laboratorio de Crecimiento & Escalabilidad.**
 > Experimenta como Lab. Entrega como Boutique. Piensa como Consultoría.
 
-Multiversa Group is a **Consulting Innovation Lab** at the intersection of Humans + AI. Their flagship product is **CortexOS** — a premium, end-to-end intelligence layer (Cockpit + agent team) that automates leads, workflows, and decision-making for professional services.
+Multiversa Group is a **Consulting Innovation Lab** at the intersection of Humans + AI. The current stack is SvelteKit-first; older CortexOS/Cockpit/Next references below are preserved only as historical design-source context, not as active product architecture.
 
 This design system captures Multiversa's **"Liquid Glass Pro + Onion UI"** visual language: deep black carbon surfaces, electric chartreuse primary, Playfair Display serif headlines with italic accents, mono tracking labels, and backdrop-blur glassmorphic cards.
 
@@ -15,11 +15,11 @@ All sources imported from the private monorepo `moshequantum/multiversagroup@mai
 
 | Path | What's there |
 | :--- | :--- |
-| `@multiversa/core/apps/multiversa-next` | Next.js 15 landing page (Tailwind 4). Primary visual reference. |
-| `@multiversa/core/apps/cortex-frontend` | Svelte 5 "Onion UI" Cockpit dashboard. |
-| `@multiversa/core/apps/cortex-desktop` | Tauri (Rust) shell — packages the cockpit for desktop. |
-| `@multiversa/core/apps/cortex-gateway` | Go (Fiber) backend, Hexagonal architecture. |
-| `README.md` · `CLAUDE.md` · `AGENTS.md` · `LLMs.md` | Brand DNA, Triad Protocol, Hydra Pool strategy. |
+| `@multiversa/core/apps/multiversa-next` | Legacy Next.js landing page snapshot. Historical visual reference only. |
+| `@multiversa/core/apps/cortex-frontend` | Legacy Svelte 5 Onion UI dashboard snapshot. Historical visual reference only. |
+| `@multiversa/core/apps/cortex-desktop` | Legacy Tauri shell snapshot. |
+| `@multiversa/core/apps/cortex-gateway` | Legacy Go gateway snapshot. |
+| `README.md` · `CLAUDE.md` · `AGENTS.md` · `LLMs.md` | Legacy brand DNA and agent-orchestration notes. |
 | `vault/_protocol.md` | Knowledge classification & agent permissions. |
 | `docs/USER_MANUAL.md` · `docs/TECHNICAL_SPECS.md` | Ecosystem navigation + stack specs. |
 
@@ -29,8 +29,8 @@ Landing copy (EN + ES) was read from `messages/en.json` and `messages/es.json`.
 
 ## Products Represented
 
-1. **multiversa-next** — public marketing landing page. Tailwind 4, framer-motion, GSAP, next-intl (EN/ES), lucide-react icons.
-2. **CortexOS Cockpit (cortex-frontend)** — client-facing operations dashboard (Svelte 5). White-label-capable. Onboarding + Brand DNA capture + Triad status nexus.
+1. **Current Lab landing** — SvelteKit public site. This is the active source of truth.
+2. **Legacy imported snapshots** — previous Next/Cortex/Cockpit materials kept only to mine visual language and should not be treated as active roadmap or architecture.
 
 ---
 
@@ -45,8 +45,8 @@ Multiversa Design System/
 ├── fonts/                       ← (empty — loaded from Google Fonts; see note)
 ├── preview/                     ← registered cards for the Design System tab
 ├── ui_kits/
-│   ├── landing/                 ← Multiversa marketing landing
-│   └── cockpit/                 ← CortexOS Cockpit dashboard
+│   ├── landing/                 ← Multiversa marketing landing reference
+│   └── cockpit/                 ← legacy dashboard reference
 └── @multiversa/                 ← imported source files (read-only reference)
 ```
 
@@ -59,19 +59,19 @@ Multiversa writes like a **consultancy that treats AI as craft, not spectacle**.
 ### Voice
 
 - **Bilingual by default.** The production app ships EN/ES side-by-side. Spanish uses TU (familiar, not usted) and leans poetic; English is tighter and more startup-native. Don't translate word-for-word — re-write for each voice.
-- **First-person plural ("we"), client-facing second-person ("you" / "tu").** Never "I". Multiversa is a collective (Moshe + Masha + the Triad), not a solo act.
+- **First-person plural ("we"), client-facing second-person ("you" / "tu").** Never "I". Multiversa is a collective practice (Moshe + collaborators + curated tools), not a solo act.
 - **"AI proposes, you decide"** is the core ethical refrain — surfaces across README, AGENTS.md, Triad principle. Always put the human as the final decider.
 
 ### Tone
 
-- **Calm authority with warmth.** "Calm authority. Speaks only when needed" (Astursadeth). "Direct, pragmatic, expert" (Auréon). "Warm, aesthetic, persuasive" (Runa). Copy blends these.
-- **Anti-jargon, pro-metaphor.** Instead of "multi-agent LLM orchestration" they say "the Triad." Instead of "caching" they say "$0 tokens." Memory layers are "L1 Local… never leaves device."
+- **Calm authority with warmth.** Calm authority, direct technical reasoning, and warm aesthetic language are the tonal anchors.
+- **Anti-jargon, pro-metaphor.** Prefer concrete metaphors over jargon. Instead of "caching" say "$0 tokens" when that clarifies the value. Memory layers are "L1 Local… never leaves device."
 - **Short sentences. Em-dashes. Italic suffixes.** Headlines land as statement + poetic echo: *"Your business, orchestrated. — Activate your Cortex."* Always two beats.
 
 ### Casing
 
 - **Sentence case** for headlines and body. Never Title Case.
-- **ALL-CAPS MONO micro-labels** at 10px with `0.2–0.3em` letter-spacing for tags, metadata, step labels ("STEP 01", "NODE_ID", "CORTEXOS", "FOUNDER CIRCLE", "ORCHESTRATING").
+- **ALL-CAPS MONO micro-labels** at 10px with `0.2–0.3em` letter-spacing for tags, metadata, step labels ("STEP 01", "NODE_ID", "FOUNDER CIRCLE", "ORCHESTRATING").
 - **Brand wordmark** always uppercase: "MULTIVERSA" (see the chrome footer).
 - **Product names** Pascal-cased or italicized: *Cortex*, *CortexOS*, *Spark*, *Pulse*, *Nano*.
 
@@ -123,7 +123,7 @@ Premium consultancy meets indie hacker. Tony Stark & Jarvis. Liquid Glass Pro. O
 | `--mv-carbon-light` | `#1A1A20` | Muted areas, alternate rows. |
 | `--mv-ivory` | `#FAFCE8` | Body text + headlines (warm off-white). |
 | `--mv-footer` | `#050505` | Abyssal — footer + lowest layer. |
-| Triad: Violet `#a894ff` · Teal `#4ecdc4` · Rose `#ff6b9d` | | Agent identities & status colors. |
+| Signal accents: Violet `#a894ff` · Teal `#4ecdc4` · Rose `#ff6b9d` | | Optional brand texture and status colors. |
 | Gold `#c9a84c` | | Premium / pricing highlights (secondary). |
 
 **Vibe:** nocturnal, electric, consultant-premium. Never cheerful. Never bright.

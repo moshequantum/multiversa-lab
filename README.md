@@ -1,4 +1,4 @@
-# Multiversa Lab — Engine Room (◎ ⬡ ✦)
+# Multiversa Lab — Engine Room
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -47,29 +47,40 @@ Multiversa Lab is built around **six core architectural layers**, running from p
 
 ---
 
-## 🧩 The Triad Protocol (◎ ⬡ ✦)
-
-Agent operations are split into three specialized subagents to optimize token costs and enhance clarity:
-*   **◎ Orchestrator (AsturSadeth):** Handles planning, decision logic, and routing.
-*   **⬡ System (Aureon):** Executes commands, builds codebases, and writes files.
-*   **✦ Interface (Runa):** Renders views, captures feedback, and prompts the user.
-
----
-
 ## 🚀 Getting Started
 
-### Prerequisites
+The recommended path is the **Multiversa CLI** — a Go-based wizard that downloads the curated stack, wires it to your agent of choice (Claude Code, Cursor, Codex, Gemini CLI, OpenCode, Aider, Cline, Continue, Roo Code, or any MCP-aware agent), and optionally connects a backend (local SQLite by default).
 
-Ensure you have **Node.js**, **pnpm**, **Python 3**, and **uv** installed.
+### Multiversa CLI · recommended
 
-### Onboarding
+Repo: [`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli) (MIT)
 
-Initialize the local directory structure and configuration under `~/.multiversa`:
+```bash
+# Any platform with Go installed
+go install github.com/moshequantum/multiversa-cli/cmd/multiversa@latest
+multiversa init
+
+# Homebrew (macOS) — available with the first tagged release
+# brew tap moshequantum/multiversa && brew install multiversa
+
+# curl | sh — available with the first tagged release
+# curl -sSL https://raw.githubusercontent.com/moshequantum/multiversa-cli/main/installers/shell-curl/install.sh | sh
+```
+
+The interactive wizard walks through: consent (*"La IA propone, tú decides"*) → engine selection (Engram, Graphify, Gentle AI / PI, codegraph, MiroFish) → agent wiring → optional backend → install. Full upstream attribution is printed at the end of every run.
+
+### Legacy bootstrap
+
+The original bash installer is kept for transparency and minimal-dependency environments. It only seeds `~/.multiversa/` directories; it does **not** download the engines themselves.
 
 ```bash
 chmod +x multiversa-installer.sh
 ./multiversa-installer.sh
 ```
+
+### Prerequisites for the engines themselves
+
+Depending on which engines you choose: **Go** (Engram, Gentle AI), **Python 3** with **pipx** (Graphify), **Node.js** with **pnpm** or **npm** (Gentle PI, codegraph), **Docker** (MiroFish, AGPL-3.0, external-only).
 
 ### Developing the SvelteKit Frontend
 
@@ -91,13 +102,14 @@ pnpm build
 ## 📚 Technical Documentation
 
 Explore the detailed architecture guides in the [`docs/`](./docs) directory:
-*   [Core Architecture & Triad Protocol](./docs/architecture.md)
+*   [Core Architecture](./docs/architecture.md)
 *   [Engram (Local Memory Layer)](./docs/engram.md)
 *   [Graphify (Knowledge Graph Mapping)](./docs/graphify.md)
 *   [Gentle AI / GentlePI (Spec-Driven Development)](./docs/gentle.md)
 *   [MiroFish (Agent Scenario Swarm)](./docs/mirofish.md)
 *   [InsForge (BaaS cloud integration)](./docs/insforge.md)
 *   [**Upstream / Standing on the shoulders**](./docs/upstream.md) — authors, repos, licenses
+*   **[Multiversa CLI](https://github.com/moshequantum/multiversa-cli)** — the installer (separate repo)
 
 ---
 
@@ -109,13 +121,14 @@ Multiversa Lab does not reinvent the wheel — it **orchestrates**. Five of the
 six pillars stand on open-source work by other builders. Full attribution
 lives in [`docs/upstream.md`](./docs/upstream.md). Brief credit here:
 
-| Pillar | Upstream project | Author | License |
+| Pillar / Companion | Upstream project | Author | License |
 |---|---|---|---|
 | **Engram** | [`Gentleman-Programming/engram`](https://github.com/Gentleman-Programming/engram) | Alan Muscaglia ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
 | **Gentle AI** | [`Gentleman-Programming/gentle-ai`](https://github.com/Gentleman-Programming/gentle-ai) | Alan Muscaglia ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
 | **Gentle PI** | [`Gentleman-Programming/gentle-pi`](https://github.com/Gentleman-Programming/gentle-pi) | Alan Muscaglia ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
-| **MiroFish** | [`666ghj/MiroFish`](https://github.com/666ghj/MiroFish) · [mirofish.homes](https://mirofish.homes/) | BaiFu ([@666ghj](https://github.com/666ghj)) | **AGPL-3.0** ⚠️ |
 | **Graphify** | [`safishamsi/graphify`](https://github.com/safishamsi/graphify) | Safi ([@safishamsi](https://github.com/safishamsi)) | MIT |
+| **codegraph** *(code-specific companion to Graphify)* | [`colbymchenry/codegraph`](https://github.com/colbymchenry/codegraph) | Colby McHenry ([@colbymchenry](https://github.com/colbymchenry)) | MIT |
+| **MiroFish** | [`666ghj/MiroFish`](https://github.com/666ghj/MiroFish) · [mirofish.homes](https://mirofish.homes/) | BaiFu ([@666ghj](https://github.com/666ghj)) | **AGPL-3.0** ⚠️ |
 | **InsForge** | [insforge.dev](https://insforge.dev) | InsForge (BaaS) | Commercial |
 
 > **MiroFish is AGPL-3.0** (copyleft, viral over network service). Multiversa

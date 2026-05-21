@@ -7,7 +7,7 @@
   import StatusBoard from '$lib/components/StatusBoard.svelte';
   import PhilosophySplit from '$lib/components/PhilosophySplit.svelte';
   import WaitlistForm from '$lib/components/WaitlistForm.svelte';
-  import FooterTriad from '$lib/components/FooterTriad.svelte';
+  import FooterSignature from '$lib/components/FooterSignature.svelte';
 </script>
 
 <svelte:head>
@@ -28,7 +28,7 @@
   <PhilosophySplit />
   <WaitlistForm />
 </main>
-<FooterTriad />
+<FooterSignature />
 
 <style>
   main { display: block; }

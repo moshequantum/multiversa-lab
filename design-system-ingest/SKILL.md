@@ -1,6 +1,6 @@
 ---
 name: multiversa-design
-description: Use this skill to generate well-branded interfaces and assets for Multiversa Group (CortexOS, the Triad, Cockpit Nano/Spark/Pulse/Cortex), either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.
+description: Use this skill to generate well-branded interfaces and assets for the Multiversa Lab / Group ecosystem (landing, CLI wizard, dashboards, prototypes/mocks). Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.
 user-invocable: true
 ---
 
@@ -16,11 +16,11 @@ If the user invokes this skill without any other guidance, ask them what they wa
 - `assets/` — logos (`Logotipo.svg`, `favicon.svg`)
 - `fonts/` — Playfair Display, Sora, JetBrains Mono (Google Fonts fallback)
 - `preview/` — individual specimen cards
-- `ui_kits/landing/` — hi-fi recreation of the marketing site (Hero, Triad, Pricing, Benchmark, Footer)
+- `ui_kits/landing/` — hi-fi recreation of the marketing site (Hero, pricing, benchmark, footer)
 
 ## Non-negotiables
 - Background is always Black Carbon `#0A0A0F`. Chartreuse `#BDEB34` is the one hero color — never two at hero scale.
 - Headlines are Playfair Display 400 + an italic 300 echo in chartreuse @ opacity 0.6–0.8. Two beats.
 - Body is Sora 300. Micro-copy is JetBrains Mono uppercase w/ 0.22–0.3em tracking.
-- Lucide icons only (stroke 1.75, no fill). Triad uses ◎ ⬡ ✦ — never substitute.
+- Lucide icons only (stroke 1.75, no fill). Legacy glyphs are visual references only, not active architecture.
 - No emoji. No purple-to-blue gradients. No hand-rolled SVG icons.

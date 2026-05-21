@@ -1,7 +1,7 @@
 /* ============================================================
    MULTIVERSA — Colors & Type
    Liquid Glass Pro + Onion UI · Black Carbon & Chartreuse
-   Sourced from @multiversa/core/apps/multiversa-next and cortex-frontend
+   Sourced from current Lab tokens plus legacy visual references
    ============================================================ */
 
 /* Playfair Display — local variable TTF (uploaded by user).
@@ -46,7 +46,7 @@
   --mv-border:          rgba(255, 255, 255, 0.08);
   --mv-border-strong:   rgba(255, 255, 255, 0.10);
 
-  /* ── Triad Agent Colors ───────────────────────────────── */
+  /* ── Signal Accent Colors ─────────────────────────────── */
   --mv-astursadeth:     #a894ff;              /* Violet — Orchestrator */
   --mv-aureon:          #4ecdc4;              /* Teal — System */
   --mv-runa:            #ff6b9d;              /* Rose — Interface */

@@ -1,11 +1,11 @@
 <script lang="ts">
-  // Triad signature footer — ◎ ⬡ ✦ as Playfair italic text
+  // Multiversa signature footer — three glyphs as brand texture, not product architecture.
 </script>
 
 <footer class="footer">
   <div class="site stack-lg">
 
-    <div class="triad" aria-hidden="true">
+    <div class="signal" aria-hidden="true">
       <span class="g g-violet">◎</span>
       <span class="g g-teal">⬡</span>
       <span class="g g-rose">✦</span>
@@ -58,7 +58,7 @@
     text-align: center;
   }
 
-  .triad {
+  .signal {
     display: flex;
     gap: 48px;
     font-family: var(--font-serif);

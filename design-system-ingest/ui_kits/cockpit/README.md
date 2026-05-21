@@ -1,11 +1,11 @@
-# Cockpit UI Kit
+# Legacy dashboard UI Kit
 
-Hi-fi recreation of the CortexOS Cockpit dashboard (`@multiversa/core/apps/cortex-frontend`).
+Hi-fi recreation of a legacy dashboard snapshot (`@multiversa/core/apps/cortex-frontend`). Kept as visual reference only; not active product architecture.
 
-**Source:** `lib/Cockpit.svelte` + `lib/components/{AgentStatusNexus,BrandHeader}.svelte` + `app.css`.
+**Source:** legacy `lib/Cockpit.svelte` + `lib/components/{AgentStatusNexus,BrandHeader}.svelte` + `app.css`.
 
 ## Files
-- `index.html` — full Cockpit with sidebar, main dashboard, and Hydra chat rail
+- `index.html` — full dashboard with sidebar, main surface, and chat rail
 - `BrandHeader.jsx` — top bar with Multiversa mark + user entity + model pill
 - `Sidebar.jsx` — collapsible nav with asset list
 - `AgentNexus.jsx` — three-agent status panel (◎ ⬡ ✦)
@@ -15,7 +15,7 @@ Hi-fi recreation of the CortexOS Cockpit dashboard (`@multiversa/core/apps/corte
 ## Demonstrated patterns
 - Onion UI shell: 288px sidebar · flex main · 360px chat rail
 - Liquid glass cards (blur-20 + white/.05 + 8-32-0-.37 shadow)
-- Agent status pulses (violet / teal / rose)
+- Status pulses (violet / teal / rose)
 - Mono tracking labels everywhere
 - Chartreuse primary CTAs
 

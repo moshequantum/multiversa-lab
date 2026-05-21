@@ -14,9 +14,10 @@ otros constructores. Esta página existe para nombrarlos con claridad.
 |---|---|---|---|
 | **Engram** | [`Gentleman-Programming/engram`](https://github.com/Gentleman-Programming/engram) | **Alan Muscaglia** ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
 | **Gentle AI** | [`Gentleman-Programming/gentle-ai`](https://github.com/Gentleman-Programming/gentle-ai) | **Alan Muscaglia** ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
-| **Gentle PI** | [`Gentleman-Programming/gentle-pi`](https://github.com/Gentleman-Programming/gentle-pi) ([v0.3.5](https://github.com/Gentleman-Programming/gentle-pi/releases/tag/v0.3.5)) | **Alan Muscaglia** ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
-| **MiroFish** | [`666ghj/MiroFish`](https://github.com/666ghj/MiroFish) · [`mirofish.homes`](https://mirofish.homes/) | **BaiFu** ([@666ghj](https://github.com/666ghj)) — Shanghái | **AGPL-3.0** ⚠️ |
+| **Gentle PI** | [`Gentleman-Programming/gentle-pi`](https://github.com/Gentleman-Programming/gentle-pi) | **Alan Muscaglia** ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
 | **Graphify** | [`safishamsi/graphify`](https://github.com/safishamsi/graphify) | **Safi** ([@safishamsi](https://github.com/safishamsi)) — AI Engineer · Londres | MIT |
+| **codegraph** *(code-specific companion to Graphify)* | [`colbymchenry/codegraph`](https://github.com/colbymchenry/codegraph) | **Colby McHenry** ([@colbymchenry](https://github.com/colbymchenry)) | MIT |
+| **MiroFish** | [`666ghj/MiroFish`](https://github.com/666ghj/MiroFish) · [`mirofish.homes`](https://mirofish.homes/) | **BaiFu** ([@666ghj](https://github.com/666ghj)) — Shanghái | **AGPL-3.0** ⚠️ |
 | **InsForge** | [`insforge.dev`](https://insforge.dev) | InsForge (BaaS) | Comercial · plan gestionado |
 
 ---
@@ -44,8 +45,9 @@ Esto respeta tanto la licencia upstream como nuestro propio principio
 
 **De Multiversa Lab (nuestro):**
 
+- El **Multiversa CLI** ([`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli)) — orquestador en Go + wizard TUI
 - El conector + capa de orquestación + design system **Liquid Glass Pro + Onion UI**
-- La narrativa de marca, el DNA Brand book, la voz, el Triad Protocol (◎ ⬡ ✦)
+- La narrativa de marca, el DNA Brand book, la voz
 - Los manifestos, principios, decisiones arquitectónicas
 - Los esquemas de integración entre pilares, el installer, los templates
 - La landing pública en `lab.multiversa.group`
@@ -55,8 +57,9 @@ Esto respeta tanto la licencia upstream como nuestro propio principio
 
 - El código del runtime de Engram (Alan Muscaglia)
 - El motor de Gentle AI y la Gentle PI (Alan Muscaglia)
-- El simulador swarm de MiroFish (BaiFu)
-- El indexer y visualización de Graphify (Safi)
+- El indexer content→grafo de Graphify (Safi)
+- El indexer semántico de código de codegraph (Colby McHenry)
+- El simulador swarm de MiroFish (BaiFu) — AGPL, invocado como servicio externo
 
 ---
 
@@ -69,4 +72,4 @@ al upstream directamente.
 
 ---
 
-*Última revisión: 2026-05-20*
+*Última revisión: 2026-05-21 — añadido codegraph (Colby McHenry) y Multiversa CLI.*

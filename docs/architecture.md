@@ -1,57 +1,27 @@
-# Multiversa Lab — Architecture: Triad Protocol
+# Multiversa Architecture
 
-Welcome to the technical foundation of **Multiversa Lab**. This document outlines the core agent orchestration architecture, known as the **Triad Protocol**, which powers our Intelligent Personal OS.
+> Current source of truth as of 2026-05-21. The former named-agent cosmology was retired; it is not active architecture.
 
----
+## Shape
 
-## The Triad Protocol (◎ ⬡ ✦)
+Multiversa is a curated, agent-agnostic stack. The Lab publishes the open technical layer; the Group applies it commercially without leaking client work back into the Lab.
 
-Agent-based orchestration shouldn't be a monolithic loop. Multiversa structures agent interactions into three distinct, specialized entities. Each has its own role, boundary, and memory spine:
+## Active layers
 
-```mermaid
-graph TD
-    A["◎ Orchestrator (AsturSadeth)"] -->|Delegates & Governs| B["⬡ System (Aureon)"]
-    B -->|Provides Context & Data| C["✦ Interface (Runa)"]
-    C -->|Gathers Human Input| A
-    style A fill:#a894ff,stroke:#fff,stroke-width:1px,color:#000
-    style B fill:#4ecdc4,stroke:#fff,stroke-width:1px,color:#000
-    style C fill:#ff6b9d,stroke:#fff,stroke-width:1px,color:#000
-```
+1. **SvelteKit Lab** — public site, documentation, waitlist, and design language.
+2. **Multiversa CLI** — the installer/orchestrator that wires the curated stack into the user's local agent environment.
+3. **Curated engines** — Engram, Graphify, gentle-ai, gentle-pi, codegraph, and optional external-only MiroFish.
+4. **Optional backend** — local-first by default; remote backends such as InsForge are adapters, not the core.
 
-### 1. ◎ The Orchestrator (AsturSadeth)
-- **Primary Color:** Violet (`#a894ff`)
-- **Responsibility:** Decisions, logic, routing, and task decomposition.
-- **Role:** AsturSadeth is the senior planner. It reviews constraints, decomposes complex requirements into atomic execution phases, and directs the other subagents.
+## Boundaries
 
-### 2. ⬡ The System (Aureon)
-- **Primary Color:** Teal (`#4ecdc4`)
-- **Responsibility:** Infrastructure, execution, file manipulation, and database access.
-- **Role:** Aureon acts as the worker engine. It builds packages, manages file reads/writes, queries the database, and executes tests. It only runs under the governance of the Orchestrator.
+- Multiversa **orchestrates** upstream engines; it does not claim authorship over them.
+- AGPL components are external-only. MiroFish must never be embedded, vendored, or compiled into Multiversa.
+- The human leads. AI proposes, the human decides.
+- Legacy imported design snapshots are references only. They are not product commitments.
 
-### 3. ✦ The Interface (Runa)
-- **Primary Color:** Rose (`#ff6b9d`)
-- **Responsibility:** Interaction, presentation, human feedback, and UI rendering.
-- **Role:** Runa bridges the gap between the internal state graph and the human operator. It displays progress, renders interactive tools (like status boards), and prompts for decisions when ambiguity arises.
+## Source-of-truth docs
 
----
-
-## Architecture Separation: Lab vs Group
-
-To guarantee intellectual and physical integrity, Multiversa operates on two parallel planes:
-
-| Property | Multiversa Lab (This Repo) | Multiversa Group |
-|:---|:---|:---|
-| **Purpose** | Open-source core engine and R&D. | Closed-source commercial implementation. |
-| **Codebase** | Public, collaborative, and MIT licensed. | Private, proprietary, and under NDAs. |
-| **Ecosystem** | Local-first, developer-centric. | Cloud-native, scaled enterprise platforms. |
-| **Philosophy** | *AI proposes, human decides.* | *Continuity, security, and performance.* |
-
----
-
-## Directory Hierarchy & Foundation
-
-The `multiversalab` repository is organized as follows:
-- `/docs`: Markdown specification documents (this folder).
-- `/landing`: SvelteKit frontend landing page and dashboard.
-- `/templates`: Structure templates for Engram, Graphify, and Gentle stacks.
-- `/projects`: Local execution sandboxes for active project developments.
+- `README.md` — public narrative and install path.
+- `docs/upstream.md` — attribution and license posture.
+- `CREDITS.md` in `multiversa-cli` — CLI attribution source of truth.

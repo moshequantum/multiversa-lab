@@ -9,7 +9,7 @@
         'Manifesto público',
         'Design System (Liquid Glass Pro + Onion UI)',
         'DNA Brand · 47 slides bilingüe',
-        'Triad Protocol — ◎ ⬡ ✦',
+        'Principios de orquestación humana',
         'Code of Conduct',
         'Templates Engram / Graphify / Gentle'
       ]
@@ -36,7 +36,7 @@
         'MultiversaOS — context sync universal',
         'Tier Ecosistemas Inteligentes',
         'Cross-LLM memory portability',
-        'Cockpit Lab (vista pública)',
+        'Panel público del laboratorio',
         'Programa de contribuidores'
       ]
     }
