@@ -11,10 +11,10 @@
 </script>
 
 <svelte:head>
-  <title>Multiversa Group · Ecosistemas de IA Agnóstica</title>
+  <title>Multiversa Lab · Construye cerebros de trabajo</title>
   <meta
     name="description"
-    content="Multiversa Group diseña e implementa ecosistemas de IA agnóstica para convertir conocimiento, procesos y criterio humano en operación real. Consultoría, arquitectura e implementación."
+    content="El laboratorio open-source de Multiversa. Engram, Graphify, GentleAI, GentlePI, MiroFish e InsForge — herramientas, skills y MCPs para construir cerebros de trabajo con memoria, identidad y criterio."
   />
 </svelte:head>
 

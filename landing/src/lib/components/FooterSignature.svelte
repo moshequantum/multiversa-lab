@@ -1,5 +1,5 @@
 <script lang="ts">
-  // Multiversa signature footer — three glyphs as brand texture, not product architecture.
+  // Multiversa signature footer — brand texture, not product architecture.
 </script>
 
 <footer class="footer">
@@ -25,11 +25,11 @@
       <span class="sep">·</span>
       <a href="https://github.com/moshequantum/multiversalab/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">Code of Conduct</a>
       <span class="sep">·</span>
-      <a href="mailto:multiversagroup@gmail.com">multiversagroup@gmail.com</a>
+      <a href="mailto:soymoisesweb@gmail.com">soymoisesweb@gmail.com</a>
     </div>
 
     <div class="meta">
-      <span class="mv-label-muted">© 2026 Multiversa Lab</span>
+      <span class="mv-label-muted">© 2026 Multiversa Group</span>
       <span class="mv-label-muted">v 0.4 · open-source · MIT</span>
       <span class="mv-label-muted">lab.multiversa.group</span>
     </div>

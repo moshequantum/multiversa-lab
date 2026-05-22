@@ -5,14 +5,14 @@
 
 <header class="nav">
   <div class="site row">
-    <a href="/" class="left" aria-label="Multiversa Group — inicio">
+    <a href="/" class="left" aria-label="Multiversa Lab — inicio">
       <img
         src="/assets/multiversa-wordmark-light.svg"
         alt="Multiversa"
         height="28"
         class="wordmark"
       />
-      <span class="lab-suffix">Group</span>
+      <span class="lab-suffix">Lab</span>
     </a>
     <div class="right">
       <span class="mv-label-muted">v 0.4 · open-source · MIT</span>

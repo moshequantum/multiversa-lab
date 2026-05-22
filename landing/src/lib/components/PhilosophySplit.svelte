@@ -11,12 +11,13 @@
     </div>
 
     <h2 class="mv-two-beat">
-      Nuestra Operación —
-      <em>integridad y separación.</em>
+      Una idea —
+      <em>dos cuerpos. Por integridad.</em>
     </h2>
 
     <p class="lead">
-      Organizamos la operación separando el laboratorio abierto de la consultoría privada para garantizar la confidencialidad, la seguridad y la evolución del ecosistema.
+      Multiversa vive en dos cuerpos. El Lab es público y técnico.
+      Group es comercial y cerrado. La separación protege a ambos.
     </p>
 
     <div class="grid">

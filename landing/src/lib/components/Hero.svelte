@@ -6,44 +6,39 @@
   <div class="site stack">
 
     <div class="meta">
-      <span class="mv-pill" style="background: rgba(189, 235, 52, 0.15); color: var(--mv-primary); border-color: rgba(189, 235, 52, 0.3);">Multiversa Group</span>
-      <span class="mv-label-muted">IA Agnóstica · Ecosistemas Operativos</span>
+      <span class="mv-pill">Open · Live</span>
+      <span class="mv-label-muted">Cap III · Arquitectura · 02 / 04</span>
     </div>
 
-    <h1 class="mv-two-beat" style="font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 12px;">
-      Multiversa<em>Group.</em>
+    <h1 class="mv-two-beat">
+      Construye cerebros de trabajo —
+      <em>memoria, identidad y criterio.</em>
     </h1>
 
-    <p class="lead" style="font-size: clamp(1.25rem, 2.2vw, 1.85rem); font-family: var(--font-serif); font-style: italic; color: var(--mv-ivory); max-width: 48ch; line-height: 1.35; margin-bottom: 8px;">
-      Consultoría, arquitectura e implementación de ecosistemas de IA agnóstica.
+    <p class="lead">
+      Herramientas, skills y MCPs para crear software responsable.
+      <strong>Auditable. Documentado. Compartido.</strong>
     </p>
-
-    <p class="lead" style="max-width: 68ch;">
-      Creamos ecosistemas operativos donde la IA no reemplaza al humano: <strong>lo amplifica, organiza su conocimiento</strong> y convierte su forma de trabajar en infraestructura.
-    </p>
-
-    <blockquote class="frase-madre" style="border-left: 2px solid var(--mv-primary); padding-left: 20px; font-family: var(--font-serif); font-style: italic; font-size: clamp(1.1rem, 1.8vw, 1.35rem); color: rgba(250, 252, 232, 0.85); max-width: 58ch; line-height: 1.45; margin: 12px 0;">
-      “Multiversa Group diseña e implementa ecosistemas de IA agnóstica para convertir conocimiento, procesos y criterio humano en operación real.”
-    </blockquote>
 
     <div class="ctas">
-      <a class="mv-btn mv-btn-primary" href="#spark-form">
-        Solicitar diagnóstico Spark
-      </a>
-      <a class="mv-btn mv-btn-ghost"
+      <a class="mv-btn mv-btn-primary"
          href="https://github.com/moshequantum/multiversalab"
          target="_blank" rel="noopener">
-        Open Source Lab ↗
+        ⤴ &nbsp; Star on GitHub
+      </a>
+      <a class="mv-btn mv-btn-ghost" href="#manifiesto">
+        Leer el manifesto ↓
       </a>
     </div>
 
     <div class="chips">
-      <span class="mv-label-muted">Spark</span>
-      <span class="mv-label-muted">Kickstart</span>
-      <span class="mv-label-muted">Ecosystem</span>
-      <span class="mv-label-muted" style="color: var(--mv-primary);">PulseOS</span>
-      <span class="mv-label-muted" style="color: var(--mv-primary);">ElevatOS</span>
-      <span class="mv-label-muted">Brain (Invisible Engine)</span>
+      <span class="mv-label-muted">Engram</span>
+      <span class="mv-label-muted">Graphify</span>
+      <span class="mv-label-muted">MiroFish</span>
+      <span class="mv-label-muted">GentleAI</span>
+      <span class="mv-label-muted">GentlePI</span>
+      <span class="mv-label-muted">InsForge</span>
+      <span class="mv-label-muted" style="color: var(--mv-primary);">lab.multiversa.group →</span>
     </div>
   </div>
 
