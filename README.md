@@ -49,34 +49,58 @@ Multiversa Lab is built around **six core architectural layers**, running from p
 
 ## 🚀 Getting Started
 
-The recommended path is the **Multiversa CLI** — a Go-based wizard that downloads the curated stack, wires it to your agent of choice (Claude Code, Cursor, Codex, Gemini CLI, OpenCode, Aider, Cline, Continue, Roo Code, or any MCP-aware agent), and optionally connects a backend (local SQLite by default).
+Two equally valid entry points — pick the one that fits how you work. Detailed flow in [docs/cli.md](./docs/cli.md).
 
-### Multiversa CLI · recommended
+### Lab installer · recommended for first-time users
 
-Repo: [`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli) (MIT)
+A bash bootstrap that downloads the [`multiversa`](https://github.com/moshequantum/multiversa-cli) binary, scaffolds `~/.multiversa/`, and walks you through the full lab setup (host scan → developer toolchain → curated engines). macOS and Linux.
+
+```bash
+# One-liner (when the public mirror is live)
+curl -fsSL https://lab.multiversa.group/install.sh | bash
+
+# From a local checkout of this repo
+chmod +x multiversa-installer.sh
+./multiversa-installer.sh
+```
+
+Environment overrides:
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `MULTIVERSA_VERSION` | `latest` | Pin a specific release tag (e.g. `v0.3.0`) |
+| `MULTIVERSA_PREFIX` | `~/.local` | Install prefix for the binary |
+| `MULTIVERSA_SKIP_STACK` | unset | Skip `multiversa stack` |
+| `MULTIVERSA_SKIP_INIT` | unset | Skip `multiversa init` |
+
+The installer is non-destructive: re-running it is safe, every step is idempotent, and `~/.multiversa/config.json` is preserved if it already exists.
+
+### Multiversa CLI direct · for users who already manage their toolchain
+
+Repo: [`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli) (MIT).
 
 ```bash
 # Any platform with Go installed
 go install github.com/moshequantum/multiversa-cli/cmd/multiversa@latest
-multiversa init
 
-# Homebrew (macOS) — available with the first tagged release
+# Or grab the binary archive from GitHub Releases (no Go required)
+# https://github.com/moshequantum/multiversa-cli/releases
+
+# Homebrew (macOS) — available once homebrew-multiversa is published
 # brew tap moshequantum/multiversa && brew install multiversa
-
-# curl | sh — available with the first tagged release
-# curl -sSL https://raw.githubusercontent.com/moshequantum/multiversa-cli/main/installers/shell-curl/install.sh | sh
 ```
 
-The interactive wizard walks through: consent (*"La IA propone, tú decides"*) → engine selection (Engram, Graphify, Gentle AI / PI, codegraph, MiroFish) → agent wiring → optional backend → install. Full upstream attribution is printed at the end of every run.
-
-### Legacy bootstrap
-
-The original bash installer is kept for transparency and minimal-dependency environments. It only seeds `~/.multiversa/` directories; it does **not** download the engines themselves.
+Once the binary is on PATH:
 
 ```bash
-chmod +x multiversa-installer.sh
-./multiversa-installer.sh
+multiversa detect      # read-only host scan
+multiversa stack       # OS-level dev toolchain (Go/Rust/Python/Node/pnpm)
+multiversa init        # interactive engine wizard (Engram, Graphify, Gentle, …)
+multiversa workspace   # private MultiversaGroup setup (SSH/GPG/repos/vault)
+multiversa credits     # upstream attribution
 ```
+
+Every run ends with full upstream attribution. *"La IA propone, tú decides."*
 
 ### Prerequisites for the engines themselves
 
