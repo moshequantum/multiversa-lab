@@ -5,7 +5,7 @@
   type Upstream = {
     pillar: string;
     glyph: '◎' | '⬡' | '✦';
-    glow: 'violet' | 'teal' | 'rose';
+    glow: 'chartreuse' | 'ivory' | 'sand';
     author: string;
     handle: string;
     authorUrl: string;
@@ -20,7 +20,7 @@
     {
       pillar: 'Engram',
       glyph: '⬡',
-      glow: 'teal',
+      glow: 'sand',
       author: 'Alan Muscaglia',
       handle: 'Gentleman-Programming',
       authorUrl: 'https://github.com/Gentleman-Programming',
@@ -31,7 +31,7 @@
     {
       pillar: 'GentleAI',
       glyph: '◎',
-      glow: 'violet',
+      glow: 'chartreuse',
       author: 'Alan Muscaglia',
       handle: 'Gentleman-Programming',
       authorUrl: 'https://github.com/Gentleman-Programming',
@@ -42,7 +42,7 @@
     {
       pillar: 'GentlePI',
       glyph: '✦',
-      glow: 'rose',
+      glow: 'ivory',
       author: 'Alan Muscaglia',
       handle: 'Gentleman-Programming',
       authorUrl: 'https://github.com/Gentleman-Programming',
@@ -53,7 +53,7 @@
     {
       pillar: 'MiroFish',
       glyph: '◎',
-      glow: 'violet',
+      glow: 'chartreuse',
       author: 'BaiFu',
       handle: '666ghj',
       authorUrl: 'https://github.com/666ghj',
@@ -66,7 +66,7 @@
     {
       pillar: 'Graphify',
       glyph: '✦',
-      glow: 'rose',
+      glow: 'ivory',
       author: 'Safi',
       handle: 'safishamsi',
       authorUrl: 'https://github.com/safishamsi',
@@ -137,7 +137,7 @@
 
     <p class="closing">
       Si vas a mejorar uno de estos pilares,
-      <em>abrí PR en el repo original.</em>
+      <em>abre un PR en el repositorio original.</em>
       <br />
       Somos usuarios agradecidos que documentan — no un fork ni un wrapper.
     </p>
@@ -206,9 +206,9 @@
     font-size: 2rem;
     line-height: 1;
   }
-  .glyph-violet { color: var(--mv-astursadeth); }
-  .glyph-teal   { color: var(--mv-aureon); }
-  .glyph-rose   { color: var(--mv-runa); }
+  .glyph-chartreuse { color: var(--mv-primary); }
+  .glyph-sand       { color: var(--mv-sand); }
+  .glyph-ivory      { color: var(--mv-ivory); }
 
   .pillar {
     font-family: var(--font-serif);

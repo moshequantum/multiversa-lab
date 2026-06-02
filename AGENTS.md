@@ -1,8 +1,20 @@
 ---
-description: Instructions building apps with MCP
+description: Instructions building apps with MCP and agent protocols
 globs: *
 alwaysApply: true
 ---
+
+# PROTOCOLO DE AGENTES (Voz y Tono)
+* **Fuente vinculante:** Antes de proponer, escribir o ejecutar cambios, leer y respetar `/Users/moshe/Documents/01_Multiversa/CONSTITUTION.md`.
+* **Fuente de diseño:** DNA BRAND Multiversa vive en `/Users/moshe/Documents/01_Multiversa/Brand/DNA Brand Multiversa/Multiversa DNA Brand.html`.
+* **Frontera pública:** Este repo pertenece a **Multiversa.Lab**. No escribir datos de clientes, tenants, contratos, credenciales, seeds SQL ni `.env`.
+* **Idioma Obligatorio:** Español de América Latina neutro, con presencia, profesional y directo.
+* **Tono de Comunicación (12/10/78):** 12% misticismo y poesía, 10% tecnicismo real, 78% habla de a centavo.
+* **Restricción de Modismos:** Queda estrictamente prohibido el uso de modismos locales (voseo, tono rioplatense, "posta", "boludo", "che", "querés", "tenés") por defecto en las respuestas.
+* **Terminología Canónica:** Usar `Multiversa`, `Multiversa.Group`, `Multiversa.Lab`, `Brain`, `Studio`, `PulseOS`, `ElevatOS`, `Spark`, `Kickstart`, `Ecosystem` y `FundersCircle` según la Constitución.
+* **Tombstones:** Conceptos legacy sólo pueden aparecer dentro de secciones de cuarentena/legado. No reactivarlos en copy, docs públicas, UI, nombres de archivos ni prompts.
+* **Dependencias JS/TS:** `pnpm` es obligatorio. No usar `npm` para instalaciones o scripts del proyecto.
+
 
 # InsForge SDK Documentation - Overview
 
@@ -33,7 +45,7 @@ Use the `download-template` MCP tool to create a new project with your backend U
 ### Step 2: Install SDK
 
 ```bash
-npm install @insforge/sdk@latest
+pnpm add @insforge/sdk@latest
 ```
 
 ### Step 3: Create SDK Client
@@ -131,3 +143,24 @@ Available languages:
 - Storage: Upload files to buckets, store URLs in database
 - AI integrations should call OpenRouter directly with `baseURL: "https://openrouter.ai/api/v1"` and a server-side `OPENROUTER_API_KEY`
 - **EXTRA IMPORTANT**: Use Tailwind CSS 3.4 (do not upgrade to v4). Lock these dependencies in `package.json`
+
+<!-- INSFORGE:START -->
+## InsForge backend
+
+This project uses [InsForge](https://insforge.dev): an all-in-one, open-source Postgres-based backend (BaaS) that gives this app a database, authentication, file storage, edge functions, realtime, an AI model gateway, and payments through one platform.
+
+- **Project:** **oss-project** (API base `https://qh9qix6g.us-east.insforge.app`)
+- **Skills:** these InsForge skills are installed for supported coding agents. Reach for them before implementing any InsForge feature instead of guessing the API:
+  - `insforge`: app code with the `@insforge/sdk` client (database CRUD, auth, storage, edge functions, realtime, AI, email, and Stripe payments).
+  - `insforge-cli`: backend and infrastructure via the `insforge` CLI (projects, SQL, migrations, RLS policies, storage buckets, functions, secrets, payment setup, schedules, deploys).
+  - `insforge-debug`: diagnosing failures (SDK/HTTP errors, RLS denials, auth and OAuth issues) and running security or performance audits.
+  - `insforge-integrations`: wiring external auth providers (Clerk, Auth0, WorkOS, Better Auth, etc.) for JWT-based RLS, or the OKX x402 payment facilitator.
+  - `find-skills`: discovering additional skills on demand.
+- **Credentials:** app code reads keys from `.env.local`; the CLI reads `.insforge/project.json`. Never hardcode or commit keys.
+
+Key patterns:
+
+- Database inserts take an array: `insert([{ ... }])`.
+- Reference users with `auth.users(id)`; use `auth.uid()` in RLS policies.
+- For storage uploads, persist both the returned `url` and `key`.
+<!-- INSFORGE:END -->

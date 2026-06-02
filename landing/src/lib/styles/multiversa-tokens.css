@@ -47,9 +47,7 @@
   --mv-border-strong:   rgba(255, 255, 255, 0.10);
 
   /* ── Signal Accent Colors ─────────────────────────────── */
-  --mv-astursadeth:     #a894ff;              /* Violet — Orchestrator */
-  --mv-aureon:          #4ecdc4;              /* Teal — System */
-  --mv-runa:            #ff6b9d;              /* Rose — Interface */
+
 
   /* ── Secondary Semantic ───────────────────────────────── */
   --mv-gold:            #c9a84c;              /* Premium / CTAs */
@@ -131,9 +129,7 @@
   --shadow-chartreuse:  0 0 30px rgba(189, 235, 52, 0.30);
   --shadow-chartreuse-soft: 0 0 40px rgba(189, 235, 52, 0.10);
   --shadow-ring-primary: 0 0 0 3px rgba(189, 235, 52, 0.08), 0 0 20px -5px rgba(189, 235, 52, 0.15);
-  --shadow-violet:      0 0 40px rgba(168, 148, 255, 0.15);
-  --shadow-teal:        0 0 40px rgba(78, 205, 196, 0.15);
-  --shadow-rose:        0 0 40px rgba(255, 107, 157, 0.15);
+
 
   /* ── Blur (liquid glass) ──────────────────────────────── */
   --blur-glass:     20px;
@@ -261,7 +257,7 @@ p, .mv-body {
     rgba(255,255,255,0.12) 20%,
     rgba(189,235,52,0.08) 35%,
     rgba(255,255,255,0.18) 50%,
-    rgba(168,148,255,0.08) 65%,
+    rgba(189,235,52,0.02) 65%,
     rgba(255,255,255,0.10) 80%,
     rgba(255,255,255,0.04) 100%
   );

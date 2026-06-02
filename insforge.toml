@@ -1,0 +1,6 @@
+[auth]
+allowed_redirect_urls = [
+  "https://multiversa.group",
+  "https://www.multiversa.group",
+  "http://localhost:5173"
+]

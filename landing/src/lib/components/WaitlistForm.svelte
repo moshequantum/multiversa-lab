@@ -67,7 +67,7 @@
       <div class="success-alert" role="alert">
         <span class="success-glyph">✓</span>
         <div class="success-text">
-          <h4>¡Registro Exitoso!</h4>
+          <h4>Registro exitoso</h4>
           <p>Has sido añadido a la waitlist de Multiversa. Nos pondremos en contacto contigo pronto.</p>
         </div>
       </div>

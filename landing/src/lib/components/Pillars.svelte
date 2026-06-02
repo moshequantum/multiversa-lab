@@ -4,7 +4,7 @@
 
   type Pillar = {
     glyph: '◎' | '⬡' | '✦';
-    glow: 'violet' | 'teal' | 'rose';
+    glow: 'chartreuse' | 'ivory' | 'sand';
     code: string;
     layer: string;
     name: string;
@@ -18,7 +18,7 @@
   const pillars: Pillar[] = [
     {
       glyph: '⬡',
-      glow: 'teal',
+      glow: 'sand',
       code: 'LAYER 01',
       layer: 'MEMORY',
       name: 'Engram',
@@ -30,7 +30,7 @@
     },
     {
       glyph: '✦',
-      glow: 'rose',
+      glow: 'ivory',
       code: 'LAYER 02',
       layer: 'KNOWLEDGE',
       name: 'Graphify',
@@ -42,7 +42,7 @@
     },
     {
       glyph: '◎',
-      glow: 'violet',
+      glow: 'chartreuse',
       code: 'LAYER 03',
       layer: 'DISCIPLINE',
       name: 'GentleAI',
@@ -54,7 +54,7 @@
     },
     {
       glyph: '✦',
-      glow: 'rose',
+      glow: 'ivory',
       code: 'LAYER 04',
       layer: 'PERSONAL',
       name: 'GentlePI',
@@ -66,7 +66,7 @@
     },
     {
       glyph: '◎',
-      glow: 'violet',
+      glow: 'chartreuse',
       code: 'LAYER 05',
       layer: 'SIMULATION',
       name: 'MiroFish',
@@ -78,7 +78,7 @@
     },
     {
       glyph: '⬡',
-      glow: 'teal',
+      glow: 'sand',
       code: 'LAYER 06',
       layer: 'INFRASTRUCTURE',
       name: 'InsForge',
@@ -180,13 +180,13 @@
     justify-content: space-between;
   }
 
-  .pillar.glow-violet { box-shadow: 0 0 60px rgba(168, 148, 255, 0.04); }
-  .pillar.glow-teal   { box-shadow: 0 0 60px rgba(78, 205, 196, 0.04); }
-  .pillar.glow-rose   { box-shadow: 0 0 60px rgba(255, 107, 157, 0.04); }
+  .pillar.glow-chartreuse { box-shadow: 0 0 60px rgba(189, 235, 52, 0.04); }
+  .pillar.glow-sand       { box-shadow: 0 0 60px rgba(184, 180, 172, 0.04); }
+  .pillar.glow-ivory      { box-shadow: 0 0 60px rgba(250, 252, 232, 0.04); }
 
-  .pillar:hover.glow-violet { box-shadow: 0 0 80px rgba(168, 148, 255, 0.12); }
-  .pillar:hover.glow-teal   { box-shadow: 0 0 80px rgba(78, 205, 196, 0.12); }
-  .pillar:hover.glow-rose   { box-shadow: 0 0 80px rgba(255, 107, 157, 0.12); }
+  .pillar:hover.glow-chartreuse { box-shadow: 0 0 80px rgba(189, 235, 52, 0.12); }
+  .pillar:hover.glow-sand       { box-shadow: 0 0 80px rgba(184, 180, 172, 0.12); }
+  .pillar:hover.glow-ivory      { box-shadow: 0 0 80px rgba(250, 252, 232, 0.12); }
 
   header {
     display: flex;
@@ -202,9 +202,9 @@
     font-size: 2.75rem;
     line-height: 1;
   }
-  .glyph-violet { color: var(--mv-astursadeth); }
-  .glyph-teal   { color: var(--mv-aureon); }
-  .glyph-rose   { color: var(--mv-runa); }
+  .glyph-chartreuse { color: var(--mv-primary); }
+  .glyph-sand       { color: var(--mv-sand); }
+  .glyph-ivory      { color: var(--mv-ivory); }
 
   .codes { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
 
