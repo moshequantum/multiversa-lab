@@ -11,8 +11,8 @@
     </div>
 
     <h1 class="mv-two-beat">
-      Construye cerebros de trabajo —
-      <em>memoria, identidad y criterio.</em>
+      El código abierto
+      <em>de Multiversa.</em>
     </h1>
 
     <p class="lead">

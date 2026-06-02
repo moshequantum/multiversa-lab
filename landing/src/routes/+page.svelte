@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-  <title>Multiversa Lab · Construye cerebros de trabajo</title>
+  <title>Multiversa Lab · El código abierto de Multiversa</title>
   <meta
     name="description"
     content="El laboratorio open-source de Multiversa. Engram, Graphify, GentleAI, GentlePI, MiroFish e InsForge — herramientas, skills y MCPs para construir cerebros de trabajo con memoria, identidad y criterio."
