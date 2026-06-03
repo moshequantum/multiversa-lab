@@ -5,12 +5,14 @@
 <footer class="footer">
   <div class="site stack-lg">
 
-    <img
-      src="/assets/multiversa-wordmark-light.svg"
-      alt="Multiversa"
-      class="wordmark-img"
-    />
-    <span class="lab-suffix">Lab</span>
+    <div class="brand-group">
+      <img
+        src="/assets/multiversa-wordmark-light.svg"
+        alt="Multiversa"
+        class="wordmark-img"
+      />
+      <span class="lab-suffix">Lab</span>
+    </div>
 
     <p class="line">
       <em>Architected by Moshe. Open to the curious.</em>
@@ -29,7 +31,7 @@
     </div>
 
     <div class="meta">
-      <span class="mv-label-muted">© 2026 Multiversa Group</span>
+      <span class="mv-label-muted">© 2026 Multiversa Group LLC</span>
       <span class="mv-label-muted">v 0.4 · open-source · MIT</span>
       <span class="mv-label-muted">lab.multiversa.group</span>
     </div>
@@ -52,6 +54,13 @@
     text-align: center;
   }
 
+  .brand-group {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    justify-content: center;
+  }
+
   .wordmark-img {
     height: clamp(40px, 7vw, 80px);
     width: auto;
@@ -61,14 +70,12 @@
 
   .lab-suffix {
     font-family: var(--font-mono);
-    font-size: clamp(11px, 1.2vw, 13px);
+    font-size: clamp(11px, 1.2vw, 14px);
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--mv-primary);
-    padding: 4px 12px;
-    border: 1px solid rgba(189, 235, 52, 0.3);
-    border-radius: 999px;
-    background: rgba(189, 235, 52, 0.04);
+    padding-left: 12px;
+    border-left: 1px solid rgba(189, 235, 52, 0.3);
   }
 
   .line {

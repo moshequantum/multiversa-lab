@@ -21,7 +21,7 @@
       pillar: 'Engram',
       glyph: '⬡',
       glow: 'sand',
-      author: 'Alan Muscaglia',
+      author: 'Alan Buscaglia',
       handle: 'Gentleman-Programming',
       authorUrl: 'https://github.com/Gentleman-Programming',
       repoUrl: 'https://github.com/Gentleman-Programming/engram',
@@ -32,7 +32,7 @@
       pillar: 'GentleAI',
       glyph: '◎',
       glow: 'chartreuse',
-      author: 'Alan Muscaglia',
+      author: 'Alan Buscaglia',
       handle: 'Gentleman-Programming',
       authorUrl: 'https://github.com/Gentleman-Programming',
       repoUrl: 'https://github.com/Gentleman-Programming/gentle-ai',
@@ -43,7 +43,7 @@
       pillar: 'GentlePI',
       glyph: '✦',
       glow: 'ivory',
-      author: 'Alan Muscaglia',
+      author: 'Alan Buscaglia',
       handle: 'Gentleman-Programming',
       authorUrl: 'https://github.com/Gentleman-Programming',
       repoUrl: 'https://github.com/Gentleman-Programming/gentle-pi',
@@ -82,14 +82,14 @@
   <div class="site">
 
     <div class="mv-chrome-top">
-      <span class="mv-label">Standing on the shoulders · Sobre los hombros</span>
-      <span class="mv-label-muted">Crédito donde corresponde</span>
+      <span class="mv-label">Cap IV · Créditos · Credits</span>
+      <span class="mv-label-muted">04 / 06</span>
     </div>
 
     <div class="head">
       <h2 class="mv-two-beat">
-        Multiversa Lab no inventa la rueda —
-        <em>orquesta.</em>
+        Sobre los hombros
+        <em>de quienes abrieron su código.</em>
       </h2>
       <p class="lead">
         Cinco de los seis pilares se apoyan en proyectos open-source de

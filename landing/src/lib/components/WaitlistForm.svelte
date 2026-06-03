@@ -120,7 +120,7 @@
             <span class="spinner" aria-hidden="true"></span>
             Procesando...
           {:else}
-            Registrarse en la lista de espera →
+            Unirse a la Waitlist  →
           {/if}
         </button>
       </form>
@@ -265,6 +265,7 @@
     font-weight: 500;
     justify-content: center;
     border: none;
+    white-space: nowrap;
   }
 
   .success-alert {
