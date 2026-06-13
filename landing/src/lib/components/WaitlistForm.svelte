@@ -56,7 +56,7 @@
     <div class="glow-orb" aria-hidden="true"></div>
 
     <div class="form-header">
-      <span class="mv-mono-label">Acceso Beta · Closed Access</span>
+      <span class="mv-mono-label">Acceso anticipado</span>
       <h3 class="form-title">Founders Waitlist</h3>
       <p class="form-subtitle">
         Únete al laboratorio técnico o solicita acceso temprano a la infraestructura comercial de <strong>Multiversa Group</strong>.

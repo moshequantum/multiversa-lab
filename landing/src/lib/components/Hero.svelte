@@ -7,7 +7,6 @@
 
     <div class="meta">
       <span class="mv-pill">Open · Live</span>
-      <span class="mv-label-muted">Cap III · Arquitectura · 02 / 04</span>
     </div>
 
     <h1 class="mv-two-beat">
@@ -27,7 +26,7 @@
         ⤴ &nbsp; Star on GitHub
       </a>
       <a class="mv-btn mv-btn-ghost" href="#manifiesto">
-        Leer el manifesto ↓
+        Leer el manifiesto ↓
       </a>
     </div>
 
@@ -49,19 +48,19 @@
 
 <style>
   .hero {
-    min-height: 88vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: clamp(80px, 12vh, 140px);
-    padding-bottom: clamp(80px, 12vh, 140px);
+    padding-top: clamp(72px, 9vh, 110px);
+    padding-bottom: clamp(64px, 8vh, 96px);
   }
 
   .stack {
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 28px;
     position: relative;
     z-index: 2;
   }

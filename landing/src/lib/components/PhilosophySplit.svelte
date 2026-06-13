@@ -6,12 +6,12 @@
   <div class="site">
 
     <div class="mv-chrome-top">
-      <span class="mv-label">Cap III · Filosofía · Philosophy</span>
-      <span class="mv-label-muted">05 / 06</span>
+      <span class="mv-label">Cap V · Filosofía</span>
+      <span class="mv-label-muted">05 / 05</span>
     </div>
 
     <h2 class="mv-two-beat">
-      Una idea —
+      Una idea,
       <em>dos cuerpos. Por integridad.</em>
     </h2>
 
@@ -28,7 +28,7 @@
           <span class="mv-label-muted">lab.multiversa.group</span>
         </header>
         <h3 class="body-title">
-          Multiversa<em>Lab.</em>
+          Multiversa <em>Lab.</em>
         </h3>
         <p class="body-lead">
           El laboratorio open-source. Donde se piensa, se prueba y se libera
@@ -44,11 +44,11 @@
 
       <article class="mv-card body group">
         <header>
-          <span class="mv-label-muted">Mencionado por integridad</span>
-          <span class="mv-label-muted">No enlazado</span>
+          <span class="mv-label-muted">Cara comercial</span>
+          <span class="mv-label-muted">multiversa.group</span>
         </header>
         <h3 class="body-title body-title-muted">
-          Multiversa<em>Group.</em>
+          Multiversa <em>Group.</em>
         </h3>
         <p class="body-lead">
           La cara comercial. Consultoría privada que toma lo del laboratorio

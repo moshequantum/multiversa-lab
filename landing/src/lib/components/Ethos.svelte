@@ -14,8 +14,8 @@
   <div class="site">
 
     <div class="mv-chrome-top">
-      <span class="mv-label">Cap I · Principios · Principles</span>
-      <span class="mv-label-muted">02 / 06</span>
+      <span class="mv-label">Cap I · Principios</span>
+      <span class="mv-label-muted">01 / 05</span>
     </div>
 
     <h2 class="mv-two-beat">

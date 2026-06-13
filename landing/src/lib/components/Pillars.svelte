@@ -95,13 +95,13 @@
   <div class="site">
 
     <div class="mv-chrome-top">
-      <span class="mv-label">Cap II · Arquitectura · Architecture</span>
-      <span class="mv-label-muted">03 / 06</span>
+      <span class="mv-label">Cap II · Arquitectura</span>
+      <span class="mv-label-muted">02 / 05</span>
     </div>
 
     <div class="head">
       <h2 class="mv-two-beat">
-        Aquí viven —
+        Aquí viven
         <em>los seis pilares del laboratorio.</em>
       </h2>
       <p class="lead">
@@ -124,7 +124,7 @@
 
           <h3 class="name">
             {p.name}
-            <em>— {p.nameEn}.</em>
+            <em>{p.nameEn}.</em>
           </h3>
 
           <p class="summary">{p.summary}</p>
@@ -141,7 +141,7 @@
     </div>
 
     <div class="foot">
-      <span class="mv-label-muted">También viven aquí · Skills · MCPs · Plugins · Schema validation · Taboo gates · Docs abiertas</span>
+      <span class="mv-label-muted">También viven aquí: skills, MCPs, plugins, schema validation, taboo gates y docs abiertas</span>
     </div>
 
   </div>
