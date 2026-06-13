@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import Nav from '$lib/components/Nav.svelte';
   import Hero from '$lib/components/Hero.svelte';
   import Ethos from '$lib/components/Ethos.svelte';
@@ -8,6 +9,17 @@
   import PhilosophySplit from '$lib/components/PhilosophySplit.svelte';
   import WaitlistForm from '$lib/components/WaitlistForm.svelte';
   import FooterSignature from '$lib/components/FooterSignature.svelte';
+
+  let main: HTMLElement;
+
+  onMount(() => {
+    let cleanup: (() => void) | undefined;
+    // GSAP solo en cliente; el contenido ya es visible sin JS.
+    import('$lib/motion').then(({ initLabMotion }) => {
+      if (main) cleanup = initLabMotion(main);
+    });
+    return () => cleanup?.();
+  });
 </script>
 
 <svelte:head>
@@ -19,7 +31,7 @@
 </svelte:head>
 
 <Nav />
-<main>
+<main bind:this={main}>
   <Hero />
   <Ethos />
   <Pillars />

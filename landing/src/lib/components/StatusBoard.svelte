@@ -6,7 +6,7 @@
       label: '✓ LISTO',
       title: 'Lo que ya existe.',
       items: [
-        'Manifesto público',
+        'Manifiesto público',
         'Design System (Liquid Glass Pro + Onion UI)',
         'DNA Brand · 47 slides bilingüe',
         'Principios de orquestación humana',
@@ -22,8 +22,8 @@
         'Engram (capa SQLite + MCP)',
         'Graphify CLI · neo4j_lite',
         'Installer real (multiversa init)',
-        'GentlePI — captura de voz personal',
-        'InsForge — backend del laboratorio',
+        'GentlePI: captura de voz personal',
+        'InsForge: backend del laboratorio',
         'Documentación abierta'
       ]
     },
@@ -32,8 +32,8 @@
       label: '○ VISIÓN',
       title: 'A dónde apunta el arco.',
       items: [
-        'MiroFish — swarm simulation',
-        'MultiversaOS — context sync universal',
+        'MiroFish: swarm simulation',
+        'MultiversaOS: context sync universal',
         'Tier Ecosistemas Inteligentes',
         'Cross-LLM memory portability',
         'Panel público del laboratorio',
@@ -47,12 +47,12 @@
   <div class="site">
 
     <div class="mv-chrome-top">
-      <span class="mv-label">Estado público · Public status</span>
-      <span class="mv-label-muted">04 / 06 · sin maquillaje</span>
+      <span class="mv-label">Cap IV · Estado público</span>
+      <span class="mv-label-muted">04 / 05 · sin maquillaje</span>
     </div>
 
     <h2 class="mv-two-beat">
-      Dónde estamos —
+      Dónde estamos,
       <em>sin maquillaje.</em>
     </h2>
 
@@ -80,7 +80,7 @@
     </div>
 
     <p class="footer-line">
-      <em>The Lab is a manifesto before it is a product — and that's the point.</em>
+      <em>El Lab es un manifiesto antes que un producto. Ese es el punto.</em>
     </p>
 
   </div>

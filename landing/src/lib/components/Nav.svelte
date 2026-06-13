@@ -15,7 +15,10 @@
       <span class="lab-suffix">Lab</span>
     </a>
     <div class="right">
-      <span class="mv-label-muted">v 0.4 · open-source · MIT</span>
+      <a class="nav-link" href="#manifiesto">Manifiesto</a>
+      <a class="nav-link" href="#arquitectura">Pilares</a>
+      <a class="nav-link" href="#estado">Estado</a>
+      <a class="nav-link nav-link-accent" href="https://github.com/moshequantum/multiversalab" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
 </header>
@@ -27,9 +30,25 @@
     z-index: 50;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    background: rgba(10, 10, 15, 0.55);
+    background: rgba(10, 10, 15, 0.78);
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: rgba(250, 252, 232, 0.62);
+    transition: color 180ms ease;
+  }
+  .nav-link:hover { color: var(--mv-primary); }
+  .nav-link-accent { color: var(--mv-primary); }
   .row {
     display: flex;
     justify-content: space-between;

@@ -82,8 +82,8 @@
   <div class="site">
 
     <div class="mv-chrome-top">
-      <span class="mv-label">Cap IV · Créditos · Credits</span>
-      <span class="mv-label-muted">04 / 06</span>
+      <span class="mv-label">Cap III · Créditos</span>
+      <span class="mv-label-muted">03 / 05</span>
     </div>
 
     <div class="head">
@@ -95,7 +95,7 @@
         Cinco de los seis pilares se apoyan en proyectos open-source de
         constructores que abrieron su trabajo. Los nombramos con claridad,
         linkeamos sus repos, respetamos su licencia. <strong>Multiversa Lab
-        es el conector — las herramientas viven en sus propios repos, con
+        es el conector: las herramientas viven en sus propios repos, con
         sus propios mantenedores.</strong>
       </p>
     </div>
@@ -139,7 +139,7 @@
       Si vas a mejorar uno de estos pilares,
       <em>abre un PR en el repositorio original.</em>
       <br />
-      Somos usuarios agradecidos que documentan — no un fork ni un wrapper.
+      Somos usuarios agradecidos que documentan. Ni un fork, ni un wrapper.
     </p>
 
   </div>

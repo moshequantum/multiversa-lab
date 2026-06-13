@@ -15,7 +15,7 @@
     </div>
 
     <p class="line">
-      <em>Architected by Moshe. Open to the curious.</em>
+      <em>Diseñado y construido por Moshe. Abierto a los curiosos.</em>
     </p>
 
     <div class="rule"></div>
@@ -32,7 +32,7 @@
 
     <div class="meta">
       <span class="mv-label-muted">© 2026 Multiversa Group LLC</span>
-      <span class="mv-label-muted">v 0.4 · open-source · MIT</span>
+      <span class="mv-label-muted">Open source · MIT</span>
       <span class="mv-label-muted">lab.multiversa.group</span>
     </div>
 
