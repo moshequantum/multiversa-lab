@@ -1,6 +1,6 @@
 schema: multiversa.release-manifest/v1
 release:
-  id: MV-2026.07.0-rc.1
+  id: MV-2026.07.0-rc.2
   channel: release-candidate
   status: candidate
   created_at: "2026-07-22"
@@ -27,15 +27,15 @@ components:
     visibility: public
   installer:
     repository: https://github.com/moshequantum/multiversa-installer
-    revision: 09c5584ef271c34b63b52711bf67892aa73ae9e8
-    version: v0.2.0-rc.3
-    native_version: 0.2.0-3
-    release: https://github.com/moshequantum/multiversa-installer/releases/tag/v0.2.0-rc.3
-    checksums: multiversa-installer-v0.2.0-rc.3-checksums.txt in the release
+    revision: bd2fc46140ffe82864ef49b662b3394713cff350
+    version: v0.2.0-rc.4
+    native_version: 0.2.0-4
+    release: https://github.com/moshequantum/multiversa-installer/releases/tag/v0.2.0-rc.4
+    checksums: SHA256SUMS-v0.2.0-rc.4.txt in the release
     visibility: public
   group:
     repository: https://github.com/moshequantum/multiversa-group
-    revision: cc6830c2a6ada54aadb84a31288b7cfa77fd0ec3
+    revision: 6b47760337a90e3ce3a8bc50724b73ce9339b2c8
     visibility: private
     distribution: excluded
 
@@ -54,23 +54,32 @@ verified_gates:
   contracts_sdk:
     schemas_and_fixtures: passed
     schema_count: 6
+  group_private:
+    profiling_prompt_generic_tiers_removed: passed
+    prospecting_core_dry_run: passed
+    exact_draft_human_approval: passed
+    frontend_typecheck_build: passed
+    gateway_build_vet: passed
   installer:
     cli_profile_handshake: passed
     compile_linux: passed
     compile_macos: passed
     compile_windows: passed
     packaged_release: passed
-    formats: [appimage, deb, rpm, dmg-universal, app-tar-universal, msi, exe]
+    formats: [deb, rpm, dmg-universal, app-tar-universal, msi, exe]
   local_e2e:
     create_activate_show_vault: passed
     synthetic_tenant_only: true
     secret_exposure_detected: false
+    published_deb_checksum: passed
+    published_deb_startup_smoke: passed
 
 not_claimed_in_this_candidate:
   - npm publication of the contracts SDK
   - production Mission, Hardness, SWARM, or auto-learning runtime
   - Engram or InsForge end-to-end synchronization
   - packaged GUI click-through on every target operating system
+  - macOS or Windows runtime smoke on physical hardware
   - automatic outreach without human approval and opt-out controls
 
 deletion_policy:
