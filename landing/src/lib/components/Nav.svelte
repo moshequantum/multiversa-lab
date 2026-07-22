@@ -17,6 +17,7 @@
     <div class="right">
       <a class="nav-link" href="#manifiesto">Manifiesto</a>
       <a class="nav-link" href="#arquitectura">Pilares</a>
+      <a class="nav-link" href="#movil">Instalar</a>
       <a class="nav-link" href="#estado">Estado</a>
       <a class="nav-link nav-link-accent" href="https://github.com/moshequantum/multiversa-lab" target="_blank" rel="noopener">GitHub ↗</a>
     </div>

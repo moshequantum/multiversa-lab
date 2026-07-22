@@ -21,8 +21,8 @@
       items: [
         'Engram (capa SQLite + MCP)',
         'Graphify CLI · neo4j_lite',
-        'Installer real (multiversa init)',
-        'GentlePI: captura de voz personal',
+        'VoiceProfile: idioma, trato y límites confirmados',
+        'Lab Companion: instalación PWA y emparejamiento',
         'InsForge: backend del laboratorio',
         'Documentación abierta'
       ]
@@ -80,7 +80,7 @@
     </div>
 
     <p class="footer-line">
-      <em>El Lab es un manifiesto antes que un producto. Ese es el punto.</em>
+      <em>El Lab es la fábrica abierta; cada Project OS pertenece a la persona que lo gobierna.</em>
     </p>
 
   </div>
