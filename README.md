@@ -45,6 +45,10 @@ Multiversa Lab is built around **six core architectural layers**, running from p
 5.  **[MiroFish](./docs/mirofish.md) (Simulation):** Swarm intelligence powered by OASIS and Neo4j to test scenarios before deployment.
 6.  **[InsForge](./docs/insforge.md) (Infrastructure):** Unified cloud backend providing database tables, storage buckets, and LLM gateways.
 
+### How this actually runs locally
+
+These six pillars are curated engines — separate upstream projects Multiversa installs and wires together. The thing that installs and orchestrates them is `multiversa-cli` (v0.7.0+): the single local frontier, not a separate Go Gateway service. Internally it is organized in hexagonal rings (domain → ports → adapters, dependencies pointing inward only) so that every capability — memory, model inference, graph storage — has a working fallback with no model and no network. That is what lets it run on a modest laptop as well as a powerful machine: it degrades honestly instead of failing.
+
 ---
 
 ## 🚀 Getting Started
@@ -97,8 +101,13 @@ multiversa detect      # read-only host scan
 multiversa stack       # OS-level dev toolchain (Go/Rust/Python/Node/pnpm)
 multiversa init        # interactive engine wizard (Engram, Graphify, Gentle, …)
 multiversa workspace   # private MultiversaGroup setup (SSH/GPG/repos/vault)
+multiversa tenant new|list|show|use   # isolated tenant profiles — DNA, vault, memory per client
+multiversa updates     # check curated-stack releases against what's installed
+multiversa mcp serve   # expose read-only surfaces as MCP tools over stdio (Claude Code, Cursor, Codex…)
 multiversa credits     # upstream attribution
 ```
+
+Read-only subcommands (`detect`, `credits`, `version`, `manifest`, `updates`, `tenant list|show`) also accept `--json` for a stable, agent-readable envelope (`multiversa.<name>/v1`) — the same surfaces `multiversa mcp serve` exposes natively over MCP.
 
 Every run ends with full upstream attribution. *"La IA propone, tú decides."*
 
