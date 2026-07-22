@@ -1,11 +1,19 @@
-# Multiversa Lab — Engine Room
+# Multiversa.Lab — fábrica open source de sistemas operativos
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PNPM Workspace](https://img.shields.io/badge/node-pnpm-blue.svg)](#)
 [![BaaS: InsForge](https://img.shields.io/badge/backend-InsForge-brightgreen.svg)](https://insforge.app)
 
-Welcome to the technical foundation of **Multiversa Lab**. This repository houses the open-source logic, AI agent harnesses, and local development configurations that run the Intelligent Personal OS.
+Multiversa.Lab es una fábrica open source multiagéntica para crear y operar un
+sistema operativo único por proyecto. Reúne identidad, memoria persistente,
+conocimiento, skills, loops, gobernanza y superficies de trabajo en un Profile
+portable y auditable. El proyecto es el OS; su nombre e identidad no son un tier ni
+una plantilla disponible para otras personas.
+
+Puedes construirlo y operarlo por tu cuenta sin costo de licencia. Cuando una
+realidad requiere diagnóstico, arquitectura a medida, implementación o
+acompañamiento, la ruta opcional es Multiversa.Group.
 
 ---
 
@@ -13,8 +21,13 @@ Welcome to the technical foundation of **Multiversa Lab**. This repository house
 
 To protect intellectual property and maintain strict security boundaries, the Multiversa ecosystem is separated into two entities:
 
-*   **Multiversa Lab (This Repository):** The open-source R&D laboratory. Where we design, experiment, and release core software agents, plugins, and architectures (MIT licensed).
-*   **Multiversa Group:** The commercial consulting and delivery entity. Delivers custom, private integrations for enterprise customers under strict NDAs.
+*   **Multiversa.Lab (este repositorio):** runtime, protocolos, schemas, recipes y
+    adaptadores reusables, sin identidad ni datos privados de clientes (MIT).
+*   **Multiversa.Group:** consultoría privada custom. Diagnostica, diseña, implementa
+    y acompaña durante 90 días; la continuidad mensual evoluciona según el sistema.
+
+Lo replicable vive en Lab. El criterio configurado, los contratos, las credenciales
+y los Profiles de clientes permanecen en Group.
 
 ---
 
@@ -44,6 +57,10 @@ Multiversa Lab is built around **six core architectural layers**, running from p
 4.  **[GentlePI](./docs/gentle.md) (Personal):** Standard agent configuration infusing human-like tone, style, and rules.
 5.  **[MiroFish](./docs/mirofish.md) (Simulation):** Swarm intelligence powered by OASIS and Neo4j to test scenarios before deployment.
 6.  **[InsForge](./docs/insforge.md) (Infrastructure):** Unified cloud backend providing database tables, storage buckets, and LLM gateways.
+
+### How this actually runs locally
+
+These six pillars are curated engines — separate upstream projects Multiversa installs and wires together. The thing that installs and orchestrates them is `multiversa-cli` (v0.7.0+): the single local frontier, not a separate Go Gateway service. Internally it is organized in hexagonal rings (domain → ports → adapters, dependencies pointing inward only) so that every capability — memory, model inference, graph storage — has a working fallback with no model and no network. That is what lets it run on a modest laptop as well as a powerful machine: it degrades honestly instead of failing.
 
 ---
 
@@ -97,8 +114,13 @@ multiversa detect      # read-only host scan
 multiversa stack       # OS-level dev toolchain (Go/Rust/Python/Node/pnpm)
 multiversa init        # interactive engine wizard (Engram, Graphify, Gentle, …)
 multiversa workspace   # private MultiversaGroup setup (SSH/GPG/repos/vault)
+multiversa tenant new|list|show|use   # isolated tenant profiles — DNA, vault, memory per client
+multiversa updates     # check curated-stack releases against what's installed
+multiversa mcp serve   # expose read-only surfaces as MCP tools over stdio (Claude Code, Cursor, Codex…)
 multiversa credits     # upstream attribution
 ```
+
+Read-only subcommands (`detect`, `credits`, `version`, `manifest`, `updates`, `tenant list|show`) also accept `--json` for a stable, agent-readable envelope (`multiversa.<name>/v1`) — the same surfaces `multiversa mcp serve` exposes natively over MCP.
 
 Every run ends with full upstream attribution. *"La IA propone, tú decides."*
 

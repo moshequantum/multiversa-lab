@@ -1,5 +1,5 @@
 <script lang="ts">
-  // Hero — canonical copy from DNA Brand slide 35 (MultiversaLab banner)
+  // Hero — canonical public copy for Multiversa.Lab.
 </script>
 
 <section class="hero">
@@ -21,7 +21,7 @@
 
     <div class="ctas">
       <a class="mv-btn mv-btn-primary"
-         href="https://github.com/moshequantum/multiversalab"
+         href="https://github.com/moshequantum/multiversa-lab"
          target="_blank" rel="noopener">
         ⤴ &nbsp; Star on GitHub
       </a>

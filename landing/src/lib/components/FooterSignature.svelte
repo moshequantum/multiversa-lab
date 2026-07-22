@@ -21,11 +21,11 @@
     <div class="rule"></div>
 
     <div class="links">
-      <a href="https://github.com/moshequantum/multiversalab" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/moshequantum/multiversa-lab" target="_blank" rel="noopener">GitHub</a>
       <span class="sep">·</span>
-      <a href="https://github.com/moshequantum/multiversalab/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      <a href="https://github.com/moshequantum/multiversa-lab/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
       <span class="sep">·</span>
-      <a href="https://github.com/moshequantum/multiversalab/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">Code of Conduct</a>
+      <a href="https://github.com/moshequantum/multiversa-lab/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">Code of Conduct</a>
       <span class="sep">·</span>
       <a href="mailto:soymoisesweb@gmail.com">soymoisesweb@gmail.com</a>
     </div>

@@ -159,7 +159,7 @@ scaffold_home() {
 {
   "instance_name": "${IA_NAME:-Multiversa-AI}",
   "user_role": "${USER_ROLE:-Arquitecto}",
-  "tier": "${TIER:-LAB}",
+  "setup_mode": "${SETUP_MODE:-LOCAL}",
   "active_plugins": ["engram_memory", "graphify_indexer", "gentle_sdd"],
   "installed_at": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 }
@@ -182,15 +182,15 @@ profile_user() {
   USER_ROLE=${USER_ROLE:-Arquitecto}
 
   echo ""
-  echo "Tier de Operación:"
-  echo "  1) Lab — open source, funciones base locales"
-  echo "  2) Ecosistemas — orquestación universal Humano + IA"
-  read -rp "Opción [1/2]: " TIER_OPT
-  case "${TIER_OPT:-1}" in
-    2) TIER="ECOSISTEMAS" ;;
-    *) TIER="LAB" ;;
+  echo "Modo de configuración:"
+  echo "  1) Local — operación en este equipo"
+  echo "  2) Híbrido — local con adaptadores remotos opcionales"
+  read -rp "Opción [1/2]: " SETUP_MODE_OPT
+  case "${SETUP_MODE_OPT:-1}" in
+    2) SETUP_MODE="HYBRID" ;;
+    *) SETUP_MODE="LOCAL" ;;
   esac
-  echo -e "${GREEN}→ Tier seleccionado: $TIER${NC}"
+  echo -e "${GREEN}→ Modo seleccionado: $SETUP_MODE${NC}"
   echo ""
 }
 
@@ -244,7 +244,7 @@ echo -e "${GREEN}  MULTIVERSA LAB — READY                            ${NC}"
 echo -e "${GREEN}====================================================${NC}"
 echo -e "  Binary:  ${BIN_DIR}/multiversa"
 echo -e "  Home:    ${INSTALL_DIR}"
-echo -e "  Tier:    ${TIER}"
+echo -e "  Modo:    ${SETUP_MODE}"
 echo ""
 echo -e "Next:"
 echo -e "  ${YELLOW}multiversa detect${NC}       — re-scan host state"
