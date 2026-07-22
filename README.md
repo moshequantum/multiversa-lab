@@ -39,9 +39,9 @@ Multiversa Lab is built around **six core architectural layers**, running from p
 ┌────────────────────────────────────────────────────────┐
 │  Layer 05: SIMULATION (MiroFish Scenario Simulator)     │
 ├────────────────────────────────────────────────────────┤
-│  Layer 04: PERSONAL (GentlePI Agent Persona)           │
+│  Layer 04: IDENTITY (Multiversa VoiceProfile)          │
 ├────────────────────────────────────────────────────────┤
-│  Layer 03: DISCIPLINE (GentleAI SDD Harness)           │
+│  Layer 03: DISCIPLINE (gentle-ai custom + SDD)         │
 ├────────────────────────────────────────────────────────┤
 │  Layer 02: KNOWLEDGE (Graphify Semantic Map)           │
 ├────────────────────────────────────────────────────────┤
@@ -53,14 +53,14 @@ Multiversa Lab is built around **six core architectural layers**, running from p
 
 1.  **[Engram](./docs/engram.md) (Memory):** A local SQLite database + FTS5 full-text search indexing architectural decisions to combat agent session amnesia.
 2.  **[Graphify](./docs/graphify.md) (Knowledge):** Codebase ingestor mapping files, databases, and dependencies into an interactive visual graph.
-3.  **[GentleAI](./docs/gentle.md) (Discipline):** Spec-Driven Development (SDD) pipeline enforcing Research ➔ Specification ➔ Execution phases.
-4.  **[GentlePI](./docs/gentle.md) (Personal):** Standard agent configuration infusing human-like tone, style, and rules.
+3.  **[gentle-ai](./docs/gentle.md) (Discipline):** Configurador upstream; Multiversa proyecta contratos propios mediante su modo `custom`.
+4.  **[VoiceProfile](https://github.com/moshequantum/multiversa-sdk) (Identity):** Contrato Multiversa confirmado por la persona para idioma, trato, regionalidad, tono, objetivos y límites. `gentle-pi` sigue siendo un harness SDD para Pi; no es el perfilador humano.
 5.  **[MiroFish](./docs/mirofish.md) (Simulation):** Swarm intelligence powered by OASIS and Neo4j to test scenarios before deployment.
 6.  **[InsForge](./docs/insforge.md) (Infrastructure):** Unified cloud backend providing database tables, storage buckets, and LLM gateways.
 
 ### How this actually runs locally
 
-These six pillars are curated engines — separate upstream projects Multiversa installs and wires together. The thing that installs and orchestrates them is `multiversa-cli` (v0.7.0+): the single local frontier, not a separate Go Gateway service. Internally it is organized in hexagonal rings (domain → ports → adapters, dependencies pointing inward only) so that every capability — memory, model inference, graph storage — has a working fallback with no model and no network. That is what lets it run on a modest laptop as well as a powerful machine: it degrades honestly instead of failing.
+Los motores curados son proyectos upstream separados que Multiversa instala y conecta. El orquestador es `multiversa-cli`; la identidad portable vive en contratos públicos de `multiversa-sdk`. Antes de afirmar una versión publicada, consulta sus releases: este README describe arquitectura, no reemplaza el manifiesto de release.
 
 ---
 
@@ -73,9 +73,6 @@ Two equally valid entry points — pick the one that fits how you work. Detailed
 A bash bootstrap that downloads the [`multiversa`](https://github.com/moshequantum/multiversa-cli) binary, scaffolds `~/.multiversa/`, and walks you through the full lab setup (host scan → developer toolchain → curated engines). macOS and Linux.
 
 ```bash
-# One-liner (when the public mirror is live)
-curl -fsSL https://lab.multiversa.group/install.sh | bash
-
 # From a local checkout of this repo
 chmod +x multiversa-installer.sh
 ./multiversa-installer.sh
@@ -151,7 +148,7 @@ Explore the detailed architecture guides in the [`docs/`](./docs) directory:
 *   [Core Architecture](./docs/architecture.md)
 *   [Engram (Local Memory Layer)](./docs/engram.md)
 *   [Graphify (Knowledge Graph Mapping)](./docs/graphify.md)
-*   [Gentle AI / GentlePI (Spec-Driven Development)](./docs/gentle.md)
+*   [gentle-ai / gentle-pi y la frontera con VoiceProfile](./docs/gentle.md)
 *   [MiroFish (Agent Scenario Swarm)](./docs/mirofish.md)
 *   [InsForge (BaaS cloud integration)](./docs/insforge.md)
 *   [**Upstream / Standing on the shoulders**](./docs/upstream.md) — authors, repos, licenses

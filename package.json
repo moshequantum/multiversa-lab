@@ -2,9 +2,13 @@
   "name": "multiversa-lab",
   "version": "0.4.0",
   "private": true,
+  "packageManager": "pnpm@11.15.1",
   "scripts": {
     "dev": "pnpm --filter @multiversa/lab-site dev",
     "build": "pnpm --filter @multiversa/lab-site build",
-    "preview": "pnpm --filter @multiversa/lab-site preview"
+    "preview": "pnpm --filter @multiversa/lab-site preview",
+    "context:sync": "node scripts/sync-public-context.mjs",
+    "context:check": "node scripts/sync-public-context.mjs --check",
+    "check": "pnpm context:check"
   }
 }
