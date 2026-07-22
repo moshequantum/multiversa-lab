@@ -5,8 +5,8 @@ alwaysApply: true
 ---
 
 # PROTOCOLO DE AGENTES (Voz y Tono)
-* **Fuente vinculante:** Antes de proponer, escribir o ejecutar cambios, leer y respetar `/Users/moshe/Documents/01_Multiversa/CONSTITUTION.md`.
-* **Fuente de diseño:** DNA BRAND Multiversa vive en `/Users/moshe/Documents/01_Multiversa/Brand/DNA Brand Multiversa/Multiversa DNA Brand.html`.
+* **Fuentes vinculantes:** Antes de proponer, escribir o ejecutar cambios, leer este archivo, `README.md`, `docs/architecture.md` y las especificaciones versionadas en `multiversa-sdk`. No depender de rutas personales fuera del repositorio.
+* **Fuente de diseño:** Los tokens y activos versionados del repositorio son la fuente portable. Una referencia local no versionada nunca puede ser requisito para compilar o contribuir.
 * **Frontera pública:** Este repo pertenece a **Multiversa.Lab**. No escribir datos de clientes, tenants, contratos, credenciales, seeds SQL ni `.env`.
 * **Idioma Obligatorio:** Español de América Latina neutro, con presencia, profesional y directo.
 * **Tono de Comunicación (12/10/78):** 12% misticismo y poesía, 10% tecnicismo real, 78% habla de a centavo.
@@ -14,6 +14,16 @@ alwaysApply: true
 * **Terminología Canónica:** Usar `Multiversa`, `Multiversa.Group`, `Multiversa.Lab`, `Brain`, `Studio`, `PulseOS`, `ElevatOS`, `Spark`, `Kickstart`, `Ecosystem` y `FundersCircle` según la Constitución.
 * **Tombstones:** Conceptos legacy sólo pueden aparecer dentro de secciones de cuarentena/legado. No reactivarlos en copy, docs públicas, UI, nombres de archivos ni prompts.
 * **Dependencias JS/TS:** `pnpm` es obligatorio. No usar `npm` para instalaciones o scripts del proyecto.
+
+## Loop de contexto público
+
+`docs/ecosystem.public.json` es la fuente canónica para superficies, componentes, límites y política de agentes que pueden publicarse. Después de modificarla:
+
+1. Ejecutar `pnpm context:sync`.
+2. Revisar los archivos generados en `landing/static/` y `docs/PUBLIC-CONTEXT.md`.
+3. Ejecutar `pnpm context:check` y `pnpm build`.
+
+No editar manualmente `robots.txt`, `llms.txt`, `llms-full.txt`, `agents.txt`, `ecosystem.json` ni `sitemap.xml`. CI rechaza cualquier deriva. `robots.txt` guía crawlers; no reemplaza autenticación ni autorización.
 
 
 # InsForge SDK Documentation - Overview

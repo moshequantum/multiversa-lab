@@ -6,7 +6,7 @@
 
 ## Ecosystem Architecture
 
-InsForge is wired directly into the SvelteKit landing dashboard, serving as the central coordinator for public-facing waitlists, audit logs, and agent state synchronizations:
+InsForge puede operar como backend remoto opcional para superficies web y sincronización autorizada. El runtime local no depende de él:
 
 ```
 [SvelteKit Frontend] ──(InsForge SDK)──> [InsForge Cloud BaaS] ──> [PostgreSQL / Storage / Auth]
@@ -14,15 +14,14 @@ InsForge is wired directly into the SvelteKit landing dashboard, serving as the 
 
 ---
 
-## Database Schemas in Use
+## Frontera de datos
 
-The connected InsForge project (`a7008540-cb30-4a9a-a28a-ab065ce4821b`) contains the following tables:
+Este repositorio público no documenta identificadores de proyectos, URLs privadas, credenciales ni schemas de tenants. Las capacidades se diseñan por contrato:
 
-1. `founders_waitlist`: Tracks registrations for the closed-beta of the Advanced Ecosistemas tier.
-2. `identity_nodes` & `identity_edges`: Persists Graphify indices in the cloud.
-3. `identity_decisions`: Stores decision metrics for MiroFish simulations.
-4. `l2_semantic_memory`: Syncs Engram memories across devices.
-5. `audit_logs`: General audit trail of agent operations.
+1. formularios públicos con permisos mínimos;
+2. memoria remota sólo mediante opt-in y aislamiento por tenant;
+3. auditoría sin secretos ni contenido sensible;
+4. almacenamiento de archivos separado de sus metadatos y políticas.
 
 ---
 
@@ -36,55 +35,12 @@ pnpm add @insforge/sdk@latest
 
 > Multiversa policy: **pnpm only, npm is banned across the stack.**
 
-### Client Initialization
+### Regla de implementación
 
-> ⚠️ **Security note:** the SDK on the client side reads the **anon key**
-> (public, scoped by Row-Level Security), never the admin API key. The
-> admin key is service-role; if it lands in the browser bundle, anyone
-> can read it. Keep it in `.env` (gitignored), expose it only to
-> server-side `+server.ts` files.
+Antes de escribir o editar una integración se debe consultar `fetch-docs` o `fetch-sdk-docs` de InsForge. La documentación cambia y este archivo no congela firmas de API. Las invariantes estables son:
 
-The client is initialized in [`landing/src/lib/insforge.ts`](../landing/src/lib/insforge.ts):
-
-```typescript
-import { createClient } from '@insforge/sdk';
-import { PUBLIC_INSFORGE_URL, PUBLIC_INSFORGE_ANON_KEY } from '$env/static/public';
-
-export const insforge = createClient({
-  baseUrl: PUBLIC_INSFORGE_URL,
-  anonKey: PUBLIC_INSFORGE_ANON_KEY
-});
-```
-
-`.env` (gitignored):
-
-```bash
-PUBLIC_INSFORGE_URL=https://<your-project>.us-east.insforge.app
-PUBLIC_INSFORGE_ANON_KEY=<anon-key-from-dashboard-or-cli>
-
-# Server-only (NEVER prefix with PUBLIC_):
-INSFORGE_API_KEY=<admin-key-server-side-only>
-INSFORGE_API_BASE_URL=https://<your-project>.us-east.insforge.app
-```
-
-Get the anon key:
-
-```bash
-npx @insforge/cli secrets get ANON_KEY
-```
-
-### Writing Data (Example: Waitlist Form)
-
-```typescript
-const { data, error } = await insforge.database
-  .from('founders_waitlist')
-  .insert([{
-    name: userName,
-    email: userEmail,
-    plan_interest: selectedPlan
-  }]);
-```
-
-For this to work without surfacing admin permissions, the `founders_waitlist`
-table needs RLS that allows public insert (and restricts read/update/delete
-to authenticated owners only).
+- `pnpm` es el único gestor JS/TS permitido;
+- las operaciones SDK devuelven `{ data, error }`;
+- los inserts usan formato de arreglo;
+- claves administrativas y secretos permanecen exclusivamente del lado servidor;
+- RLS, aislamiento y mínimo privilegio se verifican antes de habilitar escritura pública.
