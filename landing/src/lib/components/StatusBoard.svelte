@@ -34,7 +34,7 @@
       items: [
         'MiroFish: swarm simulation',
         'MultiversaOS: context sync universal',
-        'Tier Ecosistemas Inteligentes',
+        'Recipes portables para cada proyecto',
         'Cross-LLM memory portability',
         'Panel público del laboratorio',
         'Programa de contribuidores'

@@ -1,11 +1,19 @@
-# Multiversa Lab — Engine Room
+# Multiversa.Lab — fábrica open source de sistemas operativos
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PNPM Workspace](https://img.shields.io/badge/node-pnpm-blue.svg)](#)
 [![BaaS: InsForge](https://img.shields.io/badge/backend-InsForge-brightgreen.svg)](https://insforge.app)
 
-Welcome to the technical foundation of **Multiversa Lab**. This repository houses the open-source logic, AI agent harnesses, and local development configurations that run the Intelligent Personal OS.
+Multiversa.Lab es una fábrica open source multiagéntica para crear y operar un
+sistema operativo único por proyecto. Reúne identidad, memoria persistente,
+conocimiento, skills, loops, gobernanza y superficies de trabajo en un Profile
+portable y auditable. El proyecto es el OS; su nombre e identidad no son un tier ni
+una plantilla disponible para otras personas.
+
+Puedes construirlo y operarlo por tu cuenta sin costo de licencia. Cuando una
+realidad requiere diagnóstico, arquitectura a medida, implementación o
+acompañamiento, la ruta opcional es Multiversa.Group.
 
 ---
 
@@ -13,8 +21,13 @@ Welcome to the technical foundation of **Multiversa Lab**. This repository house
 
 To protect intellectual property and maintain strict security boundaries, the Multiversa ecosystem is separated into two entities:
 
-*   **Multiversa Lab (This Repository):** The open-source R&D laboratory. Where we design, experiment, and release core software agents, plugins, and architectures (MIT licensed).
-*   **Multiversa Group:** The commercial consulting and delivery entity. Delivers custom, private integrations for enterprise customers under strict NDAs.
+*   **Multiversa.Lab (este repositorio):** runtime, protocolos, schemas, recipes y
+    adaptadores reusables, sin identidad ni datos privados de clientes (MIT).
+*   **Multiversa.Group:** consultoría privada custom. Diagnostica, diseña, implementa
+    y acompaña durante 90 días; la continuidad mensual evoluciona según el sistema.
+
+Lo replicable vive en Lab. El criterio configurado, los contratos, las credenciales
+y los Profiles de clientes permanecen en Group.
 
 ---
 

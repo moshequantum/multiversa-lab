@@ -23,7 +23,8 @@ MiroFish solves this by creating simulations of human behavior using swarm intel
 
 ## Integration in Multiversa Lab
 
-Within the Lab, MiroFish functions in the **Ecosistemas** (Advanced) tier:
+Within the Lab, MiroFish is an optional, external simulation adapter. It is not a
+required layer and access is not conditioned by a product tier:
 - Before releasing a major landing page update or pricing structure, we upload the design systems and copy.
 - The MiroFish simulator populates agents reflecting our user target profiles.
 - Agents interact, write reviews, and simulate conversions.

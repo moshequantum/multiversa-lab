@@ -56,7 +56,7 @@
         </p>
         <ul class="bullets bullets-muted">
           <li>Consultoría · cerrada por diseño</li>
-          <li>Spark · Kickstart · Ecosystem</li>
+          <li>Diagnóstico · implementación · acompañamiento</li>
           <li>Lo del cliente no entra al lab.</li>
           <li>Crédito donde corresponde.</li>
         </ul>

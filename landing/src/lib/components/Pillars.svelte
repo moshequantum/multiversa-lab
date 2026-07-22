@@ -26,7 +26,7 @@
       summary: 'Persistencia de memoria con contexto separado por proyecto.',
       detail: 'Guarda lo que decides, no lo que escribes. No reemplaza tu base de datos; recuerda por qué llegaste a ella.',
       status: 'READY',
-      docLink: 'https://github.com/moshequantum/multiversalab/blob/main/docs/engram.md'
+      docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/engram.md'
     },
     {
       glyph: '✦',
@@ -38,7 +38,7 @@
       summary: 'Ingesta automática de código y documentación a grafos.',
       detail: 'Mapea de forma visual importaciones, queries de BD y dependencias de código para reducir el token bloat y ganar velocidad.',
       status: 'READY',
-      docLink: 'https://github.com/moshequantum/multiversalab/blob/main/docs/graphify.md'
+      docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/graphify.md'
     },
     {
       glyph: '◎',
@@ -50,7 +50,7 @@
       summary: 'Spec-Driven Development como harness de desarrollo.',
       detail: 'Evita el código roto. Enmarca el ciclo del agente AI en fases estrictas: Investigación, Especificación y Ejecución.',
       status: 'READY',
-      docLink: 'https://github.com/moshequantum/multiversalab/blob/main/docs/gentle.md'
+      docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/gentle.md'
     },
     {
       glyph: '✦',
@@ -62,7 +62,7 @@
       summary: 'Personalización de agente con el criterio del programador.',
       detail: 'Infunde el tono, estilo y reglas de el_gentleman en tu agente de programación local.',
       status: 'READY',
-      docLink: 'https://github.com/moshequantum/multiversalab/blob/main/docs/gentle.md'
+      docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/gentle.md'
     },
     {
       glyph: '◎',
@@ -74,7 +74,7 @@
       summary: 'Simulaciones paralelas de comportamiento de agentes.',
       detail: 'Puebla mundos simulados basados en OASIS para predecir conversiones, probar copy y validar reglas antes de compilar.',
       status: 'READY',
-      docLink: 'https://github.com/moshequantum/multiversalab/blob/main/docs/mirofish.md'
+      docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/mirofish.md'
     },
     {
       glyph: '⬡',
@@ -86,7 +86,7 @@
       summary: 'Forja backend y sincronización universal en la nube.',
       detail: 'Base de datos relacional Postgres, Storage, Autenticación y pasarela de IA para albergar cerebros de trabajo.',
       status: 'READY',
-      docLink: 'https://github.com/moshequantum/multiversalab/blob/main/docs/insforge.md'
+      docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/insforge.md'
     }
   ];
 </script>

@@ -1,10 +1,10 @@
 {
-  "name": "multiversalab",
+  "name": "multiversa-lab",
   "version": "0.4.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter multiversalab-landing dev",
-    "build": "pnpm --filter multiversalab-landing build",
-    "preview": "pnpm --filter multiversalab-landing preview"
+    "dev": "pnpm --filter @multiversa/lab-site dev",
+    "build": "pnpm --filter @multiversa/lab-site build",
+    "preview": "pnpm --filter @multiversa/lab-site preview"
   }
 }
