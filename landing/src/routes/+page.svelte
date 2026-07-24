@@ -7,6 +7,7 @@
   import Attribution from '$lib/components/Attribution.svelte';
   import StatusBoard from '$lib/components/StatusBoard.svelte';
   import PhilosophySplit from '$lib/components/PhilosophySplit.svelte';
+  import BitacoraTeaser from '$lib/components/BitacoraTeaser.svelte';
   import WaitlistForm from '$lib/components/WaitlistForm.svelte';
   import FooterSignature from '$lib/components/FooterSignature.svelte';
 
@@ -38,6 +39,7 @@
   <Attribution />
   <StatusBoard />
   <PhilosophySplit />
+  <BitacoraTeaser />
   <WaitlistForm />
 </main>
 <FooterSignature />
