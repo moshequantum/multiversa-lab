@@ -4,12 +4,17 @@ The `multiversa` binary is the engine behind every install path in this repo. Th
 
 Source: [`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli) · MIT · Go + Cobra + Bubble Tea/Lipgloss.
 
-## Why two artifacts
+La distribución pública se llama **Multiversa CLI**; `multiversa` es el comando. La
+v0.8.0 incorpora bootstrap de Project OS, corpus con procedencia, Graphify validado y
+proveedores configurables con fallback (Gemini → Mistral → Groq) sin exponer claves.
 
-- **Lab installer (`multiversa-installer.sh`)** lives in this repo. It is the *consultive entry point* for someone meeting Multiversa for the first time: banner, profiling questions, scaffolds `~/.multiversa/`, then hands off to the CLI for the destructive work. Designed to be safe to read top-to-bottom in a browser before running.
-- **`multiversa` CLI** lives in the sibling repo. It is the *engine*: single binary, no runtime dependencies, ships everything it needs (including embedded bash scripts) so a fresh machine can run any subcommand offline after one download.
+## Why three artifacts
 
-Keeping them separate lets the Lab repo stay focused on manifesto + design system + curation, while the CLI evolves independently with its own release cadence.
+- **Tauri Visual Installer (`multiversa-installer`)**: An interactive graphical desktop application built with Tauri (Rust + HTML/CSS/JS). It offers a premium, modern design with custom glassmorphism styling and is fully assisted by voice synthesis (via ElevenLabs with native browser speech fallbacks). It scans host prerequisites, writes tenant DNA configs, and configures the workspace interactively.
+- **Lab installer (`multiversa-installer.sh`)**: Lives in this repo. It is the *consultive shell entry point* for someone meeting Multiversa for the first time: banner, profiling questions, scaffolds `~/.multiversa/`, then hands off to the CLI. Designed to be safe to read top-to-bottom in a browser before running.
+- **`multiversa` CLI**: Lives in the sibling repo. It is the *engine*: single binary, no runtime dependencies, ships everything it needs (including embedded bash scripts) so a fresh machine can run any subcommand offline after one download.
+
+Keeping them separate lets the Lab repository stay focused on manifesto, design systems, and curation, while the CLI and visual tools evolve independently.
 
 ## Subcommand map
 
@@ -34,7 +39,7 @@ multiversa-installer.sh
   ├─ resolve_version              (GitHub Releases API or env override)
   ├─ install_binary               (curl tarball → ~/.local/bin/multiversa)
   ├─ ensure_path                  (append to ~/.zshrc or ~/.bashrc)
-  ├─ profile_user                 (IA_NAME, USER_ROLE, TIER)
+  ├─ profile_user                 (INSTANCE_NAME, USER_ROLE, SETUP_MODE)
   ├─ scaffold_home                (~/.multiversa/{engram_db,…} + config.json)
   │
   ├─ multiversa detect            (host scan, surfaces gaps)

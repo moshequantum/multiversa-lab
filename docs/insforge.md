@@ -1,12 +1,27 @@
 # Multiversa Lab — Infrastructure: InsForge Backend
 
-**InsForge** serves as the Backend-as-a-Service (BaaS) and cloud infrastructure foundation for Multiversa Lab. It provides database access, authentication, file storage, edge functions, and AI model gateways.
+**InsForge** is an optional Backend-as-a-Service (BaaS) adapter for Multiversa.Lab.
+It can provide database access, authentication, file storage, edge functions and
+AI model gateways without becoming a requirement for local operation.
 
 ---
 
+## Cerebro + Worker
+
+El Cerebro es la frontera de integración del Lab: puede usar InsForge para datos,
+autenticación, storage o IA y un Cloudflare Worker para tareas públicas y efímeras.
+Ambos son opcionales y se configuran por entorno. El Worker no recibe vaults ni
+secretos de tenants; el Cerebro coordina contratos, no centraliza el contexto privado.
+
 ## Ecosystem Architecture
 
-InsForge puede operar como backend remoto opcional para superficies web y sincronización autorizada. El runtime local no depende de él:
+## Frontera de datos
+
+Este repositorio público no documenta identificadores de proyectos, URLs privadas, credenciales ni schemas de tenants. Las capacidades se diseñan por contrato: permisos mínimos para formularios públicos, memoria remota solo mediante opt-in y aislamiento por tenant, auditoría sin secretos y almacenamiento separado de sus metadatos y políticas.
+
+The SvelteKit site can use a separately configured InsForge project for its public
+waitlist. An OS instance may use its own backend for sync, but Lab does not prescribe
+or publish a shared production project:
 
 ```
 [SvelteKit Frontend] ──(InsForge SDK)──> [InsForge Cloud BaaS] ──> [PostgreSQL / Storage / Auth]
@@ -14,14 +29,18 @@ InsForge puede operar como backend remoto opcional para superficies web y sincro
 
 ---
 
-## Frontera de datos
+## Example schemas
 
-Este repositorio público no documenta identificadores de proyectos, URLs privadas, credenciales ni schemas de tenants. Las capacidades se diseñan por contrato:
+An implementation can define schemas such as:
 
-1. formularios públicos con permisos mínimos;
-2. memoria remota sólo mediante opt-in y aislamiento por tenant;
-3. auditoría sin secretos ni contenido sensible;
-4. almacenamiento de archivos separado de sus metadatos y políticas.
+1. `lab_waitlist`: Tracks requests to build with Multiversa CLI or contribute to the Lab.
+2. `identity_nodes` & `identity_edges`: Persists Graphify indices in the cloud.
+3. `identity_decisions`: Stores decision metrics for MiroFish simulations.
+4. `l2_semantic_memory`: Syncs Engram memories across devices.
+5. `audit_logs`: General audit trail of agent operations.
+
+Neither Lab nor its installer ships project URLs, keys or credentials. Every remote
+adapter must be configured explicitly by the operator and isolated per environment.
 
 ---
 
@@ -35,12 +54,55 @@ pnpm add @insforge/sdk@latest
 
 > Multiversa policy: **pnpm only, npm is banned across the stack.**
 
-### Regla de implementación
+### Client Initialization
 
-Antes de escribir o editar una integración se debe consultar `fetch-docs` o `fetch-sdk-docs` de InsForge. La documentación cambia y este archivo no congela firmas de API. Las invariantes estables son:
+> ⚠️ **Security note:** the SDK on the client side reads the **anon key**
+> (public, scoped by Row-Level Security), never the admin API key. The
+> admin key is service-role; if it lands in the browser bundle, anyone
+> can read it. Keep it in `.env` (gitignored), expose it only to
+> server-side `+server.ts` files.
 
-- `pnpm` es el único gestor JS/TS permitido;
-- las operaciones SDK devuelven `{ data, error }`;
-- los inserts usan formato de arreglo;
-- claves administrativas y secretos permanecen exclusivamente del lado servidor;
-- RLS, aislamiento y mínimo privilegio se verifican antes de habilitar escritura pública.
+The client is initialized in [`landing/src/lib/insforge.ts`](../landing/src/lib/insforge.ts):
+
+```typescript
+import { createClient } from '@insforge/sdk';
+import { PUBLIC_INSFORGE_URL, PUBLIC_INSFORGE_ANON_KEY } from '$env/static/public';
+
+export const insforge = createClient({
+  baseUrl: PUBLIC_INSFORGE_URL,
+  anonKey: PUBLIC_INSFORGE_ANON_KEY
+});
+```
+
+`.env` (gitignored):
+
+```bash
+PUBLIC_INSFORGE_URL=https://<your-project>.us-east.insforge.app
+PUBLIC_INSFORGE_ANON_KEY=<anon-key-from-dashboard-or-cli>
+
+# Server-only (NEVER prefix with PUBLIC_):
+INSFORGE_API_KEY=<admin-key-server-side-only>
+INSFORGE_API_BASE_URL=https://<your-project>.us-east.insforge.app
+```
+
+Get the anon key:
+
+```bash
+npx @insforge/cli secrets get ANON_KEY
+```
+
+### Writing Data (Example: Waitlist Form)
+
+```typescript
+const { data, error } = await insforge.database
+  .from('lab_waitlist')
+  .insert([{
+    name: userName,
+    email: userEmail,
+    plan_interest: selectedPlan
+  }]);
+```
+
+For this to work without surfacing admin permissions, the `founders_waitlist`
+table needs RLS that allows public insert (and restricts read/update/delete
+to authenticated owners only).

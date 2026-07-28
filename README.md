@@ -5,15 +5,15 @@
 [![PNPM Workspace](https://img.shields.io/badge/node-pnpm-blue.svg)](#)
 [![BaaS: InsForge](https://img.shields.io/badge/backend-InsForge-brightgreen.svg)](https://insforge.app)
 
-Multiversa.Lab es una fábrica open source multiagéntica para crear y operar un
-sistema operativo único por proyecto. Reúne identidad, memoria persistente,
-conocimiento, skills, loops, gobernanza y superficies de trabajo en un Profile
-portable y auditable. El proyecto es el OS; su nombre e identidad no son un tier ni
-una plantilla disponible para otras personas.
+Multiversa.Lab es la capa de código fuente abierta de Multiversa: publica
+**Multiversa CLI** y el **Cerebro**, la arquitectura que entrelaza memoria,
+conocimiento, infraestructura y workers sin encerrar a nadie en una plataforma.
+Cada proyecto conserva un Project OS auditable: identidad, fuentes, grafo,
+proveedores y secretos aislados.
 
-Puedes construirlo y operarlo por tu cuenta sin costo de licencia. Cuando una
-realidad requiere diagnóstico, arquitectura a medida, implementación o
-acompañamiento, la ruta opcional es Multiversa.Group.
+El Lab se puede usar y extender sin costo de licencia. **Multiversa Group** es el
+ámbito privado de su creador; no es una oferta pública del Lab y nunca recibe datos,
+credenciales ni perfiles de quienes usan el código abierto.
 
 ---
 
@@ -21,13 +21,13 @@ acompañamiento, la ruta opcional es Multiversa.Group.
 
 To protect intellectual property and maintain strict security boundaries, the Multiversa ecosystem is separated into two entities:
 
-*   **Multiversa.Lab (este repositorio):** runtime, protocolos, schemas, recipes y
-    adaptadores reusables, sin identidad ni datos privados de clientes (MIT).
-*   **Multiversa.Group:** consultoría privada custom. Diagnostica, diseña, implementa
-    y acompaña durante 90 días; la continuidad mensual evoluciona según el sistema.
+*   **Multiversa.Lab (este repositorio):** código abierto, protocolos, schemas,
+    documentación y componentes reutilizables: CLI + Cerebro (MIT).
+*   **Multiversa.Group:** ámbito privado del creador. No es un producto ni una ruta
+    comercial publicada por el Lab.
 
-Lo replicable vive en Lab. El criterio configurado, los contratos, las credenciales
-y los Profiles de clientes permanecen en Group.
+Lo replicable vive en Lab. Los datos, contratos, credenciales y perfiles privados no
+se publican ni se transfieren a ninguna otra persona o sistema.
 
 ---
 
@@ -39,9 +39,9 @@ Multiversa Lab is built around **six core architectural layers**, running from p
 ┌────────────────────────────────────────────────────────┐
 │  Layer 05: SIMULATION (MiroFish Scenario Simulator)     │
 ├────────────────────────────────────────────────────────┤
-│  Layer 04: IDENTITY (Multiversa VoiceProfile)          │
+│  Layer 04: PERSONAL (GentlePI Agent Persona)           │
 ├────────────────────────────────────────────────────────┤
-│  Layer 03: DISCIPLINE (gentle-ai custom + SDD)         │
+│  Layer 03: DISCIPLINE (GentleAI SDD Harness)           │
 ├────────────────────────────────────────────────────────┤
 │  Layer 02: KNOWLEDGE (Graphify Semantic Map)           │
 ├────────────────────────────────────────────────────────┤
@@ -53,14 +53,20 @@ Multiversa Lab is built around **six core architectural layers**, running from p
 
 1.  **[Engram](./docs/engram.md) (Memory):** A local SQLite database + FTS5 full-text search indexing architectural decisions to combat agent session amnesia.
 2.  **[Graphify](./docs/graphify.md) (Knowledge):** Codebase ingestor mapping files, databases, and dependencies into an interactive visual graph.
-3.  **[gentle-ai](./docs/gentle.md) (Discipline):** Configurador upstream; Multiversa proyecta contratos propios mediante su modo `custom`.
-4.  **[VoiceProfile](https://github.com/moshequantum/multiversa-sdk) (Identity):** Contrato Multiversa confirmado por la persona para idioma, trato, regionalidad, tono, objetivos y límites. `gentle-pi` sigue siendo un harness SDD para Pi; no es el perfilador humano.
+3.  **[GentleAI](./docs/gentle.md) (Discipline):** Spec-Driven Development (SDD) pipeline enforcing Research ➔ Specification ➔ Execution phases.
+4.  **[GentlePI](./docs/gentle.md) (Personal):** Standard agent configuration infusing human-like tone, style, and rules.
 5.  **[MiroFish](./docs/mirofish.md) (Simulation):** Swarm intelligence powered by OASIS and Neo4j to test scenarios before deployment.
 6.  **[InsForge](./docs/insforge.md) (Infrastructure):** Unified cloud backend providing database tables, storage buckets, and LLM gateways.
 
 ### How this actually runs locally
 
-Los motores curados son proyectos upstream separados que Multiversa instala y conecta. El orquestador es `multiversa-cli`; la identidad portable vive en contratos públicos de `multiversa-sdk`. Antes de afirmar una versión publicada, consulta sus releases: este README describe arquitectura, no reemplaza el manifiesto de release.
+These six pillars are curated upstream projects. **Multiversa CLI** installs and
+configures the local frontier; the **Cerebro** defines how the Lab can connect an
+optional InsForge backend with a Cloudflare Worker without making either mandatory.
+Engram is the construction-memory layer shared by compatible agent workflows;
+Graphify grounds each Project OS in its own source corpus. Secrets and client context
+remain tenant-scoped. The system degrades honestly: local operation remains useful
+when a model or network is unavailable.
 
 ---
 
@@ -73,6 +79,9 @@ Two equally valid entry points — pick the one that fits how you work. Detailed
 A bash bootstrap that downloads the [`multiversa`](https://github.com/moshequantum/multiversa-cli) binary, scaffolds `~/.multiversa/`, and walks you through the full lab setup (host scan → developer toolchain → curated engines). macOS and Linux.
 
 ```bash
+# One-liner (when the public mirror is live)
+curl -fsSL https://lab.multiversa.group/install.sh | bash
+
 # From a local checkout of this repo
 chmod +x multiversa-installer.sh
 ./multiversa-installer.sh
@@ -148,7 +157,7 @@ Explore the detailed architecture guides in the [`docs/`](./docs) directory:
 *   [Core Architecture](./docs/architecture.md)
 *   [Engram (Local Memory Layer)](./docs/engram.md)
 *   [Graphify (Knowledge Graph Mapping)](./docs/graphify.md)
-*   [gentle-ai / gentle-pi y la frontera con VoiceProfile](./docs/gentle.md)
+*   [Gentle AI / GentlePI (Spec-Driven Development)](./docs/gentle.md)
 *   [MiroFish (Agent Scenario Swarm)](./docs/mirofish.md)
 *   [InsForge (BaaS cloud integration)](./docs/insforge.md)
 *   [**Upstream / Standing on the shoulders**](./docs/upstream.md) — authors, repos, licenses

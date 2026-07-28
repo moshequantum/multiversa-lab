@@ -12,11 +12,20 @@ Engram solves this by providing a local, queryable memory registry that agents w
 
 ---
 
+## Construcción multi-modelo, con límites claros
+
+Engram es la memoria de construcción del Lab: permite que modelos y agentes
+compatibles recuperen decisiones, convenciones y hallazgos en vez de reiniciar el
+razonamiento en cada sesión. No comparte secretos ni mezcla Project OS: cada tenant
+mantiene su propio corpus, vault y permiso de acceso. La integración se configura por
+agente; nunca se asume para plugins de terceros.
+
 ## SQLite + FTS5 Core
 
 Engram is lightweight, local-first, and highly efficient:
-- **Persistence:** SQLite database file stored at `~/.multiversa/engram_db/memories.db`.
-- **Search:** Built-in Full-Text Search (FTS5) for instant semantic and keyword-based retrieval.
+- **Persistence:** SQLite database file stored at `~/.multiversa/engram.db`.
+- **CLI Sync Bridge:** Sincronizado dinámicamente mediante el script [engram-sync.py](file:///home/moshe/.multiversa/engram-sync.py) que extrae memorias en formato Markdown con frontmatter desde tu entorno local (ej. Claude `.md` memory files) y realiza upsert en SQLite.
+- **Search:** Built-in Full-Text Search (FTS5) para búsquedas indexadas y recuperación instantánea de recuerdos.
 - **Agent Integration:** Standard Model Context Protocol (MCP) server.
 
 ---

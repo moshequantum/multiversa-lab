@@ -11,13 +11,14 @@
     </div>
 
     <h2 class="mv-two-beat">
-      Una idea,
-      <em>dos cuerpos. Por integridad.</em>
+      Una fuente pública,
+      <em>un ámbito privado. Por integridad.</em>
     </h2>
 
     <p class="lead">
-      Multiversa vive en dos cuerpos. El Lab es público y técnico.
-      Group es comercial y cerrado. La separación protege a ambos.
+      El Lab es el código fuente público: Multiversa CLI y Cerebro. Group es el
+      ámbito privado de su creador. La separación protege a quienes construyen con
+      el Lab y evita que un contexto privado se convierta en producto público.
     </p>
 
     <div class="grid">
@@ -31,33 +32,34 @@
           Multiversa <em>Lab.</em>
         </h3>
         <p class="body-lead">
-          El laboratorio open-source. Donde se piensa, se prueba y se libera
-          lo que después usan los clientes y la disciplina.
+          El laboratorio open-source. Aquí viven Multiversa CLI, Cerebro,
+          documentación y packs de integración que cualquiera puede auditar.
         </p>
         <ul class="bullets">
           <li>Open source · MIT</li>
-          <li>Herramientas, skills, MCPs y plugins</li>
+          <li>CLI, Cerebro, skills, MCPs y plugins configurables</li>
           <li>Documentación abierta. Roto se arregla, no se esconde.</li>
-          <li>No reemplaza fundamentos. Hace más accesible el software responsable.</li>
+          <li>Contexto y secretos aislados por Project OS.</li>
         </ul>
       </article>
 
       <article class="mv-card body group">
         <header>
-          <span class="mv-label-muted">Cara comercial</span>
-          <span class="mv-label-muted">multiversa.group</span>
+          <span class="mv-label-muted">Límite de privacidad</span>
+          <span class="mv-label-muted">no es una oferta pública</span>
         </header>
         <h3 class="body-title body-title-muted">
           Multiversa <em>Group.</em>
         </h3>
         <p class="body-lead">
-          La cara comercial. Consultoría privada que toma lo del laboratorio
-          y lo entrega como servicio bajo contrato y acompañamiento.
+          El ámbito privado de Multiversa Group. No vende ni recibe datos a través
+          del Lab; los contratos, credenciales y contexto personal quedan fuera del
+          código fuente público.
         </p>
         <ul class="bullets bullets-muted">
-          <li>Consultoría · cerrada por diseño</li>
-          <li>Diagnóstico · implementación · acompañamiento</li>
-          <li>Lo del cliente no entra al lab.</li>
+          <li>Privado por diseño</li>
+          <li>No es una ruta de venta del Lab</li>
+          <li>Lo privado no entra al Lab.</li>
           <li>Crédito donde corresponde.</li>
         </ul>
       </article>

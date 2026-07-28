@@ -23,8 +23,8 @@
       layer: 'MEMORY',
       name: 'Engram',
       nameEn: 'Memory Context',
-      summary: 'Persistencia de memoria con contexto separado por proyecto.',
-      detail: 'Guarda lo que decides, no lo que escribes. No reemplaza tu base de datos; recuerda por qué llegaste a ella.',
+      summary: 'Memoria de construcción recuperable entre modelos y sesiones.',
+      detail: 'Guarda decisiones y hallazgos para que agentes compatibles partan del contexto correcto. Cada Project OS conserva sus límites y sus secretos.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/engram.md'
     },
@@ -46,9 +46,9 @@
       code: 'LAYER 03',
       layer: 'DISCIPLINE',
       name: 'GentleAI',
-      nameEn: 'Ecosystem Configurator',
-      summary: 'Configurador abierto de memoria, skills, workflows y persona.',
-      detail: 'Multiversa lo integra mediante el modo custom: conserva el proyecto original y aplica un perfil de voz confirmado por la persona.',
+      nameEn: 'SDD Harness',
+      summary: 'Harness upstream para disciplina y configuración del agente.',
+      detail: 'Organiza el ciclo de construcción en investigación, especificación y ejecución. Su nombre y releases se respetan desde su repositorio upstream.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/gentle.md'
     },
@@ -58,9 +58,9 @@
       code: 'LAYER 04',
       layer: 'PERSONAL',
       name: 'GentlePI',
-      nameEn: 'Coding Harness',
-      summary: 'Harness de programación con SDD, TDD, subagentes y revisión.',
-      detail: 'Su persona puede ser neutral o configurable. El perfil humano persistente pertenece a Multiversa VoiceProfile; Gentle PI no lo captura por sí solo.',
+      nameEn: 'Personal Intelligence',
+      summary: 'Personalización de agente con el criterio del programador.',
+      detail: 'Infunde el tono, estilo y reglas de el_gentleman en tu agente de programación local.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/gentle.md'
     },
@@ -83,8 +83,8 @@
       layer: 'INFRASTRUCTURE',
       name: 'InsForge',
       nameEn: 'Infrastructure BaaS',
-      summary: 'Forja backend y sincronización universal en la nube.',
-      detail: 'Base de datos relacional Postgres, Storage, Autenticación y pasarela de IA para albergar cerebros de trabajo.',
+      summary: 'Infraestructura opcional para el Cerebro del Lab.',
+      detail: 'InsForge y un Cloudflare Worker pueden conectar datos, automatizaciones y superficies públicas sin sustituir la operación local ni absorber secretos de tenants.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/insforge.md'
     }

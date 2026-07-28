@@ -3,16 +3,12 @@
   // the client bundle. See landing/src/routes/api/waitlist/+server.ts.
   let name = $state('');
   let email = $state('');
-  let planInterest = $state('Lab (Open R&D)');
+  let planInterest = $state('Probar Multiversa CLI');
   let loading = $state(false);
   let status: 'idle' | 'success' | 'error' = $state('idle');
   let errorMessage = $state('');
 
-  const plans = [
-    'Lab (Open R&D)',
-    'Group (Commercial Spark)',
-    'Ecosistemas (Advanced Simulation)'
-  ];
+  const plans = ['Probar Multiversa CLI', 'Contribuir al Lab', 'Seguir los releases'];
 
   async function handleSubmit(e: Event) {
     e.preventDefault();
@@ -57,9 +53,9 @@
 
     <div class="form-header">
       <span class="mv-mono-label">Acceso anticipado</span>
-      <h3 class="form-title">Founders Waitlist</h3>
+      <h3 class="form-title">Lista de acceso</h3>
       <p class="form-subtitle">
-        Únete al laboratorio técnico o solicita acceso temprano a la infraestructura comercial de <strong>Multiversa Group</strong>.
+        Prueba <strong>Multiversa CLI</strong>, sigue los releases del Lab o súmate a construir integraciones abiertas.
       </p>
     </div>
 
