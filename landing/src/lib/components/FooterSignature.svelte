@@ -31,7 +31,7 @@
     </div>
 
     <div class="meta">
-      <span class="mv-label-muted">© 2026 Multiversa Group LLC</span>
+      <span class="mv-label-muted">© 2026 Multiversa Lab</span>
       <span class="mv-label-muted">Open source · MIT</span>
       <span class="mv-label-muted">lab.multiversa.group</span>
     </div>

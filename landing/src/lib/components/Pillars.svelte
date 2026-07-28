@@ -23,8 +23,8 @@
       layer: 'MEMORY',
       name: 'Engram',
       nameEn: 'Memory Context',
-      summary: 'Persistencia de memoria con contexto separado por proyecto.',
-      detail: 'Guarda lo que decides, no lo que escribes. No reemplaza tu base de datos; recuerda por qué llegaste a ella.',
+      summary: 'Memoria de construcción recuperable entre modelos y sesiones.',
+      detail: 'Guarda decisiones y hallazgos para que agentes compatibles partan del contexto correcto. Cada Project OS conserva sus límites y sus secretos.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/engram.md'
     },
@@ -47,8 +47,8 @@
       layer: 'DISCIPLINE',
       name: 'GentleAI',
       nameEn: 'SDD Harness',
-      summary: 'Spec-Driven Development como harness de desarrollo.',
-      detail: 'Evita el código roto. Enmarca el ciclo del agente AI en fases estrictas: Investigación, Especificación y Ejecución.',
+      summary: 'Harness upstream para disciplina y configuración del agente.',
+      detail: 'Organiza el ciclo de construcción en investigación, especificación y ejecución. Su nombre y releases se respetan desde su repositorio upstream.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/gentle.md'
     },
@@ -83,8 +83,8 @@
       layer: 'INFRASTRUCTURE',
       name: 'InsForge',
       nameEn: 'Infrastructure BaaS',
-      summary: 'Forja backend y sincronización universal en la nube.',
-      detail: 'Base de datos relacional Postgres, Storage, Autenticación y pasarela de IA para albergar cerebros de trabajo.',
+      summary: 'Infraestructura opcional para el Cerebro del Lab.',
+      detail: 'InsForge y un Cloudflare Worker pueden conectar datos, automatizaciones y superficies públicas sin sustituir la operación local ni absorber secretos de tenants.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/insforge.md'
     }

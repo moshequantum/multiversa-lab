@@ -27,7 +27,7 @@
   <title>Multiversa Lab · El código abierto de Multiversa</title>
   <meta
     name="description"
-    content="El laboratorio open-source de Multiversa. Engram, Graphify, GentleAI, GentlePI, MiroFish e InsForge — herramientas, skills y MCPs para construir cerebros de trabajo con memoria, identidad y criterio."
+    content="Multiversa Lab publica Multiversa CLI y Cerebro: código abierto para configurar Project OS con memoria, conocimiento y proveedores aislados."
   />
 </svelte:head>
 

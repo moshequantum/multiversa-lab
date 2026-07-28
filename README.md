@@ -5,15 +5,15 @@
 [![PNPM Workspace](https://img.shields.io/badge/node-pnpm-blue.svg)](#)
 [![BaaS: InsForge](https://img.shields.io/badge/backend-InsForge-brightgreen.svg)](https://insforge.app)
 
-Multiversa.Lab es una fábrica open source multiagéntica para crear y operar un
-sistema operativo único por proyecto. Reúne identidad, memoria persistente,
-conocimiento, skills, loops, gobernanza y superficies de trabajo en un Profile
-portable y auditable. El proyecto es el OS; su nombre e identidad no son un tier ni
-una plantilla disponible para otras personas.
+Multiversa.Lab es la capa de código fuente abierta de Multiversa: publica
+**Multiversa CLI** y el **Cerebro**, la arquitectura que entrelaza memoria,
+conocimiento, infraestructura y workers sin encerrar a nadie en una plataforma.
+Cada proyecto conserva un Project OS auditable: identidad, fuentes, grafo,
+proveedores y secretos aislados.
 
-Puedes construirlo y operarlo por tu cuenta sin costo de licencia. Cuando una
-realidad requiere diagnóstico, arquitectura a medida, implementación o
-acompañamiento, la ruta opcional es Multiversa.Group.
+El Lab se puede usar y extender sin costo de licencia. **Multiversa Group** es el
+ámbito privado de su creador; no es una oferta pública del Lab y nunca recibe datos,
+credenciales ni perfiles de quienes usan el código abierto.
 
 ---
 
@@ -21,13 +21,13 @@ acompañamiento, la ruta opcional es Multiversa.Group.
 
 To protect intellectual property and maintain strict security boundaries, the Multiversa ecosystem is separated into two entities:
 
-*   **Multiversa.Lab (este repositorio):** runtime, protocolos, schemas, recipes y
-    adaptadores reusables, sin identidad ni datos privados de clientes (MIT).
-*   **Multiversa.Group:** consultoría privada custom. Diagnostica, diseña, implementa
-    y acompaña durante 90 días; la continuidad mensual evoluciona según el sistema.
+*   **Multiversa.Lab (este repositorio):** código abierto, protocolos, schemas,
+    documentación y componentes reutilizables: CLI + Cerebro (MIT).
+*   **Multiversa.Group:** ámbito privado del creador. No es un producto ni una ruta
+    comercial publicada por el Lab.
 
-Lo replicable vive en Lab. El criterio configurado, los contratos, las credenciales
-y los Profiles de clientes permanecen en Group.
+Lo replicable vive en Lab. Los datos, contratos, credenciales y perfiles privados no
+se publican ni se transfieren a ninguna otra persona o sistema.
 
 ---
 
@@ -60,7 +60,13 @@ Multiversa Lab is built around **six core architectural layers**, running from p
 
 ### How this actually runs locally
 
-These six pillars are curated engines — separate upstream projects Multiversa installs and wires together. The thing that installs and orchestrates them is `multiversa-cli` (v0.7.0+): the single local frontier, not a separate Go Gateway service. Internally it is organized in hexagonal rings (domain → ports → adapters, dependencies pointing inward only) so that every capability — memory, model inference, graph storage — has a working fallback with no model and no network. That is what lets it run on a modest laptop as well as a powerful machine: it degrades honestly instead of failing.
+These six pillars are curated upstream projects. **Multiversa CLI** installs and
+configures the local frontier; the **Cerebro** defines how the Lab can connect an
+optional InsForge backend with a Cloudflare Worker without making either mandatory.
+Engram is the construction-memory layer shared by compatible agent workflows;
+Graphify grounds each Project OS in its own source corpus. Secrets and client context
+remain tenant-scoped. The system degrades honestly: local operation remains useful
+when a model or network is unavailable.
 
 ---
 

@@ -4,7 +4,7 @@
 // desde el celular ("dale B1") → la entrada se agrega aquí y el sitio se reconstruye.
 // El campo `video` es progresivo: se pega el embed cuando la toma exista.
 
-export type BitacoraTag = 'reflexión' | 'cliente' | 'producto' | 'construir';
+export type BitacoraTag = 'reflexión' | 'sistema' | 'producto' | 'construir';
 
 export interface BitacoraEntry {
 	slug: string;
@@ -32,7 +32,7 @@ export function dayNumber(date: string, start: string = START_DATE): number {
 
 const TAG_LABEL: Record<BitacoraTag, string> = {
 	reflexión: 'Reflexión',
-	cliente: 'Cliente',
+	sistema: 'Sistema',
 	producto: 'Producto',
 	construir: 'Construir'
 };
@@ -49,9 +49,9 @@ export const entries: BitacoraEntry[] = [
 		title: 'No tienes que aprender a programar',
 		tag: 'reflexión',
 		body: [
-			'Construyo en público y comparto el proceso: lo que pruebo, lo que rompo, lo que aprendo. Lo que pasa entre mis clientes y yo — sus decisiones, sus datos — se queda en privado. La IA propone; nosotros disponemos.',
-			'Mi trabajo no es enseñarte a programar. Es curar el caos de herramientas y repositorios sueltos, unificarlo, y entregártelo para que lo uses a tu conveniencia — sin esa presión.',
-			'Tú pones el criterio y el negocio. Yo pongo la infraestructura. Y la hacemos crecer juntos.'
+			'Construyo en público y comparto el proceso: lo que pruebo, lo que rompo y lo que aprendo. Las decisiones privadas, los datos y las credenciales no salen del Lab. La IA propone; las personas deciden.',
+			'El Lab no vende promesas ni expone operaciones ajenas. Publica el código, la documentación y los aprendizajes que permiten revisar cómo se construye Multiversa.',
+			'Quien use el proyecto conserva su criterio, su contexto y sus secretos.'
 		]
 	},
 	{
@@ -60,22 +60,21 @@ export const entries: BitacoraEntry[] = [
 		title: 'Por qué construyo esto en público',
 		tag: 'reflexión',
 		body: [
-			'La mayoría de los negocios no tiene un problema de IA. Tiene un problema de memoria: se olvida de lo que ya decidió, y lo llama estar ocupado.',
-			'Estoy construyendo el sistema que resuelve eso. No un chatbot más — una arquitectura que recuerda, propone y ejecuta bajo el criterio de quien la usa.',
-			'Lo hago a la vista de todos porque un sistema en el que vas a confiar tu operación no debería pedirte fe. Debería mostrarte cómo se construye.'
+			'El problema no es solo usar IA: es perder las decisiones y el contexto que ya costó construir.',
+			'Multiversa Lab construye una CLI y un Cerebro que preservan contexto, proponen rutas y mantienen a la persona al mando.',
+			'Lo hacemos a la vista de todos porque una herramienta que pide confianza debe dejar ver cómo se construye.'
 		]
 	},
 	{
-		slug: 'primeros-dos-sistemas-vivos',
+		slug: 'dos-project-os-en-configuracion',
 		date: '2026-07-23',
-		title: 'Los primeros dos sistemas ya están vivos',
-		tag: 'cliente',
+		title: 'Dos Project OS, una misma regla',
+		tag: 'sistema',
 		body: [
-			'Dos negocios distintos, un mismo problema: se olvidaban de sí mismos. Una operación de lanzamiento que vivía en mensajes sueltos. Una marca personal que empezaba de cero en cada canal.',
-			'No les vendí herramientas. Les construí un sistema que captura, recuerda y da seguimiento solo — con el humano decidiendo, no la máquina.',
-			'Son mis primeros casos de estudio. Están en producción, no en una demo.'
-		],
-		link: { label: 'sistemaagora.com', href: 'https://sistemaagora.com' }
+			'Dos contextos distintos sirven para probar la misma regla: el sistema debe recordar sin convertir a la persona en una espectadora.',
+			'La CLI separa el perfil global, el manifiesto del tenant y su vault. El contexto ayuda a construir; los secretos no se comparten.',
+			'Lo publicable es el aprendizaje técnico. Cada proyecto y sus decisiones siguen bajo el control de quien los opera.'
+		]
 	},
 	{
 		slug: 'el-motor-es-abierto',
@@ -83,9 +82,9 @@ export const entries: BitacoraEntry[] = [
 		title: 'El motor es abierto',
 		tag: 'producto',
 		body: [
-			'Lo que uso con clientes sale del mismo laboratorio open-source que estás viendo. Se piensa, se prueba y se libera acá.',
-			'La regla es simple: lo roto se arregla, no se esconde. Y si un día desaparezco, lo que construiste conmigo tiene que seguir funcionando.',
-			'Esa es la prueba de que no es un alquiler con tu nombre adentro. Es tuyo.'
+			'El código público nace en este laboratorio: CLI, documentación, pruebas y futuras integraciones curadas. Se piensa, se prueba y se libera acá.',
+			'La regla es simple: lo roto se arregla, no se esconde. Las dependencias se consultan con sus releases y la configuración queda explícita.',
+			'El Lab es una base abierta para que cada Project OS pueda seguir funcionando con decisiones trazables.'
 		],
 		link: { label: 'GitHub ↗', href: 'https://github.com/moshequantum/multiversa-lab' }
 	}

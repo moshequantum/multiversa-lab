@@ -1,12 +1,23 @@
 # Multiversa Lab — Infrastructure: InsForge Backend
 
-**InsForge** serves as the Backend-as-a-Service (BaaS) and cloud infrastructure foundation for Multiversa Lab. It provides database access, authentication, file storage, edge functions, and AI model gateways.
+**InsForge** is an optional Backend-as-a-Service (BaaS) adapter for Multiversa.Lab.
+It can provide database access, authentication, file storage, edge functions and
+AI model gateways without becoming a requirement for local operation.
 
 ---
 
+## Cerebro + Worker
+
+El Cerebro es la frontera de integración del Lab: puede usar InsForge para datos,
+autenticación, storage o IA y un Cloudflare Worker para tareas públicas y efímeras.
+Ambos son opcionales y se configuran por entorno. El Worker no recibe vaults ni
+secretos de tenants; el Cerebro coordina contratos, no centraliza el contexto privado.
+
 ## Ecosystem Architecture
 
-InsForge is wired directly into the SvelteKit landing dashboard, serving as the central coordinator for public-facing waitlists, audit logs, and agent state synchronizations:
+The SvelteKit site can use a separately configured InsForge project for its public
+waitlist. An OS instance may use its own backend for sync, but Lab does not prescribe
+or publish a shared production project:
 
 ```
 [SvelteKit Frontend] ──(InsForge SDK)──> [InsForge Cloud BaaS] ──> [PostgreSQL / Storage / Auth]
@@ -14,15 +25,18 @@ InsForge is wired directly into the SvelteKit landing dashboard, serving as the 
 
 ---
 
-## Database Schemas in Use
+## Example schemas
 
-The connected InsForge project (`a7008540-cb30-4a9a-a28a-ab065ce4821b`) contains the following tables:
+An implementation can define schemas such as:
 
-1. `founders_waitlist`: Tracks registrations for the closed-beta of the Advanced Ecosistemas tier.
+1. `lab_waitlist`: Tracks requests to build with Lab or explore Group accompaniment.
 2. `identity_nodes` & `identity_edges`: Persists Graphify indices in the cloud.
 3. `identity_decisions`: Stores decision metrics for MiroFish simulations.
 4. `l2_semantic_memory`: Syncs Engram memories across devices.
 5. `audit_logs`: General audit trail of agent operations.
+
+Neither Lab nor its installer ships project URLs, keys or credentials. Every remote
+adapter must be configured explicitly by the operator and isolated per environment.
 
 ---
 
@@ -77,7 +91,7 @@ npx @insforge/cli secrets get ANON_KEY
 
 ```typescript
 const { data, error } = await insforge.database
-  .from('founders_waitlist')
+  .from('lab_waitlist')
   .insert([{
     name: userName,
     email: userEmail,

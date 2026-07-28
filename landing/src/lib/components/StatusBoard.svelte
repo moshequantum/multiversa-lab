@@ -6,12 +6,12 @@
       label: '✓ LISTO',
       title: 'Lo que ya existe.',
       items: [
-        'Manifiesto público',
-        'Design System (Liquid Glass Pro + Onion UI)',
-        'DNA Brand · 47 slides bilingüe',
+        'Multiversa CLI v0.8.0',
+        'Bootstrap de Project OS y corpus con procedencia',
+        'Pilares upstream con atribución',
         'Principios de orquestación humana',
-        'Code of Conduct',
-        'Templates Engram / Graphify / Gentle'
+        'MCP de lectura y documentación abierta',
+        'Instalador shell verificable'
       ]
     },
     {
@@ -19,11 +19,11 @@
       label: '◐ EN OBRA',
       title: 'Donde estamos cavando.',
       items: [
-        'Engram (capa SQLite + MCP)',
-        'Graphify CLI · neo4j_lite',
-        'Installer real (multiversa init)',
-        'GentlePI: captura de voz personal',
-        'InsForge: backend del laboratorio',
+        'Cerebro: contrato InsForge + Cloudflare Worker',
+        'Contexto por tenant para Engram y Graphify',
+        'Adaptadores para más agentes',
+        'Integraciones configurables de skills y plugins',
+        'Chequeos de releases upstream por pilar',
         'Documentación abierta'
       ]
     },
@@ -32,10 +32,10 @@
       label: '○ VISIÓN',
       title: 'A dónde apunta el arco.',
       items: [
-        'MiroFish: swarm simulation',
-        'MultiversaOS: context sync universal',
-        'Recipes portables para cada proyecto',
-        'Cross-LLM memory portability',
+        'MiroFish: simulación externa y opt-in',
+        'Packs de integración curados',
+        'Recipes portables por Project OS',
+        'Memoria portable entre modelos compatibles',
         'Panel público del laboratorio',
         'Programa de contribuidores'
       ]

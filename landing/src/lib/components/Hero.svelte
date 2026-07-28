@@ -15,8 +15,8 @@
     </h1>
 
     <p class="lead">
-      Herramientas, skills y MCPs para crear software responsable.
-      <strong>Auditable. Documentado. Compartido.</strong>
+      Código fuente abierto para configurar sistemas agentic reproducibles:
+      <strong>Multiversa CLI, Cerebro y contexto con criterio.</strong>
     </p>
 
     <div class="ctas">

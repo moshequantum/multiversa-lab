@@ -1,17 +1,26 @@
 # Multiversa Architecture
 
-> Current source of truth as of 2026-05-21. The former named-agent cosmology was retired; it is not active architecture.
+> Current source of truth as of 2026-07-20. The former named-agent cosmology was retired; it is not active architecture.
 
 ## Shape
 
-Multiversa is a curated, agent-agnostic stack. The Lab publishes the open technical layer; the Group applies it commercially without leaking client work back into the Lab.
+Multiversa is a curated, agent-agnostic stack. **Multiversa.Lab** publishes the
+open source layer: Multiversa CLI plus the Cerebro architecture that can connect
+InsForge and a Cloudflare Worker. **Multiversa Group** is private to its creator and
+is not a public product or service boundary for Lab users.
 
 ## Active layers
 
-1. **SvelteKit Lab** — public site, documentation, waitlist, and design language.
-2. **Multiversa CLI** — the installer/orchestrator that wires the curated stack into the user's local agent environment.
-3. **Curated engines** — Engram, Graphify, gentle-ai, gentle-pi, codegraph, and optional external-only MiroFish.
-4. **Optional backend** — local-first by default; remote backends such as InsForge are adapters, not the core.
+1. **SvelteKit Lab** — public site, documentation, release notes, and design language.
+2. **Multiversa CLI / Tauri Visual Installer** — the local installers and
+   orchestrators that configure the curated stack in the operator's environment.
+3. **Cerebro** — the integration boundary that can combine tenant-scoped Engram
+   memory and Graphify knowledge with optional InsForge and Cloudflare Worker
+   services; it never turns a private tenant into a shared public brain.
+4. **Curated engines** — Engram, Graphify, `gentle-ai`, gentle-pi, codegraph, and
+   optional external-only MiroFish.
+5. **Optional backend** — local-first by default; remote backends are adapters,
+   not the core.
 
 ## Boundaries
 
