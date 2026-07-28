@@ -5,6 +5,7 @@
   import Ethos from '$lib/components/Ethos.svelte';
   import Pillars from '$lib/components/Pillars.svelte';
   import Attribution from '$lib/components/Attribution.svelte';
+  import MobileCompanion from '$lib/components/MobileCompanion.svelte';
   import StatusBoard from '$lib/components/StatusBoard.svelte';
   import PhilosophySplit from '$lib/components/PhilosophySplit.svelte';
   import BitacoraTeaser from '$lib/components/BitacoraTeaser.svelte';
@@ -37,6 +38,7 @@
   <Ethos />
   <Pillars />
   <Attribution />
+  <MobileCompanion />
   <StatusBoard />
   <PhilosophySplit />
   <BitacoraTeaser />

@@ -1,0 +1,145 @@
+{
+  "$schema": "https://schemas.multiversa.dev/ecosystem-public/v1",
+  "schema_version": "1.0.0",
+  "updated": "2026-07-22",
+  "site": {
+    "name": "Multiversa Lab",
+    "url": "https://lab.multiversa.group",
+    "repository": "https://github.com/moshequantum/multiversa-lab",
+    "language": "es-419",
+    "visibility": "public",
+    "summary": "Laboratorio abierto de Multiversa: contratos, instaladores y herramientas para construir sistemas de trabajo con memoria, identidad y control humano."
+  },
+  "positioning": {
+    "statement": "Multiversa Lab cura y conecta motores abiertos; no reclama su autoría.",
+    "ethic": "La IA propone. El humano decide.",
+    "default_locale": "Español latinoamericano neutro, configurable mediante VoiceProfile."
+  },
+  "surfaces": [
+    {
+      "name": "Landing y PWA Companion",
+      "url": "https://lab.multiversa.group/",
+      "description": "Superficie pública instalable para descubrir el ecosistema y, progresivamente, revisar memoria, misiones y aprobaciones.",
+      "status": "phase-1-public",
+      "sitemap": true
+    },
+    {
+      "name": "Repositorio Lab",
+      "url": "https://github.com/moshequantum/multiversa-lab",
+      "description": "Documentación pública, landing, bootstrap e integración del laboratorio.",
+      "status": "public"
+    },
+    {
+      "name": "Multiversa CLI",
+      "url": "https://github.com/moshequantum/multiversa-cli",
+      "description": "Orquestador local y MCP de sólo lectura para instalar, detectar y conectar el stack curado.",
+      "status": "release-candidate"
+    },
+    {
+      "name": "Multiversa Installer",
+      "url": "https://github.com/moshequantum/multiversa-installer",
+      "description": "Instalador gráfico multiplataforma que delega operaciones en el CLI.",
+      "status": "release-candidate"
+    },
+    {
+      "name": "Multiversa SDK",
+      "url": "https://github.com/moshequantum/multiversa-sdk",
+      "description": "Contratos públicos versionados, incluidos CLI Envelope, perfiles, misiones y VoiceProfile.",
+      "status": "release-candidate"
+    }
+  ],
+  "components": [
+    {
+      "name": "Engram",
+      "role": "Memoria persistente local y MCP",
+      "upstream": "https://github.com/Gentleman-Programming/engram",
+      "license": "MIT"
+    },
+    {
+      "name": "Graphify",
+      "role": "Transformación de contenido en grafo de conocimiento",
+      "upstream": "https://github.com/safishamsi/graphify",
+      "license": "MIT"
+    },
+    {
+      "name": "gentle-ai",
+      "role": "Configuración de ecosistemas agénticos; Multiversa usa su modo custom",
+      "upstream": "https://github.com/Gentleman-Programming/gentle-ai",
+      "license": "MIT"
+    },
+    {
+      "name": "gentle-pi",
+      "role": "Harness SDD para Pi; no es el perfilador humano de Multiversa",
+      "upstream": "https://github.com/Gentleman-Programming/gentle-pi",
+      "license": "MIT"
+    },
+    {
+      "name": "codegraph",
+      "role": "Grafo semántico de código",
+      "upstream": "https://github.com/colbymchenry/codegraph",
+      "license": "MIT"
+    },
+    {
+      "name": "MiroFish",
+      "role": "Simulación multiagente opcional, siempre como servicio/binario externo",
+      "upstream": "https://github.com/666ghj/MiroFish",
+      "license": "AGPL-3.0"
+    }
+  ],
+  "public_documents": [
+    {
+      "title": "Arquitectura",
+      "url": "https://github.com/moshequantum/multiversa-lab/blob/main/docs/architecture.md",
+      "description": "Capas, fronteras y responsabilidades del laboratorio."
+    },
+    {
+      "title": "CLI",
+      "url": "https://github.com/moshequantum/multiversa-lab/blob/main/docs/cli.md",
+      "description": "Flujos de instalación, comandos y límites de mutación."
+    },
+    {
+      "title": "Upstreams y atribución",
+      "url": "https://github.com/moshequantum/multiversa-lab/blob/main/docs/upstream.md",
+      "description": "Autores, licencias y fronteras de propiedad intelectual."
+    },
+    {
+      "title": "Contexto completo para LLM",
+      "url": "https://lab.multiversa.group/llms-full.txt",
+      "description": "Vista expandida y generada de este contrato público."
+    }
+  ],
+  "boundaries": [
+    "Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de tenants.",
+    "La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.",
+    "Telegram es un canal opcional; nunca es memoria ni fuente de verdad.",
+    "Los motores upstream conservan su autoría y licencia.",
+    "VoiceProfile requiere confirmación humana y no infiere atributos sensibles."
+  ],
+  "agent_policy": {
+    "allow": [
+      "Leer documentación y código público.",
+      "Proponer cambios mediante pull requests.",
+      "Ejecutar checks y builds no destructivos.",
+      "Usar los contratos versionados del SDK para integraciones."
+    ],
+    "disallow": [
+      "Ejecutar instaladores o comandos mutantes sin aprobación humana explícita.",
+      "Inventar capacidades, métricas, clientes, precios o garantías.",
+      "Copiar información privada de Multiversa Group hacia Lab.",
+      "Leer, imprimir o almacenar secretos y archivos .env.",
+      "Incorporar código AGPL dentro del núcleo MIT."
+    ]
+  },
+  "crawl": {
+    "disallow": [
+      "/api/"
+    ],
+    "context_paths": [
+      "/llms.txt",
+      "/llms-full.txt",
+      "/agents.txt",
+      "/ecosystem.json"
+    ]
+  },
+  "generated_by": "scripts/sync-public-context.mjs"
+}

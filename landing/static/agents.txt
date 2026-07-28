@@ -1,0 +1,26 @@
+# Multiversa Lab — agents.txt
+# Generado desde docs/ecosystem.public.json. No editar manualmente.
+
+Project: Multiversa Lab
+Repository: https://github.com/moshequantum/multiversa-lab
+Language: es-419
+Visibility: public
+Ethic: La IA propone. El humano decide.
+
+# ALLOWED
+Allow: Leer documentación y código público.
+Allow: Proponer cambios mediante pull requests.
+Allow: Ejecutar checks y builds no destructivos.
+Allow: Usar los contratos versionados del SDK para integraciones.
+
+# RESTRICTED
+Disallow: Ejecutar instaladores o comandos mutantes sin aprobación humana explícita.
+Disallow: Inventar capacidades, métricas, clientes, precios o garantías.
+Disallow: Copiar información privada de Multiversa Group hacia Lab.
+Disallow: Leer, imprimir o almacenar secretos y archivos .env.
+Disallow: Incorporar código AGPL dentro del núcleo MIT.
+
+# CONTEXT
+Context: https://lab.multiversa.group/llms.txt
+Full-Context: https://lab.multiversa.group/llms-full.txt
+Machine-Context: https://lab.multiversa.group/ecosystem.json

@@ -1,0 +1,12 @@
+# Multiversa Lab — generado desde docs/ecosystem.public.json
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://lab.multiversa.group/sitemap.xml
+
+# Contexto para modelos y agentes (informativo; robots.txt no es autorización)
+# https://lab.multiversa.group/llms.txt
+# https://lab.multiversa.group/llms-full.txt
+# https://lab.multiversa.group/agents.txt
+# https://lab.multiversa.group/ecosystem.json

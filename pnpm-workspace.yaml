@@ -1,2 +1,4 @@
 packages:
   - 'landing'
+allowBuilds:
+  esbuild: true

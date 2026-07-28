@@ -15,6 +15,10 @@ secretos de tenants; el Cerebro coordina contratos, no centraliza el contexto pr
 
 ## Ecosystem Architecture
 
+## Frontera de datos
+
+Este repositorio público no documenta identificadores de proyectos, URLs privadas, credenciales ni schemas de tenants. Las capacidades se diseñan por contrato: permisos mínimos para formularios públicos, memoria remota solo mediante opt-in y aislamiento por tenant, auditoría sin secretos y almacenamiento separado de sus metadatos y políticas.
+
 The SvelteKit site can use a separately configured InsForge project for its public
 waitlist. An OS instance may use its own backend for sync, but Lab does not prescribe
 or publish a shared production project:
@@ -29,7 +33,7 @@ or publish a shared production project:
 
 An implementation can define schemas such as:
 
-1. `lab_waitlist`: Tracks requests to build with Lab or explore Group accompaniment.
+1. `lab_waitlist`: Tracks requests to build with Multiversa CLI or contribute to the Lab.
 2. `identity_nodes` & `identity_edges`: Persists Graphify indices in the cloud.
 3. `identity_decisions`: Stores decision metrics for MiroFish simulations.
 4. `l2_semantic_memory`: Syncs Engram memories across devices.

@@ -21,6 +21,8 @@
       items: [
         'Cerebro: contrato InsForge + Cloudflare Worker',
         'Contexto por tenant para Engram y Graphify',
+        'VoiceProfile: idioma, trato y límites confirmados',
+        'Lab Companion: instalación PWA y emparejamiento',
         'Adaptadores para más agentes',
         'Integraciones configurables de skills y plugins',
         'Chequeos de releases upstream por pilar',
@@ -36,6 +38,7 @@
         'Packs de integración curados',
         'Recipes portables por Project OS',
         'Memoria portable entre modelos compatibles',
+        'Panel público del laboratorio',
         'Panel público del laboratorio',
         'Programa de contribuidores'
       ]

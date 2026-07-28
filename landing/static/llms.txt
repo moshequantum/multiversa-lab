@@ -1,0 +1,45 @@
+# Multiversa Lab
+
+> Laboratorio abierto de Multiversa: contratos, instaladores y herramientas para construir sistemas de trabajo con memoria, identidad y control humano.
+
+Multiversa Lab cura y conecta motores abiertos; no reclama su autoría. La IA propone. El humano decide.
+
+## Superficies
+
+- [Landing y PWA Companion](https://lab.multiversa.group/): Superficie pública instalable para descubrir el ecosistema y, progresivamente, revisar memoria, misiones y aprobaciones. Estado: phase-1-public.
+- [Repositorio Lab](https://github.com/moshequantum/multiversa-lab): Documentación pública, landing, bootstrap e integración del laboratorio. Estado: public.
+- [Multiversa CLI](https://github.com/moshequantum/multiversa-cli): Orquestador local y MCP de sólo lectura para instalar, detectar y conectar el stack curado. Estado: release-candidate.
+- [Multiversa Installer](https://github.com/moshequantum/multiversa-installer): Instalador gráfico multiplataforma que delega operaciones en el CLI. Estado: release-candidate.
+- [Multiversa SDK](https://github.com/moshequantum/multiversa-sdk): Contratos públicos versionados, incluidos CLI Envelope, perfiles, misiones y VoiceProfile. Estado: release-candidate.
+
+## Componentes curados
+
+- [Engram](https://github.com/Gentleman-Programming/engram): Memoria persistente local y MCP. Licencia upstream: MIT.
+- [Graphify](https://github.com/safishamsi/graphify): Transformación de contenido en grafo de conocimiento. Licencia upstream: MIT.
+- [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): Configuración de ecosistemas agénticos; Multiversa usa su modo custom. Licencia upstream: MIT.
+- [gentle-pi](https://github.com/Gentleman-Programming/gentle-pi): Harness SDD para Pi; no es el perfilador humano de Multiversa. Licencia upstream: MIT.
+- [codegraph](https://github.com/colbymchenry/codegraph): Grafo semántico de código. Licencia upstream: MIT.
+- [MiroFish](https://github.com/666ghj/MiroFish): Simulación multiagente opcional, siempre como servicio/binario externo. Licencia upstream: AGPL-3.0.
+
+## Documentación
+
+- [Arquitectura](https://github.com/moshequantum/multiversa-lab/blob/main/docs/architecture.md): Capas, fronteras y responsabilidades del laboratorio.
+- [CLI](https://github.com/moshequantum/multiversa-lab/blob/main/docs/cli.md): Flujos de instalación, comandos y límites de mutación.
+- [Upstreams y atribución](https://github.com/moshequantum/multiversa-lab/blob/main/docs/upstream.md): Autores, licencias y fronteras de propiedad intelectual.
+- [Contexto completo para LLM](https://lab.multiversa.group/llms-full.txt): Vista expandida y generada de este contrato público.
+
+## Límites
+
+- Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de tenants.
+- La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.
+- Telegram es un canal opcional; nunca es memoria ni fuente de verdad.
+- Los motores upstream conservan su autoría y licencia.
+- VoiceProfile requiere confirmación humana y no infiere atributos sensibles.
+
+## Uso recomendado
+
+- Idioma por defecto: Español latinoamericano neutro, configurable mediante VoiceProfile.
+- No asumir hechos que no aparezcan en este archivo o en las fuentes enlazadas.
+- Verificar estado y versiones en los repositorios antes de afirmar que algo está publicado.
+- Contexto expandido: [llms-full.txt](https://lab.multiversa.group/llms-full.txt)
+- Política para agentes: [agents.txt](https://lab.multiversa.group/agents.txt)

@@ -1,0 +1,21 @@
+{
+  "id": "/",
+  "name": "Multiversa Lab Companion",
+  "short_name": "Multiversa Lab",
+  "description": "Superficie móvil del laboratorio abierto de Multiversa.",
+  "lang": "es-419",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0F",
+  "theme_color": "#0A0A0F",
+  "categories": ["productivity", "developer_tools"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

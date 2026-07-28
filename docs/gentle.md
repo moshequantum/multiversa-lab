@@ -1,6 +1,12 @@
-# Multiversa Lab — Operational Layer: Gentle AI & GentlePI
+# Multiversa Lab — gentle-ai, gentle-pi y VoiceProfile
 
-**Gentle AI** (and its Pi-agent native harness **GentlePI**) is the operational harness of Multiversa Lab. It enforces disciplined development pipelines through Spec-Driven Development (SDD) and structured agent personas.
+`gentle-ai` y `gentle-pi` son proyectos upstream separados. Multiversa los integra sin redefinirlos:
+
+- `gentle-ai` admite configuración `custom`; ahí puede proyectarse un contrato de identidad de Multiversa.
+- `gentle-pi` es un harness SDD para el agente Pi. No descubre la identidad humana ni define por sí solo cómo debe hablar un Project OS.
+- `VoiceProfile v1`, publicado en `multiversa-sdk`, es el contrato Multiversa para idioma BCP-47, tuteo/voseo/usted, regionalidad, léxico, tono, objetivos y foco actual.
+
+El perfil se confirma con la persona. No se infiere voseo, identidad regional ni atributos sensibles.
 
 ---
 
@@ -20,16 +26,16 @@ SDD enforces a strict three-phase pipeline:
 
 ---
 
-## Agent Personas: `el_gentleman`
+## Configuración upstream
 
-Gentle AI configures agents with a **senior-architect-level persona**:
+gentle-ai puede configurar un agente con una postura de trabajo, por ejemplo:
 - **Teaching-Oriented:** Explains architectural trade-offs, does not just write code silently.
 - **Security-First:** Never leaves private files exposed, sanitizes inputs, audits security rules.
 - **Verification-Obsessed:** Validates that changes are working using unit tests and dev builds.
 
 ---
 
-## GentlePI: Agent Harness
+## gentle-pi: harness de ingeniería
 
 For Pi-native agents, the `gentle-pi` package provides commands directly in the agent shell:
 
@@ -40,8 +46,6 @@ pi install pnpm:gentle-pi   # if your Pi runtime supports the pnpm: namespace
 # Initialize SDD specifications
 /sdd-init
 
-# Switch agent modes
-/gentle:persona el_gentleman
 ```
 
-This enforces that the agent works within a bounded phase DAG and preserves files in `openspec/` directories.
+El harness organiza disciplina de ingeniería. La capa identitaria permanece en VoiceProfile y puede proyectarse también sobre Claude, Codex, otros agentes MCP y minions internos.
