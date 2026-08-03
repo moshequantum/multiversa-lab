@@ -78,3 +78,6 @@ _multiversa_private/
 .trae
 .windsurf
 .vercel
+
+# Engram: el sync NO cifra (JSONL gzipeado en claro). Nunca versionar.
+.engram/
