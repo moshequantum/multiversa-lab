@@ -33,7 +33,7 @@
 </svelte:head>
 
 <Nav />
-<main bind:this={main}>
+<main id="contenido" tabindex="-1" bind:this={main}>
   <Hero />
   <Ethos />
   <Pillars />

@@ -12,9 +12,9 @@ otros constructores. Esta página existe para nombrarlos con claridad.
 
 | Pilar | Proyecto upstream | Autor | Licencia |
 |---|---|---|---|
-| **Engram** | [`Gentleman-Programming/engram`](https://github.com/Gentleman-Programming/engram) | **Alan Muscaglia** ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
-| **Gentle AI** | [`Gentleman-Programming/gentle-ai`](https://github.com/Gentleman-Programming/gentle-ai) | **Alan Muscaglia** ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
-| **Gentle PI** | [`Gentleman-Programming/gentle-pi`](https://github.com/Gentleman-Programming/gentle-pi) | **Alan Muscaglia** ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
+| **Engram** | [`Gentleman-Programming/engram`](https://github.com/Gentleman-Programming/engram) | **Alan Buscaglia** ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
+| **Gentle AI** | [`Gentleman-Programming/gentle-ai`](https://github.com/Gentleman-Programming/gentle-ai) | **Alan Buscaglia** ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
+| **Gentle PI** | [`Gentleman-Programming/gentle-pi`](https://github.com/Gentleman-Programming/gentle-pi) | **Alan Buscaglia** ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
 | **Graphify** | [`safishamsi/graphify`](https://github.com/safishamsi/graphify) | **Safi** ([@safishamsi](https://github.com/safishamsi)) — AI Engineer · Londres | MIT |
 | **codegraph** *(code-specific companion to Graphify)* | [`colbymchenry/codegraph`](https://github.com/colbymchenry/codegraph) | **Colby McHenry** ([@colbymchenry](https://github.com/colbymchenry)) | MIT |
 | **MiroFish** | [`666ghj/MiroFish`](https://github.com/666ghj/MiroFish) · [`mirofish.homes`](https://mirofish.homes/) | **BaiFu** ([@666ghj](https://github.com/666ghj)) — Shanghái | **AGPL-3.0** ⚠️ |
@@ -55,8 +55,8 @@ Esto respeta tanto la licencia upstream como nuestro propio principio
 
 **De los autores upstream (no nuestro):**
 
-- El código del runtime de Engram (Alan Muscaglia)
-- El motor de Gentle AI y la Gentle PI (Alan Muscaglia)
+- El código del runtime de Engram (Alan Buscaglia)
+- El motor de Gentle AI y la Gentle PI (Alan Buscaglia)
 - El indexer content→grafo de Graphify (Safi)
 - El indexer semántico de código de codegraph (Colby McHenry)
 - El simulador swarm de MiroFish (BaiFu) — AGPL, invocado como servicio externo

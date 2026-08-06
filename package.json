@@ -8,6 +8,14 @@
     "preview": "pnpm --filter @multiversa/lab-site preview",
     "context:sync": "node scripts/sync-public-context.mjs",
     "context:check": "node scripts/sync-public-context.mjs --check",
-    "check": "pnpm context:check"
+    "typecheck": "pnpm --filter @multiversa/lab-site check",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "check": "pnpm context:check && pnpm typecheck && pnpm test:e2e"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.62.1",
+    "svelte-check": "^4.7.4"
   }
 }
