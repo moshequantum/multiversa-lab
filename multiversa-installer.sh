@@ -20,10 +20,11 @@
 #   ./multiversa-installer.sh
 #
 # Flags (via env vars):
-#   MULTIVERSA_VERSION=v0.3.0   pin a specific release (default: latest)
-#   MULTIVERSA_PREFIX=~/.local  override install prefix (default: ~/.local)
-#   MULTIVERSA_SKIP_STACK=1     skip `multiversa stack` step
-#   MULTIVERSA_SKIP_INIT=1      skip `multiversa init` step
+#   MULTIVERSA_VERSION=v0.3.0        pin a specific release (default: latest)
+#   MULTIVERSA_PREFIX=~/.local       override install prefix (default: ~/.local)
+#   MULTIVERSA_SKIP_STACK=1          skip `multiversa stack` step
+#   MULTIVERSA_SKIP_INIT=1           skip `multiversa init` step
+#   MULTIVERSA_NONINTERACTIVE=1      force non-interactive mode (no prompts, defaults only)
 
 set -euo pipefail
 
@@ -40,6 +41,26 @@ BIN_DIR="$PREFIX/bin"
 INSTALL_DIR="$HOME/.multiversa"
 VERSION="${MULTIVERSA_VERSION:-latest}"
 
+# Under `curl | bash`, stdin is the pipe carrying the script itself: every
+# `read` would silently consume the next source line instead of user input.
+# /dev/tty is the controlling terminal (still available in that mode when run
+# from an interactive shell), so we read from there instead of stdin. When no
+# TTY is reachable at all (cron, CI, containers with no controlling terminal),
+# fall back to defaults rather than aborting on EOF.
+#
+# Note: `[[ -r /dev/tty ]]` is NOT enough — the device node is often
+# world-readable (crw-rw-rw-) even when there is no controlling terminal to
+# actually open, which would misdetect as interactive. Attempt a real open
+# on a scratch fd instead.
+NONINTERACTIVE=0
+if [[ -n "${MULTIVERSA_NONINTERACTIVE:-}" ]]; then
+  NONINTERACTIVE=1
+elif { exec 3</dev/tty; } 2>/dev/null; then
+  exec 3<&-
+else
+  NONINTERACTIVE=1
+fi
+
 # ── UI ────────────────────────────────────────────────────────────────────────
 
 banner() {
@@ -55,6 +76,31 @@ step()    { echo -e "${YELLOW}→ $*${NC}"; }
 ok()      { echo -e "${GREEN}[✓] $*${NC}"; }
 warn()    { echo -e "${YELLOW}[!] $*${NC}"; }
 err()     { echo -e "${RED}[X] $*${NC}" >&2; }
+
+# ask <prompt> <default> <outvar> — prompts on /dev/tty, falls back to
+# <default> when non-interactive. Never touches stdin.
+ask() {
+  local prompt="$1" default="$2" __outvar="$3" reply=""
+  if [[ "$NONINTERACTIVE" -eq 1 ]]; then
+    printf -v "$__outvar" '%s' "$default"
+    return 0
+  fi
+  IFS= read -rp "$prompt" reply < /dev/tty || reply=""
+  printf -v "$__outvar" '%s' "${reply:-$default}"
+}
+
+# confirm <prompt> — returns 0 only on an explicit interactive y/yes.
+# No TTY means no consent: always answers "no" so we never install a
+# toolchain or engines without the user explicitly asking for it.
+confirm() {
+  local prompt="$1" reply=""
+  if [[ "$NONINTERACTIVE" -eq 1 ]]; then
+    warn "Modo no interactivo: se omite este paso (requiere confirmación explícita)."
+    return 1
+  fi
+  IFS= read -rp "$prompt" reply < /dev/tty || reply=""
+  [[ "${reply,,}" == "y" || "${reply,,}" == "yes" ]]
+}
 
 # ── 1. Detect platform ────────────────────────────────────────────────────────
 
@@ -102,7 +148,10 @@ install_binary() {
 
   url="https://github.com/${REPO}/releases/download/${version}/multiversa_${version#v}_${platform}.tar.gz"
   tmpdir=$(mktemp -d)
-  trap "rm -rf '$tmpdir'" RETURN
+  # RETURN alone misses the `exit 1` error path below (exit kills the process
+  # without returning from the function, so the temp dir would be orphaned).
+  # EXIT covers that case too; rm -rf is idempotent so firing twice is fine.
+  trap "rm -rf '$tmpdir'" RETURN EXIT
 
   step "Downloading multiversa ${version} for ${platform}"
   echo -e "   ${DIM}${url}${NC}"
@@ -126,8 +175,8 @@ ensure_path() {
   esac
 
   warn "$BIN_DIR is not in PATH for the current shell."
-  local shell_rc=""
-  case "${SHELL:-}" in
+  local shell_rc="" shell_name="${SHELL:-desconocida}"
+  case "$shell_name" in
     */zsh)  shell_rc="$HOME/.zshrc" ;;
     */bash) shell_rc="$HOME/.bashrc" ;;
   esac
@@ -140,6 +189,13 @@ ensure_path() {
       ok "Appended PATH update to $shell_rc"
     fi
     warn "Open a new terminal or run:  source $shell_rc"
+  else
+    # Unrecognized shell ($SHELL is neither bash nor zsh): we don't know
+    # which rc file to edit, so hand the user the exact line instead of
+    # repeating the same unfixable warning on every run.
+    warn "No se reconoce tu shell ($shell_name) — no puedo editar su archivo de configuración automáticamente."
+    warn "Añade esta línea al archivo de arranque de tu shell:"
+    echo -e "   ${DIM}export PATH=\"$BIN_DIR:\$PATH\"${NC}"
   fi
   export PATH="$BIN_DIR:$PATH"
 }
@@ -172,21 +228,22 @@ EOF
 profile_user() {
   echo ""
   echo -e "${BLUE}--- FASE DE PERFILADO ---${NC}"
-  echo "Necesitamos conocer los parámetros base de tu instancia."
+  if [[ "$NONINTERACTIVE" -eq 1 ]]; then
+    warn "Modo no interactivo: usando valores por defecto para el perfilado."
+  else
+    echo "Necesitamos conocer los parámetros base de tu instancia."
+  fi
   echo ""
 
-  read -rp "¿Nombre de esta instancia? [Multiversa-AI]: " IA_NAME
-  IA_NAME=${IA_NAME:-Multiversa-AI}
-
-  read -rp "¿Tu rol principal? (Arquitecto, Consultor, Desarrollador): " USER_ROLE
-  USER_ROLE=${USER_ROLE:-Arquitecto}
+  ask "¿Nombre de esta instancia? [Multiversa-AI]: " "Multiversa-AI" IA_NAME
+  ask "¿Tu rol principal? (Arquitecto, Consultor, Desarrollador) [Arquitecto]: " "Arquitecto" USER_ROLE
 
   echo ""
   echo "Modo de configuración:"
   echo "  1) Local — operación en este equipo"
   echo "  2) Híbrido — local con adaptadores remotos opcionales"
-  read -rp "Opción [1/2]: " SETUP_MODE_OPT
-  case "${SETUP_MODE_OPT:-1}" in
+  ask "Opción [1/2]: " "1" SETUP_MODE_OPT
+  case "$SETUP_MODE_OPT" in
     2) SETUP_MODE="HYBRID" ;;
     *) SETUP_MODE="LOCAL" ;;
   esac
@@ -222,26 +279,36 @@ echo ""
 step "Running multiversa detect (read-only host scan)…"
 "$BIN_DIR/multiversa" detect
 
+FAILED_STEPS=()
+
 if [[ -z "${MULTIVERSA_SKIP_STACK:-}" ]]; then
   echo ""
-  read -rp "Install the OS-level developer toolchain (Go/Rust/Python/Node/pnpm)? [y/N] " ans
-  if [[ "${ans,,}" == "y" || "${ans,,}" == "yes" ]]; then
-    run_cli_step "Stack install" stack || true
+  if confirm "Install the OS-level developer toolchain (Go/Rust/Python/Node/pnpm)? [y/N] "; then
+    # A failed `stack` step must not block `init` from being attempted, but
+    # it must not be silently discarded either — record it for the summary.
+    run_cli_step "Stack install" stack || FAILED_STEPS+=("stack")
   fi
 fi
 
 if [[ -z "${MULTIVERSA_SKIP_INIT:-}" ]]; then
   echo ""
-  read -rp "Install the curated agentic engines (Engram / Graphify / Gentle)? [y/N] " ans
-  if [[ "${ans,,}" == "y" || "${ans,,}" == "yes" ]]; then
-    run_cli_step "Engine install" init || true
+  if confirm "Install the curated agentic engines (Engram / Graphify / Gentle)? [y/N] "; then
+    run_cli_step "Engine install" init || FAILED_STEPS+=("init")
   fi
 fi
 
 echo ""
-echo -e "${GREEN}====================================================${NC}"
-echo -e "${GREEN}  MULTIVERSA LAB — READY                            ${NC}"
-echo -e "${GREEN}====================================================${NC}"
+if [[ ${#FAILED_STEPS[@]} -eq 0 ]]; then
+  echo -e "${GREEN}====================================================${NC}"
+  echo -e "${GREEN}  MULTIVERSA LAB — READY                            ${NC}"
+  echo -e "${GREEN}====================================================${NC}"
+else
+  echo -e "${YELLOW}====================================================${NC}"
+  echo -e "${YELLOW}  MULTIVERSA LAB — INSTALLED WITH ERRORS            ${NC}"
+  echo -e "${YELLOW}====================================================${NC}"
+  err "Failed steps: ${FAILED_STEPS[*]}"
+  err "Retry them individually with:  multiversa <step>"
+fi
 echo -e "  Binary:  ${BIN_DIR}/multiversa"
 echo -e "  Home:    ${INSTALL_DIR}"
 echo -e "  Modo:    ${SETUP_MODE}"
@@ -251,3 +318,7 @@ echo -e "  ${YELLOW}multiversa detect${NC}       — re-scan host state"
 echo -e "  ${YELLOW}multiversa credits${NC}      — upstream attribution"
 echo -e "  ${YELLOW}multiversa workspace${NC}    — private MultiversaGroup setup"
 echo ""
+
+if [[ ${#FAILED_STEPS[@]} -gt 0 ]]; then
+  exit 1
+fi

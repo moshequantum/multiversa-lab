@@ -1,14 +1,13 @@
 <script lang="ts">
-  // Posts to /api/waitlist (server-side) so the InsForge admin key never reaches
-  // the client bundle. See landing/src/routes/api/waitlist/+server.ts.
+  import { WAITLIST_INTERESTS } from '$lib/domain/waitlist';
+
   let name = $state('');
   let email = $state('');
-  let planInterest = $state('Probar Multiversa CLI');
+  let planInterest = $state(WAITLIST_INTERESTS[0].value);
+  let website = $state('');
   let loading = $state(false);
   let status: 'idle' | 'success' | 'error' = $state('idle');
   let errorMessage = $state('');
-
-  const plans = ['Probar Multiversa CLI', 'Contribuir al Lab', 'Seguir los releases'];
 
   async function handleSubmit(e: Event) {
     e.preventDefault();
@@ -22,26 +21,37 @@
     status = 'idle';
     errorMessage = '';
 
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 10_000);
+
     try {
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, plan_interest: planInterest })
+        body: JSON.stringify({ name, email, plan_interest: planInterest, website }),
+        signal: controller.signal
       });
-      const data = await res.json();
+      const data = (await res.json().catch(() => null)) as
+        | { ok?: boolean; error?: string }
+        | null;
 
-      if (!data.ok) {
-        throw new Error(data.error || 'No pudimos registrarte ahora.');
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || 'No pudimos registrarte ahora.');
       }
 
       status = 'success';
       name = '';
       email = '';
-    } catch (err: any) {
-      console.error('Waitlist submission error:', err);
-      errorMessage = err?.message || 'Error de red. Inténtalo de nuevo más tarde.';
+    } catch (err: unknown) {
+      errorMessage =
+        err instanceof DOMException && err.name === 'AbortError'
+          ? 'La solicitud tardó demasiado. Inténtalo de nuevo.'
+          : err instanceof Error
+            ? err.message
+            : 'Error de red. Inténtalo de nuevo más tarde.';
       status = 'error';
     } finally {
+      window.clearTimeout(timeout);
       loading = false;
     }
   }
@@ -60,11 +70,11 @@
     </div>
 
     {#if status === 'success'}
-      <div class="success-alert" role="alert">
+      <div class="success-alert" role="status" aria-live="polite">
         <span class="success-glyph">✓</span>
         <div class="success-text">
           <h4>Registro exitoso</h4>
-          <p>Has sido añadido a la waitlist de Multiversa. Nos pondremos en contacto contigo pronto.</p>
+          <p>Tu registro quedó recibido. Te contactaremos cuando exista una ruta concreta para tu interés.</p>
         </div>
       </div>
     {:else}
@@ -81,7 +91,10 @@
           <input
             id="name"
             type="text"
-            placeholder="el_gentleman"
+            name="name"
+            autocomplete="name"
+            maxlength="120"
+            placeholder="Tu nombre"
             bind:value={name}
             disabled={loading}
             required
@@ -93,7 +106,11 @@
           <input
             id="email"
             type="email"
-            placeholder="gentleman@multiversa.group"
+            name="email"
+            autocomplete="email"
+            inputmode="email"
+            maxlength="254"
+            placeholder="tu@correo.com"
             bind:value={email}
             disabled={loading}
             required
@@ -103,15 +120,32 @@
         <div class="input-group">
           <label for="plan">Área de Interés</label>
           <div class="select-wrapper">
-            <select id="plan" bind:value={planInterest} disabled={loading}>
-              {#each plans as plan}
-                <option value={plan}>{plan}</option>
+            <select id="plan" name="plan_interest" bind:value={planInterest} disabled={loading}>
+              {#each WAITLIST_INTERESTS as interest}
+                <option value={interest.value}>{interest.label}</option>
               {/each}
             </select>
           </div>
         </div>
 
-        <button type="submit" class="mv-btn mv-btn-primary submit-btn" disabled={loading}>
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Sitio web</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabindex="-1"
+            autocomplete="off"
+            bind:value={website}
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="mv-btn mv-btn-primary submit-btn"
+          disabled={loading}
+          aria-busy={loading}
+        >
           {#if loading}
             <span class="spinner" aria-hidden="true"></span>
             Procesando...
@@ -184,6 +218,15 @@
     display: flex;
     flex-direction: column;
     gap: 22px;
+  }
+
+  .honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   .input-group {

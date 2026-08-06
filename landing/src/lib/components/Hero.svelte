@@ -6,7 +6,7 @@
   <div class="site stack">
 
     <div class="meta">
-      <span class="mv-pill">Open · Live</span>
+      <span class="mv-pill">Laboratorio público · En obra</span>
     </div>
 
     <h1 class="mv-two-beat">
@@ -15,15 +15,15 @@
     </h1>
 
     <p class="lead">
-      Código fuente abierto para configurar sistemas agentic reproducibles:
-      <strong>Multiversa CLI, Cerebro y contexto con criterio.</strong>
+      Herramientas abiertas para configurar sistemas agentic reproducibles:
+      <strong>Multiversa CLI, Cerebro y contexto bajo control humano.</strong>
     </p>
 
     <div class="ctas">
       <a class="mv-btn mv-btn-primary"
          href="https://github.com/moshequantum/multiversa-lab"
          target="_blank" rel="noopener">
-        ⤴ &nbsp; Star on GitHub
+        Ver código en GitHub ↗
       </a>
       <a class="mv-btn mv-btn-ghost" href="#manifiesto">
         Leer el manifiesto ↓
@@ -37,24 +37,33 @@
       <span class="mv-label-muted">GentleAI</span>
       <span class="mv-label-muted">GentlePI</span>
       <span class="mv-label-muted">InsForge</span>
-      <span class="mv-label-muted" style="color: var(--mv-primary);">lab.multiversa.group →</span>
+      <span class="mv-label-muted lab-address">lab.multiversa.group →</span>
     </div>
   </div>
 
-  <!-- aurora layer (chartreuse drift) -->
-  <div class="aurora" aria-hidden="true"></div>
+  <aside class="editorial-rail" aria-label="Frontera pública del Lab">
+    <span>Público</span>
+    <span>Auditable</span>
+    <span>Humano al mando</span>
+  </aside>
+
+  <div class="horizon" aria-hidden="true"></div>
+  <div class="horizon-line" aria-hidden="true"></div>
   <div class="grid-pattern" aria-hidden="true"></div>
 </section>
 
 <style>
   .hero {
-    min-height: 80vh;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: clamp(72px, 9vh, 110px);
-    padding-bottom: clamp(64px, 8vh, 96px);
+    padding-top: clamp(112px, 14vh, 168px);
+    padding-bottom: clamp(96px, 12vh, 144px);
+    background:
+      radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.025), transparent 28%),
+      var(--mv-background);
   }
 
   .stack {
@@ -73,8 +82,9 @@
   }
 
   :global(.hero .mv-two-beat) {
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
-    max-width: 18ch;
+    font-size: clamp(3rem, 7.4vw, 7rem);
+    max-width: 13ch;
+    margin: 0;
   }
 
   .lead {
@@ -107,23 +117,62 @@
     border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  /* aurora chartreuse drift inspired by the DNA Brand deck */
-  @keyframes aurora-drift {
-    0%   { transform: translate3d(-6%, -4%, 0) scale(1);    opacity: 0.6; }
-    50%  { transform: translate3d( 6%,  3%, 0) scale(1.12); opacity: 0.85; }
-    100% { transform: translate3d(-6%, -4%, 0) scale(1);    opacity: 0.6; }
-  }
-  .aurora {
+  .lab-address { color: var(--mv-primary); }
+
+  .editorial-rail {
+    display: none;
     position: absolute;
-    inset: -20%;
-    background:
-      radial-gradient(ellipse 40% 55% at 15% 110%, rgba(189, 235, 52, 0.22), transparent 65%),
-      radial-gradient(ellipse 42% 50% at 100% -10%, rgba(189, 235, 52, 0.10), transparent 70%);
-    filter: blur(60px);
-    animation: aurora-drift 28s ease-in-out infinite;
-    mix-blend-mode: screen;
-    z-index: 0;
+    right: 5%;
+    top: 50%;
+    z-index: 3;
+    transform: translateY(-50%);
+    padding-left: 22px;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    font: 500 9px/1.2 var(--font-mono);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--mv-muted-foreground);
+  }
+  .editorial-rail span { display: block; margin-block: 12px; }
+
+  @media (min-width: 1180px) {
+    .stack { padding-right: 230px; }
+    .editorial-rail { display: block; }
+  }
+
+  .horizon {
+    position: absolute;
+    left: 50%;
+    bottom: -54%;
+    width: 150%;
+    height: 88%;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      ellipse 50% 50% at 50% 50%,
+      rgba(189, 235, 52, 0.30) 0%,
+      rgba(189, 235, 52, 0.21) 16%,
+      rgba(189, 235, 52, 0.125) 32%,
+      rgba(189, 235, 52, 0.065) 48%,
+      rgba(189, 235, 52, 0.029) 64%,
+      rgba(189, 235, 52, 0.010) 80%,
+      transparent 100%
+    );
+    filter: blur(64px);
+    mask-image: linear-gradient(to bottom, black 0%, black 22%, transparent 88%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 22%, transparent 88%);
+    z-index: 1;
     pointer-events: none;
+  }
+
+  .horizon-line {
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    z-index: 2;
+    width: min(760px, 86%);
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(189, 235, 52, 0.55), transparent);
   }
 
   .grid-pattern {
@@ -135,7 +184,14 @@
       linear-gradient(to bottom, rgba(189, 235, 52, 0.025) 1px, transparent 1px);
     mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 30%, transparent 75%);
     -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 30%, transparent 75%);
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
+  }
+
+  @media (max-width: 640px) {
+    .hero { min-height: auto; }
+    .stack { gap: 24px; }
+    .ctas { width: 100%; }
+    .chips { gap: 18px; }
   }
 </style>

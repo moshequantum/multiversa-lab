@@ -39,7 +39,6 @@
         'Recipes portables por Project OS',
         'Memoria portable entre modelos compatibles',
         'Panel público del laboratorio',
-        'Panel público del laboratorio',
         'Programa de contribuidores'
       ]
     }

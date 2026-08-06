@@ -19,9 +19,9 @@ export function initLabMotion(root: HTMLElement): () => void {
 				.from(beats, { autoAlpha: 0, y: 22, stagger: 0.09 });
 
 			// Parallax sutil del aurora al salir del hero
-			const aurora = hero.querySelector(':scope .aurora');
-			if (aurora) {
-				gsap.to(aurora, {
+			const horizon = hero.querySelector(':scope .horizon');
+			if (horizon) {
+				gsap.to(horizon, {
 					yPercent: 14,
 					ease: 'none',
 					scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.6 }
@@ -36,7 +36,6 @@ export function initLabMotion(root: HTMLElement): () => void {
 			);
 			if (bits.length) {
 				gsap.from(bits, {
-					autoAlpha: 0,
 					y: 18,
 					duration: 0.55,
 					ease: 'power3.out',

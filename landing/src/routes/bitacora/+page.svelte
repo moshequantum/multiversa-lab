@@ -24,7 +24,7 @@
 
 <Nav />
 
-<main>
+<main id="contenido" tabindex="-1">
 	<section class="intro">
 		<div class="site">
 			<div class="mv-chrome-top">

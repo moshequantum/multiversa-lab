@@ -1,21 +1,16 @@
 <script lang="ts">
+  import BrandLockup from './BrandLockup.svelte';
+
   // Multiversa signature footer — brand texture, not product architecture.
 </script>
 
 <footer class="footer">
   <div class="site stack-lg">
 
-    <div class="brand-group">
-      <img
-        src="/assets/multiversa-wordmark-light.svg"
-        alt="Multiversa"
-        class="wordmark-img"
-      />
-      <span class="lab-suffix">Lab</span>
-    </div>
+    <BrandLockup size="footer" />
 
     <p class="line">
-      <em>Diseñado y construido por Moshe. Abierto a los curiosos.</em>
+      <em>Diseñado y construido por Moisés Vera. Abierto a los curiosos.</em>
     </p>
 
     <div class="rule"></div>
@@ -27,7 +22,7 @@
       <span class="sep">·</span>
       <a href="https://github.com/moshequantum/multiversa-lab/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">Code of Conduct</a>
       <span class="sep">·</span>
-      <a href="mailto:soymoisesweb@gmail.com">soymoisesweb@gmail.com</a>
+      <a href="mailto:hola@multiversa.group">hola@multiversa.group</a>
     </div>
 
     <div class="meta">
@@ -52,30 +47,6 @@
     align-items: center;
     gap: 32px;
     text-align: center;
-  }
-
-  .brand-group {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 12px;
-    justify-content: center;
-  }
-
-  .wordmark-img {
-    height: clamp(40px, 7vw, 80px);
-    width: auto;
-    display: block;
-    opacity: 0.95;
-  }
-
-  .lab-suffix {
-    font-family: var(--font-mono);
-    font-size: clamp(11px, 1.2vw, 14px);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--mv-primary);
-    padding-left: 12px;
-    border-left: 1px solid rgba(189, 235, 52, 0.3);
   }
 
   .line {
