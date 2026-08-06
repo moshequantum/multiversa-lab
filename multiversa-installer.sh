@@ -114,7 +114,8 @@ detect_platform() {
     *) err "Unsupported architecture: $arch"; exit 1 ;;
   esac
   case "$os" in
-    Darwin|Linux) ;;
+    Darwin) os="darwin" ;;
+    Linux)  os="linux" ;;
     *) err "Unsupported OS: $os. Use scoop/winget on Windows."; exit 1 ;;
   esac
   echo "${os}_${arch}"
@@ -142,11 +143,12 @@ resolve_version() {
 # ── 3. Download + install the binary ──────────────────────────────────────────
 
 install_binary() {
-  local platform version url tmpdir
+  local platform version asset base_url tmpdir
   platform="$1"
   version="$2"
 
-  url="https://github.com/${REPO}/releases/download/${version}/multiversa_${version#v}_${platform}.tar.gz"
+  asset="multiversa_${version#v}_${platform}.tar.gz"
+  base_url="https://github.com/${REPO}/releases/download/${version}"
   tmpdir=$(mktemp -d)
   # RETURN alone misses the `exit 1` error path below (exit kills the process
   # without returning from the function, so the temp dir would be orphaned).
@@ -154,14 +156,29 @@ install_binary() {
   trap "rm -rf '$tmpdir'" RETURN EXIT
 
   step "Downloading multiversa ${version} for ${platform}"
-  echo -e "   ${DIM}${url}${NC}"
-  if ! curl -fL --progress-bar "$url" -o "$tmpdir/multiversa.tar.gz"; then
+  echo -e "   ${DIM}${base_url}/${asset}${NC}"
+  if ! curl -fL --progress-bar "${base_url}/${asset}" -o "$tmpdir/$asset"; then
     err "Download failed. Verify the release exists at:"
     err "  https://github.com/${REPO}/releases"
     exit 1
   fi
 
-  tar -xzf "$tmpdir/multiversa.tar.gz" -C "$tmpdir"
+  step "Verifying release checksum"
+  curl -fsSL "${base_url}/checksums.txt" -o "$tmpdir/checksums.txt"
+  (
+    cd "$tmpdir"
+    if command -v sha256sum >/dev/null 2>&1; then
+      grep " $asset\$" checksums.txt | sha256sum -c - >/dev/null
+    elif command -v shasum >/dev/null 2>&1; then
+      grep " $asset\$" checksums.txt | shasum -a 256 -c - >/dev/null
+    else
+      err "Neither sha256sum nor shasum is available; refusing an unverified install."
+      exit 1
+    fi
+  )
+  ok "Checksum verified"
+
+  tar -xzf "$tmpdir/$asset" -C "$tmpdir"
   mkdir -p "$BIN_DIR"
   install -m 0755 "$tmpdir/multiversa" "$BIN_DIR/multiversa"
   ok "Installed: ${BIN_DIR}/multiversa"
