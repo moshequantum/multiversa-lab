@@ -3,9 +3,9 @@
 [![Estado de compilación](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
 [![Licencia: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Espacio de trabajo PNPM](https://img.shields.io/badge/node-pnpm-blue.svg)](#)
-[![BaaS: InsForge](https://img.shields.io/badge/backend-InsForge-brightgreen.svg)](https://insforge.app)
+[![Infraestructura: InsForge](https://img.shields.io/badge/infraestructura-InsForge-brightgreen.svg)](https://insforge.app)
 
-Multiversa.Lab es la capa de código fuente abierta de Multiversa. Publica **Multiversa CLI** y **Cerebro**, una arquitectura que conecta memoria, conocimiento, infraestructura y workers sin encerrar a nadie en una plataforma. Cada proyecto conserva un Project OS auditable: identidad, fuentes, grafo, proveedores y secretos aislados.
+Multiversa.Lab es la capa de código fuente abierta de Multiversa. Publica **Multiversa CLI** y **Cerebro**, una arquitectura que conecta memoria, conocimiento, infraestructura y procesos de trabajo sin encerrar a nadie en una plataforma. Cada proyecto conserva un **Sistema Operativo de Proyecto** auditable —identificado como `Project OS` en los contratos técnicos— con identidad, fuentes, grafo, proveedores y secretos aislados.
 
 El Lab puede usarse y extenderse sin costo de licencia. **Multiversa.Group** es el ámbito privado de su creador; no es una oferta pública del Lab y nunca recibe datos, credenciales ni perfiles de quienes usan el código abierto.
 
@@ -43,9 +43,9 @@ Multiversa Lab se organiza en seis capas arquitectónicas, desde memoria persist
 3. **[GentleAI](./docs/gentle.md):** disciplina de desarrollo guiado por especificación.
 4. **[GentlePI](./docs/gentle.md):** configuración de agente con tono, estilo y reglas.
 5. **[MiroFish](./docs/mirofish.md):** simulación de escenarios basada en OASIS y Neo4j.
-6. **[InsForge](./docs/insforge.md):** backend en la nube opcional para datos, almacenamiento y pasarelas de modelos.
+6. **[InsForge](./docs/insforge.md):** servicio en la nube opcional para datos, almacenamiento y pasarelas de modelos.
 
-Estos pilares son proyectos de origen curados. **Multiversa CLI** instala y configura el entorno local; **Cerebro** define cómo el Lab puede conectar un backend InsForge y un Worker de Cloudflare sin volverlos obligatorios. Engram conserva memoria de construcción y Graphify ancla cada Project OS a su propio corpus. Secretos y contexto de clientes permanecen aislados por tenant. Si falta un modelo o la red, la operación local sigue siendo útil.
+Estos pilares son proyectos de origen curados. **Multiversa CLI** instala y configura el entorno local; **Cerebro** define cómo el Lab puede conectar un servicio de datos InsForge y una función de Cloudflare sin volverlos obligatorios. Engram conserva memoria de construcción y Graphify ancla cada Sistema Operativo de Proyecto a su propio corpus. Los secretos y el contexto permanecen aislados por perfil. Si falta un modelo o la red, la operación local sigue siendo útil.
 
 ## Empezar
 
@@ -94,7 +94,7 @@ multiversa detect      # revisión de solo lectura del equipo
 multiversa stack       # herramientas de construcción: Go/Rust/Python/Node/pnpm
 multiversa init        # asistente de motores: Engram, Graphify, Gentle, …
 multiversa workspace   # configuración privada: SSH/GPG/repositorios/bóveda
-multiversa tenant new|list|show|use   # perfiles aislados por tenant
+multiversa tenant new|list|show|use   # perfiles aislados por espacio
 multiversa updates     # revisa lanzamientos del conjunto curado
 multiversa mcp serve   # superficies de solo lectura por MCP sobre stdio
 multiversa credits     # atribución de origen

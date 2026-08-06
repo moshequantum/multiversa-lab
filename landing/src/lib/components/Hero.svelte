@@ -1,5 +1,6 @@
 <script lang="ts">
   // Hero — canonical public copy for Multiversa.Lab.
+  import AmbientSound from './AmbientSound.svelte';
 </script>
 
 <section class="hero">
@@ -15,7 +16,7 @@
     </h1>
 
     <p class="lead">
-      Herramientas abiertas para configurar sistemas agentic reproducibles:
+      Herramientas abiertas para configurar sistemas de agentes reproducibles:
       <strong>Multiversa CLI, Cerebro y contexto bajo control humano.</strong>
     </p>
 
@@ -29,6 +30,8 @@
         Leer el manifiesto ↓
       </a>
     </div>
+
+    <AmbientSound initialVolume={6} />
 
     <div class="chips">
       <span class="mv-label-muted">Engram</span>

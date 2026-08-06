@@ -3,7 +3,7 @@
 `gentle-ai` y `gentle-pi` son proyectos de origen distintos. Multiversa los integra sin redefinirlos:
 
 - `gentle-ai` admite configuración `custom`; allí puede aplicarse un contrato de identidad de Multiversa.
-- `gentle-pi` es un arnés SDD para el agente Pi. No descubre identidad humana ni decide por sí solo cómo debe hablar un Project OS.
+- `gentle-pi` es un arnés SDD para el agente Pi. No descubre identidad humana ni decide por sí solo cómo debe hablar un Sistema Operativo de Proyecto.
 - `VoiceProfile v1`, publicado en `multiversa-sdk`, es el contrato de Multiversa para idioma BCP-47, tuteo/voseo/usted, regionalidad, léxico, tono, objetivos y foco actual.
 
 El perfil se confirma con la persona. No se infieren voseo, identidad regional ni atributos sensibles.

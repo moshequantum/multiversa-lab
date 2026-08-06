@@ -36,7 +36,7 @@ la AGPL exige publicar el código fuente correspondiente.
 - El **Group** puede mencionar MiroFish, pero no integra su código en un producto cerrado.
 - Si en el futuro Group quiere incrustar MiroFish, abrirá esa porción de código para cumplir con AGPL.
 
-Esto respeta tanto la licencia upstream como nuestro propio principio
+Esto respeta tanto la licencia del proyecto original como nuestro propio principio
 *"Apertura sobre opacidad."*
 
 ---
@@ -45,17 +45,17 @@ Esto respeta tanto la licencia upstream como nuestro propio principio
 
 **De Multiversa Lab (nuestro):**
 
-- El **Multiversa CLI** ([`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli)) — orquestador en Go + asistente TUI
+- El **Multiversa CLI** ([`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli)) — orquestador en Go + asistente de terminal
 - El conector, la capa de orquestación y el sistema de diseño **Liquid Glass Pro + Onion UI**
-- La narrativa de marca, el DNA Brand book, la voz
-- Los manifestos, principios, decisiones arquitectónicas
+- La narrativa, el manual de ADN de marca y la voz
+- Los manifiestos, principios y decisiones arquitectónicas
 - Los esquemas de integración entre pilares, el instalador y las plantillas
-- La landing pública en `lab.multiversa.group`
+- El sitio público en `lab.multiversa.group`
 - Sus propios contenedores `~/.multiversa/{engram_db,graphify_context,gentle_personas}/` con configuración local
 
-**De los autores upstream (no nuestro):**
+**De los autores originales (no nuestro):**
 
-- El código del runtime de Engram (Alan Buscaglia)
+- El código del motor de ejecución de Engram (Alan Buscaglia)
 - El motor de Gentle AI y Gentle PI (Alan Buscaglia)
 - El indexador de contenido a grafo de Graphify (Safi)
 - El indexador semántico de código de codegraph (Colby McHenry)
@@ -68,7 +68,7 @@ Esto respeta tanto la licencia upstream como nuestro propio principio
 Si vas a mejorar uno de estos pilares, abre una contribución **en el repositorio original**.
 Multiversa Lab no es una bifurcación ni un control de proveedor: somos usuarios
 agradecidos que documentan. La forma más útil de retribuir es contribuir
-al upstream directamente.
+al proyecto de origen directamente.
 
 ---
 

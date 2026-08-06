@@ -24,7 +24,7 @@
       name: 'Engram',
       nameEn: 'Contexto con memoria',
       summary: 'Memoria de construcción recuperable entre modelos y sesiones.',
-      detail: 'Guarda decisiones y hallazgos para que agentes compatibles partan del contexto correcto. Cada Project OS conserva sus límites y sus secretos.',
+      detail: 'Guarda decisiones y hallazgos para que agentes compatibles partan del contexto correcto. Cada Sistema Operativo de Proyecto conserva sus límites y sus secretos.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/engram.md'
     },
@@ -82,9 +82,9 @@
       code: 'CAPA 06',
       layer: 'INFRAESTRUCTURA',
       name: 'InsForge',
-      nameEn: 'Infraestructura BaaS',
+      nameEn: 'Infraestructura como servicio',
       summary: 'Infraestructura opcional para el Cerebro del Lab.',
-      detail: 'InsForge y un Cloudflare Worker pueden conectar datos, automatizaciones y superficies públicas sin sustituir la operación local ni absorber secretos de tenants.',
+      detail: 'InsForge y una función de Cloudflare pueden conectar datos, automatizaciones y superficies públicas sin sustituir la operación local ni absorber secretos de otros perfiles.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/insforge.md'
     }

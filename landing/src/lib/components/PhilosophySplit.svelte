@@ -39,7 +39,7 @@
           <li>Código abierto · MIT</li>
           <li>CLI, Cerebro, habilidades, MCP y complementos configurables</li>
           <li>Documentación abierta. Roto se arregla, no se esconde.</li>
-          <li>Contexto y secretos aislados por Project OS.</li>
+          <li>Contexto y secretos aislados por Sistema Operativo de Proyecto.</li>
         </ul>
       </article>
 

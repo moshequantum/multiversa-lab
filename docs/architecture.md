@@ -10,9 +10,9 @@ Multiversa es un conjunto curado y agnóstico al agente. **Multiversa.Lab** publ
 
 1. **SvelteKit Lab** — sitio público, documentación, notas de lanzamiento y lenguaje visual.
 2. **Multiversa CLI / instalador visual Tauri** — instaladores y orquestadores locales que configuran el conjunto curado en el entorno de quien opera.
-3. **Cerebro** — frontera de integración que puede combinar memoria Engram y conocimiento Graphify por tenant con servicios opcionales de InsForge y Cloudflare Worker; nunca transforma un tenant privado en un cerebro público compartido.
+3. **Cerebro** — frontera de integración que puede combinar memoria Engram y conocimiento Graphify por perfil con servicios opcionales de InsForge y Cloudflare; nunca transforma un perfil privado en un cerebro público compartido.
 4. **Motores curados** — Engram, Graphify, `gentle-ai`, gentle-pi, codegraph y MiroFish opcional, siempre externo.
-5. **Backend opcional** — local primero por defecto; los backends remotos son adaptadores, no el núcleo.
+5. **Servicio de datos opcional** — local primero por defecto; los servicios remotos son adaptadores, no el núcleo.
 
 ## Fronteras
 

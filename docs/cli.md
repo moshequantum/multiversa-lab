@@ -4,11 +4,11 @@ El binario `multiversa` ejecuta todas las rutas de instalación de este reposito
 
 Fuente: [`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli) · MIT · Go + Cobra + Bubble Tea/Lipgloss.
 
-La distribución pública se llama **Multiversa CLI**; `multiversa` es el comando. La v0.8.0 incorpora inicio de Project OS, corpus con procedencia, Graphify validado y proveedores configurables con respaldo (Gemini → Mistral → Groq), sin exponer claves.
+La distribución pública se llama **Multiversa CLI**; `multiversa` es el comando. La v0.8.0 incorpora inicio de Sistema Operativo de Proyecto (`Project OS` en el contrato técnico), corpus con procedencia, Graphify validado y proveedores configurables con respaldo (Gemini → Mistral → Groq), sin exponer claves.
 
 ## Por qué existen tres piezas
 
-- **Instalador visual Tauri (`multiversa-installer`)**: aplicación de escritorio gráfica creada con Tauri (Rust + HTML/CSS/JS). Revisa requisitos del equipo, escribe configuraciones de ADN por tenant y configura el espacio de trabajo de forma guiada.
+- **Instalador visual Tauri (`multiversa-installer`)**: aplicación de escritorio gráfica creada con Tauri (Rust + HTML/CSS/JS). Revisa requisitos del equipo, escribe configuraciones de ADN por perfil y configura el espacio de trabajo de forma guiada.
 - **Instalador del Lab (`multiversa-installer.sh`)**: vive en este repositorio. Es el punto de entrada consultivo para conocer Multiversa por primera vez: presenta el contexto, hace preguntas de perfil, prepara `~/.multiversa/` y entrega el control a la CLI. Puedes leerlo completo en el navegador antes de ejecutarlo.
 - **CLI `multiversa`**: vive en el repositorio hermano. Es un binario único, sin dependencias de ejecución; incluye lo necesario para correr sus subcomandos sin conexión después de una descarga.
 
@@ -63,7 +63,7 @@ La CLI no reclama autoría de los motores que orquesta. Cada instalación imprim
 1. **Solo pnpm.** La CLI no instala ni recomienda `npm`. Si detecta `npm`, `multiversa detect` lo reporta y `multiversa stack` no lo propone.
 2. **Puerta AGPL.** MiroFish usa AGPL-3.0. La CLI requiere consentimiento explícito antes de instalarlo y nunca integra ni vende su fuente.
 3. **Sin operaciones destructivas silenciosas.** `multiversa usb` exige escribir dos veces la ruta del dispositivo antes de llamar a `dd` o `cryptsetup luksFormat`.
-4. **Sin datos de clientes en el Lab.** La CLI es MIT y vive en el repositorio público. Nombres de tenants, credenciales y contratos permanecen privados y no aparecen en la salida de la CLI.
+4. **Sin datos de clientes en el Lab.** La CLI es MIT y vive en el repositorio público. Nombres de perfiles, credenciales y contratos permanecen privados y no aparecen en la salida de la CLI.
 
 ## Lanzamientos
 

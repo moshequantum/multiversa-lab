@@ -8,7 +8,7 @@ Al cerrar una conversación, un asistente puede perder el motivo de una decisió
 
 ## Construcción con varios modelos y límites claros
 
-Engram permite recuperar decisiones, convenciones y hallazgos en vez de reiniciar el razonamiento en cada sesión. No comparte secretos ni mezcla Project OS: cada tenant mantiene su corpus, bóveda y permisos. La integración se configura por agente; nunca se presupone para complementos de terceros.
+Engram permite recuperar decisiones, convenciones y hallazgos en vez de reiniciar el razonamiento en cada sesión. No comparte secretos ni mezcla Sistemas Operativos de Proyecto: cada perfil mantiene su corpus, bóveda y permisos. La integración se configura por agente; nunca se presupone para complementos de terceros.
 
 ## SQLite + FTS5
 
@@ -52,4 +52,4 @@ Si Engram está instalado, tus agentes de construcción pueden usar:
 brew install gentleman-programming/tap/engram
 ```
 
-Para SvelteKit, un backend opcional puede vincular la tabla relacional `l2_semantic_memory` de InsForge para sincronización entre dispositivos.
+Para SvelteKit, un servicio de datos opcional puede vincular la tabla relacional `l2_semantic_memory` de InsForge para sincronización entre dispositivos.

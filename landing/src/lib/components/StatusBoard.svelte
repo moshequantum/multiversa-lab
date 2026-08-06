@@ -7,8 +7,8 @@
       title: 'Lo que ya existe.',
       items: [
         'Multiversa CLI v0.8.0',
-        'Bootstrap de Project OS y corpus con procedencia',
-        'Pilares upstream con atribución',
+        'Inicio del Sistema Operativo de Proyecto y corpus con procedencia',
+        'Pilares de origen con atribución',
         'Principios de orquestación humana',
         'MCP de lectura y documentación abierta',
         'Instalador shell verificable'
@@ -19,12 +19,12 @@
       label: '◐ EN OBRA',
       title: 'Donde estamos cavando.',
       items: [
-        'Cerebro: contrato InsForge + Cloudflare Worker',
-        'Contexto por tenant para Engram y Graphify',
-        'VoiceProfile: idioma, trato y límites confirmados',
-        'Lab Companion: instalación PWA y emparejamiento',
+        'Cerebro: contrato entre InsForge y Cloudflare Worker',
+        'Contexto por perfil para Engram y Graphify',
+        'Perfil de voz: idioma, trato y límites confirmados',
+        'Acompañante del Lab: instalación PWA y emparejamiento',
         'Adaptadores para más agentes',
-        'Integraciones configurables de skills y plugins',
+        'Integraciones configurables de capacidades y extensiones',
         'Revisión de lanzamientos de origen por pilar',
         'Documentación abierta'
       ]
@@ -34,12 +34,12 @@
       label: '○ VISIÓN',
       title: 'A dónde apunta el arco.',
       items: [
-        'MiroFish: simulación externa y opt-in',
-        'Packs de integración curados',
-        'Recipes portables por Project OS',
-        'Memoria portable entre modelos compatibles',
+        'MiroFish: simulación externa y activación voluntaria',
+        'Paquetes de integración curados',
+        'Recetas transferibles por Sistema Operativo de Proyecto',
+        'Memoria transferible entre modelos compatibles',
         'Panel público del laboratorio',
-        'Programa de contribuidores'
+        'Programa de contribuciones'
       ]
     }
   ];

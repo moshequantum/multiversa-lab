@@ -109,10 +109,10 @@
     }
   ],
   "boundaries": [
-    "Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de tenants.",
+    "Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de perfiles.",
     "La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.",
     "Telegram es un canal opcional; nunca es memoria ni fuente de verdad.",
-    "Los motores upstream conservan su autoría y licencia.",
+    "Los motores de origen conservan su autoría y licencia.",
     "VoiceProfile requiere confirmación humana y no infiere atributos sensibles."
   ],
   "agent_policy": {

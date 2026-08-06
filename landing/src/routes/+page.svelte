@@ -28,7 +28,7 @@
   <title>Multiversa Lab · El código abierto de Multiversa</title>
   <meta
     name="description"
-    content="Multiversa Lab publica Multiversa CLI y Cerebro: código abierto para configurar Project OS con memoria, conocimiento y proveedores aislados."
+    content="Multiversa Lab publica Multiversa CLI y Cerebro: código abierto para configurar Sistemas Operativos de Proyecto con memoria, conocimiento y proveedores aislados."
   />
 </svelte:head>
 

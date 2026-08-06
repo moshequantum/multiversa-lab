@@ -1,16 +1,16 @@
-# Multiversa Lab — Infraestructura: backend InsForge
+# Multiversa Lab — Infraestructura: servicio de datos InsForge
 
-**InsForge** es un adaptador opcional de Backend as a Service (BaaS) para Multiversa.Lab. Puede ofrecer base de datos, autenticación, almacenamiento, funciones de borde y pasarelas de modelos de IA sin ser un requisito para operar localmente.
+**InsForge** es un adaptador opcional de infraestructura como servicio (BaaS, por su sigla técnica) para Multiversa.Lab. Puede ofrecer base de datos, autenticación, almacenamiento, funciones de borde y pasarelas de modelos de IA sin ser un requisito para operar localmente.
 
 ## Cerebro + Worker
 
-Cerebro es la frontera de integración del Lab: puede usar InsForge para datos, autenticación, almacenamiento o IA, y un Worker de Cloudflare para tareas públicas y efímeras. Ambos son opcionales y se configuran por entorno. El Worker no recibe bóvedas ni secretos de tenants; Cerebro coordina contratos, no centraliza contexto privado.
+Cerebro es la frontera de integración del Lab: puede usar InsForge para datos, autenticación, almacenamiento o IA, y un Worker de Cloudflare para tareas públicas y efímeras. Ambos son opcionales y se configuran por entorno. El Worker no recibe bóvedas ni secretos de los perfiles; Cerebro coordina contratos, no centraliza contexto privado.
 
 ## Frontera de datos
 
-Este repositorio público no documenta identificadores de proyectos, URL privadas, credenciales ni esquemas de tenants. Las capacidades se diseñan por contrato: permisos mínimos para superficies públicas, memoria remota solo mediante consentimiento y aislamiento por tenant, auditoría sin secretos y almacenamiento separado de metadatos y políticas.
+Este repositorio público no documenta identificadores de proyectos, URL privadas, credenciales ni esquemas de perfiles. Las capacidades se diseñan por contrato: permisos mínimos para superficies públicas, memoria remota solo mediante consentimiento y aislamiento por perfil, auditoría sin secretos y almacenamiento separado de metadatos y políticas.
 
-El sitio SvelteKit puede usar un proyecto InsForge configurado por separado para integraciones públicas heredadas. Una instancia de Project OS puede usar su propio backend para sincronizar, pero el Lab no prescribe ni publica un proyecto de producción compartido:
+El sitio SvelteKit puede usar un proyecto InsForge configurado por separado para integraciones públicas heredadas. Una instancia del Sistema Operativo de Proyecto puede usar su propio servicio de datos para sincronizar, pero el Lab no prescribe ni publica un proyecto de producción compartido:
 
 ```text
 [Sitio SvelteKit] ──(SDK InsForge)──> [InsForge BaaS] ──> [PostgreSQL / almacenamiento / autenticación]
@@ -20,7 +20,7 @@ El sitio SvelteKit puede usar un proyecto InsForge configurado por separado para
 
 Una implementación puede definir esquemas como:
 
-1. `lab_waitlist`: registro heredado para formularios públicos que todavía lo requieran; la landing actual no lo expone.
+1. `lab_waitlist`: registro heredado para formularios públicos que todavía lo requieran; el sitio actual no lo expone.
 2. `identity_nodes` e `identity_edges`: índices Graphify en la nube.
 3. `identity_decisions`: métricas de decisión para simulaciones MiroFish.
 4. `l2_semantic_memory`: sincronización opcional de memorias Engram entre dispositivos.
