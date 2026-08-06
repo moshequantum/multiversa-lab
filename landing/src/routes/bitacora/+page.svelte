@@ -1,24 +1,18 @@
 <script lang="ts">
 	import Nav from '$lib/components/Nav.svelte';
 	import FooterSignature from '$lib/components/FooterSignature.svelte';
-	import { entries, dayNumber, tagLabel } from '$lib/bitacora';
+	import { entries, tagLabel } from '$lib/bitacora';
 
 	// Más reciente primero; a igual fecha, respeta el orden del arreglo.
 	const feed = [...entries].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
-	const fmt = (iso: string) =>
-		new Date(iso + 'T00:00:00').toLocaleDateString('es', {
-			day: 'numeric',
-			month: 'long',
-			year: 'numeric'
-		});
 </script>
 
 <svelte:head>
 	<title>Bitácora · Multiversa Lab en público</title>
 	<meta
 		name="description"
-		content="El registro público de Multiversa Lab: CLI, Cerebro, decisiones técnicas y aprendizajes. Sin datos privados ni maquillaje."
+		content="El registro público de Multiversa Lab: CLI, Cerebro, decisiones técnicas y aprendizajes. Con límites claros para los datos privados."
 	/>
 </svelte:head>
 
@@ -32,12 +26,13 @@
 				<span class="mv-label-muted">en vivo</span>
 			</div>
 			<h1 class="mv-two-beat">
-				Un laboratorio que
-				<em>construye contexto recuperable.</em>
+				Un sistema que se explica
+				<em>sin exponer lo que debe quedar privado.</em>
 			</h1>
 			<p class="lead">
-				Este es el registro, sin maquillaje, de lo que construimos en el Lab: CLI, Cerebro,
-				decisiones técnicas y aprendizajes. Sin datos privados. Lo roto se arregla, no se esconde.
+				Multiversa real lleva tres meses en construcción y ya es funcional. Lo previo es legado:
+				sirve para entender el origen, no para vender una versión incompleta. Esta serie reúne origen,
+				trayectoria y hoja de ruta pública con límites explícitos de privacidad.
 			</p>
 		</div>
 	</section>
@@ -45,7 +40,7 @@
 	<section class="feed">
 		<div class="site">
 			{#if feed.length === 0}
-				<p class="empty">Aún no hay entradas. El día 1 llega pronto.</p>
+				<p class="empty">Las próximas entradas se publicarán cuando tengan evidencia y contexto suficiente.</p>
 			{:else}
 				<ol class="timeline">
 					{#each feed as e (e.slug)}
@@ -53,9 +48,7 @@
 							<div class="marker" aria-hidden="true"></div>
 							<article class="mv-card body">
 								<header class="head">
-									<span class="day">Día {dayNumber(e.date)}</span>
-									<span class="sep" aria-hidden="true">·</span>
-									<time datetime={e.date}>{fmt(e.date)}</time>
+									<span class="day">{e.series}</span>
 									<span class="tag tag-{e.tag}">{tagLabel(e.tag)}</span>
 								</header>
 
@@ -179,7 +172,6 @@
 	}
 	.day { color: var(--mv-primary); }
 	.sep { color: rgba(250, 252, 232, 0.25); }
-	.head time { color: rgba(250, 252, 232, 0.5); }
 	.tag {
 		margin-left: auto;
 		padding: 3px 10px;

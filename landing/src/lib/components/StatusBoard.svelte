@@ -25,7 +25,7 @@
         'Lab Companion: instalación PWA y emparejamiento',
         'Adaptadores para más agentes',
         'Integraciones configurables de skills y plugins',
-        'Chequeos de releases upstream por pilar',
+        'Revisión de lanzamientos de origen por pilar',
         'Documentación abierta'
       ]
     },
@@ -50,12 +50,12 @@
 
     <div class="mv-chrome-top">
       <span class="mv-label">Cap IV · Estado público</span>
-      <span class="mv-label-muted">04 / 05 · sin maquillaje</span>
+      <span class="mv-label-muted">04 / 05 · estado verificable</span>
     </div>
 
     <h2 class="mv-two-beat">
       Dónde estamos,
-      <em>sin maquillaje.</em>
+      <em>con claridad.</em>
     </h2>
 
     <p class="lead">
@@ -116,7 +116,8 @@
   }
   @media (min-width: 900px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 
-  .column { display: flex; flex-direction: column; gap: 16px; }
+  .column { display: flex; flex-direction: column; gap: 16px; height: 100%; }
+  .column ul { flex: 1; }
 
   .column-ready   { border-color: rgba(189, 235, 52, 0.18); background: rgba(189, 235, 52, 0.025); }
   .column-wip     { border-color: rgba(255, 159, 90, 0.16); background: rgba(255, 159, 90, 0.02); }

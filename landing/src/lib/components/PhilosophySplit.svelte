@@ -32,12 +32,12 @@
           Multiversa <em>Lab.</em>
         </h3>
         <p class="body-lead">
-          El laboratorio open-source. Aquí viven Multiversa CLI, Cerebro,
-          documentación y packs de integración que cualquiera puede auditar.
+          El laboratorio de código abierto. Aquí viven Multiversa CLI, Cerebro,
+          documentación y paquetes de integración que puedes auditar.
         </p>
         <ul class="bullets">
-          <li>Open source · MIT</li>
-          <li>CLI, Cerebro, skills, MCPs y plugins configurables</li>
+          <li>Código abierto · MIT</li>
+          <li>CLI, Cerebro, habilidades, MCP y complementos configurables</li>
           <li>Documentación abierta. Roto se arregla, no se esconde.</li>
           <li>Contexto y secretos aislados por Project OS.</li>
         </ul>
@@ -98,7 +98,7 @@
   }
   @media (min-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
 
-  .body { display: flex; flex-direction: column; gap: 18px; padding: 40px; }
+  .body { display: flex; flex-direction: column; gap: 18px; height: 100%; padding: clamp(28px, 4vw, 40px); }
 
   .body.lab    { border-color: rgba(189, 235, 52, 0.22); background: rgba(189, 235, 52, 0.02); }
   .body.group  { opacity: 0.78; }
@@ -137,6 +137,7 @@
     display: flex; flex-direction: column; gap: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding-top: 18px;
+    margin-top: auto;
   }
   .bullets li {
     display: flex; align-items: baseline; gap: 12px;

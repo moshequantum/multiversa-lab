@@ -6,8 +6,8 @@ Multiversa Lab cura y conecta motores abiertos; no reclama su autoría. La IA pr
 
 ## Superficies
 
-- [Landing y PWA Companion](https://lab.multiversa.group/): Superficie pública instalable para descubrir el ecosistema y, progresivamente, revisar memoria, misiones y aprobaciones. Estado: phase-1-public.
-- [Repositorio Lab](https://github.com/moshequantum/multiversa-lab): Documentación pública, landing, bootstrap e integración del laboratorio. Estado: public.
+- [Sitio y acompañante PWA](https://lab.multiversa.group/): Superficie pública instalable para descubrir el ecosistema y, progresivamente, revisar memoria, misiones y aprobaciones. Estado: phase-1-public.
+- [Repositorio Lab](https://github.com/moshequantum/multiversa-lab): Documentación pública, sitio, inicio e integración del laboratorio. Estado: public.
 - [Multiversa CLI](https://github.com/moshequantum/multiversa-cli): Orquestador local y MCP de sólo lectura para instalar, detectar y conectar el stack curado. Estado: release-candidate.
 - [Multiversa Installer](https://github.com/moshequantum/multiversa-installer): Instalador gráfico multiplataforma que delega operaciones en el CLI. Estado: release-candidate.
 - [Multiversa SDK](https://github.com/moshequantum/multiversa-sdk): Contratos públicos versionados, incluidos CLI Envelope, perfiles, misiones y VoiceProfile. Estado: release-candidate.
@@ -17,7 +17,7 @@ Multiversa Lab cura y conecta motores abiertos; no reclama su autoría. La IA pr
 - [Engram](https://github.com/Gentleman-Programming/engram): Memoria persistente local y MCP. Licencia upstream: MIT.
 - [Graphify](https://github.com/safishamsi/graphify): Transformación de contenido en grafo de conocimiento. Licencia upstream: MIT.
 - [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): Configuración de ecosistemas agénticos; Multiversa usa su modo custom. Licencia upstream: MIT.
-- [gentle-pi](https://github.com/Gentleman-Programming/gentle-pi): Harness SDD para Pi; no es el perfilador humano de Multiversa. Licencia upstream: MIT.
+- [gentle-pi](https://github.com/Gentleman-Programming/gentle-pi): Arnés SDD para Pi; no perfila a las personas de Multiversa. Licencia upstream: MIT.
 - [codegraph](https://github.com/colbymchenry/codegraph): Grafo semántico de código. Licencia upstream: MIT.
 - [MiroFish](https://github.com/666ghj/MiroFish): Simulación multiagente opcional, siempre como servicio/binario externo. Licencia upstream: AGPL-3.0.
 
@@ -66,7 +66,7 @@ Multiversa Lab cura y conecta motores abiertos; no reclama su autoría. La IA pr
   },
   "surfaces": [
     {
-      "name": "Landing y PWA Companion",
+      "name": "Sitio y acompañante PWA",
       "url": "https://lab.multiversa.group/",
       "description": "Superficie pública instalable para descubrir el ecosistema y, progresivamente, revisar memoria, misiones y aprobaciones.",
       "status": "phase-1-public",
@@ -75,7 +75,7 @@ Multiversa Lab cura y conecta motores abiertos; no reclama su autoría. La IA pr
     {
       "name": "Repositorio Lab",
       "url": "https://github.com/moshequantum/multiversa-lab",
-      "description": "Documentación pública, landing, bootstrap e integración del laboratorio.",
+      "description": "Documentación pública, sitio, inicio e integración del laboratorio.",
       "status": "public"
     },
     {
@@ -118,7 +118,7 @@ Multiversa Lab cura y conecta motores abiertos; no reclama su autoría. La IA pr
     },
     {
       "name": "gentle-pi",
-      "role": "Harness SDD para Pi; no es el perfilador humano de Multiversa",
+      "role": "Arnés SDD para Pi; no perfila a las personas de Multiversa",
       "upstream": "https://github.com/Gentleman-Programming/gentle-pi",
       "license": "MIT"
     },

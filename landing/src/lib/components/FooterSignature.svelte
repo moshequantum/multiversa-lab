@@ -10,7 +10,7 @@
     <BrandLockup size="footer" />
 
     <p class="line">
-      <em>Diseñado y construido por Moisés Vera. Abierto a los curiosos.</em>
+      <em>Diseñado y construido por Moisés Vera. Abierto a entusiastas, curiosos y técnicos.</em>
     </p>
 
     <div class="rule"></div>
@@ -18,16 +18,16 @@
     <div class="links">
       <a href="https://github.com/moshequantum/multiversa-lab" target="_blank" rel="noopener">GitHub</a>
       <span class="sep">·</span>
-      <a href="https://github.com/moshequantum/multiversa-lab/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      <a href="https://github.com/moshequantum/multiversa-lab/blob/main/LICENSE" target="_blank" rel="noopener">Licencia MIT</a>
       <span class="sep">·</span>
-      <a href="https://github.com/moshequantum/multiversa-lab/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">Code of Conduct</a>
+      <a href="https://github.com/moshequantum/multiversa-lab/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">Código de conducta</a>
       <span class="sep">·</span>
       <a href="mailto:hola@multiversa.group">hola@multiversa.group</a>
     </div>
 
     <div class="meta">
       <span class="mv-label-muted">© 2026 Multiversa Lab</span>
-      <span class="mv-label-muted">Open source · MIT</span>
+      <span class="mv-label-muted">Código abierto · MIT</span>
       <span class="mv-label-muted">lab.multiversa.group</span>
     </div>
 

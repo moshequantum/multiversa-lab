@@ -1,33 +1,22 @@
-// Bitácora — Construir en público.
-// Cada entrada es una nota corta y fechada del proceso de construir Multiversa.
-// Regla HILPS: nada se publica solo. Dispatch redacta borradores → Moshe aprueba
-// desde el celular ("dale B1") → la entrada se agrega aquí y el sitio se reconstruye.
-// El campo `video` es progresivo: se pega el embed cuando la toma exista.
+// Bitácora — una serie editorial con evidencia, no un contador artificial.
+// Cada entrada puede usar una fecha de publicación real, pero la interfaz no finge
+// que la historia del producto comenzó ese día. Nunca se publican datos privados.
 
 export type BitacoraTag = 'reflexión' | 'sistema' | 'producto' | 'construir';
 
 export interface BitacoraEntry {
 	slug: string;
-	/** Fecha real de la entrada, ISO YYYY-MM-DD. Nunca inventar. */
+	/** Fecha real de publicación cuando exista. No se usa para afirmar el inicio del producto. */
 	date: string;
+	series: string;
 	title: string;
-	/** Párrafos cortos. Texto plano, sin relleno. */
+	/** Párrafos cortos, verificables y sin datos de terceros. */
 	body: string[];
 	tag: BitacoraTag;
-	/** URL de embed (YouTube/Vimeo). Opcional — cuando haya video. */
+	/** URL de video (YouTube/Vimeo). Opcional, solo después de aprobar la toma. */
 	video?: string;
-	/** Prueba en vivo: un sistema, una release, un caso. Opcional. */
+	/** Evidencia pública: sistema, lanzamiento o documento. Opcional. */
 	link?: { label: string; href: string };
-}
-
-// Ancla del "Día N": primer día público del build-in-public.
-// Moshe: si tu día 1 real es otro, cambia solo esta fecha.
-export const START_DATE = '2026-07-23';
-
-/** Día N relativo al START_DATE. Día 1 = START_DATE. */
-export function dayNumber(date: string, start: string = START_DATE): number {
-	const ms = Date.parse(date) - Date.parse(start);
-	return Math.floor(ms / 86_400_000) + 1;
 }
 
 const TAG_LABEL: Record<BitacoraTag, string> = {
@@ -41,51 +30,55 @@ export function tagLabel(tag: BitacoraTag): string {
 	return TAG_LABEL[tag];
 }
 
-// Orden canónico: más reciente primero. (Se ordena en render por fecha.)
+// Orden editorial: la bitácora comienza por el marco que hace verificable lo que sigue.
 export const entries: BitacoraEntry[] = [
 	{
-		slug: 'no-tienes-que-aprender-a-programar',
+		slug: 'tres-meses-para-volverlo-funcional',
 		date: '2026-07-23',
-		title: 'No tienes que aprender a programar',
+		series: 'Serie 01 · estado real',
+		title: 'Tres meses para volverlo funcional',
+		tag: 'construir',
+		body: [
+			'Multiversa real lleva tres meses de construcción. Lo anterior es legado: aporta antecedentes, pero no se presenta como la versión funcional que existe hoy.',
+			'El Lab ya puede revisarse: instala, documenta y explica sus límites. Lo que aún está en obra se nombra como tal, sin adelantar capacidades ni prometer resultados.',
+			'La regla para esta bitácora es simple: cada avance necesita contexto, evidencia pública y una decisión humana detrás.'
+		]
+	},
+	{
+		slug: 'el-origen-sin-la-leyenda',
+		date: '2026-07-23',
+		series: 'Serie 02 · origen',
+		title: 'El origen, sin convertirlo en leyenda',
 		tag: 'reflexión',
 		body: [
-			'Construyo en público y comparto el proceso: lo que pruebo, lo que rompo y lo que aprendo. Las decisiones privadas, los datos y las credenciales no salen del Lab. La IA propone; las personas deciden.',
-			'El Lab no vende promesas ni expone operaciones ajenas. Publica el código, la documentación y los aprendizajes que permiten revisar cómo se construye Multiversa.',
-			'Quien use el proyecto conserva su criterio, su contexto y sus secretos.'
+			'Construir en público no significa convertir cada detalle en contenido. Significa mostrar el criterio: qué problema se intenta resolver, qué se prueba y qué se decide conservar.',
+			'La trayectoria aparece con sus decisiones útiles para quien construye. Los datos personales, acuerdos y operaciones de terceros permanecen fuera del Lab.',
+			'La IA propone; las personas deciden. Esa relación no es una consigna: es un límite de diseño.'
 		]
 	},
 	{
-		slug: 'por-que-en-publico',
+		slug: 'hoja-de-ruta-publica-limites-claros',
 		date: '2026-07-23',
-		title: 'Por qué construyo esto en público',
-		tag: 'reflexión',
-		body: [
-			'El problema no es solo usar IA: es perder las decisiones y el contexto que ya costó construir.',
-			'Multiversa Lab construye una CLI y un Cerebro que preservan contexto, proponen rutas y mantienen a la persona al mando.',
-			'Lo hacemos a la vista de todos porque una herramienta que pide confianza debe dejar ver cómo se construye.'
-		]
-	},
-	{
-		slug: 'dos-project-os-en-configuracion',
-		date: '2026-07-23',
-		title: 'Dos Project OS, una misma regla',
-		tag: 'sistema',
-		body: [
-			'Dos contextos distintos sirven para probar la misma regla: el sistema debe recordar sin convertir a la persona en una espectadora.',
-			'La CLI separa el perfil global, el manifiesto del tenant y su vault. El contexto ayuda a construir; los secretos no se comparten.',
-			'Lo publicable es el aprendizaje técnico. Cada proyecto y sus decisiones siguen bajo el control de quien los opera.'
-		]
-	},
-	{
-		slug: 'el-motor-es-abierto',
-		date: '2026-07-23',
-		title: 'El motor es abierto',
+		series: 'Serie 03 · hoja de ruta',
+		title: 'Una hoja de ruta pública con límites claros',
 		tag: 'producto',
 		body: [
-			'El código público nace en este laboratorio: CLI, documentación, pruebas y futuras integraciones curadas. Se piensa, se prueba y se libera acá.',
-			'La regla es simple: lo roto se arregla, no se esconde. Las dependencias se consultan con sus releases y la configuración queda explícita.',
-			'El Lab es una base abierta para que cada Project OS pueda seguir funcionando con decisiones trazables.'
+			'La hoja de ruta muestra dirección, no una promesa cerrada. Publicamos lo que cambia para que puedas entender prioridades, dependencias y estado de cada capa.',
+			'No se publican secretos, configuraciones de clientes ni decisiones que expongan a otra persona. La transparencia tiene que ser responsable para ser útil.',
+			'La documentación, el código y las pruebas visibles son la referencia; el discurso nunca reemplaza la evidencia.'
 		],
-		link: { label: 'GitHub ↗', href: 'https://github.com/moshequantum/multiversa-lab' }
+		link: { label: 'Ver el repositorio ↗', href: 'https://github.com/moshequantum/multiversa-lab' }
+	},
+	{
+		slug: 'el-lab-como-prueba',
+		date: '2026-07-23',
+		series: 'Serie 04 · construcción',
+		title: 'El Lab como prueba, no como promesa',
+		tag: 'sistema',
+		body: [
+			'El código público vive aquí: Multiversa CLI, documentación, pruebas e integraciones curadas. Se diseña, se revisa y se libera con atribución a sus proyectos de origen.',
+			'Cuando algo no funciona, se corrige y se documenta. Cuando aún no está listo, se marca como trabajo en curso.',
+			'La intención es que puedas revisar cómo se construye un sistema con memoria, límites y trazabilidad, sin depender de una historia inflada.'
+		]
 	}
 ];

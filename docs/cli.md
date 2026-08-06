@@ -1,86 +1,78 @@
 # Multiversa CLI
 
-The `multiversa` binary is the engine behind every install path in this repo. The Lab installer (`multiversa-installer.sh`) is a thin bootstrap that downloads the binary and delegates the real work to it.
+El binario `multiversa` ejecuta todas las rutas de instalación de este repositorio. El instalador del Lab (`multiversa-installer.sh`) descarga el binario y le delega el trabajo.
 
-Source: [`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli) · MIT · Go + Cobra + Bubble Tea/Lipgloss.
+Fuente: [`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli) · MIT · Go + Cobra + Bubble Tea/Lipgloss.
 
-La distribución pública se llama **Multiversa CLI**; `multiversa` es el comando. La
-v0.8.0 incorpora bootstrap de Project OS, corpus con procedencia, Graphify validado y
-proveedores configurables con fallback (Gemini → Mistral → Groq) sin exponer claves.
+La distribución pública se llama **Multiversa CLI**; `multiversa` es el comando. La v0.8.0 incorpora inicio de Project OS, corpus con procedencia, Graphify validado y proveedores configurables con respaldo (Gemini → Mistral → Groq), sin exponer claves.
 
-## Why three artifacts
+## Por qué existen tres piezas
 
-- **Tauri Visual Installer (`multiversa-installer`)**: An interactive graphical desktop application built with Tauri (Rust + HTML/CSS/JS). It offers a premium, modern design with custom glassmorphism styling and is fully assisted by voice synthesis (via ElevenLabs with native browser speech fallbacks). It scans host prerequisites, writes tenant DNA configs, and configures the workspace interactively.
-- **Lab installer (`multiversa-installer.sh`)**: Lives in this repo. It is the *consultive shell entry point* for someone meeting Multiversa for the first time: banner, profiling questions, scaffolds `~/.multiversa/`, then hands off to the CLI. Designed to be safe to read top-to-bottom in a browser before running.
-- **`multiversa` CLI**: Lives in the sibling repo. It is the *engine*: single binary, no runtime dependencies, ships everything it needs (including embedded bash scripts) so a fresh machine can run any subcommand offline after one download.
+- **Instalador visual Tauri (`multiversa-installer`)**: aplicación de escritorio gráfica creada con Tauri (Rust + HTML/CSS/JS). Revisa requisitos del equipo, escribe configuraciones de ADN por tenant y configura el espacio de trabajo de forma guiada.
+- **Instalador del Lab (`multiversa-installer.sh`)**: vive en este repositorio. Es el punto de entrada consultivo para conocer Multiversa por primera vez: presenta el contexto, hace preguntas de perfil, prepara `~/.multiversa/` y entrega el control a la CLI. Puedes leerlo completo en el navegador antes de ejecutarlo.
+- **CLI `multiversa`**: vive en el repositorio hermano. Es un binario único, sin dependencias de ejecución; incluye lo necesario para correr sus subcomandos sin conexión después de una descarga.
 
-Keeping them separate lets the Lab repository stay focused on manifesto, design systems, and curation, while the CLI and visual tools evolve independently.
+La separación permite que el Lab se concentre en manifiesto, sistemas de diseño y curaduría, mientras la CLI y las herramientas visuales evolucionan de forma independiente.
 
-## Subcommand map
+## Mapa de subcomandos
 
-| Subcommand | Purpose | Destructive? |
+| Subcomando | Propósito | ¿Modifica el equipo? |
 |---|---|---|
-| `multiversa detect` | Read-only scan of OS, package manager, dev tools, engines, repos | No |
-| `multiversa stack` | Install OS-level developer toolchain (Go, Rust, Python, Node, pnpm, Docker) | Yes — but confirms per tool |
-| `multiversa init` | Interactive wizard for the curated engines (Engram, Graphify, Gentle, …) | Yes — per engine consent |
-| `multiversa workspace` | MultiversaGroup private workspace (SSH, GPG, repos, vault) | Yes — requires git/ssh prereqs |
-| `multiversa usb` | Encrypted bootable USB lab (LUKS on Linux, VeraCrypt/balenaEtcher on macOS) | **Wipes target device** — typed device confirmation required |
-| `multiversa credits` | Upstream attribution for every engine | No |
-| `multiversa doctor` | Hidden alias of `multiversa detect` | No |
-| `multiversa version` | Print version | No |
-| `multiversa manifest` | Print/edit `multiversa.toml` | Read-only by default |
+| `multiversa detect` | Revisión de solo lectura del sistema operativo, gestor de paquetes, herramientas, motores y repositorios | No |
+| `multiversa stack` | Instala herramientas de construcción (Go, Rust, Python, Node, pnpm, Docker) | Sí, con confirmación por herramienta |
+| `multiversa init` | Asistente interactivo para motores curados (Engram, Graphify, Gentle, …) | Sí, con consentimiento por motor |
+| `multiversa workspace` | Espacio privado de MultiversaGroup (SSH, GPG, repositorios, bóveda) | Sí, requiere requisitos de git/ssh |
+| `multiversa usb` | Lab USB cifrado (LUKS en Linux, VeraCrypt/balenaEtcher en macOS) | **Borra el dispositivo elegido**; requiere escribir la ruta dos veces |
+| `multiversa credits` | Atribución de origen para cada motor | No |
+| `multiversa doctor` | Alias interno de `multiversa detect` | No |
+| `multiversa version` | Muestra la versión | No |
+| `multiversa manifest` | Muestra o edita `multiversa.toml` | Solo lectura por defecto |
 
-## Flow from the Lab installer
+## Flujo del instalador del Lab
 
-```
+```text
 multiversa-installer.sh
-  │
-  ├─ detect_platform              (Darwin/Linux × amd64/arm64)
-  ├─ resolve_version              (GitHub Releases API or env override)
-  ├─ install_binary               (curl tarball → ~/.local/bin/multiversa)
-  ├─ ensure_path                  (append to ~/.zshrc or ~/.bashrc)
-  ├─ profile_user                 (INSTANCE_NAME, USER_ROLE, SETUP_MODE)
-  ├─ scaffold_home                (~/.multiversa/{engram_db,…} + config.json)
-  │
-  ├─ multiversa detect            (host scan, surfaces gaps)
-  ├─ multiversa stack             (opt-in: install dev toolchain)
-  └─ multiversa init              (opt-in: install agentic engines)
+  ├─ detect_platform       (Darwin/Linux × amd64/arm64)
+  ├─ resolve_version       (API de lanzamientos de GitHub o variable de entorno)
+  ├─ install_binary        (archivo tar con curl → ~/.local/bin/multiversa)
+  ├─ ensure_path           (agrega PATH a ~/.zshrc o ~/.bashrc)
+  ├─ profile_user          (INSTANCE_NAME, USER_ROLE, SETUP_MODE)
+  ├─ scaffold_home         (~/.multiversa/{engram_db,…} + config.json)
+  ├─ multiversa detect     (revisión del equipo y brechas)
+  ├─ multiversa stack      (opcional: herramientas de construcción)
+  └─ multiversa init       (opcional: motores con agentes)
 ```
 
-Each delegated step is independently runnable later — re-run `multiversa stack` or `multiversa init` at any time without re-running the installer.
+Cada paso se puede ejecutar después de forma independiente. Puedes volver a correr `multiversa stack` o `multiversa init` sin repetir el instalador.
 
-## Engine attribution (canonical)
+## Atribución de motores
 
-The CLI never claims authorship of the engines it orchestrates. Every install prints upstream attribution at the end, and `multiversa credits` is the canonical source of truth.
+La CLI no reclama autoría de los motores que orquesta. Cada instalación imprime la atribución de origen y `multiversa credits` es la fuente de verdad.
 
-| Engine | Author | License | Notes |
+| Motor | Autor | Licencia | Nota |
 |---|---|---|---|
-| Engram | [Gentleman-Programming](https://github.com/Gentleman-Programming/engram) | MIT | Persistent agent memory (Go + SQLite + FTS5) |
-| Graphify | [safishamsi](https://github.com/safishamsi/graphify) | MIT | Content-to-graph engine (Python) |
-| Gentle AI | [Gentleman-Programming](https://github.com/Gentleman-Programming/gentle-ai) | MIT | SDD ecosystem (Go) |
-| Gentle PI | [Gentleman-Programming](https://github.com/Gentleman-Programming/gentle-pi) | MIT | TypeScript SDD harness |
-| codegraph | [Colby McHenry](https://github.com/colbymchenry/codegraph) | MIT | Semantic code knowledge graph (TS) |
-| MiroFish | [666ghj](https://github.com/666ghj/MiroFish) | **AGPL-3.0** | Swarm simulation — **external-only**, never embedded |
+| Engram | [Gentleman-Programming](https://github.com/Gentleman-Programming/engram) | MIT | Memoria persistente para agentes (Go + SQLite + FTS5) |
+| Graphify | [safishamsi](https://github.com/safishamsi/graphify) | MIT | Motor de contenido a grafo (Python) |
+| Gentle AI | [Gentleman-Programming](https://github.com/Gentleman-Programming/gentle-ai) | MIT | Ecosistema SDD (Go) |
+| Gentle PI | [Gentleman-Programming](https://github.com/Gentleman-Programming/gentle-pi) | MIT | Arnés SDD para TypeScript |
+| codegraph | [Colby McHenry](https://github.com/colbymchenry/codegraph) | MIT | Grafo semántico de código (TS) |
+| MiroFish | [666ghj](https://github.com/666ghj/MiroFish) | **AGPL-3.0** | Simulación de enjambre, siempre externa y nunca embebida |
 
-## Hard policy rules (enforced by the binary)
+## Reglas obligatorias
 
-1. **pnpm only.** The CLI never installs or recommends `npm`. If `npm` is detected on the host, `multiversa detect` flags it; `multiversa stack` will not propose it.
-2. **AGPL gate.** MiroFish is AGPL-3.0. The CLI requires explicit consent before any MiroFish install and never embeds or vendors its source.
-3. **No silent destructive ops.** `multiversa usb` requires the user to type the device path twice before any `dd` or `cryptsetup luksFormat` call.
-4. **No client data in Lab.** The CLI is MIT and lives in the public repo. Anything private (tenant names, credentials, contracts) stays in `01_Multiversa/Group/` and never appears in CLI output.
+1. **Solo pnpm.** La CLI no instala ni recomienda `npm`. Si detecta `npm`, `multiversa detect` lo reporta y `multiversa stack` no lo propone.
+2. **Puerta AGPL.** MiroFish usa AGPL-3.0. La CLI requiere consentimiento explícito antes de instalarlo y nunca integra ni vende su fuente.
+3. **Sin operaciones destructivas silenciosas.** `multiversa usb` exige escribir dos veces la ruta del dispositivo antes de llamar a `dd` o `cryptsetup luksFormat`.
+4. **Sin datos de clientes en el Lab.** La CLI es MIT y vive en el repositorio público. Nombres de tenants, credenciales y contratos permanecen privados y no aparecen en la salida de la CLI.
 
-## Releasing
+## Lanzamientos
 
-`multiversa-cli` uses [GoReleaser](https://goreleaser.com) on every annotated tag matching `v*`. The release workflow at `.github/workflows/release.yml` produces:
+`multiversa-cli` usa [GoReleaser](https://goreleaser.com) para cada etiqueta anotada que coincida con `v*`. El flujo de `.github/workflows/release.yml` produce binarios para varias plataformas, `checksums.txt` (SHA-256) y una publicación de GitHub con registro de cambios generado automáticamente.
 
-- Cross-platform binaries (`darwin/linux/windows × amd64/arm64`) as `.tar.gz` / `.zip` archives
-- `checksums.txt` (SHA-256)
-- A GitHub Release with auto-generated changelog grouped by Features / Fixes / Others
+Brew, Scoop, NFPM y Docker están configurados en `.goreleaser.yml`, pero se omiten en el primer lanzamiento hasta que los repositorios auxiliares y secretos estén listos.
 
-Brew, Scoop, NFPM (.deb/.rpm/.archlinux), and Docker (ghcr.io) are configured in `.goreleaser.yml` but skipped on the first release until the auxiliary repos and secrets are set up — see the comments in the workflow file.
+## Documentación relacionada
 
-## Related
-
-- [architecture.md](./architecture.md) — the six-layer Lab architecture
-- [engram.md](./engram.md) · [graphify.md](./graphify.md) · [gentle.md](./gentle.md) · [mirofish.md](./mirofish.md) · [insforge.md](./insforge.md) — per-engine docs
-- [upstream.md](./upstream.md) — full upstream attribution
+- [architecture.md](./architecture.md) — arquitectura de seis capas del Lab.
+- [engram.md](./engram.md) · [graphify.md](./graphify.md) · [gentle.md](./gentle.md) · [mirofish.md](./mirofish.md) · [insforge.md](./insforge.md) — documentación por motor.
+- [upstream.md](./upstream.md) — atribución completa de origen.

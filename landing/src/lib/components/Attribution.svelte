@@ -92,7 +92,7 @@
         <em>de quienes abrieron su código.</em>
       </h2>
       <p class="lead">
-        Cinco de los seis pilares se apoyan en proyectos open-source de
+        Cinco de los seis pilares se apoyan en proyectos de código abierto de
         constructores que abrieron su trabajo. Los nombramos con claridad,
         linkeamos sus repos, respetamos su licencia. <strong>Multiversa Lab
         es el conector: las herramientas viven en sus propios repos, con

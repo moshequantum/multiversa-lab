@@ -19,10 +19,10 @@
     {
       glyph: '⬡',
       glow: 'sand',
-      code: 'LAYER 01',
-      layer: 'MEMORY',
+      code: 'CAPA 01',
+      layer: 'MEMORIA',
       name: 'Engram',
-      nameEn: 'Memory Context',
+      nameEn: 'Contexto con memoria',
       summary: 'Memoria de construcción recuperable entre modelos y sesiones.',
       detail: 'Guarda decisiones y hallazgos para que agentes compatibles partan del contexto correcto. Cada Project OS conserva sus límites y sus secretos.',
       status: 'READY',
@@ -31,58 +31,58 @@
     {
       glyph: '✦',
       glow: 'ivory',
-      code: 'LAYER 02',
-      layer: 'KNOWLEDGE',
+      code: 'CAPA 02',
+      layer: 'CONOCIMIENTO',
       name: 'Graphify',
-      nameEn: 'Knowledge Graph',
+      nameEn: 'Grafo de conocimiento',
       summary: 'Ingesta automática de código y documentación a grafos.',
-      detail: 'Mapea de forma visual importaciones, queries de BD y dependencias de código para reducir el token bloat y ganar velocidad.',
+      detail: 'Mapea importaciones, consultas a base de datos y dependencias para reducir contexto innecesario y ganar velocidad.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/graphify.md'
     },
     {
       glyph: '◎',
       glow: 'chartreuse',
-      code: 'LAYER 03',
-      layer: 'DISCIPLINE',
+      code: 'CAPA 03',
+      layer: 'DISCIPLINA',
       name: 'GentleAI',
-      nameEn: 'SDD Harness',
-      summary: 'Harness upstream para disciplina y configuración del agente.',
-      detail: 'Organiza el ciclo de construcción en investigación, especificación y ejecución. Su nombre y releases se respetan desde su repositorio upstream.',
+      nameEn: 'Arnés SDD',
+      summary: 'Arnés de origen para disciplina y configuración del agente.',
+      detail: 'Organiza el ciclo de construcción en investigación, especificación y ejecución. Su nombre y lanzamientos se respetan desde su repositorio de origen.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/gentle.md'
     },
     {
       glyph: '✦',
       glow: 'ivory',
-      code: 'LAYER 04',
+      code: 'CAPA 04',
       layer: 'PERSONAL',
       name: 'GentlePI',
-      nameEn: 'Personal Intelligence',
+      nameEn: 'Inteligencia personal',
       summary: 'Personalización de agente con el criterio del programador.',
-      detail: 'Infunde el tono, estilo y reglas de el_gentleman en tu agente de programación local.',
+      detail: 'Aplica tono, estilo y reglas de el_gentleman a tu agente local de construcción.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/gentle.md'
     },
     {
       glyph: '◎',
       glow: 'chartreuse',
-      code: 'LAYER 05',
-      layer: 'SIMULATION',
+      code: 'CAPA 05',
+      layer: 'SIMULACIÓN',
       name: 'MiroFish',
-      nameEn: 'Scenario Swarm',
+      nameEn: 'Enjambre de escenarios',
       summary: 'Simulaciones paralelas de comportamiento de agentes.',
-      detail: 'Puebla mundos simulados basados en OASIS para predecir conversiones, probar copy y validar reglas antes de compilar.',
+      detail: 'Crea mundos simulados basados en OASIS para explorar decisiones, probar mensajes y validar reglas antes de implementar.',
       status: 'READY',
       docLink: 'https://github.com/moshequantum/multiversa-lab/blob/main/docs/mirofish.md'
     },
     {
       glyph: '⬡',
       glow: 'sand',
-      code: 'LAYER 06',
-      layer: 'INFRASTRUCTURE',
+      code: 'CAPA 06',
+      layer: 'INFRAESTRUCTURA',
       name: 'InsForge',
-      nameEn: 'Infrastructure BaaS',
+      nameEn: 'Infraestructura BaaS',
       summary: 'Infraestructura opcional para el Cerebro del Lab.',
       detail: 'InsForge y un Cloudflare Worker pueden conectar datos, automatizaciones y superficies públicas sin sustituir la operación local ni absorber secretos de tenants.',
       status: 'READY',
@@ -117,7 +117,7 @@
             <div class="codes">
               <span class="mv-label">{p.code} · {p.layer}</span>
               <span class="status status-{p.status.toLowerCase()}">
-                {p.status === 'READY' ? '✓ Listo' : p.status === 'WIP' ? '◐ En obra' : '○ Roadmap'}
+                {p.status === 'READY' ? '✓ Listo' : p.status === 'WIP' ? '◐ En obra' : '○ Hoja de ruta'}
               </span>
             </div>
           </header>
@@ -133,7 +133,7 @@
 
           <div class="card-action">
             <a href={p.docLink} target="_blank" rel="noopener" class="doc-btn">
-              Ver Specs Técnicos &nbsp;↗
+              Ver documentación técnica &nbsp;↗
             </a>
           </div>
         </article>
@@ -141,7 +141,7 @@
     </div>
 
     <div class="foot">
-      <span class="mv-label-muted">También viven aquí: skills, MCPs, plugins, schema validation, taboo gates y docs abiertas</span>
+      <span class="mv-label-muted">También viven aquí: habilidades, MCP, complementos, validación de esquemas y documentación abierta</span>
     </div>
 
   </div>

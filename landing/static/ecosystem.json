@@ -17,7 +17,7 @@
   },
   "surfaces": [
     {
-      "name": "Landing y PWA Companion",
+      "name": "Sitio y acompañante PWA",
       "url": "https://lab.multiversa.group/",
       "description": "Superficie pública instalable para descubrir el ecosistema y, progresivamente, revisar memoria, misiones y aprobaciones.",
       "status": "phase-1-public",
@@ -26,7 +26,7 @@
     {
       "name": "Repositorio Lab",
       "url": "https://github.com/moshequantum/multiversa-lab",
-      "description": "Documentación pública, landing, bootstrap e integración del laboratorio.",
+      "description": "Documentación pública, sitio, inicio e integración del laboratorio.",
       "status": "public"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "name": "gentle-pi",
-      "role": "Harness SDD para Pi; no es el perfilador humano de Multiversa",
+      "role": "Arnés SDD para Pi; no perfila a las personas de Multiversa",
       "upstream": "https://github.com/Gentleman-Programming/gentle-pi",
       "license": "MIT"
     },

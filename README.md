@@ -1,203 +1,149 @@
-# Multiversa.Lab — fábrica open source de sistemas operativos
+# Multiversa.Lab — fábrica de código abierto para sistemas operativos de trabajo
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![PNPM Workspace](https://img.shields.io/badge/node-pnpm-blue.svg)](#)
+[![Estado de compilación](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
+[![Licencia: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Espacio de trabajo PNPM](https://img.shields.io/badge/node-pnpm-blue.svg)](#)
 [![BaaS: InsForge](https://img.shields.io/badge/backend-InsForge-brightgreen.svg)](https://insforge.app)
 
-Multiversa.Lab es la capa de código fuente abierta de Multiversa: publica
-**Multiversa CLI** y el **Cerebro**, la arquitectura que entrelaza memoria,
-conocimiento, infraestructura y workers sin encerrar a nadie en una plataforma.
-Cada proyecto conserva un Project OS auditable: identidad, fuentes, grafo,
-proveedores y secretos aislados.
+Multiversa.Lab es la capa de código fuente abierta de Multiversa. Publica **Multiversa CLI** y **Cerebro**, una arquitectura que conecta memoria, conocimiento, infraestructura y workers sin encerrar a nadie en una plataforma. Cada proyecto conserva un Project OS auditable: identidad, fuentes, grafo, proveedores y secretos aislados.
 
-El Lab se puede usar y extender sin costo de licencia. **Multiversa Group** es el
-ámbito privado de su creador; no es una oferta pública del Lab y nunca recibe datos,
-credenciales ni perfiles de quienes usan el código abierto.
+El Lab puede usarse y extenderse sin costo de licencia. **Multiversa.Group** es el ámbito privado de su creador; no es una oferta pública del Lab y nunca recibe datos, credenciales ni perfiles de quienes usan el código abierto.
 
----
+## Lab y Group: separación por integridad
 
-## 🌐 Lab vs Group: Integrity Separation
+Para respetar propiedad intelectual y fronteras de seguridad, el ecosistema se separa en dos ámbitos:
 
-To protect intellectual property and maintain strict security boundaries, the Multiversa ecosystem is separated into two entities:
+- **Multiversa.Lab (este repositorio):** código abierto, protocolos, esquemas, documentación y componentes reutilizables: CLI + Cerebro (MIT).
+- **Multiversa.Group:** ámbito privado del creador. No es un producto ni una ruta comercial publicada por el Lab.
 
-*   **Multiversa.Lab (este repositorio):** código abierto, protocolos, schemas,
-    documentación y componentes reutilizables: CLI + Cerebro (MIT).
-*   **Multiversa.Group:** ámbito privado del creador. No es un producto ni una ruta
-    comercial publicada por el Lab.
+Lo replicable vive en Lab. Los datos, contratos, credenciales y perfiles privados no se publican ni se transfieren a otra persona o sistema.
 
-Lo replicable vive en Lab. Los datos, contratos, credenciales y perfiles privados no
-se publican ni se transfieren a ninguna otra persona o sistema.
+## Arquitectura: seis pilares
 
----
+Multiversa Lab se organiza en seis capas arquitectónicas, desde memoria persistente hasta simulaciones de escenarios con agentes:
 
-## 🏗 Core Architecture: The Six Pillars
-
-Multiversa Lab is built around **six core architectural layers**, running from persistent memory up to multi-agent swarm simulations:
-
-```
+```text
 ┌────────────────────────────────────────────────────────┐
-│  Layer 05: SIMULATION (MiroFish Scenario Simulator)     │
+│  Capa 05: SIMULACIÓN (MiroFish)                         │
 ├────────────────────────────────────────────────────────┤
-│  Layer 04: PERSONAL (GentlePI Agent Persona)           │
+│  Capa 04: PERSONAL (GentlePI)                           │
 ├────────────────────────────────────────────────────────┤
-│  Layer 03: DISCIPLINE (GentleAI SDD Harness)           │
+│  Capa 03: DISCIPLINA (Arnés SDD GentleAI)               │
 ├────────────────────────────────────────────────────────┤
-│  Layer 02: KNOWLEDGE (Graphify Semantic Map)           │
+│  Capa 02: CONOCIMIENTO (Mapa semántico Graphify)        │
 ├────────────────────────────────────────────────────────┤
-│  Layer 01: MEMORY (Engram SQLite Context Spine)       │
+│  Capa 01: MEMORIA (Contexto SQLite Engram)              │
 ├────────────────────────────────────────────────────────┤
-│  Layer 06: INFRASTRUCTURE (InsForge Cloud Sync BaaS)   │
+│  Capa 06: INFRAESTRUCTURA (BaaS InsForge opcional)      │
 └────────────────────────────────────────────────────────┘
 ```
 
-1.  **[Engram](./docs/engram.md) (Memory):** A local SQLite database + FTS5 full-text search indexing architectural decisions to combat agent session amnesia.
-2.  **[Graphify](./docs/graphify.md) (Knowledge):** Codebase ingestor mapping files, databases, and dependencies into an interactive visual graph.
-3.  **[GentleAI](./docs/gentle.md) (Discipline):** Spec-Driven Development (SDD) pipeline enforcing Research ➔ Specification ➔ Execution phases.
-4.  **[GentlePI](./docs/gentle.md) (Personal):** Standard agent configuration infusing human-like tone, style, and rules.
-5.  **[MiroFish](./docs/mirofish.md) (Simulation):** Swarm intelligence powered by OASIS and Neo4j to test scenarios before deployment.
-6.  **[InsForge](./docs/insforge.md) (Infrastructure):** Unified cloud backend providing database tables, storage buckets, and LLM gateways.
+1. **[Engram](./docs/engram.md):** memoria local con SQLite + FTS5 para conservar decisiones.
+2. **[Graphify](./docs/graphify.md):** indexa código, bases de datos y dependencias en un grafo visual.
+3. **[GentleAI](./docs/gentle.md):** disciplina de desarrollo guiado por especificación.
+4. **[GentlePI](./docs/gentle.md):** configuración de agente con tono, estilo y reglas.
+5. **[MiroFish](./docs/mirofish.md):** simulación de escenarios basada en OASIS y Neo4j.
+6. **[InsForge](./docs/insforge.md):** backend en la nube opcional para datos, almacenamiento y pasarelas de modelos.
 
-### How this actually runs locally
+Estos pilares son proyectos de origen curados. **Multiversa CLI** instala y configura el entorno local; **Cerebro** define cómo el Lab puede conectar un backend InsForge y un Worker de Cloudflare sin volverlos obligatorios. Engram conserva memoria de construcción y Graphify ancla cada Project OS a su propio corpus. Secretos y contexto de clientes permanecen aislados por tenant. Si falta un modelo o la red, la operación local sigue siendo útil.
 
-These six pillars are curated upstream projects. **Multiversa CLI** installs and
-configures the local frontier; the **Cerebro** defines how the Lab can connect an
-optional InsForge backend with a Cloudflare Worker without making either mandatory.
-Engram is the construction-memory layer shared by compatible agent workflows;
-Graphify grounds each Project OS in its own source corpus. Secrets and client context
-remain tenant-scoped. The system degrades honestly: local operation remains useful
-when a model or network is unavailable.
+## Empezar
 
----
+Hay dos rutas válidas. Consulta el detalle en [docs/cli.md](./docs/cli.md).
 
-## 🚀 Getting Started
+### Instalador del Lab · recomendado para tu primera vez
 
-Two equally valid entry points — pick the one that fits how you work. Detailed flow in [docs/cli.md](./docs/cli.md).
-
-### Lab installer · recommended for first-time users
-
-A bash bootstrap that downloads the [`multiversa`](https://github.com/moshequantum/multiversa-cli) binary, scaffolds `~/.multiversa/`, and walks you through the full lab setup (host scan → developer toolchain → curated engines). macOS and Linux.
+Un inicio en Bash descarga el binario [`multiversa`](https://github.com/moshequantum/multiversa-cli), prepara `~/.multiversa/` y te guía por la configuración (revisión del equipo → herramientas de construcción → motores curados). Funciona en macOS y Linux.
 
 ```bash
-# One-liner (when the public mirror is live)
+# Desde el espejo público
 curl -fsSL https://lab.multiversa.group/install.sh | bash
 
-# From a local checkout of this repo
+# Desde una copia local de este repositorio
 chmod +x multiversa-installer.sh
 ./multiversa-installer.sh
 ```
 
-Environment overrides:
+Variables de entorno:
 
-| Variable | Default | Purpose |
+| Variable | Predeterminado | Propósito |
 |---|---|---|
-| `MULTIVERSA_VERSION` | `latest` | Pin a specific release tag (e.g. `v0.3.0`) |
-| `MULTIVERSA_PREFIX` | `~/.local` | Install prefix for the binary |
-| `MULTIVERSA_SKIP_STACK` | unset | Skip `multiversa stack` |
-| `MULTIVERSA_SKIP_INIT` | unset | Skip `multiversa init` |
+| `MULTIVERSA_VERSION` | `latest` | Fija una etiqueta de versión, por ejemplo `v0.3.0` |
+| `MULTIVERSA_PREFIX` | `~/.local` | Prefijo de instalación del binario |
+| `MULTIVERSA_SKIP_STACK` | sin valor | Omite `multiversa stack` |
+| `MULTIVERSA_SKIP_INIT` | sin valor | Omite `multiversa init` |
 
-The installer is non-destructive: re-running it is safe, every step is idempotent, and `~/.multiversa/config.json` is preserved if it already exists.
+El instalador no destruye datos: volver a ejecutarlo es seguro, los pasos son idempotentes y conserva `~/.multiversa/config.json` si ya existe.
 
-### Multiversa CLI direct · for users who already manage their toolchain
+### Multiversa CLI directa
 
-Repo: [`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli) (MIT).
+Repositorio: [`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli) (MIT).
 
 ```bash
-# Any platform with Go installed
+# Cualquier plataforma con Go
 go install github.com/moshequantum/multiversa-cli/cmd/multiversa@latest
 
-# Or grab the binary archive from GitHub Releases (no Go required)
+# También puedes descargar el archivo binario desde GitHub Releases
 # https://github.com/moshequantum/multiversa-cli/releases
-
-# Homebrew (macOS) — available once homebrew-multiversa is published
-# brew tap moshequantum/multiversa && brew install multiversa
 ```
 
-Once the binary is on PATH:
+Con el binario en tu PATH:
 
 ```bash
-multiversa detect      # read-only host scan
-multiversa stack       # OS-level dev toolchain (Go/Rust/Python/Node/pnpm)
-multiversa init        # interactive engine wizard (Engram, Graphify, Gentle, …)
-multiversa workspace   # private MultiversaGroup setup (SSH/GPG/repos/vault)
-multiversa tenant new|list|show|use   # isolated tenant profiles — DNA, vault, memory per client
-multiversa updates     # check curated-stack releases against what's installed
-multiversa mcp serve   # expose read-only surfaces as MCP tools over stdio (Claude Code, Cursor, Codex…)
-multiversa credits     # upstream attribution
+multiversa detect      # revisión de solo lectura del equipo
+multiversa stack       # herramientas de construcción: Go/Rust/Python/Node/pnpm
+multiversa init        # asistente de motores: Engram, Graphify, Gentle, …
+multiversa workspace   # configuración privada: SSH/GPG/repositorios/bóveda
+multiversa tenant new|list|show|use   # perfiles aislados por tenant
+multiversa updates     # revisa lanzamientos del conjunto curado
+multiversa mcp serve   # superficies de solo lectura por MCP sobre stdio
+multiversa credits     # atribución de origen
 ```
 
-Read-only subcommands (`detect`, `credits`, `version`, `manifest`, `updates`, `tenant list|show`) also accept `--json` for a stable, agent-readable envelope (`multiversa.<name>/v1`) — the same surfaces `multiversa mcp serve` exposes natively over MCP.
+Los subcomandos de solo lectura (`detect`, `credits`, `version`, `manifest`, `updates`, `tenant list|show`) también aceptan `--json` para un formato estable y legible por agentes (`multiversa.<nombre>/v1`). Cada ejecución termina con atribución completa de origen. *«La IA propone; tú decides».*
 
-Every run ends with full upstream attribution. *"La IA propone, tú decides."*
+### Requisitos de los motores
 
-### Prerequisites for the engines themselves
+Según los motores que elijas: **Go** (Engram, Gentle AI), **Python 3** con **pipx** (Graphify), **Node.js** con **pnpm** (Gentle PI, codegraph) y **Docker** (MiroFish, AGPL-3.0, siempre externo). Multiversa usa **solo pnpm**; no usa npm.
 
-Depending on which engines you choose: **Go** (Engram, Gentle AI), **Python 3** with **pipx** (Graphify), **Node.js** with **pnpm** (Gentle PI, codegraph), **Docker** (MiroFish, AGPL-3.0, external-only). Multiversa is **pnpm-only by policy** — npm is banned across the stack ([why](https://pnpm.io)).
-
-### Developing the SvelteKit Frontend
-
-To launch the local dashboard and waitlist landing page:
+### Desarrollo del sitio SvelteKit
 
 ```bash
-# Install dependencies across the workspace
+# Instala dependencias del espacio de trabajo
 pnpm install
 
-# Run local dev server
+# Inicia el servidor local
 pnpm dev
 
-# Build for production
+# Compila para producción
 pnpm build
 ```
 
----
+## Documentación técnica
 
-## 📚 Technical Documentation
+- [Arquitectura](./docs/architecture.md)
+- [Engram: capa de memoria](./docs/engram.md)
+- [Graphify: grafo de conocimiento](./docs/graphify.md)
+- [Gentle AI / GentlePI: desarrollo guiado por especificación](./docs/gentle.md)
+- [MiroFish: simulación de escenarios](./docs/mirofish.md)
+- [InsForge: infraestructura BaaS](./docs/insforge.md)
+- [Origen y atribución](./docs/upstream.md)
+- [Multiversa CLI](https://github.com/moshequantum/multiversa-cli) — instalador y CLI en su repositorio propio.
 
-Explore the detailed architecture guides in the [`docs/`](./docs) directory:
-*   [Core Architecture](./docs/architecture.md)
-*   [Engram (Local Memory Layer)](./docs/engram.md)
-*   [Graphify (Knowledge Graph Mapping)](./docs/graphify.md)
-*   [Gentle AI / GentlePI (Spec-Driven Development)](./docs/gentle.md)
-*   [MiroFish (Agent Scenario Swarm)](./docs/mirofish.md)
-*   [InsForge (BaaS cloud integration)](./docs/insforge.md)
-*   [**Upstream / Standing on the shoulders**](./docs/upstream.md) — authors, repos, licenses
-*   **[Multiversa CLI](https://github.com/moshequantum/multiversa-cli)** — the installer (separate repo)
+## Atribución
 
----
+> *«Crédito donde corresponde».*
 
-## 🙏 Standing on the shoulders / Sobre los hombros
+Multiversa Lab no reinventa los motores que orquesta. Cinco de los seis pilares se apoyan en trabajo de otros constructores. La atribución completa está en [docs/upstream.md](./docs/upstream.md).
 
-> *"Crédito donde corresponde."* — Multiversa DNA Brand · Cap I · Principios
+> **MiroFish usa AGPL-3.0.** El Lab lo ejecuta localmente como componente externo y compatible con su licencia. Multiversa.Group puede mencionarlo, pero no incorpora su código en una superficie cerrada. Si en el futuro lo integrara, esa porción deberá publicarse de acuerdo con AGPL. Consulta [docs/upstream.md](./docs/upstream.md) para el razonamiento completo.
 
-Multiversa Lab does not reinvent the wheel — it **orchestrates**. Five of the
-six pillars stand on open-source work by other builders. Full attribution
-lives in [`docs/upstream.md`](./docs/upstream.md). Brief credit here:
+Si mejoras uno de estos pilares, abre una contribución en su repositorio original. El Lab documenta y orquesta; no es una bifurcación ni se atribuye su trabajo.
 
-| Pillar / Companion | Upstream project | Author | License |
-|---|---|---|---|
-| **Engram** | [`Gentleman-Programming/engram`](https://github.com/Gentleman-Programming/engram) | Alan Buscaglia ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
-| **Gentle AI** | [`Gentleman-Programming/gentle-ai`](https://github.com/Gentleman-Programming/gentle-ai) | Alan Buscaglia ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
-| **Gentle PI** | [`Gentleman-Programming/gentle-pi`](https://github.com/Gentleman-Programming/gentle-pi) | Alan Buscaglia ([@Gentleman-Programming](https://github.com/Gentleman-Programming)) | MIT |
-| **Graphify** | [`safishamsi/graphify`](https://github.com/safishamsi/graphify) | Safi ([@safishamsi](https://github.com/safishamsi)) | MIT |
-| **codegraph** *(code-specific companion to Graphify)* | [`colbymchenry/codegraph`](https://github.com/colbymchenry/codegraph) | Colby McHenry ([@colbymchenry](https://github.com/colbymchenry)) | MIT |
-| **MiroFish** | [`666ghj/MiroFish`](https://github.com/666ghj/MiroFish) · [mirofish.homes](https://mirofish.homes/) | BaiFu ([@666ghj](https://github.com/666ghj)) | **AGPL-3.0** ⚠️ |
-| **InsForge** | [insforge.dev](https://insforge.dev) | InsForge (BaaS) | Commercial |
+## Contribuciones y conducta
 
-> **MiroFish is AGPL-3.0** (copyleft, viral over network service). Multiversa
-> Lab runs it locally and is itself open-source — fully compatible. The
-> commercial Multiversa Group _mentions_ MiroFish but does not embed its
-> code; if it ever does, that portion will be open-sourced in compliance.
-> See [`docs/upstream.md`](./docs/upstream.md) for the full reasoning.
+Revisa el [Código de conducta](CODE_OF_CONDUCT.md) antes de enviar una contribución.
 
-If you want to improve one of these pillars, please open a PR **on the
-original repository**. We are grateful users who document — not a fork.
+## Licencia
 
----
-
-## 🤝 Contributing & Conduct
-
-Please review our [Code of Conduct](CODE_OF_CONDUCT.md) before submitting pull requests.
-
-## ⚖️ License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+Distribuido bajo licencia MIT. Consulta [LICENSE](LICENSE).
