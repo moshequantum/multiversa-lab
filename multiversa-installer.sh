@@ -99,7 +99,10 @@ confirm() {
     return 1
   fi
   IFS= read -rp "$prompt" reply < /dev/tty || reply=""
-  [[ "${reply,,}" == "y" || "${reply,,}" == "yes" ]]
+  case "$reply" in
+    y|Y|yes|Yes|YES|s|S|si|Si|SI) return 0 ;;
+    *) return 1 ;;
+  esac
 }
 
 # ── 1. Detect platform ────────────────────────────────────────────────────────
