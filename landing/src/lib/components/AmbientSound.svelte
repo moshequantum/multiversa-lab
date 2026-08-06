@@ -2,7 +2,7 @@
   import { onDestroy, onMount } from 'svelte';
 
   /** Volumen inicial como porcentaje, limitado a 0–12. */
-  let { initialVolume = 6 } = $props<{ initialVolume?: number }>();
+  let { initialVolume = 50 } = $props<{ initialVolume?: number }>();
 
   type AudioGraph = {
     context: AudioContext;
@@ -11,12 +11,12 @@
     nodes: AudioNode[];
   };
 
-  const MAX_VOLUME = 12;
+  const MAX_VOLUME = 100;
   const FADE_SECONDS = 0.38;
 
   let enabled = $state(false);
   let muted = $state(false);
-  let volume = $state(6);
+  let volume = $state(50);
   let reducedMotion = $state(false);
   let graph: AudioGraph | null = null;
   let resumeWhenVisible = false;
@@ -24,7 +24,7 @@
   let mediaQuery: MediaQueryList | undefined;
 
   function clamp(value: number) {
-    return Math.max(0, Math.min(MAX_VOLUME, Number.isFinite(value) ? value : 6));
+    return Math.max(0, Math.min(MAX_VOLUME, Number.isFinite(value) ? value : 50));
   }
 
   function targetGain() {
@@ -108,7 +108,7 @@
     noiseFilter.type = 'lowpass';
     noiseFilter.frequency.value = 410;
     noiseFilter.Q.value = 0.42;
-    noiseGain.gain.value = 0.023;
+    noiseGain.gain.value = 0.0715;
 
     noise.connect(noiseFilter).connect(noiseGain).connect(noisePan).connect(master);
     noise.start();
@@ -117,8 +117,8 @@
     nodes.push(noiseFilter, noiseGain, noisePan);
 
     // Dos tonos muy bajos, paneados y sin modulación rítmica.
-    connectPannedTone(context, master, 87, -0.28, 0.009, sources, nodes);
-    connectPannedTone(context, master, 131, 0.24, 0.006, sources, nodes);
+    connectPannedTone(context, master, 87, -0.28, 0.028, sources, nodes);
+    connectPannedTone(context, master, 131, 0.24, 0.0187, sources, nodes);
 
     return { context, master, sources, nodes } satisfies AudioGraph;
   }
@@ -266,7 +266,7 @@
     <label class="volume">
       <span>Volumen <output>{volume}%</output></span>
       <input
-        aria-label="Volumen del ambiente, máximo 12 por ciento"
+        aria-label="Volumen del ambiente, de 0 a 100 por ciento"
         max={MAX_VOLUME}
         min="0"
         oninput={updateVolume}
