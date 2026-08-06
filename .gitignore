@@ -81,3 +81,6 @@ _multiversa_private/
 
 # Engram: el sync NO cifra (JSONL gzipeado en claro). Nunca versionar.
 .engram/
+
+# Local browser profiles created by visual QA (cache/state, never source)
+artifacts/visual-reference/profile-*/
