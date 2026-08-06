@@ -9,7 +9,7 @@
   import StatusBoard from '$lib/components/StatusBoard.svelte';
   import PhilosophySplit from '$lib/components/PhilosophySplit.svelte';
   import BitacoraTeaser from '$lib/components/BitacoraTeaser.svelte';
-  import WaitlistForm from '$lib/components/WaitlistForm.svelte';
+  import LabActions from '$lib/components/LabActions.svelte';
   import FooterSignature from '$lib/components/FooterSignature.svelte';
 
   let main: HTMLElement;
@@ -28,7 +28,7 @@
   <title>Multiversa Lab · El código abierto de Multiversa</title>
   <meta
     name="description"
-    content="Multiversa Lab publica Multiversa CLI y Cerebro: código abierto para configurar Project OS con memoria, conocimiento y proveedores aislados."
+    content="Multiversa Lab publica Multiversa CLI y Cerebro: código abierto para configurar Sistemas Operativos de Proyecto con memoria, conocimiento y proveedores aislados."
   />
 </svelte:head>
 
@@ -42,7 +42,7 @@
   <StatusBoard />
   <PhilosophySplit />
   <BitacoraTeaser />
-  <WaitlistForm />
+  <LabActions />
 </main>
 <FooterSignature />
 

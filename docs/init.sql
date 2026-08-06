@@ -3,7 +3,7 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "vector";
 
--- 1. Tabla de Waitlist de Fundadores
+-- 1. Tabla heredada de solicitudes públicas
 CREATE TABLE IF NOT EXISTS founders_waitlist (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name VARCHAR(200) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS founders_waitlist (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Indexar correo para búsquedas rápidas en el waitlist
+-- Indexar correo para búsquedas rápidas en el registro heredado
 CREATE INDEX IF NOT EXISTS idx_founders_waitlist_email ON founders_waitlist(email);
 
 -- 2. Tabla de Nodos de Identidad / Grafo de Conocimiento (Graphify)

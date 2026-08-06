@@ -17,7 +17,7 @@
   },
   "surfaces": [
     {
-      "name": "Landing y PWA Companion",
+      "name": "Sitio y acompañante PWA",
       "url": "https://lab.multiversa.group/",
       "description": "Superficie pública instalable para descubrir el ecosistema y, progresivamente, revisar memoria, misiones y aprobaciones.",
       "status": "phase-1-public",
@@ -26,7 +26,7 @@
     {
       "name": "Repositorio Lab",
       "url": "https://github.com/moshequantum/multiversa-lab",
-      "description": "Documentación pública, landing, bootstrap e integración del laboratorio.",
+      "description": "Documentación pública, sitio, inicio e integración del laboratorio.",
       "status": "public"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "name": "gentle-pi",
-      "role": "Harness SDD para Pi; no es el perfilador humano de Multiversa",
+      "role": "Arnés SDD para Pi; no perfila a las personas de Multiversa",
       "upstream": "https://github.com/Gentleman-Programming/gentle-pi",
       "license": "MIT"
     },
@@ -109,10 +109,10 @@
     }
   ],
   "boundaries": [
-    "Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de tenants.",
+    "Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de perfiles.",
     "La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.",
     "Telegram es un canal opcional; nunca es memoria ni fuente de verdad.",
-    "Los motores upstream conservan su autoría y licencia.",
+    "Los motores de origen conservan su autoría y licencia.",
     "VoiceProfile requiere confirmación humana y no infiere atributos sensibles."
   ],
   "agent_policy": {

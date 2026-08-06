@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { entries, dayNumber, tagLabel } from '$lib/bitacora';
+	import { entries, tagLabel } from '$lib/bitacora';
 
 	const latest = [...entries]
 		.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
 		.slice(0, 2);
 
-	const fmt = (iso: string) =>
-		new Date(iso + 'T00:00:00').toLocaleDateString('es', { day: 'numeric', month: 'long' });
 </script>
 
 <section id="bitacora" class="bitacora">
@@ -17,22 +15,30 @@
 		</div>
 
 		<h2 class="mv-two-beat">
-			Se construye
-			<em>a la vista de todos.</em>
+			El proceso también
+			<em>forma parte del sistema.</em>
 		</h2>
 
 		<p class="lead">
-			Un sistema en el que vas a confiar tu operación no debería pedirte fe.
-			Este es el registro, sin maquillaje, de cómo se construye.
+			Multiversa real lleva tres meses en construcción; lo anterior es legado y el Lab ya es funcional.
+			Aquí compartimos decisiones, pruebas y límites sin exponer información que no corresponde publicar.
 		</p>
+
+		<figure class="origin-visual">
+			<img
+				src="/assets/origen-roadmap.webp"
+				alt="Fragmentos técnicos de legado que se conectan paso a paso hasta convertirse en una red operativa organizada y funcional."
+				width="1672"
+				height="941"
+				loading="lazy"
+			/>
+		</figure>
 
 		<div class="grid">
 			{#each latest as e}
 				<a class="mv-card entry" href={`/bitacora#${e.slug}`}>
 					<header class="head">
-						<span class="day">Día {dayNumber(e.date)}</span>
-						<span class="sep" aria-hidden="true">·</span>
-						<time datetime={e.date}>{fmt(e.date)}</time>
+						<span class="day">{e.series}</span>
 						<span class="tag tag-{e.tag}">{tagLabel(e.tag)}</span>
 					</header>
 					<h3 class="title">{e.title}</h3>
@@ -65,6 +71,19 @@
 		margin: 24px 0 48px;
 	}
 
+	.origin-visual {
+		margin: 0 0 40px;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: var(--radius-glass);
+		overflow: hidden;
+		background: #050505;
+	}
+	.origin-visual img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
 	.grid {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -79,6 +98,7 @@
 		padding: 28px 30px;
 		text-decoration: none;
 		transition: border-color 220ms ease, transform 220ms ease;
+		height: 100%;
 	}
 	.entry:hover {
 		border-color: rgba(189, 235, 52, 0.28);
@@ -97,7 +117,6 @@
 	}
 	.day { color: var(--mv-primary); }
 	.sep { color: rgba(250, 252, 232, 0.25); }
-	.head time { color: rgba(250, 252, 232, 0.5); }
 	.tag {
 		margin-left: auto;
 		padding: 3px 10px;

@@ -1,51 +1,43 @@
 # Multiversa Lab — gentle-ai, gentle-pi y VoiceProfile
 
-`gentle-ai` y `gentle-pi` son proyectos upstream separados. Multiversa los integra sin redefinirlos:
+`gentle-ai` y `gentle-pi` son proyectos de origen distintos. Multiversa los integra sin redefinirlos:
 
-- `gentle-ai` admite configuración `custom`; ahí puede proyectarse un contrato de identidad de Multiversa.
-- `gentle-pi` es un harness SDD para el agente Pi. No descubre la identidad humana ni define por sí solo cómo debe hablar un Project OS.
-- `VoiceProfile v1`, publicado en `multiversa-sdk`, es el contrato Multiversa para idioma BCP-47, tuteo/voseo/usted, regionalidad, léxico, tono, objetivos y foco actual.
+- `gentle-ai` admite configuración `custom`; allí puede aplicarse un contrato de identidad de Multiversa.
+- `gentle-pi` es un arnés SDD para el agente Pi. No descubre identidad humana ni decide por sí solo cómo debe hablar un Sistema Operativo de Proyecto.
+- `VoiceProfile v1`, publicado en `multiversa-sdk`, es el contrato de Multiversa para idioma BCP-47, tuteo/voseo/usted, regionalidad, léxico, tono, objetivos y foco actual.
 
-El perfil se confirma con la persona. No se infiere voseo, identidad regional ni atributos sensibles.
+El perfil se confirma con la persona. No se infieren voseo, identidad regional ni atributos sensibles.
 
----
+## Desarrollo guiado por especificación (SDD)
 
-## Spec-Driven Development (SDD)
+Los agentes de construcción con IA pueden escribir código antes de entender los requisitos. Eso produce deriva de código, regresiones y refactorizaciones innecesarias. SDD aplica un flujo de tres fases:
 
-AI coding agents are fast, but they often rush to write code before fully understanding the requirements. This leads to code drift, regression, and messy refactors.
-
-SDD enforces a strict three-phase pipeline:
-
-```
-[Phase 1: Research] ──> [Phase 2: Plan] ──> [Phase 3: Execute & Verify]
+```text
+[Investigación] ──> [Plan] ──> [Ejecución y verificación]
 ```
 
-1. **Research Phase:** Analyze the codebase, dependencies, and requirements. No code editing allowed.
-2. **Planning Phase (Specification):** Create an implementation plan (`implementation_plan.md`) describing exactly what files will be changed or created, and the verification plan. **Wait for human approval.**
-3. **Execution & Verification Phase:** Once approved, compile a tracking task list (`task.md`) and execute the changes. Finally, run tests and create a code walkthrough (`walkthrough.md`).
+1. **Investigación:** analiza código, dependencias y requisitos. No edita código.
+2. **Planificación (especificación):** crea un plan de implementación (`implementation_plan.md`) con archivos, cambios y verificación. **Espera aprobación humana.**
+3. **Ejecución y verificación:** tras aprobarse, compila una lista de seguimiento (`task.md`), ejecuta los cambios, corre pruebas y crea un recorrido del código (`walkthrough.md`).
 
----
-
-## Configuración upstream
+## Configuración de origen
 
 gentle-ai puede configurar un agente con una postura de trabajo, por ejemplo:
-- **Teaching-Oriented:** Explains architectural trade-offs, does not just write code silently.
-- **Security-First:** Never leaves private files exposed, sanitizes inputs, audits security rules.
-- **Verification-Obsessed:** Validates that changes are working using unit tests and dev builds.
 
----
+- **Orientado a enseñar:** explica las compensaciones arquitectónicas, no escribe en silencio.
+- **Seguridad primero:** no deja archivos privados expuestos, sanea entradas y audita reglas de seguridad.
+- **Verificación rigurosa:** valida los cambios con pruebas unitarias y compilaciones de desarrollo.
 
-## gentle-pi: harness de ingeniería
+## gentle-pi: arnés de ingeniería
 
-For Pi-native agents, the `gentle-pi` package provides commands directly in the agent shell:
+Para agentes nativos de Pi, `gentle-pi` entrega comandos dentro de la terminal del agente:
 
 ```bash
-# Install gentle-pi inside your project (Multiversa policy: pnpm-only)
-pi install pnpm:gentle-pi   # if your Pi runtime supports the pnpm: namespace
+# Instala gentle-pi en tu proyecto (política Multiversa: solo pnpm)
+pi install pnpm:gentle-pi
 
-# Initialize SDD specifications
+# Inicializa especificaciones SDD
 /sdd-init
-
 ```
 
-El harness organiza disciplina de ingeniería. La capa identitaria permanece en VoiceProfile y puede proyectarse también sobre Claude, Codex, otros agentes MCP y minions internos.
+El arnés organiza disciplina de ingeniería. La capa identitaria permanece en VoiceProfile y también puede aplicarse a Claude, Codex, otros agentes MCP y ayudantes internos.

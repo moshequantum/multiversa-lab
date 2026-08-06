@@ -1,42 +1,35 @@
-# Multiversa Lab — Knowledge Layer: Graphify
+# Multiversa Lab — Capa de conocimiento: Graphify
 
-**Graphify** is the semantic indexing engine of Multiversa Lab. It ingests whole directories, codebase dependencies, SQL schemas, media files, and documentation, transforming them into a structured, queryable knowledge graph.
+**Graphify** es el motor de indexación semántica de Multiversa Lab. Lee directorios, dependencias de código, esquemas SQL, archivos multimedia y documentación para convertirlos en un grafo de conocimiento estructurado y consultable.
 
----
+## El problema de navegación
 
-## The Navigation Problem
+Las búsquedas con grep y los listados de archivos son lineales: no explican relaciones, jerarquías de importación ni el flujo de la arquitectura. Graphify crea nodos (archivos, funciones, clases y tablas) y aristas (importaciones, llamadas, consultas y relaciones) que tu agente puede recorrer.
 
-Grep searches and file listing are linear. They fail to convey relationships, import hierarchies, and architecture flow. 
+## Capacidades principales
 
-Graphify solves this by building a graph of nodes (files, functions, classes, tables) and edges (imports, calls, queries, relations) that your AI agent can navigate.
+- **Procesamiento de varios formatos:** TypeScript, Python, Rust, esquemas SQL, Markdown, PDF y metadatos multimedia.
+- **Local y liviano:** funciona localmente y guarda `graph.json` dentro de `graphify-out/`.
+- **Visualización interactiva:** genera `graph.html` para revisar el grafo de código.
+- **Compatible con Git:** incluye un controlador de combinación para que equipos versionen sus grafos sin conflictos.
 
----
-
-## Core Capabilities
-
-- **Multi-Format Processing:** Parses typescript, python, rust, SQL schemas, Markdown files, PDFs, and media metadata.
-- **Local & Lightweight:** Runs entirely locally, saving a portable `graph.json` file in `graphify-out/`.
-- **Interactive Visualization:** Compiles an interactive HTML visualizer (`graph.html`) to display the codebase graph.
-- **Git Friendly:** Includes a custom git merge driver so team members can commit their project graphs without conflicts.
-
-```
-[File: index.ts] -- (imports) --> [File: db.ts] -- (queries) --> [Table: users]
+```text
+[Archivo: index.ts] -- (importa) --> [Archivo: db.ts] -- (consulta) --> [Tabla: users]
 ```
 
----
+## Inicio rápido
 
-## Quick Start & Usage
-
-Inside any workspace, run Graphify via the CLI or your AI agent:
+En cualquier espacio de trabajo, ejecuta Graphify desde la CLI o con tu agente:
 
 ```bash
-# Initialize and index the current directory
+# Inicializa e indexa el directorio actual
 graphify .
 ```
 
-### Outputs Generated in `graphify-out/`:
-1. `graph.json`: The raw node-edge map.
-2. `graph.html`: Interactive dependency and visual structure board.
-3. `GRAPH_REPORT.md`: Comprehensive text summary explaining entry points, database models, and hotspots.
+### Archivos generados en `graphify-out/`
 
-By committing `graphify-out/` to git, your AI agents gain instant codebase awareness on checkout.
+1. `graph.json`: mapa crudo de nodos y aristas.
+2. `graph.html`: tablero interactivo de dependencias y estructura visual.
+3. `GRAPH_REPORT.md`: resumen de puntos de entrada, modelos de datos y zonas de atención.
+
+Al versionar `graphify-out/` con git, tus agentes obtienen contexto inmediato del repositorio al abrirlo.

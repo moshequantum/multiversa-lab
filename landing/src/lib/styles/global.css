@@ -1,6 +1,6 @@
 /* ============================================================
    MULTIVERSA LAB — Landing global styles
-   Builds on top of multiversa-tokens.css (the canonical brand CSS)
+   Se apoya en multiversa-tokens.css (CSS canónico de marca)
    ============================================================ */
 
 * { box-sizing: border-box; }
@@ -72,7 +72,7 @@ a:hover { color: var(--mv-primary); }
   box-shadow: 0 0 8px rgba(189, 235, 52, 0.6);
 }
 
-/* Brand wordmark used in nav + footer */
+/* Wordmark de marca usado en navegación y pie */
 .mv-brandmark {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -197,7 +197,7 @@ a:hover { color: var(--mv-primary); }
   box-shadow: var(--shadow-glass-hover);
 }
 
-/* Section header pattern (chrome-top style of the DNA Brand) */
+/* Patrón de encabezado de sección (estilo chrome-top del ADN de marca) */
 .mv-chrome-top {
   display: flex;
   justify-content: space-between;

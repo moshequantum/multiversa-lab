@@ -256,7 +256,7 @@ profile_user() {
   echo ""
 
   ask "¿Nombre de esta instancia? [Multiversa-AI]: " "Multiversa-AI" IA_NAME
-  ask "¿Tu rol principal? (Arquitecto, Consultor, Desarrollador) [Arquitecto]: " "Arquitecto" USER_ROLE
+  ask "¿Tu rol principal? (Arquitecto, Consultor, Constructor) [Arquitecto]: " "Arquitecto" USER_ROLE
 
   echo ""
   echo "Modo de configuración:"

@@ -1,68 +1,44 @@
-# Multiversa Lab — Infrastructure: InsForge Backend
+# Multiversa Lab — Infraestructura: servicio de datos InsForge
 
-**InsForge** is an optional Backend-as-a-Service (BaaS) adapter for Multiversa.Lab.
-It can provide database access, authentication, file storage, edge functions and
-AI model gateways without becoming a requirement for local operation.
-
----
+**InsForge** es un adaptador opcional de infraestructura como servicio (BaaS, por su sigla técnica) para Multiversa.Lab. Puede ofrecer base de datos, autenticación, almacenamiento, funciones de borde y pasarelas de modelos de IA sin ser un requisito para operar localmente.
 
 ## Cerebro + Worker
 
-El Cerebro es la frontera de integración del Lab: puede usar InsForge para datos,
-autenticación, storage o IA y un Cloudflare Worker para tareas públicas y efímeras.
-Ambos son opcionales y se configuran por entorno. El Worker no recibe vaults ni
-secretos de tenants; el Cerebro coordina contratos, no centraliza el contexto privado.
-
-## Ecosystem Architecture
+Cerebro es la frontera de integración del Lab: puede usar InsForge para datos, autenticación, almacenamiento o IA, y un Worker de Cloudflare para tareas públicas y efímeras. Ambos son opcionales y se configuran por entorno. El Worker no recibe bóvedas ni secretos de los perfiles; Cerebro coordina contratos, no centraliza contexto privado.
 
 ## Frontera de datos
 
-Este repositorio público no documenta identificadores de proyectos, URLs privadas, credenciales ni schemas de tenants. Las capacidades se diseñan por contrato: permisos mínimos para formularios públicos, memoria remota solo mediante opt-in y aislamiento por tenant, auditoría sin secretos y almacenamiento separado de sus metadatos y políticas.
+Este repositorio público no documenta identificadores de proyectos, URL privadas, credenciales ni esquemas de perfiles. Las capacidades se diseñan por contrato: permisos mínimos para superficies públicas, memoria remota solo mediante consentimiento y aislamiento por perfil, auditoría sin secretos y almacenamiento separado de metadatos y políticas.
 
-The SvelteKit site can use a separately configured InsForge project for its public
-waitlist. An OS instance may use its own backend for sync, but Lab does not prescribe
-or publish a shared production project:
+El sitio SvelteKit puede usar un proyecto InsForge configurado por separado para integraciones públicas heredadas. Una instancia del Sistema Operativo de Proyecto puede usar su propio servicio de datos para sincronizar, pero el Lab no prescribe ni publica un proyecto de producción compartido:
 
-```
-[SvelteKit Frontend] ──(InsForge SDK)──> [InsForge Cloud BaaS] ──> [PostgreSQL / Storage / Auth]
+```text
+[Sitio SvelteKit] ──(SDK InsForge)──> [InsForge BaaS] ──> [PostgreSQL / almacenamiento / autenticación]
 ```
 
----
+## Esquemas de ejemplo
 
-## Example schemas
+Una implementación puede definir esquemas como:
 
-An implementation can define schemas such as:
+1. `lab_waitlist`: registro heredado para formularios públicos que todavía lo requieran; el sitio actual no lo expone.
+2. `identity_nodes` e `identity_edges`: índices Graphify en la nube.
+3. `identity_decisions`: métricas de decisión para simulaciones MiroFish.
+4. `l2_semantic_memory`: sincronización opcional de memorias Engram entre dispositivos.
+5. `audit_logs`: rastro general de operaciones de agentes.
 
-1. `lab_waitlist`: Tracks requests to build with Multiversa CLI or contribute to the Lab.
-2. `identity_nodes` & `identity_edges`: Persists Graphify indices in the cloud.
-3. `identity_decisions`: Stores decision metrics for MiroFish simulations.
-4. `l2_semantic_memory`: Syncs Engram memories across devices.
-5. `audit_logs`: General audit trail of agent operations.
+Ni el Lab ni su instalador incluyen URL de proyectos, claves o credenciales. Cada adaptador remoto se configura de manera explícita y se aísla por entorno.
 
-Neither Lab nor its installer ships project URLs, keys or credentials. Every remote
-adapter must be configured explicitly by the operator and isolated per environment.
+## SDK y seguridad
 
----
-
-## Installation & SDK Setup
-
-The TypeScript SDK is installed in the frontend workspace:
+El SDK de TypeScript vive en el espacio de trabajo del frontend. Usa `pnpm` para añadirlo cuando el proyecto lo requiera:
 
 ```bash
 pnpm add @insforge/sdk@latest
 ```
 
-> Multiversa policy: **pnpm only, npm is banned across the stack.**
+> Política Multiversa: **solo pnpm; no uses npm**.
 
-### Client Initialization
-
-> ⚠️ **Security note:** the SDK on the client side reads the **anon key**
-> (public, scoped by Row-Level Security), never the admin API key. The
-> admin key is service-role; if it lands in the browser bundle, anyone
-> can read it. Keep it in `.env` (gitignored), expose it only to
-> server-side `+server.ts` files.
-
-The client is initialized in [`landing/src/lib/insforge.ts`](../landing/src/lib/insforge.ts):
+> ⚠️ **Nota de seguridad:** el SDK del cliente puede leer la clave anónima, pública y limitada por Row-Level Security (RLS), nunca la clave de administración. La clave de administración tiene rol de servicio: si llega al paquete del navegador, cualquier persona podría leerla. Guárdala en `.env`, excluida de git, y úsala únicamente desde archivos `+server.ts`.
 
 ```typescript
 import { createClient } from '@insforge/sdk';
@@ -74,35 +50,13 @@ export const insforge = createClient({
 });
 ```
 
-`.env` (gitignored):
-
 ```bash
-PUBLIC_INSFORGE_URL=https://<your-project>.us-east.insforge.app
-PUBLIC_INSFORGE_ANON_KEY=<anon-key-from-dashboard-or-cli>
+PUBLIC_INSFORGE_URL=https://<tu-proyecto>.us-east.insforge.app
+PUBLIC_INSFORGE_ANON_KEY=<clave-anonima>
 
-# Server-only (NEVER prefix with PUBLIC_):
-INSFORGE_API_KEY=<admin-key-server-side-only>
-INSFORGE_API_BASE_URL=https://<your-project>.us-east.insforge.app
+# Solo servidor: nunca uses el prefijo PUBLIC_
+INSFORGE_API_KEY=<clave-administrador-solo-servidor>
+INSFORGE_API_BASE_URL=https://<tu-proyecto>.us-east.insforge.app
 ```
 
-Get the anon key:
-
-```bash
-npx @insforge/cli secrets get ANON_KEY
-```
-
-### Writing Data (Example: Waitlist Form)
-
-```typescript
-const { data, error } = await insforge.database
-  .from('lab_waitlist')
-  .insert([{
-    name: userName,
-    email: userEmail,
-    plan_interest: selectedPlan
-  }]);
-```
-
-For this to work without surfacing admin permissions, the `founders_waitlist`
-table needs RLS that allows public insert (and restricts read/update/delete
-to authenticated owners only).
+Para una superficie pública heredada, la tabla debe usar RLS para permitir únicamente la operación necesaria y restringir lectura, actualización y eliminación a identidades autorizadas.

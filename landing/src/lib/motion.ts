@@ -16,7 +16,7 @@ export function initLabMotion(root: HTMLElement): () => void {
 			const beats = hero.querySelectorAll(':scope .meta, :scope h1, :scope .lead, :scope .ctas, :scope .chips');
 			gsap
 				.timeline({ defaults: { ease: 'power3.out', duration: 0.7 } })
-				.from(beats, { autoAlpha: 0, y: 22, stagger: 0.09 });
+				.from(beats, { y: 22, stagger: 0.09 });
 
 			// Parallax sutil del aurora al salir del hero
 			const horizon = hero.querySelector(':scope .horizon');
@@ -51,7 +51,6 @@ export function initLabMotion(root: HTMLElement): () => void {
 			once: true,
 			onEnter: (els) =>
 				gsap.from(els, {
-					autoAlpha: 0,
 					y: 24,
 					duration: 0.55,
 					ease: 'power3.out',

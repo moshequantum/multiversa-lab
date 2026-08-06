@@ -1,7 +1,7 @@
 /* ============================================================
    MULTIVERSA — Colors & Type
    Liquid Glass Pro + Onion UI · Black Carbon & Chartreuse
-   Sourced from current Lab tokens plus legacy visual references
+   Basado en los tokens vigentes del Lab y referencias visuales heredadas
    ============================================================ */
 
 /* Variable fonts auto-hospedadas, subset latin (woff2). Cubre español: U+0000-00FF.
@@ -41,7 +41,7 @@
 }
 
 :root {
-  /* ── Core Palette — Stitch v2 ─────────────────────────── */
+  /* ── Paleta principal — Stitch v2 ─────────────────────── */
   --mv-primary:         #BDEB34;              /* Chartreuse Official */
   --mv-primary-dim:     rgba(189, 235, 52, 0.10);
   --mv-primary-glow:    rgba(189, 235, 52, 0.15);
@@ -70,7 +70,7 @@
   --mv-orange:          #FF9F5A;              /* Warm accent */
   --mv-destructive:     #FF453A;
 
-  /* ── Semantic Mapping ─────────────────────────────────── */
+  /* ── Mapeo semántico ──────────────────────────────────── */
   --color-primary:            var(--mv-primary);
   --color-background:         var(--mv-background);
   --color-foreground:         var(--mv-ivory);
@@ -127,7 +127,7 @@
   --radius-2xl:  40px;
   --radius-pill: 9999px;
 
-  /* ── Spacing (used in landing page) ───────────────────── */
+  /* ── Espaciado (usado en el sitio) ────────────────────── */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -161,7 +161,7 @@
   --blur-glass-pro: 28px;
   --blur-accent:    42px;
 
-  /* Shared with the current multiversa.group visual system. */
+  /* Compartido con el sistema visual vigente de multiversa.group. */
   --glass-tint: rgba(255, 255, 255, 0.055);
   --glass-tint-strong: rgba(255, 255, 255, 0.085);
   --glass-tint-pro: rgba(255, 255, 255, 0.038);

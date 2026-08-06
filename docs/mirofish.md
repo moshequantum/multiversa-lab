@@ -1,31 +1,23 @@
-# Multiversa Lab — Simulation Layer: MiroFish
+# Multiversa Lab — Capa de simulación: MiroFish
 
-**MiroFish** is the predictive simulation engine of Multiversa Lab. It creates a "parallel digital world" populated by thousands of autonomous agents to test decisions, policies, marketing strategies, or creative stories before deploying them to reality.
+**MiroFish** es un motor predictivo de simulación para Multiversa Lab. Crea escenarios paralelos con agentes autónomos para explorar decisiones, políticas, mensajes o historias antes de llevarlas a una operación real.
 
----
+## Prueba de escenarios paralelos
 
-## Parallel Scenario Testing
+Las pruebas de software pueden detectar si el código falla, pero no anticipan cómo responderán las personas a una función, un precio o una política. MiroFish permite simular comportamientos mediante inteligencia de enjambre. Sus resultados son señales para revisar, no garantías de resultado.
 
-Traditional software testing checks if code crashes. It cannot check if a new feature will convert users, if a pricing change will trigger backlash, or if a policy change will succeed.
+## Base técnica
 
-MiroFish solves this by creating simulations of human behavior using swarm intelligence.
+- **Integración OASIS:** se apoya en el marco Open Agent Social Interaction Simulations (OASIS).
+- **Neo4j / base de datos de grafos:** guarda relaciones entre agentes, memorias de largo plazo y registros de interacción.
+- **Ejecución local:** bifurcaciones comunitarias como `MiroFish-Offline` pueden usar modelos locales (Ollama) y Neo4j para preservar confidencialidad sin conexión.
+- **Vista de conjunto:** ofrece una interfaz para revisar conversaciones, relaciones e inyectar variables de escenario.
 
----
+## Integración en Multiversa Lab
 
-## Technical Foundation
+Dentro del Lab, MiroFish es un adaptador de simulación externo y opcional. No es una capa obligatoria ni se condiciona por nivel de producto:
 
-- **OASIS Integration:** Built upon the **Open Agent Social Interaction Simulations** (OASIS) framework.
-- **Neo4j / Graph database:** Stores agent relationships, long-term memories, and logs of social interactions.
-- **Local Execution:** Community forks (like `MiroFish-Offline`) use local LLMs (Ollama) and Neo4j databases for complete offline confidentiality.
-- **God's-eye View:** Provides an interactive interface where users can observe agent discussions, view relationships, and inject variables (e.g. "inject competitor price drop") to forecast outcomes.
-
----
-
-## Integration in Multiversa Lab
-
-Within the Lab, MiroFish is an optional, external simulation adapter. It is not a
-required layer and access is not conditioned by a product tier:
-- Before releasing a major landing page update or pricing structure, we upload the design systems and copy.
-- The MiroFish simulator populates agents reflecting our user target profiles.
-- Agents interact, write reviews, and simulate conversions.
-- The data is analyzed and saved in InsForge (`audit_logs` and `identity_decisions` tables) to rank which copy or design performs best.
+- Antes de una actualización importante, se pueden cargar sistemas de diseño y mensajes para evaluar hipótesis.
+- El simulador representa perfiles de uso definidos para ese ejercicio.
+- Los agentes interactúan y ensayan reacciones o conversiones hipotéticas.
+- Las conclusiones se revisan como parte de una decisión humana; no se usan para perfilar personas reales ni para publicar datos sensibles.
