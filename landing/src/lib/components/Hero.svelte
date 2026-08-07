@@ -31,7 +31,7 @@
       </a>
     </div>
 
-    <AmbientSound initialVolume={6} />
+    <AmbientSound initialVolume={50} />
 
     <div class="chips">
       <span class="mv-label-muted">Engram</span>
