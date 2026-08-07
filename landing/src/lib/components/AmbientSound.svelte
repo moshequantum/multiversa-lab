@@ -106,9 +106,9 @@
     noise.buffer = createNoiseBuffer(context);
     noise.loop = true;
     noiseFilter.type = 'lowpass';
-    noiseFilter.frequency.value = 410;
+    noiseFilter.frequency.value = 2400;
     noiseFilter.Q.value = 0.42;
-    noiseGain.gain.value = 0.0715;
+    noiseGain.gain.value = 0.24;
 
     noise.connect(noiseFilter).connect(noiseGain).connect(noisePan).connect(master);
     noise.start();
@@ -117,8 +117,8 @@
     nodes.push(noiseFilter, noiseGain, noisePan);
 
     // Dos tonos muy bajos, paneados y sin modulación rítmica.
-    connectPannedTone(context, master, 87, -0.28, 0.028, sources, nodes);
-    connectPannedTone(context, master, 131, 0.24, 0.0187, sources, nodes);
+    connectPannedTone(context, master, 131, -0.28, 0.018, sources, nodes);
+    connectPannedTone(context, master, 196, 0.24, 0.012, sources, nodes);
 
     return { context, master, sources, nodes } satisfies AudioGraph;
   }
