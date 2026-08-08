@@ -20,33 +20,33 @@
 <section class="actions" aria-labelledby="acciones-titulo">
   <div class="site">
     <div class="panel mv-card">
-      <div class="copy">
+      <div class="intro">
         <span class="mv-label">Acceso abierto</span>
         <h2 id="acciones-titulo">Empieza por lo que <em>puedes revisar.</em></h2>
         <p>
           Descarga o prueba Multiversa CLI, revisa la documentación y sigue la bitácora.
           No necesitas dejar tus datos para conocer cómo funciona el Lab.
         </p>
+      </div>
 
-        <div class="install" aria-label="Instalar Multiversa CLI">
-          <span class="install-label">Instalá en un comando</span>
-          <div class="cmd">
-            <code>{installCommand}</code>
-            <button
-              type="button"
-              class="cmd-copy"
-              on:click={copyCommand}
-              aria-label="Copiar el comando de instalación"
-            >
-              {copied ? 'Copiado ✓' : 'Copiar'}
-            </button>
-          </div>
-          <p class="install-hint">
-            Te pregunta dónde instalar —usuario o sistema, sin sudo por defecto—, baja
-            los motores curados y te ayuda a nombrar tu ProjectOS. Nada se instala sin
-            tu confirmación.
-          </p>
+      <div class="install" aria-label="Instalar Multiversa CLI">
+        <span class="install-label">Instalá en un comando</span>
+        <div class="cmd">
+          <code>{installCommand}</code>
+          <button
+            type="button"
+            class="cmd-copy"
+            on:click={copyCommand}
+            aria-label="Copiar el comando de instalación"
+          >
+            {copied ? 'Copiado ✓' : 'Copiar'}
+          </button>
         </div>
+        <p class="install-hint">
+          Te pregunta dónde instalar —usuario o sistema, sin sudo por defecto—, baja
+          los motores curados y te ayuda a nombrar tu ProjectOS. Nada se instala sin
+          tu confirmación.
+        </p>
       </div>
 
       <div class="links" aria-label="Siguientes pasos">
@@ -62,19 +62,17 @@
   .actions { padding-top: 32px; padding-bottom: var(--section-y); }
   .panel {
     display: grid;
-    align-items: center;
-    gap: 32px;
+    gap: 28px;
     padding: clamp(28px, 5vw, 56px);
     border-color: rgba(189, 235, 52, 0.18);
     background: linear-gradient(125deg, rgba(189, 235, 52, 0.075), rgba(255, 255, 255, 0.025) 42%, rgba(255, 255, 255, 0.018));
   }
-  @media (min-width: 960px) { .panel { grid-template-columns: minmax(0, 1.1fr) auto; } }
-  .copy { display: grid; gap: 16px; max-width: 62ch; }
+  .intro { display: grid; gap: 16px; max-width: 64ch; }
   h2 { margin: 0; font: 400 clamp(2rem, 4vw, 3.25rem)/0.98 var(--font-serif); letter-spacing: -0.04em; color: var(--mv-ivory); }
   h2 em { font-style: italic; font-weight: 300; color: var(--mv-primary); }
   p { margin: 0; color: rgba(250, 252, 232, 0.7); font: 300 clamp(1rem, 1.3vw, 1.125rem)/1.6 var(--font-sans); }
 
-  .install { display: grid; gap: 12px; margin-top: 4px; }
+  .install { display: grid; gap: 12px; }
   .install-label { font: 500 0.7rem/1 var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--mv-primary); }
   .cmd {
     display: flex;
@@ -107,10 +105,10 @@
     transition: background 0.2s ease, color 0.2s ease;
   }
   .cmd-copy:hover { background: var(--mv-primary); color: #0b0b0b; }
-  .install-hint { margin: 0; color: rgba(250, 252, 232, 0.6); font: 300 0.9rem/1.55 var(--font-sans); }
+  .install-hint { margin: 0; max-width: 68ch; color: rgba(250, 252, 232, 0.6); font: 300 0.9rem/1.55 var(--font-sans); }
 
-  .links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-  .text-link { width: 100%; color: var(--mv-primary); font: 500 0.75rem/1.4 var(--font-mono); letter-spacing: 0.15em; text-transform: uppercase; text-align: center; }
+  .links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-top: 4px; }
+  .text-link { color: var(--mv-primary); font: 500 0.75rem/1.4 var(--font-mono); letter-spacing: 0.15em; text-transform: uppercase; }
   .text-link:hover { color: var(--mv-ivory); }
   @media (max-width: 640px) {
     .links { display: grid; }
