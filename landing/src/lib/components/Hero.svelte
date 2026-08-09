@@ -1,9 +1,11 @@
 <script lang="ts">
   // Hero — canonical public copy for Multiversa.Lab.
   import AmbientSound from './AmbientSound.svelte';
+  import OpenSignalField from './OpenSignalField.svelte';
 </script>
 
 <section class="hero">
+  <OpenSignalField />
   <div class="site stack">
 
     <div class="meta">
@@ -77,6 +79,27 @@
     z-index: 2;
   }
 
+  @keyframes hero-beat-in {
+    from { transform: translateY(22px); }
+    to { transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .meta,
+    h1,
+    .lead,
+    .ctas,
+    :global(.hero .ambient-sound),
+    .chips {
+      animation: hero-beat-in 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    h1 { animation-delay: 85ms; }
+    .lead { animation-delay: 170ms; }
+    .ctas { animation-delay: 255ms; }
+    :global(.hero .ambient-sound) { animation-delay: 340ms; }
+    .chips { animation-delay: 425ms; }
+  }
+
   .meta {
     display: flex;
     align-items: center;
@@ -129,12 +152,15 @@
     top: 50%;
     z-index: 3;
     transform: translateY(-50%);
-    padding-left: 22px;
-    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 10px 14px 10px 22px;
+    border-left: 1px solid color-mix(in srgb, var(--mv-primary) 30%, transparent);
+		background: color-mix(in srgb, var(--mv-background) 76%, transparent);
+		backdrop-filter: blur(9px);
+		-webkit-backdrop-filter: blur(9px);
     font: 500 9px/1.2 var(--font-mono);
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--mv-muted-foreground);
+    color: color-mix(in srgb, var(--mv-ivory) 68%, transparent);
   }
   .editorial-rail span { display: block; margin-block: 12px; }
 
@@ -146,9 +172,9 @@
   .horizon {
     position: absolute;
     left: 50%;
-    bottom: -54%;
+    top: 68svh;
     width: 150%;
-    height: 88%;
+    height: 88svh;
     transform: translateX(-50%);
     background: radial-gradient(
       ellipse 50% 50% at 50% 50%,

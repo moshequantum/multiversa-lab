@@ -30,7 +30,7 @@
       </div>
 
       <div class="install" aria-label="Instalar Multiversa CLI">
-        <span class="install-label">Instalá en un comando</span>
+        <span class="install-label">Instala en un comando</span>
         <div class="cmd">
           <code>{installCommand}</code>
           <button

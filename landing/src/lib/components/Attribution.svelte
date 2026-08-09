@@ -247,6 +247,11 @@
     color: rgba(250, 252, 232, 0.45);
     text-transform: uppercase;
   }
+  .handle a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+  }
   .handle a:hover { color: var(--mv-primary); }
   .loc { font-style: italic; opacity: 0.7; text-transform: none; letter-spacing: 0.05em; }
 
@@ -262,6 +267,9 @@
     letter-spacing: 0.08em;
   }
   .repo a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
     color: rgba(250, 252, 232, 0.65);
     transition: color 180ms ease;
   }

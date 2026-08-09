@@ -197,6 +197,73 @@ a:hover { color: var(--mv-primary); }
   box-shadow: var(--shadow-glass-hover);
 }
 
+/* Motion de lanzamiento: señal de capítulo + respuesta lumínica localizada.
+   Las entradas y el parallax viven en motion.ts; aquí solo hay estados
+   visuales que no recalculan layout. */
+.motion-section {
+  position: relative;
+}
+
+.motion-chapter-signal {
+  position: absolute;
+  top: 0;
+  left: var(--site-gutter);
+  z-index: 4;
+  width: clamp(44px, 7vw, 96px);
+  height: 1px;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(to right, var(--mv-primary), transparent);
+  opacity: 0;
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms ease;
+}
+
+.motion-section-active > .motion-chapter-signal {
+  transform: scaleX(1);
+  opacity: 0.72;
+}
+
+.motion-card {
+  position: relative;
+  overflow: hidden;
+  transform-origin: center bottom;
+}
+
+.motion-card-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    360px circle at var(--motion-x, 50%) var(--motion-y, 50%),
+    color-mix(in srgb, var(--mv-primary) 11%, transparent),
+    transparent 64%
+  );
+  transition: opacity 220ms ease;
+}
+
+.motion-magnetic {
+  transform-origin: center;
+}
+
+/* La respuesta magnética ya tiene easing en GSAP; una transición CSS
+   simultánea sobre transform duplicaría la interpolación. */
+.mv-btn.motion-magnetic {
+  transition-property: background-color, border-color, box-shadow;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-card:hover > .motion-card-spotlight,
+  .motion-card:focus-within > .motion-card-spotlight {
+    opacity: 1;
+  }
+}
+
 /* Patrón de encabezado de sección (estilo chrome-top del ADN de marca) */
 .mv-chrome-top {
   display: flex;

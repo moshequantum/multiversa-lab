@@ -122,10 +122,10 @@
             </div>
           </header>
 
-          <h3 class="name">
+          <h2 class="name">
             {p.name}
             <em>{p.nameEn}.</em>
-          </h3>
+          </h2>
 
           <p class="summary">{p.summary}</p>
 
@@ -279,7 +279,7 @@
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .doc-btn:hover {
