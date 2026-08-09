@@ -42,4 +42,16 @@ Vercel aplica CSP, HSTS, `nosniff`, bloqueo de framing, referrer policy y permis
 
 Este release no despliega el worker. El deploy de la landing se verifica primero como preview y solo después se promueve. Ante una regresión persistente se vuelve a promover el deployment estable anterior.
 
-La URL y el commit de producción se agregan al terminar el canary.
+## Cierre de producción
+
+- Commit visual/motion: `39b30ce`.
+- Preview verificado: `dpl_7JWLziZ1XdWLsrcJaVwYTsVN6prU`.
+- Deployment promovido: `dpl_AFGYuF4EZtQJd7KYoXVU3aJGBTLC`.
+- Dominio: `https://lab.multiversa.group`.
+- Promoción: 2026-08-09, 13:28 (America/Caracas).
+
+El canary posterior a promoción confirmó HTML y assets 200, headers endurecidos, hero procedural, fuentes cargadas, 8 capítulos, 27 cards/spotlights y rail de progreso operativo. Chromium real no encontró overflow en 1366×768 ni 390×844; la navegación móvil abre, expone sus seis enlaces y cierra con Escape. No hubo errores JavaScript, respuestas 5xx ni errores de runtime en Vercel. El control atmosférico pasó a `Activado`, habilitó silencio y mantuvo volumen 50%.
+
+Los guards del endpoint conservaron 403 sin origen propio, 400 para campos inválidos y 202 neutro para el honeypot, con `cache-control: no-store` y `x-request-id`. No se envió ningún lead válido durante el canary.
+
+El worker permanece fuera de este release y se retoma mañana.
