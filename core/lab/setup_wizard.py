@@ -19,10 +19,11 @@ CONFIG_PATH = HOME / "config.yaml"
 PROFILE_DIR = HOME / "profiles" / "default"
 
 MODEL_PRESETS = {
-    "1": ("nous/tencent-hy3-free", "Nous (gratis, entra y prueba)"),
-    "2": ("openrouter/anthropic/claude-sonnet-4.6", "Claude Sonnet (calidad alta)"),
-    "3": ("openrouter/openai/gpt-5", "OpenAI GPT-5 (razonamiento)"),
-    "4": ("openrouter/google/gemini-2.5-pro", "Gemini Pro (largo contexto)"),
+    "1": ("groq/llama-3.3-70b", "Groq (gratis, rapido, stack $0)"),
+    "2": ("nous/tencent-hy3-free", "Nous (gratis, entra y prueba)"),
+    "3": ("openrouter/anthropic/claude-sonnet-4.6", "Claude Sonnet (calidad alta, requiere saldo)"),
+    "4": ("openrouter/openai/gpt-5", "OpenAI GPT-5 (razonamiento, requiere saldo)"),
+    "5": ("openrouter/google/gemini-2.5-pro", "Gemini Pro (largo contexto, requiere saldo)"),
 }
 
 
@@ -47,18 +48,30 @@ def choose(prompt, options, default_key):
         print("  Opcion no valida. Intenta de nuevo.")
 
 
-def build_config(business_name, persona, model):
+CHANNELS = {
+    "1": "telegram",
+    "2": "whatsapp",
+    "3": "facebook",
+    "4": "instagram",
+    "5": "tiktok",
+}
+
+
+def build_config(business_name, persona, model, tenant_name, channels):
     return {
+        "tenant": {"name": tenant_name, "business": business_name},
         "model": {"default": model, "provider": model.split("/")[0]},
         "agent": {"max_turns": 90},
         "display": {"interface": "tui", "language": "es", "skin": "default"},
         "memory": {"memory_enabled": True, "user_profile_enabled": True, "provider": "engram"},
+        "gateway": {"channels": channels},
         "approvals": {"mode": "smart"},
         "tools": {"knowledge_graph": "graphify"},
         "_meta": {
             "generated_by": "Multiversa Core setup wizard",
             "business": business_name,
             "persona": persona,
+            "non_subscription": "el estado vive con el cliente; si no renueva, todo queda de su lado",
             "license_note": "Fork of Hermes Agent (MIT) — Copyright (c) 2025 Nous Research, (c) 2026 Multiversa Group LLC",
         },
     }
@@ -69,23 +82,30 @@ def main():
     print("  MULTIVERSA CORE — Bienvenido")
     print("  Tu fabrica de Sistemas Inteligentes para Negocios")
     print("=" * 64)
-    print("Responde 3 preguntas simples y listo. Nada de codigo.")
+    print("Responde 5 preguntas simples y listo. Nada de codigo.")
     print()
 
     business = ask("1) ¿Cual es el nombre de tu negocio o proyecto?", "Mi Negocio")
-    persona = ask("2) ¿Como quieres que tu sistema hable contigo? (ej: cercano, tecnico, formal)", "cercano y claro")
+    tenant = ask("2) ¿Como se llamara tu sistema inteligente? (ej: ConsciousOS, MiNegocioOS)", business + "OS")
+    persona = ask("3) ¿Como quieres que tu sistema hable contigo? (ej: cercano, tecnico, formal)", "cercano y claro")
     model = choose(
-        "3) ¿Que inteligencia usa tu sistema?",
+        "4) ¿Que inteligencia usa tu sistema?",
         MODEL_PRESETS,
         "1",
     )
+    print("\n5) ¿Que canales quieres conectar? (separa por comas, ej: 1,2)")
+    for k, c in CHANNELS.items():
+        print(f"   {k}) {c}")
+    chan_in = "1" if "--dry-run" in sys.argv else ask("Canales", "1")
+    channels = [CHANNELS.get(x.strip(), x.strip()) for x in chan_in.split(",") if x.strip()]
 
-    cfg = build_config(business, persona, model)
+    cfg = build_config(business, persona, model, tenant, channels)
 
     if "--dry-run" in sys.argv:
         print("\n--- config.yaml que se generaria ---")
         print(yaml.safe_dump(cfg, sort_keys=False, allow_unicode=True))
-        print(f"Negocio: {business} | Persona: {persona} | Modelo: {model}")
+        print(f"Sistema: {tenant} | Negocio: {business} | Persona: {persona} | Modelo: {model}")
+        print(f"Canales: {channels}")
         print("(dry-run: no se escribio nada)")
         return
 
