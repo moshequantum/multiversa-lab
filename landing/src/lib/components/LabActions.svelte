@@ -2,7 +2,7 @@
   const installCommand =
     'curl -sSL https://raw.githubusercontent.com/moshequantum/multiversa-cli/main/installers/shell-curl/install.sh | sh';
 
-  let copied = false;
+  let copied = $state(false);
   let timer: ReturnType<typeof setTimeout>;
 
   async function copyCommand() {
@@ -21,38 +21,42 @@
   <div class="site">
     <div class="panel mv-card">
       <div class="intro">
-        <span class="mv-label">Acceso abierto</span>
-        <h2 id="acciones-titulo">Empieza por lo que <em>puedes revisar.</em></h2>
+        <span class="mv-label">Acceso abierto · sin registro</span>
+        <h2 id="acciones-titulo">Lee, cuestiona, <em>integra.</em></h2>
         <p>
-          Descarga o prueba Multiversa CLI, revisa la documentación y sigue la bitácora.
-          No necesitas dejar tus datos para conocer cómo funciona el Lab.
+          No necesitas pagar ni dejar tus datos para estudiar el sistema. Revisa
+          el roadmap, abre una contradicción o construye un adaptador. La crítica
+          técnica también es una forma de contribuir.
         </p>
       </div>
 
       <div class="install" aria-label="Instalar Multiversa CLI">
-        <span class="install-label">Instala en un comando</span>
+        <span class="install-label">Ruta experimental · macOS y Linux</span>
+        <p class="preview-warning">
+          Research Preview: el instalador y la CLI pueden cambiar. Lee el script,
+          fija una versión y utiliza un entorno de prueba antes de tocar un equipo de producción.
+        </p>
         <div class="cmd">
           <code>{installCommand}</code>
           <button
             type="button"
             class="cmd-copy"
-            on:click={copyCommand}
+            onclick={copyCommand}
             aria-label="Copiar el comando de instalación"
           >
             {copied ? 'Copiado ✓' : 'Copiar'}
           </button>
         </div>
         <p class="install-hint">
-          Te pregunta dónde instalar —usuario o sistema, sin sudo por defecto—, baja
-          los motores curados y te ayuda a nombrar tu ProjectOS. Nada se instala sin
-          tu confirmación.
+          Este comando es visible para permitir revisión temprana, no para declarar
+          estabilidad. Detectar un host tampoco significa que su adaptador esté soportado.
         </p>
       </div>
 
       <div class="links" aria-label="Siguientes pasos">
-        <a class="mv-btn mv-btn-primary" href="/install.sh">Descargar instalador ↓</a>
-        <a class="mv-btn mv-btn-ghost" href="https://github.com/moshequantum/multiversa-lab/tree/main/docs" target="_blank" rel="noopener">Ver documentación ↗</a>
-        <a class="text-link" href="/bitacora">Seguir la bitácora →</a>
+        <a class="mv-btn mv-btn-primary" href="https://github.com/moshequantum/multiversa-lab/blob/main/ROADMAP.md" target="_blank" rel="noopener">Leer roadmap ↗</a>
+        <a class="mv-btn mv-btn-ghost" href="https://github.com/moshequantum/multiversa-lab" target="_blank" rel="noopener">Revisar código ↗</a>
+        <a class="text-link" href="https://github.com/moshequantum/multiversa-lab/issues/new" target="_blank" rel="noopener">Reportar un hallazgo ↗</a>
       </div>
     </div>
   </div>
@@ -74,6 +78,14 @@
 
   .install { display: grid; gap: 12px; }
   .install-label { font: 500 0.7rem/1 var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--mv-primary); }
+  .preview-warning {
+    max-width: 72ch;
+    padding: 12px 14px;
+    border-left: 2px solid var(--mv-orange);
+    background: rgba(255, 159, 90, 0.045);
+    color: rgba(250, 252, 232, 0.72);
+    font-size: 0.9rem;
+  }
   .cmd {
     display: flex;
     align-items: center;

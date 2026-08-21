@@ -6,9 +6,8 @@
 
   const links = [
     { href: '/#manifiesto', label: 'Manifiesto' },
-    { href: '/#arquitectura', label: 'Pilares' },
-    { href: '/#movil', label: 'Instalar' },
-    { href: '/#estado', label: 'Estado' },
+    { href: '/#arquitectura', label: 'Arquitectura' },
+    { href: '/#roadmap', label: 'Roadmap' },
     { href: '/bitacora', label: 'Bitácora' }
   ];
 

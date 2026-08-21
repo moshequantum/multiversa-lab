@@ -10,7 +10,7 @@
     <BrandLockup size="footer" />
 
     <p class="line">
-      <em>Diseñado y construido por Moisés Vera. Abierto a entusiastas, curiosos y técnicos.</em>
+      <em>Moisés Vera · Diseñador de soluciones con IA aplicada. Construido en público.</em>
     </p>
 
     <div class="rule"></div>

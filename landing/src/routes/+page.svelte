@@ -6,7 +6,6 @@
   import Ethos from '$lib/components/Ethos.svelte';
   import Pillars from '$lib/components/Pillars.svelte';
   import Attribution from '$lib/components/Attribution.svelte';
-  import MobileCompanion from '$lib/components/MobileCompanion.svelte';
   import StatusBoard from '$lib/components/StatusBoard.svelte';
   import PhilosophySplit from '$lib/components/PhilosophySplit.svelte';
   import BitacoraTeaser from '$lib/components/BitacoraTeaser.svelte';
@@ -39,10 +38,10 @@
 </script>
 
 <svelte:head>
-  <title>Multiversa Lab · El código abierto de Multiversa</title>
+  <title>Multiversa Lab · Memoria y estructura como proceso desplegable</title>
   <meta
     name="description"
-    content="Multiversa Lab publica Multiversa CLI y Cerebro: código abierto para configurar Sistemas Operativos de Proyecto con memoria, conocimiento y proveedores aislados."
+    content="Research Preview público: Multiversa Lab convierte memoria, estructura y criterio en un proceso portable para la IA que ya utilizas. Revisa el roadmap, el código y el estado real."
   />
 </svelte:head>
 
@@ -52,9 +51,8 @@
   <Hero />
   <Ethos />
   <Pillars />
-  <Attribution />
-  <MobileCompanion />
   <StatusBoard />
+  <Attribution />
   <PhilosophySplit />
   <BitacoraTeaser />
   <LabActions />

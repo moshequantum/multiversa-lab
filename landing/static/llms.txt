@@ -1,21 +1,21 @@
 # Multiversa Lab
 
-> Laboratorio abierto de Multiversa: contratos, instaladores y herramientas para construir sistemas de trabajo con memoria, identidad y control humano.
+> Research Preview público para convertir memoria, estructura y criterio en un proceso portable y verificable entre hosts de IA.
 
-Multiversa Lab cura y conecta motores abiertos; no reclama su autoría. La IA propone. El humano decide.
+Multiversa Lab empaqueta contexto portable, conecta proyectos de origen y verifica adaptadores; no es otro agente ni reclama autoría ajena. La IA propone. El humano decide.
 
 ## Superficies
 
-- [Sitio y acompañante PWA](https://lab.multiversa.group/): Superficie pública instalable para descubrir el ecosistema y, progresivamente, revisar memoria, misiones y aprobaciones. Estado: phase-1-public.
+- [Sitio público del Lab](https://lab.multiversa.group/): Landing, bitácora y roadmap Build in Public del laboratorio. Estado: research-preview.
 - [Repositorio Lab](https://github.com/moshequantum/multiversa-lab): Documentación pública, sitio, inicio e integración del laboratorio. Estado: public.
-- [Multiversa CLI](https://github.com/moshequantum/multiversa-cli): Orquestador local y MCP de sólo lectura para instalar, detectar y conectar el stack curado. Estado: release-candidate.
-- [Multiversa Installer](https://github.com/moshequantum/multiversa-installer): Instalador gráfico multiplataforma que delega operaciones en el CLI. Estado: release-candidate.
+- [Multiversa CLI](https://github.com/moshequantum/multiversa-cli): Plano de control experimental y MCP de solo lectura; varios adaptadores todavía no están implementados. Estado: experimental.
+- [Multiversa Installer](https://github.com/moshequantum/multiversa-installer): Instalador gráfico multiplataforma que delega operaciones en el CLI. Estado: experimental.
 - [Multiversa SDK](https://github.com/moshequantum/multiversa-sdk): Contratos públicos versionados, incluidos CLI Envelope, perfiles, misiones y VoiceProfile. Estado: release-candidate.
 
 ## Componentes curados
 
 - [Engram](https://github.com/Gentleman-Programming/engram): Memoria persistente local y MCP. Licencia upstream: MIT.
-- [Graphify](https://github.com/safishamsi/graphify): Transformación de contenido en grafo de conocimiento. Licencia upstream: MIT.
+- [Graphify](https://github.com/Graphify-Labs/graphify): Transformación de contenido en grafo de conocimiento. Licencia upstream: Apache-2.0.
 - [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): Configuración de ecosistemas agénticos; Multiversa usa su modo custom. Licencia upstream: MIT.
 - [gentle-pi](https://github.com/Gentleman-Programming/gentle-pi): Arnés SDD para Pi; no perfila a las personas de Multiversa. Licencia upstream: MIT.
 - [codegraph](https://github.com/colbymchenry/codegraph): Grafo semántico de código. Licencia upstream: MIT.
@@ -23,6 +23,7 @@ Multiversa Lab cura y conecta motores abiertos; no reclama su autoría. La IA pr
 
 ## Documentación
 
+- [Roadmap público](https://github.com/moshequantum/multiversa-lab/blob/main/ROADMAP.md): Fases, estado real, pruebas y puertas de salida del realineamiento.
 - [Arquitectura](https://github.com/moshequantum/multiversa-lab/blob/main/docs/architecture.md): Capas, fronteras y responsabilidades del laboratorio.
 - [CLI](https://github.com/moshequantum/multiversa-lab/blob/main/docs/cli.md): Flujos de instalación, comandos y límites de mutación.
 - [Upstreams y atribución](https://github.com/moshequantum/multiversa-lab/blob/main/docs/upstream.md): Autores, licencias y fronteras de propiedad intelectual.
@@ -30,6 +31,7 @@ Multiversa Lab cura y conecta motores abiertos; no reclama su autoría. La IA pr
 
 ## Límites
 
+- El Lab es un Research Preview: la integración completa no está lista para uso general.
 - Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de perfiles.
 - La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.
 - Telegram es un canal opcional; nunca es memoria ni fuente de verdad.

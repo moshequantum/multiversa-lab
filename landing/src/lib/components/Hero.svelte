@@ -9,46 +9,47 @@
   <div class="site stack">
 
     <div class="meta">
-      <span class="mv-pill">Laboratorio público · En obra</span>
+      <span class="mv-pill">Research Preview · Realineando en público</span>
     </div>
 
     <h1 class="mv-two-beat">
-      El código abierto
-      <em>de Multiversa.</em>
+      Memoria y estructura,
+      <em>convertidas en un proceso desplegable.</em>
     </h1>
 
     <p class="lead">
-      Herramientas abiertas para configurar sistemas de agentes reproducibles:
-      <strong>Multiversa CLI, Cerebro y contexto bajo control humano.</strong>
+      Multiversa.Lab construye una forma portable de conectar tu contexto y tu
+      criterio con la IA que ya utilizas. <strong>La arquitectura está en
+      realineamiento: el código, las decisiones y el roadmap son públicos; la
+      integración completa todavía no está lista para uso general.</strong>
     </p>
 
     <div class="ctas">
-      <a class="mv-btn mv-btn-primary"
+      <a class="mv-btn mv-btn-primary" href="#roadmap">
+        Ver roadmap público ↓
+      </a>
+      <a class="mv-btn mv-btn-ghost"
          href="https://github.com/moshequantum/multiversa-lab"
          target="_blank" rel="noopener">
-        Ver código en GitHub ↗
-      </a>
-      <a class="mv-btn mv-btn-ghost" href="#manifiesto">
-        Leer el manifiesto ↓
+        Revisar el repositorio ↗
       </a>
     </div>
 
     <AmbientSound initialVolume={50} />
 
     <div class="chips">
-      <span class="mv-label-muted">Engram</span>
-      <span class="mv-label-muted">Graphify</span>
-      <span class="mv-label-muted">MiroFish</span>
-      <span class="mv-label-muted">GentleAI</span>
-      <span class="mv-label-muted">GentlePI</span>
-      <span class="mv-label-muted">InsForge</span>
-      <span class="mv-label-muted lab-address">lab.multiversa.group →</span>
+      <span class="mv-label-muted">Context Pack</span>
+      <span class="mv-label-muted">CLI</span>
+      <span class="mv-label-muted">MCP</span>
+      <span class="mv-label-muted">Receipts</span>
+      <span class="mv-label-muted">MIT</span>
+      <span class="mv-label-muted lab-address">Build in Public →</span>
     </div>
   </div>
 
   <aside class="editorial-rail" aria-label="Frontera pública del Lab">
-    <span>Público</span>
-    <span>Auditable</span>
+    <span>Roadmap público</span>
+    <span>Contratos abiertos</span>
     <span>Humano al mando</span>
   </aside>
 

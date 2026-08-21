@@ -4,7 +4,13 @@ El binario `multiversa` ejecuta todas las rutas de instalación de este reposito
 
 Fuente: [`moshequantum/multiversa-cli`](https://github.com/moshequantum/multiversa-cli) · MIT · Go + Cobra + Bubble Tea/Lipgloss.
 
-La distribución pública se llama **Multiversa CLI**; `multiversa` es el comando. La v0.8.0 incorpora inicio de Sistema Operativo de Proyecto (`Project OS` en el contrato técnico), corpus con procedencia, Graphify validado y proveedores configurables con respaldo (Gemini → Mistral → Groq), sin exponer claves.
+La distribución pública se llama **Multiversa CLI**; `multiversa` es el comando.
+La versión pública más reciente verificada al 2026-08-21 es **v0.10.1**.
+
+> **Estado: experimental.** La existencia de un comando o la detección de un
+> host no demuestran integración completa. Codex y Gemini, por ejemplo, pueden
+> detectarse aunque sus adaptadores de conexión todavía no estén implementados.
+> Consulta el [roadmap](../ROADMAP.md) antes de usar la CLI en un equipo de producción.
 
 ## Por qué existen tres piezas
 
@@ -52,7 +58,7 @@ La CLI no reclama autoría de los motores que orquesta. Cada instalación imprim
 | Motor | Autor | Licencia | Nota |
 |---|---|---|---|
 | Engram | [Gentleman-Programming](https://github.com/Gentleman-Programming/engram) | MIT | Memoria persistente para agentes (Go + SQLite + FTS5) |
-| Graphify | [safishamsi](https://github.com/safishamsi/graphify) | MIT | Motor de contenido a grafo (Python) |
+| Graphify | [Graphify Labs](https://github.com/Graphify-Labs/graphify) | Apache-2.0 | Motor de conocimiento y grafos (Python) |
 | Gentle AI | [Gentleman-Programming](https://github.com/Gentleman-Programming/gentle-ai) | MIT | Ecosistema SDD (Go) |
 | Gentle PI | [Gentleman-Programming](https://github.com/Gentleman-Programming/gentle-pi) | MIT | Arnés SDD para TypeScript |
 | codegraph | [Colby McHenry](https://github.com/colbymchenry/codegraph) | MIT | Grafo semántico de código (TS) |
@@ -73,6 +79,7 @@ Brew, Scoop, NFPM y Docker están configurados en `.goreleaser.yml`, pero se omi
 
 ## Documentación relacionada
 
-- [architecture.md](./architecture.md) — arquitectura de seis capas del Lab.
+- [architecture.md](./architecture.md) — Pack + CLI + MCP + receipts y adaptadores.
+- [ROADMAP.md](../ROADMAP.md) — estado público y puertas de salida.
 - [engram.md](./engram.md) · [graphify.md](./graphify.md) · [gentle.md](./gentle.md) · [mirofish.md](./mirofish.md) · [insforge.md](./insforge.md) — documentación por motor.
 - [upstream.md](./upstream.md) — atribución completa de origen.

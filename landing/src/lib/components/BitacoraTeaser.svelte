@@ -20,8 +20,8 @@
 		</h2>
 
 		<p class="lead">
-			Multiversa real lleva tres meses en construcción; lo anterior es legado y el Lab ya es funcional.
-			Aquí compartimos decisiones, pruebas y límites sin exponer información que no corresponde publicar.
+			El Lab tiene código, prototipos y aprendizaje acumulado; su integración completa sigue inmadura.
+			Aquí publicamos realineamientos, pruebas y límites sin convertir la transparencia en espectáculo.
 		</p>
 
 		<div class="grid">

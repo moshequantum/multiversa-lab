@@ -11,14 +11,14 @@
     </div>
 
     <h2 class="mv-two-beat">
-      Una fuente pública,
-      <em>un ámbito privado. Por integridad.</em>
+      Código abierto y criterio aplicado,
+      <em>sin dependencia obligatoria.</em>
     </h2>
 
     <p class="lead">
-      El Lab es el código fuente público: Multiversa CLI y Cerebro. Group es el
-      ámbito privado de su creador. La separación protege a quienes construyen con
-      el Lab y evita que un contexto privado se convierta en producto público.
+      El Lab publica el código, los contratos y la hoja de ruta. Multiversa.Group
+      aplica criterio, diagnóstico y experiencia en proyectos reales. Puedes usar,
+      estudiar o integrar el Lab sin contratar a Group ni compartir tus datos.
     </p>
 
     <div class="grid">
@@ -32,42 +32,42 @@
           Multiversa <em>Lab.</em>
         </h3>
         <p class="body-lead">
-          El laboratorio de código abierto. Aquí viven Multiversa CLI, Cerebro,
-          documentación y paquetes de integración que puedes auditar.
+          El laboratorio de código abierto. Aquí viven el Pack, la CLI, el MCP,
+          los receipts, la documentación y las pruebas que puedes auditar.
         </p>
         <ul class="bullets">
           <li>Código abierto · MIT</li>
-          <li>CLI, Cerebro, habilidades, MCP y complementos configurables</li>
-          <li>Documentación abierta. Roto se arregla, no se esconde.</li>
-          <li>Contexto y secretos aislados por Sistema Operativo de Proyecto.</li>
+          <li>Roadmap, contratos y fallos conocidos visibles</li>
+          <li>Integrable sin comprar una licencia ni contratar consultoría</li>
+          <li>Contexto portable; secretos siempre fuera del Pack</li>
         </ul>
       </article>
 
       <article class="mv-card body group">
         <header>
-          <span class="mv-label-muted">Límite de privacidad</span>
-          <span class="mv-label-muted">no es una oferta pública</span>
+          <span class="mv-label-muted">Criterio aplicado</span>
+          <span class="mv-label-muted">servicio opcional</span>
         </header>
         <h3 class="body-title body-title-muted">
           Multiversa <em>Group.</em>
         </h3>
         <p class="body-lead">
-          El ámbito privado de Multiversa Group. No vende ni recibe datos a través
-          del Lab; los contratos, credenciales y contexto personal quedan fuera del
-          código fuente público.
+          La consultoría que diseña y aplica soluciones con IA en contextos reales.
+          Quien contrata paga por diagnóstico, diseño, implementación y acompañamiento;
+          nunca por permiso para usar el Lab.
         </p>
         <ul class="bullets bullets-muted">
-          <li>Privado por diseño</li>
-          <li>No es una ruta de venta del Lab</li>
-          <li>Lo privado no entra al Lab.</li>
-          <li>Crédito donde corresponde.</li>
+          <li>Criterio y experiencia aplicada</li>
+          <li>Datos y contratos privados por diseño</li>
+          <li>Sin lock-in hacia una plataforma o modelo</li>
+          <li>Lo aprendido vuelve al Lab solo de forma general y segura</li>
         </ul>
       </article>
 
     </div>
 
     <p class="closing">
-      <em>No reemplazamos personas. Amplificamos.</em>
+      <em>El código se abre. El criterio se demuestra aplicándolo.</em>
     </p>
 
   </div>

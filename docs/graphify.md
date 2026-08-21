@@ -1,6 +1,10 @@
 # Multiversa Lab — Capa de conocimiento: Graphify
 
-**Graphify** es el motor de indexación semántica de Multiversa Lab. Lee directorios, dependencias de código, esquemas SQL, archivos multimedia y documentación para convertirlos en un grafo de conocimiento estructurado y consultable.
+**Graphify** es un upstream recomendado que Multiversa.Lab está evaluando para
+conocimiento estructurado. El proyecto vigente es
+[`Graphify-Labs/graphify`](https://github.com/Graphify-Labs/graphify), publicado
+bajo licencia Apache-2.0. El Lab no reclama su autoría ni declara todavía una
+integración estable.
 
 ## El problema de navegación
 

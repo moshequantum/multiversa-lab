@@ -1,57 +1,65 @@
-# Multiversa.Lab — fábrica de código abierto para sistemas operativos de trabajo
+# Multiversa.Lab — memoria y estructura como proceso desplegable
 
-[![Estado de compilación](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
+[![Estado: Research Preview](https://img.shields.io/badge/estado-Research_Preview-orange.svg)](ROADMAP.md)
 [![Licencia: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Espacio de trabajo PNPM](https://img.shields.io/badge/node-pnpm-blue.svg)](#)
 [![Infraestructura: InsForge](https://img.shields.io/badge/infraestructura-InsForge-brightgreen.svg)](https://insforge.app)
 
-Multiversa.Lab es la capa de código fuente abierta de Multiversa. Publica **Multiversa CLI** y **Cerebro**, una arquitectura que conecta memoria, conocimiento, infraestructura y procesos de trabajo sin encerrar a nadie en una plataforma. Cada proyecto conserva un **Sistema Operativo de Proyecto** auditable —identificado como `Project OS` en los contratos técnicos— con identidad, fuentes, grafo, proveedores y secretos aislados.
+Multiversa.Lab es un laboratorio público que explora un dolor universal de los
+sistemas con IA: cuando cambia el agente, el modelo o la herramienta, el contexto
+y la forma de trabajar suelen romperse. La dirección es convertir **memoria +
+estructura + criterio** en un proceso portable, instalable y verificable para la
+IA que cada persona prefiera usar.
 
-El Lab puede usarse y extenderse sin costo de licencia. **Multiversa.Group** es el ámbito privado de su creador; no es una oferta pública del Lab y nunca recibe datos, credenciales ni perfiles de quienes usan el código abierto.
+> **Estado actual: Research Preview.** Hay código, documentación y prototipos
+> públicos, pero la integración completa todavía no está lista para uso general.
+> Estamos realineando la arquitectura en público. Consulta [`ROADMAP.md`](./ROADMAP.md)
+> antes de instalar.
+
+El Lab puede usarse y extenderse sin costo de licencia. **Multiversa.Group** es
+la consultoría que aplica criterio, diagnóstico, diseño e implementación en casos
+reales. No necesitas contratarla para usar el Lab y el código abierto nunca envía
+datos, credenciales ni perfiles a Group.
 
 ## Lab y Group: separación por integridad
 
 Para respetar propiedad intelectual y fronteras de seguridad, el ecosistema se separa en dos ámbitos:
 
-- **Multiversa.Lab (este repositorio):** código abierto, protocolos, esquemas, documentación y componentes reutilizables: CLI + Cerebro (MIT).
-- **Multiversa.Group:** ámbito privado del creador. No es un producto ni una ruta comercial publicada por el Lab.
+- **Multiversa.Lab (este repositorio):** contratos, código, documentación,
+  pruebas y roadmap abiertos bajo licencia MIT.
+- **Multiversa.Group:** servicio profesional opcional. Se paga por criterio y
+  aplicación, nunca por permiso para usar el Lab.
 
 Lo replicable vive en Lab. Los datos, contratos, credenciales y perfiles privados no se publican ni se transfieren a otra persona o sistema.
 
-## Arquitectura: seis pilares
-
-Multiversa Lab se organiza en seis capas arquitectónicas, desde memoria persistente hasta simulaciones de escenarios con agentes:
+## Arquitectura en realineamiento
 
 ```text
-┌────────────────────────────────────────────────────────┐
-│  Capa 05: SIMULACIÓN (MiroFish)                         │
-├────────────────────────────────────────────────────────┤
-│  Capa 04: PERSONAL (GentlePI)                           │
-├────────────────────────────────────────────────────────┤
-│  Capa 03: DISCIPLINA (Arnés SDD GentleAI)               │
-├────────────────────────────────────────────────────────┤
-│  Capa 02: CONOCIMIENTO (Mapa semántico Graphify)        │
-├────────────────────────────────────────────────────────┤
-│  Capa 01: MEMORIA (Contexto SQLite Engram)              │
-├────────────────────────────────────────────────────────┤
-│  Capa 06: INFRAESTRUCTURA (BaaS InsForge opcional)      │
-└────────────────────────────────────────────────────────┘
+Multiversa Pack        contexto y criterio portables
+      ↓
+Multiversa CLI         instala, audita, actualiza y revierte
+      ↓
+Multiversa MCP         expone el departamento al host elegido
+      ↓
+Receipts + checks      prueban cambios y compatibilidad
 ```
 
-1. **[Engram](./docs/engram.md):** memoria local con SQLite + FTS5 para conservar decisiones.
-2. **[Graphify](./docs/graphify.md):** indexa código, bases de datos y dependencias en un grafo visual.
-3. **[GentleAI](./docs/gentle.md):** disciplina de desarrollo guiado por especificación.
-4. **[GentlePI](./docs/gentle.md):** configuración de agente con tono, estilo y reglas.
-5. **[MiroFish](./docs/mirofish.md):** simulación de escenarios basada en OASIS y Neo4j.
-6. **[InsForge](./docs/insforge.md):** servicio en la nube opcional para datos, almacenamiento y pasarelas de modelos.
+- **Pack:** contrato versionado para identidad, instrucciones, fuentes,
+  capacidades y políticas. No contiene secretos.
+- **CLI:** plano de control transaccional. Coordina proyectos de origen; no los reemplaza.
+- **MCP:** puerta común para que distintos hosts consuman el mismo Pack.
+- **Receipts + checks:** evidencia de cada cambio, prueba semántica y rollback.
 
-Estos pilares son proyectos de origen curados. **Multiversa CLI** instala y configura el entorno local; **Cerebro** define cómo el Lab puede conectar un servicio de datos InsForge y una función de Cloudflare sin volverlos obligatorios. Engram conserva memoria de construcción y Graphify ancla cada Sistema Operativo de Proyecto a su propio corpus. Los secretos y el contexto permanecen aislados por perfil. Si falta un modelo o la red, la operación local sigue siendo útil.
+Engram, GentleAI y Graphify son upstreams recomendados que el Lab busca conectar
+y verificar, no duplicar. GentlePI, Hermes, OpenClaw, InsForge, MiroFish y otros
+sistemas se tratan como adaptadores opcionales. Detectar un host no equivale a
+declararlo compatible.
 
 ## Empezar
 
 Hay dos rutas válidas. Consulta el detalle en [docs/cli.md](./docs/cli.md).
 
-### Instalador del Lab · recomendado para tu primera vez
+### Instalador del Lab · experimental
 
 Un inicio en Bash descarga el binario [`multiversa`](https://github.com/moshequantum/multiversa-cli), prepara `~/.multiversa/` y te guía por la configuración (revisión del equipo → herramientas de construcción → motores curados). Funciona en macOS y Linux.
 
@@ -73,7 +81,9 @@ Variables de entorno:
 | `MULTIVERSA_SKIP_STACK` | sin valor | Omite `multiversa stack` |
 | `MULTIVERSA_SKIP_INIT` | sin valor | Omite `multiversa init` |
 
-El instalador no destruye datos: volver a ejecutarlo es seguro, los pasos son idempotentes y conserva `~/.multiversa/config.json` si ya existe.
+Antes de ejecutarlo, lee el script y usa un entorno de prueba. El objetivo es que
+cada cambio tenga `dry-run`, receipt y rollback, pero esa garantía todavía forma
+parte del roadmap de realineamiento.
 
 ### Multiversa CLI directa
 
@@ -134,7 +144,9 @@ pnpm build
 
 > *«Crédito donde corresponde».*
 
-Multiversa Lab no reinventa los motores que orquesta. Cinco de los seis pilares se apoyan en trabajo de otros constructores. La atribución completa está en [docs/upstream.md](./docs/upstream.md).
+Multiversa Lab no reinventa los motores que conecta. Se apoya en proyectos de
+origen mantenidos por otros constructores, respeta sus licencias y publica la
+atribución completa en [docs/upstream.md](./docs/upstream.md).
 
 > **MiroFish usa AGPL-3.0.** El Lab lo ejecuta localmente como componente externo y compatible con su licencia. Multiversa.Group puede mencionarlo, pero no incorpora su código en una superficie cerrada. Si en el futuro lo integrara, esa porción deberá publicarse de acuerdo con AGPL. Consulta [docs/upstream.md](./docs/upstream.md) para el razonamiento completo.
 

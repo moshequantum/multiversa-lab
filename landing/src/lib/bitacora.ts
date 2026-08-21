@@ -33,6 +33,19 @@ export function tagLabel(tag: BitacoraTag): string {
 // Orden editorial: la bitácora comienza por el marco que hace verificable lo que sigue.
 export const entries: BitacoraEntry[] = [
 	{
+		slug: 'realinear-la-estructura-en-publico',
+		date: '2026-08-21',
+		series: 'Serie 05 · realineamiento',
+		title: 'Realinear la estructura también es construir en público',
+		tag: 'construir',
+		body: [
+			'La primera narrativa del Lab mezcló motores de origen, interfaces y adaptadores opcionales como si todos fueran capas obligatorias y estuvieran igualmente listos. La auditoría mostró que no era así.',
+			'La nueva dirección es más pequeña: un Pack portable, una CLI como plano de control, un MCP como puerta y receipts que demuestren cada cambio. Los motores y los hosts se conectan como upstreams o adaptadores; Multiversa no intenta reemplazarlos.',
+			'Publicamos el realineamiento antes de terminarlo. El roadmap es una invitación a revisar, cuestionar e integrar, no una promesa de madurez que todavía no podemos probar.'
+		],
+		link: { label: 'Leer el roadmap público ↗', href: 'https://github.com/moshequantum/multiversa-lab/blob/main/ROADMAP.md' }
+	},
+	{
 		slug: 'tres-meses-para-volverlo-funcional',
 		date: '2026-07-23',
 		series: 'Serie 01 · estado real',
@@ -40,7 +53,7 @@ export const entries: BitacoraEntry[] = [
 		tag: 'construir',
 		body: [
 			'Multiversa real lleva tres meses de construcción. Lo anterior es legado: aporta antecedentes, pero no se presenta como la versión funcional que existe hoy.',
-			'El Lab ya puede revisarse: instala, documenta y explica sus límites. Lo que aún está en obra se nombra como tal, sin adelantar capacidades ni prometer resultados.',
+			'El Lab ya puede revisarse como código, documentación y prototipos. La integración completa todavía no está lista; lo que sigue en obra se nombra como tal, sin adelantar capacidades ni prometer resultados.',
 			'La regla para esta bitácora es simple: cada avance necesita contexto, evidencia pública y una decisión humana detrás.'
 		]
 	},
