@@ -21,6 +21,9 @@
 </script>
 
 <svelte:head>
+  <link rel="preload" href="/fonts/playfair-display-latin-var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/fonts/playfair-display-italic-latin-var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/fonts/sora-latin-var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
   <link rel="canonical" href="https://lab.multiversa.group/" />
   <meta name="robots" content="index, follow" />
   {#if kbEndpoint}

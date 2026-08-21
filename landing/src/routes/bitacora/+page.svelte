@@ -12,7 +12,7 @@
 	<title>Bitácora · Multiversa Lab en público</title>
 	<meta
 		name="description"
-		content="El registro público de Multiversa Lab: CLI, Cerebro, decisiones técnicas y aprendizajes. Con límites claros para los datos privados."
+		content="El registro público de Multiversa Lab: realineamientos, pruebas, decisiones técnicas y aprendizajes con límites claros."
 	/>
 </svelte:head>
 
@@ -30,9 +30,9 @@
 				<em>sin exponer lo que debe quedar privado.</em>
 			</h1>
 			<p class="lead">
-				Multiversa real lleva tres meses en construcción y ya es funcional. Lo previo es legado:
-				sirve para entender el origen, no para vender una versión incompleta. Esta serie reúne origen,
-				trayectoria y hoja de ruta pública con límites explícitos de privacidad.
+				Multiversa tiene código, prototipos y aprendizaje acumulado; la integración completa sigue
+				inmadura. Esta serie publica el origen, los realineamientos, las pruebas y la hoja de ruta
+				sin maquillar el estado ni exponer información privada.
 			</p>
 		</div>
 	</section>

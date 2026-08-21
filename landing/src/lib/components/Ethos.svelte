@@ -5,7 +5,7 @@
     'Sistema sobre herramienta.',
     'Claridad sobre brillo.',
     'Memoria sobre repetición.',
-    'Apertura sobre opacidad.',
+    'Evidencia sobre apariencia.',
     'Humano siempre decide.'
   ];
 </script>
@@ -24,8 +24,9 @@
     </h2>
 
     <p class="intro">
-      Seis principios sostienen todo lo que el laboratorio publica.
-      Si una decisión los rompe, la decisión se cambia. No el principio.
+      Seis principios sostienen lo que el laboratorio publica. Construir en
+      público no es mostrar perfección: es dejar visibles la decisión, la prueba
+      y el límite. Si una decisión rompe estos principios, la decisión se cambia.
     </p>
 
     <ol class="principles">

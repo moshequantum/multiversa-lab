@@ -2,9 +2,13 @@
 
 **InsForge** es un adaptador opcional de infraestructura como servicio (BaaS, por su sigla técnica) para Multiversa.Lab. Puede ofrecer base de datos, autenticación, almacenamiento, funciones de borde y pasarelas de modelos de IA sin ser un requisito para operar localmente.
 
-## Cerebro + Worker
+## MCP + adaptador remoto
 
-Cerebro es la frontera de integración del Lab: puede usar InsForge para datos, autenticación, almacenamiento o IA, y un Worker de Cloudflare para tareas públicas y efímeras. Ambos son opcionales y se configuran por entorno. El Worker no recibe bóvedas ni secretos de los perfiles; Cerebro coordina contratos, no centraliza contexto privado.
+El MCP es la puerta de integración del Lab. Un adaptador opcional puede usar
+InsForge para datos, autenticación, almacenamiento o IA, y un Worker de
+Cloudflare para tareas públicas y efímeras. Ambos se configuran por entorno y
+no reciben bóvedas ni secretos del Pack. El MCP expone contratos; no centraliza
+contexto privado ni convierte InsForge en un requisito.
 
 ## Frontera de datos
 

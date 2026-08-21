@@ -1,52 +1,55 @@
 <script lang="ts">
   // Hero — canonical public copy for Multiversa.Lab.
   import AmbientSound from './AmbientSound.svelte';
+  import OpenSignalField from './OpenSignalField.svelte';
 </script>
 
 <section class="hero">
+  <OpenSignalField />
   <div class="site stack">
 
     <div class="meta">
-      <span class="mv-pill">Laboratorio público · En obra</span>
+      <span class="mv-pill">Research Preview · Realineando en público</span>
     </div>
 
     <h1 class="mv-two-beat">
-      El código abierto
-      <em>de Multiversa.</em>
+      Memoria y estructura,
+      <em>convertidas en un proceso desplegable.</em>
     </h1>
 
     <p class="lead">
-      Herramientas abiertas para configurar sistemas de agentes reproducibles:
-      <strong>Multiversa CLI, Cerebro y contexto bajo control humano.</strong>
+      Multiversa.Lab construye una forma portable de conectar tu contexto y tu
+      criterio con la IA que ya utilizas. <strong>La arquitectura está en
+      realineamiento: el código, las decisiones y el roadmap son públicos; la
+      integración completa todavía no está lista para uso general.</strong>
     </p>
 
     <div class="ctas">
-      <a class="mv-btn mv-btn-primary"
+      <a class="mv-btn mv-btn-primary" href="#roadmap">
+        Ver roadmap público ↓
+      </a>
+      <a class="mv-btn mv-btn-ghost"
          href="https://github.com/moshequantum/multiversa-lab"
          target="_blank" rel="noopener">
-        Ver código en GitHub ↗
-      </a>
-      <a class="mv-btn mv-btn-ghost" href="#manifiesto">
-        Leer el manifiesto ↓
+        Revisar el repositorio ↗
       </a>
     </div>
 
     <AmbientSound initialVolume={50} />
 
     <div class="chips">
-      <span class="mv-label-muted">Engram</span>
-      <span class="mv-label-muted">Graphify</span>
-      <span class="mv-label-muted">MiroFish</span>
-      <span class="mv-label-muted">GentleAI</span>
-      <span class="mv-label-muted">GentlePI</span>
-      <span class="mv-label-muted">InsForge</span>
-      <span class="mv-label-muted lab-address">lab.multiversa.group →</span>
+      <span class="mv-label-muted">Context Pack</span>
+      <span class="mv-label-muted">CLI</span>
+      <span class="mv-label-muted">MCP</span>
+      <span class="mv-label-muted">Receipts</span>
+      <span class="mv-label-muted">MIT</span>
+      <span class="mv-label-muted lab-address">Build in Public →</span>
     </div>
   </div>
 
   <aside class="editorial-rail" aria-label="Frontera pública del Lab">
-    <span>Público</span>
-    <span>Auditable</span>
+    <span>Roadmap público</span>
+    <span>Contratos abiertos</span>
     <span>Humano al mando</span>
   </aside>
 
@@ -75,6 +78,27 @@
     gap: 28px;
     position: relative;
     z-index: 2;
+  }
+
+  @keyframes hero-beat-in {
+    from { transform: translateY(22px); }
+    to { transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .meta,
+    h1,
+    .lead,
+    .ctas,
+    :global(.hero .ambient-sound),
+    .chips {
+      animation: hero-beat-in 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    h1 { animation-delay: 85ms; }
+    .lead { animation-delay: 170ms; }
+    .ctas { animation-delay: 255ms; }
+    :global(.hero .ambient-sound) { animation-delay: 340ms; }
+    .chips { animation-delay: 425ms; }
   }
 
   .meta {
@@ -129,12 +153,15 @@
     top: 50%;
     z-index: 3;
     transform: translateY(-50%);
-    padding-left: 22px;
-    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 10px 14px 10px 22px;
+    border-left: 1px solid color-mix(in srgb, var(--mv-primary) 30%, transparent);
+		background: color-mix(in srgb, var(--mv-background) 76%, transparent);
+		backdrop-filter: blur(9px);
+		-webkit-backdrop-filter: blur(9px);
     font: 500 9px/1.2 var(--font-mono);
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--mv-muted-foreground);
+    color: color-mix(in srgb, var(--mv-ivory) 68%, transparent);
   }
   .editorial-rail span { display: block; margin-block: 12px; }
 
@@ -146,9 +173,9 @@
   .horizon {
     position: absolute;
     left: 50%;
-    bottom: -54%;
+    top: 68svh;
     width: 150%;
-    height: 88%;
+    height: 88svh;
     transform: translateX(-50%);
     background: radial-gradient(
       ellipse 50% 50% at 50% 50%,

@@ -42,14 +42,22 @@
   }
 
   function createNoiseBuffer(context: AudioContext) {
-    const seconds = 3;
+    const seconds = 6;
     const buffer = context.createBuffer(1, context.sampleRate * seconds, context.sampleRate);
     const data = buffer.getChannelData(0);
 
-    // Ruido marrón suave: menos brillo y fatiga que el ruido blanco directo.
+    // Ruido marrón determinista: conserva el mismo carácter entre sesiones y
+    // evita depender de Math.random para construir la firma sonora.
+    let seed = 0x6d2b79f5;
+    const random = () => {
+      seed ^= seed << 13;
+      seed ^= seed >>> 17;
+      seed ^= seed << 5;
+      return (seed >>> 0) / 4_294_967_296;
+    };
     let last = 0;
     for (let index = 0; index < data.length; index += 1) {
-      const white = Math.random() * 2 - 1;
+      const white = random() * 2 - 1;
       last = (last + 0.02 * white) / 1.02;
       data[index] = last * 3.2;
     }
@@ -90,7 +98,7 @@
   }
 
   function createGraph() {
-    const context = new AudioContext();
+    const context = new AudioContext({ latencyHint: 'playback' });
     const master = context.createGain();
     const sources: AudioScheduledSourceNode[] = [];
     const nodes: AudioNode[] = [master];
@@ -99,26 +107,49 @@
     master.connect(context.destination);
 
     const noise = context.createBufferSource();
+    const noiseHighpass = context.createBiquadFilter();
     const noiseFilter = context.createBiquadFilter();
     const noiseGain = context.createGain();
     const noisePan = createPanner(context, -0.18);
 
     noise.buffer = createNoiseBuffer(context);
     noise.loop = true;
+    noiseHighpass.type = 'highpass';
+    noiseHighpass.frequency.value = 145;
+    noiseHighpass.Q.value = 0.36;
     noiseFilter.type = 'lowpass';
-    noiseFilter.frequency.value = 2400;
+    noiseFilter.frequency.value = 3200;
     noiseFilter.Q.value = 0.42;
-    noiseGain.gain.value = 0.24;
+    // La mezcla anterior quedaba cerca de -33 dBFS al 50 %, imperceptible en
+    // altavoces integrados. Este nivel conserva margen, pero ya es audible.
+    noiseGain.gain.value = 0.86;
 
-    noise.connect(noiseFilter).connect(noiseGain).connect(noisePan).connect(master);
+    noise.connect(noiseHighpass).connect(noiseFilter).connect(noiseGain).connect(noisePan).connect(master);
     noise.start();
 
     sources.push(noise);
-    nodes.push(noiseFilter, noiseGain, noisePan);
+    nodes.push(noiseHighpass, noiseFilter, noiseGain, noisePan);
 
-    // Dos tonos muy bajos, paneados y sin modulación rítmica.
-    connectPannedTone(context, master, 131, -0.28, 0.018, sources, nodes);
-    connectPannedTone(context, master, 196, 0.24, 0.012, sources, nodes);
+    // Una segunda lectura del mismo buffer aporta aire en el rango que sí
+    // reproducen laptops y móviles, sin convertir el ambiente en un siseo.
+    const air = context.createBufferSource();
+    const airFilter = context.createBiquadFilter();
+    const airGain = context.createGain();
+    const airPan = createPanner(context, 0.22);
+    air.buffer = noise.buffer;
+    air.loop = true;
+    airFilter.type = 'bandpass';
+    airFilter.frequency.value = 1180;
+    airFilter.Q.value = 0.58;
+    airGain.gain.value = 0.18;
+    air.connect(airFilter).connect(airGain).connect(airPan).connect(master);
+    air.start(0, 1.7);
+    sources.push(air);
+    nodes.push(airFilter, airGain, airPan);
+
+    // Dos tonos discretos, paneados y sin modulación rítmica.
+    connectPannedTone(context, master, 174, -0.28, 0.035, sources, nodes);
+    connectPannedTone(context, master, 261, 0.24, 0.022, sources, nodes);
 
     return { context, master, sources, nodes } satisfies AudioGraph;
   }

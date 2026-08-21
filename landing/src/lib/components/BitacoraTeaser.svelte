@@ -20,19 +20,9 @@
 		</h2>
 
 		<p class="lead">
-			Multiversa real lleva tres meses en construcción; lo anterior es legado y el Lab ya es funcional.
-			Aquí compartimos decisiones, pruebas y límites sin exponer información que no corresponde publicar.
+			El Lab tiene código, prototipos y aprendizaje acumulado; su integración completa sigue inmadura.
+			Aquí publicamos realineamientos, pruebas y límites sin convertir la transparencia en espectáculo.
 		</p>
-
-		<figure class="origin-visual">
-			<img
-				src="/assets/origen-roadmap.webp"
-				alt="Fragmentos técnicos de legado que se conectan paso a paso hasta convertirse en una red operativa organizada y funcional."
-				width="1672"
-				height="941"
-				loading="lazy"
-			/>
-		</figure>
 
 		<div class="grid">
 			{#each latest as e}
@@ -69,19 +59,6 @@
 		color: rgba(250, 252, 232, 0.6);
 		max-width: 58ch;
 		margin: 24px 0 48px;
-	}
-
-	.origin-visual {
-		margin: 0 0 40px;
-		border: 1px solid rgba(255, 255, 255, 0.08);
-		border-radius: var(--radius-glass);
-		overflow: hidden;
-		background: #050505;
-	}
-	.origin-visual img {
-		display: block;
-		width: 100%;
-		height: auto;
 	}
 
 	.grid {

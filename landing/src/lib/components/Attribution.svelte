@@ -12,7 +12,7 @@
     location?: string;
     repoUrl: string;
     repoLabel: string;
-    license: 'MIT' | 'AGPL-3.0' | 'Commercial';
+    license: 'MIT' | 'Apache-2.0' | 'AGPL-3.0' | 'Commercial';
     homepage?: string;
   };
 
@@ -67,13 +67,12 @@
       pillar: 'Graphify',
       glyph: '✦',
       glow: 'ivory',
-      author: 'Safi',
-      handle: 'safishamsi',
-      authorUrl: 'https://github.com/safishamsi',
-      location: 'Londres',
-      repoUrl: 'https://github.com/safishamsi/graphify',
-      repoLabel: 'safishamsi/graphify',
-      license: 'MIT'
+      author: 'Graphify Labs',
+      handle: 'Graphify-Labs',
+      authorUrl: 'https://github.com/Graphify-Labs',
+      repoUrl: 'https://github.com/Graphify-Labs/graphify',
+      repoLabel: 'Graphify-Labs/graphify',
+      license: 'Apache-2.0'
     }
   ];
 </script>
@@ -92,11 +91,10 @@
         <em>de quienes abrieron su código.</em>
       </h2>
       <p class="lead">
-        Cinco de los seis pilares se apoyan en proyectos de código abierto de
-        constructores que abrieron su trabajo. Los nombramos con claridad,
-        enlazamos sus repositorios y respetamos sus licencias. <strong>Multiversa Lab
-        es el conector: las herramientas viven en sus propios repos, con
-        sus propios mantenedores.</strong>
+        El Lab se apoya en proyectos de origen que otras personas y equipos
+        decidieron abrir. Los nombramos, enlazamos sus repositorios y respetamos
+        sus licencias. <strong>Multiversa conecta y verifica; estas herramientas
+        viven en sus propios repositorios, con sus propios mantenedores.</strong>
       </p>
     </div>
 
@@ -139,7 +137,7 @@
       Si vas a mejorar uno de estos pilares,
       <em>abre una contribución en el repositorio original.</em>
       <br />
-      Somos usuarios agradecidos que documentan. Ni una bifurcación, ni un envoltorio.
+      Somos usuarios agradecidos que integran y documentan. No reclamamos su autoría.
     </p>
 
   </div>
@@ -229,6 +227,7 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
   .license-mit         { color: var(--mv-primary); border-color: rgba(189, 235, 52, 0.22); background: rgba(189, 235, 52, 0.05); }
+  .license-apache-2-0  { color: var(--mv-sand); border-color: rgba(184, 180, 172, 0.25); background: rgba(184, 180, 172, 0.05); }
   .license-agpl-3      { color: var(--mv-orange); border-color: rgba(255, 159, 90, 0.25); background: rgba(255, 159, 90, 0.05); }
   .license-commercial  { color: rgba(250, 252, 232, 0.5); }
 
@@ -247,6 +246,11 @@
     color: rgba(250, 252, 232, 0.45);
     text-transform: uppercase;
   }
+  .handle a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+  }
   .handle a:hover { color: var(--mv-primary); }
   .loc { font-style: italic; opacity: 0.7; text-transform: none; letter-spacing: 0.05em; }
 
@@ -262,6 +266,9 @@
     letter-spacing: 0.08em;
   }
   .repo a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
     color: rgba(250, 252, 232, 0.65);
     transition: color 180ms ease;
   }

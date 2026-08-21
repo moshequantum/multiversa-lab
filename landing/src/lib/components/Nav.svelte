@@ -6,9 +6,8 @@
 
   const links = [
     { href: '/#manifiesto', label: 'Manifiesto' },
-    { href: '/#arquitectura', label: 'Pilares' },
-    { href: '/#movil', label: 'Instalar' },
-    { href: '/#estado', label: 'Estado' },
+    { href: '/#arquitectura', label: 'Arquitectura' },
+    { href: '/#roadmap', label: 'Roadmap' },
     { href: '/bitacora', label: 'Bitácora' }
   ];
 
@@ -64,16 +63,22 @@
     right: 0;
     top: 0;
     z-index: 50;
-    background: transparent;
-    border-bottom: 1px solid transparent;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--mv-background) 96%, transparent),
+      color-mix(in srgb, var(--mv-background) 80%, transparent)
+    );
+    border-bottom: 1px solid color-mix(in srgb, var(--mv-ivory) 5%, transparent);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
     transition: background var(--duration-med) ease, border-color var(--duration-med) ease, backdrop-filter var(--duration-med) ease;
   }
   .nav.scrolled,
   .nav:has(.mobile-menu) {
     backdrop-filter: blur(25px) saturate(1.4);
     -webkit-backdrop-filter: blur(25px) saturate(1.4);
-    background: rgba(5, 5, 5, 0.86);
-    border-color: rgba(255, 255, 255, 0.06);
+    background: color-mix(in srgb, var(--mv-background) 92%, transparent);
+    border-color: color-mix(in srgb, var(--mv-ivory) 6%, transparent);
   }
 
   .right {
@@ -86,7 +91,7 @@
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.22em;
-    color: rgba(250, 252, 232, 0.62);
+    color: color-mix(in srgb, var(--mv-ivory) 72%, transparent);
     transition: color 180ms ease;
   }
   .nav-link:hover { color: var(--mv-primary); }
