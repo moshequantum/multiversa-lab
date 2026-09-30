@@ -1,7 +1,5 @@
 packages:
-  - 'landing'
+  - 'packages/*'
+  - 'apps/*'
 allowBuilds:
   esbuild: true
-overrides:
-  socket.io-parser: 4.2.7
-  ws: 8.21.3

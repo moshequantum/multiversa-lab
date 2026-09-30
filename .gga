@@ -1,0 +1,8 @@
+# Gentleman Guardian Angel configuration for Multiversa.Lab.
+PROVIDER="codex"
+FILE_PATTERNS="*.go,*.ts,*.tsx,*.js,*.jsx,*.mjs,*.py,*.sh,*.svelte"
+EXCLUDE_PATTERNS="*.d.ts"
+RULES_FILE="AGENTS.md"
+STRICT_MODE="true"
+TIMEOUT="300"
+PR_BASE_BRANCH="main"

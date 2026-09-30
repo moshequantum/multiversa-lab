@@ -84,3 +84,14 @@ _multiversa_private/
 
 # Local browser profiles created by visual QA (cache/state, never source)
 artifacts/visual-reference/profile-*/
+
+# Playwright runtime artifacts
+test-results/
+playwright-report/
+blob-report/
+
+# Compiled Go Binaries
+*.exe
+cli/multiversa
+cli/multiversa.exe
+

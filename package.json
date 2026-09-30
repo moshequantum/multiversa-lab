@@ -1,21 +1,19 @@
 {
   "name": "multiversa-lab",
-  "version": "0.4.0",
+  "version": "1.0.0",
+  "description": "MultiversaLab — OpenPassport v1.0, CLI en Go, Servidor MCP y Frontend en React + Vite",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter @multiversa/lab-site dev",
-    "build": "pnpm --filter @multiversa/lab-site build",
-    "preview": "pnpm --filter @multiversa/lab-site preview",
-    "context:sync": "node scripts/sync-public-context.mjs",
-    "context:check": "node scripts/sync-public-context.mjs --check",
-    "typecheck": "pnpm --filter @multiversa/lab-site check",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "check": "pnpm context:check && pnpm typecheck && pnpm test:e2e"
+    "dev": "pnpm --filter @multiversa/lab-web dev",
+    "build": "pnpm --filter @multiversa/passport-core build && pnpm --filter @multiversa/mcp-passport build && pnpm --filter @multiversa/lab-web build",
+    "build:web": "pnpm --filter @multiversa/lab-web build",
+    "build:core": "pnpm --filter @multiversa/passport-core build",
+    "build:mcp": "pnpm --filter @multiversa/mcp-passport build",
+    "build:cli": "cd cli && go build -o multiversa.exe .",
+    "test": "pnpm --filter @multiversa/passport-core test",
+    "preview": "pnpm --filter @multiversa/lab-web preview"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.12.1",
-    "@playwright/test": "^1.62.1",
-    "svelte-check": "^4.7.4"
+    "typescript": "^5.8.2"
   }
 }

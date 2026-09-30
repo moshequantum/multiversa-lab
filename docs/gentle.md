@@ -33,11 +33,24 @@ gentle-ai puede configurar un agente con una postura de trabajo, por ejemplo:
 Para agentes nativos de Pi, `gentle-pi` entrega comandos dentro de la terminal del agente:
 
 ```bash
-# Instala gentle-pi en tu proyecto (política Multiversa: solo pnpm)
-pi install pnpm:gentle-pi
+# Instala gentle-pi dentro del runtime Pi. El prefijo `npm:` identifica
+# el registro para Pi; no ejecuta npm como gestor del workspace.
+pi install npm:gentle-pi
 
 # Inicializa especificaciones SDD
 /sdd-init
 ```
 
 El arnés organiza disciplina de ingeniería. La capa identitaria permanece en VoiceProfile y también puede aplicarse a Claude, Codex, otros agentes MCP y ayudantes internos.
+
+## Migración reproducible en Windows
+
+En una laptop nueva con Git, Go y Node.js disponibles, ejecuta desde la raíz
+del repositorio:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-gentle-stack.ps1
+```
+
+El script fija las versiones verificadas del stack, valida el checksum del
+release oficial de Multiversa y no copia tokens, claves ni contenido de vaults.

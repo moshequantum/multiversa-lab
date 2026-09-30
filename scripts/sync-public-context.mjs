@@ -7,6 +7,7 @@ const sourcePath = resolve(root, 'docs/ecosystem.public.json');
 const staticDir = resolve(root, 'landing/static');
 const checkOnly = process.argv.includes('--check');
 const source = JSON.parse(await readFile(sourcePath, 'utf8'));
+const normalizeLineEndings = (value) => value.replace(/\r\n/g, '\n');
 
 for (const key of ['schema_version', 'updated', 'site', 'surfaces', 'components', 'boundaries', 'agent_policy', 'crawl']) {
   if (source[key] == null) throw new Error(`ecosystem.public.json: falta ${key}`);
@@ -138,7 +139,10 @@ const drift = [];
 for (const [path, content] of outputs) {
   let current = null;
   try { current = await readFile(path, 'utf8'); } catch {}
-  if (current === content) continue;
+  // Git may materialize tracked text as CRLF on Windows. The generated
+  // document is semantically identical, so compare normalized bytes while
+  // continuing to write canonical LF output when synchronization is needed.
+  if (current != null && normalizeLineEndings(current) === content) continue;
   if (checkOnly) drift.push(path.replace(`${root}/`, ''));
   else {
     await mkdir(dirname(path), { recursive: true });
