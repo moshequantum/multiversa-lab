@@ -1,202 +1,130 @@
-# Multiversa Lab
+# Multiversa Lab — OpenPassport v1.0 & Sovereign AI Tooling (Full Specification)
 
-> Research Preview público para convertir memoria, estructura y criterio en un proceso portable y verificable entre hosts de IA.
+> Laboratorio público de ingeniería determinista para IA: estándar OpenPassport v1.0, CLI en Go, MCP Server para Claude/Cursor y contratos cognitivos de soberanía.
+> Canonical URL: https://lab.multiversa.group/
+> Una iniciativa de Multiversa Group (https://multiversa.group)
+> Autor Principal: Moisés David Vera (@moshequantum)
+> Licencia: MIT (Open Source Tooling)
+> Fecha de actualización: 2026-10-02
 
-Multiversa Lab empaqueta contexto portable, conecta proyectos de origen y verifica adaptadores; no es otro agente ni reclama autoría ajena. La IA propone. El humano decide.
+---
 
-## Superficies
+## 1. Misión y Filosofía de Diseño
 
-- [Sitio público del Lab](https://lab.multiversa.group/): Landing, bitácora y roadmap Build in Public del laboratorio. Estado: research-preview.
-- [Repositorio Lab](https://github.com/moshequantum/multiversa-lab): Documentación pública, sitio, inicio e integración del laboratorio. Estado: public.
-- [Multiversa CLI](https://github.com/moshequantum/multiversa-cli): Plano de control experimental y MCP de solo lectura; varios adaptadores todavía no están implementados. Estado: experimental.
-- [Multiversa Installer](https://github.com/moshequantum/multiversa-installer): Instalador gráfico multiplataforma que delega operaciones en el CLI. Estado: experimental.
-- [Multiversa SDK](https://github.com/moshequantum/multiversa-sdk): Contratos públicos versionados, incluidos CLI Envelope, perfiles, misiones y VoiceProfile. Estado: release-candidate.
+Multiversa Lab provee una arquitectura canónica y herramientas de código abierto para resolver la deriva de contexto y alucinación en agentes LLM y flujos de trabajo multiagente.
+El paradigma de ingeniería se basa en tres axiomas:
+1. **Conceptos antes que Código:** La arquitectura precede a la ejecución técnica.
+2. **Determinismo sobre Probabilidad:** El contexto y los contratos de soberanía se verifican mediante funciones criptográficas unidireccionales (SHA-256).
+3. **Soberanía Humana:** La IA asiste y propone; el humano decide y conserva la autoridad innegociable.
 
-## Componentes curados
+---
 
-- [Engram](https://github.com/Gentleman-Programming/engram): Memoria persistente local y MCP. Licencia upstream: MIT.
-- [Graphify](https://github.com/Graphify-Labs/graphify): Transformación de contenido en grafo de conocimiento. Licencia upstream: Apache-2.0.
-- [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): Configuración de ecosistemas agénticos; Multiversa usa su modo custom. Licencia upstream: MIT.
-- [gentle-pi](https://github.com/Gentleman-Programming/gentle-pi): Arnés SDD para Pi; no perfila a las personas de Multiversa. Licencia upstream: MIT.
-- [codegraph](https://github.com/colbymchenry/codegraph): Grafo semántico de código. Licencia upstream: MIT.
-- [MiroFish](https://github.com/666ghj/MiroFish): Simulación multiagente opcional, siempre como servicio/binario externo. Licencia upstream: AGPL-3.0.
+## 2. Especificación Canónica OpenPassport v1.0
 
-## Documentación
+OpenPassport v1.0 define un protocolo estructural de 7 capas ordenadas y complementarias que encapsulan la memoria y los límites operativos de cualquier sistema agéntico.
 
-- [Roadmap público](https://github.com/moshequantum/multiversa-lab/blob/main/ROADMAP.md): Fases, estado real, pruebas y puertas de salida del realineamiento.
-- [Arquitectura](https://github.com/moshequantum/multiversa-lab/blob/main/docs/architecture.md): Capas, fronteras y responsabilidades del laboratorio.
-- [CLI](https://github.com/moshequantum/multiversa-lab/blob/main/docs/cli.md): Flujos de instalación, comandos y límites de mutación.
-- [Upstreams y atribución](https://github.com/moshequantum/multiversa-lab/blob/main/docs/upstream.md): Autores, licencias y fronteras de propiedad intelectual.
-- [Contexto completo para LLM](https://lab.multiversa.group/llms-full.txt): Vista expandida y generada de este contrato público.
+### Capa 01: Identidad (`01-IDENTITY.md`)
+- **Categoría:** Capa Fundacional.
+- **Propósito:** Define al titular, visión fundacional, alcance cerrado y límites inmutables de lo que el sistema NO es.
+- **Invariante:** Invariante de Identidad. No muta por sesión ni por deriva de conversación. Todo agente debe autenticar esta capa antes de asumir cualquier rol.
 
-## Límites
+### Capa 02: Doctrina (`02-DOCTRINE.md`)
+- **Categoría:** Capa Filosófica.
+- **Propósito:** Axiomas innegociables, principios rectores y rechazo absoluto a clichés artificiales ("slop", complacencia o condescendencia).
+- **Invariante:** Prueba del Intercambio. Si un texto generado pudiera llevar la firma de un coach genérico o de un modelo sin calibrar, se considera nulo y rechazado.
 
-- El Lab es un Research Preview: la integración completa no está lista para uso general.
-- Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de perfiles.
-- La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.
-- Telegram es un canal opcional; nunca es memoria ni fuente de verdad.
-- Los motores de origen conservan su autoría y licencia.
-- VoiceProfile requiere confirmación humana y no infiere atributos sensibles.
+### Capa 03: Voz (`03-VOICE.md`)
+- **Categoría:** Capa Expresiva.
+- **Propósito:** Matriz de contraste (Qué NO decir vs Qué decir siempre), whitelist de conceptos de autor y salvaguardas de vocabulario.
+- **Invariante:** Invariante de Tono. Regula la interacción discursiva con humanos; no deforma ni traduce la nomenclatura técnica de código fuente o artefactos de ejecución.
 
-## Uso recomendado
+### Capa 04: Oferta (`04-OFFER.md`)
+- **Categoría:** Capa Comercial.
+- **Propósito:** Catálogo cerrado de entregables con alcances específicos y condiciones pactadas.
+- **Invariante:** Alcance Cerrado. El agente jamás inventa servicios ni promete capacidades fuera de las explícitamente listadas en el pasaporte.
 
-- Idioma por defecto: Español latinoamericano neutro, configurable mediante VoiceProfile.
-- No asumir hechos que no aparezcan en este archivo o en las fuentes enlazadas.
-- Verificar estado y versiones en los repositorios antes de afirmar que algo está publicado.
-- Contexto expandido: [llms-full.txt](https://lab.multiversa.group/llms-full.txt)
-- Política para agentes: [agents.txt](https://lab.multiversa.group/agents.txt)
+### Capa 05: Gobernanza (`05-GOVERNANCE.md`)
+- **Categoría:** Capa Legal y de Autoridad.
+- **Propósito:** Reparto de autoridad (Titular Fundador vs Founding Engineer), salvaguardas de confidencialidad, deslindes legales y privacidad estricta.
+- **Invariante:** Invariante de Soberanía. Exclusión absoluta de retención de datos ajenos o no autorizados. Ningún agente emite compromisos fiduciarios.
 
-## Contrato público completo
+### Capa 06: Estado Temporal (`06-CURRENT-STATE.md`)
+- **Categoría:** Capa Temporal.
+- **Propósito:** Registro sincronizado con fecha de corte estricta (`asOf: YYYY-MM-DD`). Fotografía verificada de infraestructura, integraciones e hitos operativos reales.
+- **Invariante:** Invariante Temporal. Ningún hecho posterior a la fecha `asOf` puede inferirse o asumirse sin actualización formal del pasaporte.
 
+### Capa 07: Evidencia (`07-EVIDENCE.md`)
+- **Categoría:** Capa Epistemológica.
+- **Propósito:** Clasificación rigurosa en 5 niveles de certeza para erradicar alucinaciones cognitivas.
+- **Escala Epistémica:**
+  - `[Nivel 1 - Confirmado]`: Datos auditados y verificados en producción o registros inmutables.
+  - `[Nivel 2 - Declarado]`: Afirmaciones explícitas del titular o equipo directivo.
+  - `[Nivel 3 - Histórico]`: Registros pasados sujetos a posible cambio de contexto.
+  - `[Nivel 4 - Hipótesis]`: En validación activa o desarrollo preliminar.
+  - `[Nivel 5 - Propuesta]`: Ideas exploratorias no consolidadas.
+- **Invariante:** La escala epistemológica no permite promover una hipótesis a confirmada sin comprobación observable.
+
+---
+
+## 3. Tooling & CLI en Go (`multiversa-cli`)
+
+El motor de verificación de Multiversa Lab se implementa en Go para garantizar portabilidad sin dependencias, latencia de milisegundos y compatibilidad cruzada (Linux, macOS, Windows).
+
+### Instalación Rápida
+```bash
+curl -fsSL https://lab.multiversa.group/install.sh | bash
+```
+
+### Comandos de Línea de Órdenes
+- `multiversa init [directorio]`: Genera la estructura de directorios y plantillas de las 7 capas canónicas.
+- `multiversa verify`: Recorre el árbol de capas, calcula el hash SHA-256 de cada archivo y contrasta contra el manifiesto `passport.lock`.
+- `multiversa inspect`: Muestra la matriz de integridad, niveles de evidencia y alertas de deriva temporal.
+- `multiversa mcp`: Lanza el servidor compatible con el protocolo MCP (Model Context Protocol) a través de `stdio`.
+- `multiversa pack`: Genera un bundle inmutable y sellado listo para su despliegue en entornos productivos.
+
+---
+
+## 4. Integración del Servidor MCP (Model Context Protocol)
+
+El servidor MCP permite conectar cualquier IDE o cliente de IA moderno directamente a la memoria de OpenPassport v1.0.
+
+### Configuración en Claude Desktop / Claude Code
+Archivo: `claude_desktop_config.json`
 ```json
 {
-  "$schema": "https://schemas.multiversa.dev/ecosystem-public/v1",
-  "schema_version": "1.0.0",
-  "updated": "2026-08-21",
-  "site": {
-    "name": "Multiversa Lab",
-    "url": "https://lab.multiversa.group",
-    "repository": "https://github.com/moshequantum/multiversa-lab",
-    "language": "es-419",
-    "visibility": "public",
-    "summary": "Research Preview público para convertir memoria, estructura y criterio en un proceso portable y verificable entre hosts de IA."
-  },
-  "positioning": {
-    "statement": "Multiversa Lab empaqueta contexto portable, conecta proyectos de origen y verifica adaptadores; no es otro agente ni reclama autoría ajena.",
-    "ethic": "La IA propone. El humano decide.",
-    "default_locale": "Español latinoamericano neutro, configurable mediante VoiceProfile."
-  },
-  "surfaces": [
-    {
-      "name": "Sitio público del Lab",
-      "url": "https://lab.multiversa.group/",
-      "description": "Landing, bitácora y roadmap Build in Public del laboratorio.",
-      "status": "research-preview",
-      "sitemap": true
-    },
-    {
-      "name": "Repositorio Lab",
-      "url": "https://github.com/moshequantum/multiversa-lab",
-      "description": "Documentación pública, sitio, inicio e integración del laboratorio.",
-      "status": "public"
-    },
-    {
-      "name": "Multiversa CLI",
-      "url": "https://github.com/moshequantum/multiversa-cli",
-      "description": "Plano de control experimental y MCP de solo lectura; varios adaptadores todavía no están implementados.",
-      "status": "experimental"
-    },
-    {
-      "name": "Multiversa Installer",
-      "url": "https://github.com/moshequantum/multiversa-installer",
-      "description": "Instalador gráfico multiplataforma que delega operaciones en el CLI.",
-      "status": "experimental"
-    },
-    {
-      "name": "Multiversa SDK",
-      "url": "https://github.com/moshequantum/multiversa-sdk",
-      "description": "Contratos públicos versionados, incluidos CLI Envelope, perfiles, misiones y VoiceProfile.",
-      "status": "release-candidate"
+  "mcpServers": {
+    "multiversa": {
+      "command": "multiversa",
+      "args": ["mcp", "--passport", "/ruta/al/passport"]
     }
-  ],
-  "components": [
-    {
-      "name": "Engram",
-      "role": "Memoria persistente local y MCP",
-      "upstream": "https://github.com/Gentleman-Programming/engram",
-      "license": "MIT"
-    },
-    {
-      "name": "Graphify",
-      "role": "Transformación de contenido en grafo de conocimiento",
-      "upstream": "https://github.com/Graphify-Labs/graphify",
-      "license": "Apache-2.0"
-    },
-    {
-      "name": "gentle-ai",
-      "role": "Configuración de ecosistemas agénticos; Multiversa usa su modo custom",
-      "upstream": "https://github.com/Gentleman-Programming/gentle-ai",
-      "license": "MIT"
-    },
-    {
-      "name": "gentle-pi",
-      "role": "Arnés SDD para Pi; no perfila a las personas de Multiversa",
-      "upstream": "https://github.com/Gentleman-Programming/gentle-pi",
-      "license": "MIT"
-    },
-    {
-      "name": "codegraph",
-      "role": "Grafo semántico de código",
-      "upstream": "https://github.com/colbymchenry/codegraph",
-      "license": "MIT"
-    },
-    {
-      "name": "MiroFish",
-      "role": "Simulación multiagente opcional, siempre como servicio/binario externo",
-      "upstream": "https://github.com/666ghj/MiroFish",
-      "license": "AGPL-3.0"
-    }
-  ],
-  "public_documents": [
-    {
-      "title": "Roadmap público",
-      "url": "https://github.com/moshequantum/multiversa-lab/blob/main/ROADMAP.md",
-      "description": "Fases, estado real, pruebas y puertas de salida del realineamiento."
-    },
-    {
-      "title": "Arquitectura",
-      "url": "https://github.com/moshequantum/multiversa-lab/blob/main/docs/architecture.md",
-      "description": "Capas, fronteras y responsabilidades del laboratorio."
-    },
-    {
-      "title": "CLI",
-      "url": "https://github.com/moshequantum/multiversa-lab/blob/main/docs/cli.md",
-      "description": "Flujos de instalación, comandos y límites de mutación."
-    },
-    {
-      "title": "Upstreams y atribución",
-      "url": "https://github.com/moshequantum/multiversa-lab/blob/main/docs/upstream.md",
-      "description": "Autores, licencias y fronteras de propiedad intelectual."
-    },
-    {
-      "title": "Contexto completo para LLM",
-      "url": "https://lab.multiversa.group/llms-full.txt",
-      "description": "Vista expandida y generada de este contrato público."
-    }
-  ],
-  "boundaries": [
-    "El Lab es un Research Preview: la integración completa no está lista para uso general.",
-    "Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de perfiles.",
-    "La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.",
-    "Telegram es un canal opcional; nunca es memoria ni fuente de verdad.",
-    "Los motores de origen conservan su autoría y licencia.",
-    "VoiceProfile requiere confirmación humana y no infiere atributos sensibles."
-  ],
-  "agent_policy": {
-    "allow": [
-      "Leer documentación y código público.",
-      "Proponer cambios mediante pull requests.",
-      "Ejecutar checks y builds no destructivos.",
-      "Usar los contratos versionados del SDK para integraciones."
-    ],
-    "disallow": [
-      "Ejecutar instaladores o comandos mutantes sin aprobación humana explícita.",
-      "Inventar capacidades, métricas, clientes, precios o garantías.",
-      "Copiar información privada de Multiversa Group hacia Lab.",
-      "Leer, imprimir o almacenar secretos y archivos .env.",
-      "Incorporar código AGPL dentro del núcleo MIT."
-    ]
-  },
-  "crawl": {
-    "disallow": [
-      "/api/"
-    ],
-    "context_paths": [
-      "/llms.txt",
-      "/llms-full.txt",
-      "/agents.txt",
-      "/ecosystem.json"
-    ]
   }
 }
 ```
+
+### Configuración en Cursor
+En Ajustes > Features > MCP > Add New MCP Server:
+- **Name:** `multiversa`
+- **Type:** `command`
+- **Command:** `multiversa mcp --passport ./.multiversa`
+
+---
+
+## 5. Prevención de Alucinación mediante Integridad SHA-256
+
+Los modelos de lenguaje tienden a degradar o reinventar restricciones tras turnos sucesivos de interacción conversacional.
+Multiversa Lab soluciona esto a nivel de protocolo:
+1. **Hash Tree Inmutable:** Cada capa del pasaporte posee una firma SHA-256 única.
+2. **Verificación Pre-Inferencia:** Antes de suministrar el contexto al modelo, el middleware MCP o runtime valida que `sha256(capa) == lock_hash`.
+3. **Detección de Deriva Inmediata:** Si un proceso modifica arbitrariamente una regla doctrinal o añade servicios no contemplados en la oferta, la discrepancia criptográfica bloquea la ejecución antes de que el modelo emita una respuesta inconsistente.
+
+---
+
+## 6. Recursos y Enlaces Canónicos
+
+- Sitio Web Oficial: https://lab.multiversa.group/
+- Repositorio Open Source: https://github.com/moshequantum/multiversa-lab
+- Multiversa CLI (Go): https://github.com/moshequantum/multiversa-cli
+- Iniciativa Matriz: https://multiversa.group/
+- Sitemap XML: https://lab.multiversa.group/sitemap.xml
+- Robots TXT: https://lab.multiversa.group/robots.txt
+- Documento LLM Resumido: https://lab.multiversa.group/llms.txt

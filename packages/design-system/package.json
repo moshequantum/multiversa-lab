@@ -1,0 +1,77 @@
+{
+  "name": "@multiversa/design-system",
+  "version": "1.0.0",
+  "description": "Official design system, brand vector assets, and Tailwind preset for the Multiversa ecosystem",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens/index.d.ts",
+      "import": "./dist/tokens/index.js",
+      "default": "./dist/tokens/index.js"
+    },
+    "./preset": {
+      "types": "./dist/preset.d.ts",
+      "import": "./dist/preset.js",
+      "require": "./preset.js",
+      "default": "./dist/preset.js"
+    },
+    "./tailwind": {
+      "types": "./dist/preset.d.ts",
+      "import": "./dist/preset.js",
+      "require": "./preset.js",
+      "default": "./dist/preset.js"
+    },
+    "./assets/*": "./assets/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "assets",
+    "preset.js",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "multiversa",
+    "design-system",
+    "tailwind",
+    "preset",
+    "brand-assets",
+    "isotype",
+    "tokens"
+  ],
+  "author": "Multiversa Group LLC",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.8.2"
+  }
+}

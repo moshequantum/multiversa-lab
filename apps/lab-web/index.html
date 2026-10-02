@@ -3,12 +3,176 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MultiversaLab — OpenPassport v1.0 & Sovereign AI Tooling</title>
+    <title>Multiversa Lab — OpenPassport v1.0 & Sovereign AI Tooling</title>
     <meta name="description" content="Laboratorio público de ingeniería determinista para IA: estándar OpenPassport v1.0, CLI en Go, MCP Server y contratos cognitivos de soberanía." />
+    <meta name="keywords" content="OpenPassport, Multiversa Lab, MCP Server, Sovereign AI, Claude Code, Cursor, Go CLI, Deterministic Context, SHA-256, Agentic AI, Moisés David Vera, Multiversa Group" />
+    <meta name="author" content="Moisés David Vera" />
+    <meta name="theme-color" content="#07090E" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lab.multiversa.group/" />
+
+    <!-- Brand Favicons and Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="512x512" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lab.multiversa.group/" />
+    <meta property="og:site_name" content="Multiversa Lab" />
+    <meta property="og:title" content="Multiversa Lab — OpenPassport v1.0 & Sovereign AI Tooling" />
+    <meta property="og:description" content="Laboratorio público de ingeniería determinista para IA: estándar OpenPassport v1.0, CLI en Go, MCP Server y contratos cognitivos de soberanía." />
+    <meta property="og:image" content="https://lab.multiversa.group/og-image.png" />
+    <meta property="og:image:secure_url" content="https://lab.multiversa.group/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Multiversa Lab — OpenPassport v1.0 & Sovereign AI Tooling" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://lab.multiversa.group/" />
+    <meta name="twitter:title" content="Multiversa Lab — OpenPassport v1.0 & Sovereign AI Tooling" />
+    <meta name="twitter:description" content="Laboratorio público de ingeniería determinista para IA: estándar OpenPassport v1.0, CLI en Go, MCP Server y contratos cognitivos de soberanía." />
+    <meta name="twitter:image" content="https://lab.multiversa.group/og-image.png" />
+    <meta name="twitter:creator" content="@moshequantum" />
+    <meta name="twitter:site" content="@multiversagroup" />
+
+    <!-- Brand Typography: Plus Jakarta Sans, Newsreader, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+
+    <!-- GEO & AEO Structured Data (JSON-LD Graph) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://multiversa.group/#organization",
+          "name": "Multiversa Group",
+          "url": "https://multiversa.group",
+          "logo": "https://lab.multiversa.group/favicon.svg",
+          "sameAs": [
+            "https://github.com/moshequantum"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://lab.multiversa.group/#author",
+          "name": "Moisés David Vera",
+          "jobTitle": "Founding AI Product Engineer & Architect",
+          "worksFor": {
+            "@id": "https://multiversa.group/#organization"
+          },
+          "url": "https://github.com/moshequantum",
+          "sameAs": [
+            "https://github.com/moshequantum"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://lab.multiversa.group/#website",
+          "url": "https://lab.multiversa.group/",
+          "name": "Multiversa Lab",
+          "description": "Laboratorio público de ingeniería determinista para IA: estándar OpenPassport v1.0, CLI en Go, MCP Server y contratos cognitivos de soberanía.",
+          "publisher": {
+            "@id": "https://multiversa.group/#organization"
+          },
+          "inLanguage": "es"
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "@id": "https://lab.multiversa.group/#software",
+          "name": "Multiversa CLI & OpenPassport Standard",
+          "description": "Herramienta CLI en Go y servidor MCP para Claude, Cursor y Gemini que implementa el estándar OpenPassport v1.0 con integridad SHA-256 en 7 capas.",
+          "codeRepository": "https://github.com/moshequantum/multiversa-cli",
+          "programmingLanguage": [
+            "Go",
+            "TypeScript"
+          ],
+          "runtimePlatform": "Cross-platform (Linux, macOS, Windows)",
+          "license": "https://opensource.org/licenses/MIT",
+          "author": {
+            "@id": "https://lab.multiversa.group/#author"
+          },
+          "publisher": {
+            "@id": "https://multiversa.group/#organization"
+          },
+          "version": "1.0.0"
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://lab.multiversa.group/#standard-spec",
+          "headline": "OpenPassport v1.0: Arquitectura Determinista de 7 Capas para Contexto e Identidad Agéntica",
+          "description": "Especificación canónica del estándar OpenPassport v1.0 para erradicar la deriva contextual, alucinaciones y pérdida de soberanía en modelos LLM y agentes autónomos mediante verificación criptográfica SHA-256.",
+          "author": {
+            "@id": "https://lab.multiversa.group/#author"
+          },
+          "publisher": {
+            "@id": "https://multiversa.group/#organization"
+          },
+          "inLanguage": "es",
+          "mainEntityOfPage": "https://lab.multiversa.group/",
+          "about": [
+            {
+              "@type": "Thing",
+              "name": "Model Context Protocol (MCP)"
+            },
+            {
+              "@type": "Thing",
+              "name": "Deterministic AI Context"
+            },
+            {
+              "@type": "Thing",
+              "name": "Cryptographic Verification SHA-256"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://lab.multiversa.group/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Multiversa Lab?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Multiversa Lab (lab.multiversa.group) es el laboratorio público de investigación e ingeniería determinista para inteligencia artificial de Multiversa Group. Desarrolla tooling soberano de código abierto, incluyendo el estándar OpenPassport v1.0, multiversa-cli en Go y servidores MCP para Claude, Cursor y agentes autónomos."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is OpenPassport v1.0?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "OpenPassport v1.0 es un estándar canónico de arquitectura de 7 capas (Identity, Doctrine, Voice, Offer, Governance, Current-State, Evidence) que estructura el contexto y contratos de soberanía para agentes de IA, garantizando inmutabilidad y verificabilidad criptográfica con sumas de verificación SHA-256."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I integrate the Multiversa MCP Server in Cursor or Claude Code?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Para integrar el servidor MCP de Multiversa, instala el CLI ejecutando 'curl -fsSL https://lab.multiversa.group/install.sh | bash'. Posteriormente, en el archivo de configuración mcpServers de Cursor o Claude Desktop/Code, añade la entrada del binario 'multiversa mcp' apuntando al directorio de tu passport local para habilitar inyección determinista de contexto."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does SHA-256 verification prevent LLM hallucination?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Al sellar criptográficamente cada una de las 7 capas con hashes SHA-256, el runtime y el servidor MCP auditan la integridad del árbol de contexto antes de cada inferencia. Si una capa muta indebidamente o un modelo deriva de su identidad o doctrina, el sistema detecta la discrepancia en el árbol de hashes e interrumpe la ejecución antes de emitir respuestas no fidedignas."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="bg-canvas text-ivory font-sans antialiased selection:bg-primary/20 selection:text-gold min-h-screen">
     <div id="root"></div>

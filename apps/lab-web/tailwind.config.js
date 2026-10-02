@@ -23,9 +23,9 @@ export default {
         secondary: "#6366f1",
       },
       fontFamily: {
-        sans: ["Sora", "system-ui", "-apple-system", "sans-serif"],
+        sans: ["Plus Jakarta Sans", "system-ui", "-apple-system", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
-        serif: ["Playfair Display", "Georgia", "serif"],
+        serif: ["Newsreader", "Georgia", "serif"],
       },
     },
   },

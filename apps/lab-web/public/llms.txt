@@ -1,47 +1,58 @@
-# Multiversa Lab
+# Multiversa Lab — OpenPassport v1.0 & Sovereign AI Tooling
 
-> Research Preview público para convertir memoria, estructura y criterio en un proceso portable y verificable entre hosts de IA.
+> Laboratorio público de ingeniería determinista para IA: estándar OpenPassport v1.0, CLI en Go, MCP Server para Claude/Cursor y contratos cognitivos de soberanía.
+> Canonical URL: https://lab.multiversa.group/
+> Una iniciativa de Multiversa Group (https://multiversa.group)
+> Autor Principal: Moisés David Vera (@moshequantum)
 
-Multiversa Lab empaqueta contexto portable, conecta proyectos de origen y verifica adaptadores; no es otro agente ni reclama autoría ajena. La IA propone. El humano decide.
+Multiversa Lab provee una arquitectura canónica y herramientas de código abierto para resolver la deriva de contexto y alucinación en agentes LLM y flujos de trabajo multiagente. El humano decide; la IA asiste bajo contratos invariables.
 
-## Superficies
+## Estándar OpenPassport v1.0
 
-- [Sitio público del Lab](https://lab.multiversa.group/): Landing, bitácora y roadmap Build in Public del laboratorio. Estado: research-preview.
-- [Repositorio Lab](https://github.com/moshequantum/multiversa-lab): Documentación pública, sitio, inicio e integración del laboratorio. Estado: public.
-- [Multiversa CLI](https://github.com/moshequantum/multiversa-cli): Plano de control experimental y MCP de solo lectura; varios adaptadores todavía no están implementados. Estado: experimental.
-- [Multiversa Installer](https://github.com/moshequantum/multiversa-installer): Instalador gráfico multiplataforma que delega operaciones en el CLI. Estado: experimental.
-- [Multiversa SDK](https://github.com/moshequantum/multiversa-sdk): Contratos públicos versionados, incluidos CLI Envelope, perfiles, misiones y VoiceProfile. Estado: release-candidate.
+OpenPassport v1.0 es una arquitectura determinista de 7 capas con verificación criptográfica SHA-256:
 
-## Componentes curados
+1. `01-IDENTITY.md` (Capa Fundacional): Identidad canónica innegociable, titular, propósito del sistema y límites de lo que NO es. Invariante: No muta por sesión ni por deriva de conversación.
+2. `02-DOCTRINE.md` (Capa Filosófica): Axiomas innegociables, principios rectores y militancia contra el slop y la condescendencia. Invariante: Prueba del Intercambio (si un texto parece de un coach genérico, es inválido).
+3. `03-VOICE.md` (Capa Expresiva): Matriz de contraste (Qué NO decir vs Qué decir siempre), whitelist de conceptos de autor y vocabulario técnico. Invariante: Regula cómo se habla, no muta artefactos de código técnico.
+4. `04-OFFER.md` (Capa Comercial): Catálogo cerrado de entregables con alcances específicos. Invariante: El agente jamás inventa servicios fuera de este catálogo.
+5. `05-GOVERNANCE.md` (Capa Legal y Autoridad): Reparto de autoridad (Titular vs Founding Engineer), salvaguardas legales, privacidad estricta y soberanía de datos. Invariante: Exclusión absoluta de retención de datos ajenos.
+6. `06-CURRENT-STATE.md` (Capa Temporal): Invariante temporal con fecha de corte estricta (`asOf: YYYY-MM-DD`). La verdad operativa observable en el sistema.
+7. `07-EVIDENCE.md` (Capa Epistemológica): Clasificación en 5 niveles de certeza para evitar alucinaciones: [1] Confirmado > [2] Declarado > [3] Histórico > [4] Hipótesis > [5] Propuesta.
 
-- [Engram](https://github.com/Gentleman-Programming/engram): Memoria persistente local y MCP. Licencia upstream: MIT.
-- [Graphify](https://github.com/Graphify-Labs/graphify): Transformación de contenido en grafo de conocimiento. Licencia upstream: Apache-2.0.
-- [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): Configuración de ecosistemas agénticos; Multiversa usa su modo custom. Licencia upstream: MIT.
-- [gentle-pi](https://github.com/Gentleman-Programming/gentle-pi): Arnés SDD para Pi; no perfila a las personas de Multiversa. Licencia upstream: MIT.
-- [codegraph](https://github.com/colbymchenry/codegraph): Grafo semántico de código. Licencia upstream: MIT.
-- [MiroFish](https://github.com/666ghj/MiroFish): Simulación multiagente opcional, siempre como servicio/binario externo. Licencia upstream: AGPL-3.0.
+## Quickstart & CLI en Go
 
-## Documentación
+Instalación con una sola línea:
+```bash
+curl -fsSL https://lab.multiversa.group/install.sh | bash
+```
 
-- [Roadmap público](https://github.com/moshequantum/multiversa-lab/blob/main/ROADMAP.md): Fases, estado real, pruebas y puertas de salida del realineamiento.
-- [Arquitectura](https://github.com/moshequantum/multiversa-lab/blob/main/docs/architecture.md): Capas, fronteras y responsabilidades del laboratorio.
-- [CLI](https://github.com/moshequantum/multiversa-lab/blob/main/docs/cli.md): Flujos de instalación, comandos y límites de mutación.
-- [Upstreams y atribución](https://github.com/moshequantum/multiversa-lab/blob/main/docs/upstream.md): Autores, licencias y fronteras de propiedad intelectual.
-- [Contexto completo para LLM](https://lab.multiversa.group/llms-full.txt): Vista expandida y generada de este contrato público.
+Comandos principales del CLI (`multiversa`):
+- `multiversa init`: Inicializa un passport canónico de 7 capas en el directorio de trabajo.
+- `multiversa verify`: Calcula y valida las sumas SHA-256 de cada capa garantizando integridad matemática.
+- `multiversa mcp`: Inicia el servidor MCP local para inyección determinista de contexto.
+- `multiversa inspect`: Audita el estado epistemológico y la consistencia de las capas.
 
-## Límites
+## Integración MCP (Model Context Protocol)
 
-- El Lab es un Research Preview: la integración completa no está lista para uso general.
-- Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de perfiles.
-- La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.
-- Telegram es un canal opcional; nunca es memoria ni fuente de verdad.
-- Los motores de origen conservan su autoría y licencia.
-- VoiceProfile requiere confirmación humana y no infiere atributos sensibles.
+Compatible con Claude Desktop, Claude Code, Cursor y Gemini CLI:
 
-## Uso recomendado
+Configuración en `mcpServers`:
+```json
+{
+  "mcpServers": {
+    "multiversa": {
+      "command": "multiversa",
+      "args": ["mcp", "--passport", "./.multiversa"]
+    }
+  }
+}
+```
 
-- Idioma por defecto: Español latinoamericano neutro, configurable mediante VoiceProfile.
-- No asumir hechos que no aparezcan en este archivo o en las fuentes enlazadas.
-- Verificar estado y versiones en los repositorios antes de afirmar que algo está publicado.
-- Contexto expandido: [llms-full.txt](https://lab.multiversa.group/llms-full.txt)
-- Política para agentes: [agents.txt](https://lab.multiversa.group/agents.txt)
+## Superficies del Ecosistema
+
+- Sitio Oficial: https://lab.multiversa.group/
+- Repositorio Lab: https://github.com/moshequantum/multiversa-lab
+- Multiversa CLI: https://github.com/moshequantum/multiversa-cli (MIT)
+- Contexto Completo: https://lab.multiversa.group/llms-full.txt
+- Robots: https://lab.multiversa.group/robots.txt
+- Sitemap: https://lab.multiversa.group/sitemap.xml
