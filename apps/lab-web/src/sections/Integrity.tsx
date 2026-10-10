@@ -77,6 +77,7 @@ export function Integrity() {
           <Terminal
             title="~/multiversa-lab · multiversa passport verify"
             lines={LINES}
+            session
             footer={<>Salida real de la CLI compilada desde <span className="text-ivory">cli/</span> · {CUTOFF_LABEL} · ruta abreviada</>}
           />
         </div>

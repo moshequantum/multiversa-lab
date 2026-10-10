@@ -556,3 +556,10 @@
     }
   }
 }
+
+/* Integrity terminal: lines wait (still in the DOM, opacity only) until the session plays. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-motion="terminal"][data-run="armed"] [data-line] {
+    opacity: 0;
+  }
+}
