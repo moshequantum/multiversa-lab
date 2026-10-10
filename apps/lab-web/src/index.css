@@ -38,10 +38,17 @@
     --color-muted: oklch(var(--muted-foreground));
     --hairline: oklch(var(--border) / 0.7);
 
-    /* Motion baseline (the motion layer can retune these) */
+    /* Motion tokens (choreography lives in src/motion/motion.css) */
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    --reveal-duration: 0.9s;
-    --reveal-distance: 18px;
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-in-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
+    --dur-quick: 320ms;
+    --dur-base: 700ms;
+    --dur-slow: 1100ms;
+    --dur-story: 1600ms;
+    --stagger: 45ms;
+    --reveal-duration: 1s;
+    --reveal-distance: 22px;
 
     color-scheme: dark;
   }
@@ -152,13 +159,11 @@
  * via IntersectionObserver. Optional per-element delay: style="--reveal-delay: 120ms".
  */
 @media (prefers-reduced-motion: no-preference) {
+  /* Pending state applies instantly; the transition lives on the revealed state only, so
+     adding .reveal-ready at load starts no (invisible) hide transitions. */
   .reveal-ready [data-reveal] {
     opacity: 0;
     transform: translate3d(0, var(--reveal-distance), 0);
-    transition:
-      opacity var(--reveal-duration) var(--ease-out-expo),
-      transform var(--reveal-duration) var(--ease-out-expo);
-    transition-delay: var(--reveal-delay, 0ms);
   }
   .reveal-ready [data-reveal="fade"] {
     transform: none;
@@ -166,6 +171,10 @@
   .reveal-ready [data-reveal].is-revealed {
     opacity: 1;
     transform: none;
+    transition:
+      opacity var(--reveal-duration) var(--ease-out-expo),
+      transform var(--reveal-duration) var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
   }
 }
 

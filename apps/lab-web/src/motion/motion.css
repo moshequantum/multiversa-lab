@@ -1,0 +1,178 @@
+/*
+ * Multiversa.Lab — motion layer.
+ *
+ * Principles
+ *   - Base styles are the final state. Every "from" state lives inside
+ *     @media (prefers-reduced-motion: no-preference), and scroll-revealed ones also require
+ *     <html class="reveal-ready"> (set by JS), so content is never hidden without JS or with
+ *     reduced motion.
+ *   - Only transform / opacity / filter / clip-path / stroke-dashoffset are animated.
+ *   - Tokens (index.css :root): --ease-out-expo (entrances), --ease-out-quart, --ease-in-out-sine
+ *     (ambient / drawing), --dur-quick 320 · --dur-base 700 · --dur-slow 1100 · --dur-story 1600,
+ *     --stagger 45ms.
+ *   - Cues: [data-reveal] gets .is-revealed from the shared IntersectionObserver (useReveal.ts).
+ *     "Pending" = `.reveal-ready [data-reveal]:not(.is-revealed) …`.
+ */
+
+/* Site header: hairline + reading progress live on pseudo-elements (opacity/transform only). */
+[data-motion="site-header"] {
+  border-bottom-color: transparent;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+[data-motion="site-header"]::before,
+[data-motion="site-header"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  pointer-events: none;
+}
+[data-motion="site-header"]::after {
+  background: var(--hairline);
+}
+[data-motion="site-header"]::before {
+  z-index: 1;
+  background: linear-gradient(90deg, oklch(var(--primary) / 0.1), oklch(var(--primary) / 0.95));
+  transform-origin: left center;
+  transform: scaleX(var(--mv-progress, 0));
+}
+/* Hides on scroll down; the 1px progress row stays visible at the top edge. */
+[data-motion="site-header"][data-header="hidden"]:not(:focus-within) {
+  transform: translate3d(0, calc(-100% + 1px), 0);
+}
+
+/* Chapter rail progress */
+.rail-fill {
+  transform: scaleY(var(--mv-progress, 0));
+}
+
+/* ====================================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  /* ---------------- Keyframes ---------------- */
+  @keyframes mv-mask-rise {
+    from {
+      transform: translate3d(0, 100%, 0);
+      clip-path: inset(-0.3em -0.3em 100% -0.3em);
+    }
+    to {
+      transform: none;
+      clip-path: inset(-0.3em);
+    }
+  }
+  @keyframes mv-focus {
+    from {
+      opacity: 0;
+      filter: blur(14px);
+      transform: translate3d(0, 0.12em, 0);
+    }
+  }
+  @keyframes mv-type {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  @keyframes mv-draw-x {
+    from {
+      transform: scaleX(0);
+    }
+  }
+  @keyframes mv-lift {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 12px, 0);
+    }
+  }
+  @keyframes mv-fade {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes mv-breathe {
+    from {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+  /* Three truths drift out of sync, then align. */
+  @keyframes mv-drift {
+    0% {
+      opacity: 0;
+      transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--rot));
+    }
+    55% {
+      opacity: 1;
+      transform: translate3d(calc(var(--dx) * -0.22), calc(var(--dy) * -0.3), 0) rotate(calc(var(--rot) * -0.35));
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes mv-flicker {
+    0% { opacity: 0; }
+    28% { opacity: 1; }
+    42% { opacity: 0.35; }
+    58% { opacity: 1; }
+    70% { opacity: 0.55; }
+    100% { opacity: 1; }
+  }
+  @keyframes mv-settle {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 14px, 0) scale(0.97);
+    }
+  }
+  @keyframes mv-lock {
+    0% { opacity: 0; }
+    22% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes mv-glow-ok {
+    0% { filter: brightness(1) drop-shadow(0 0 0 rgba(110, 231, 183, 0)); }
+    20% { filter: brightness(1.4) drop-shadow(0 0 8px rgba(110, 231, 183, 0.6)); }
+    100% { filter: brightness(1) drop-shadow(0 0 0 rgba(110, 231, 183, 0)); }
+  }
+  @keyframes mv-sweep {
+    0% { opacity: 1; transform: scaleX(0); }
+    60% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 0; transform: scaleX(1); }
+  }
+  @keyframes mv-progress-x {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @keyframes mv-progress-y {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+  }
+  @keyframes mv-appear {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ---------------- Scroll-driven (progress, header hairline, timeline) ---------------- */
+  @supports (animation-timeline: scroll()) {
+    [data-motion="site-header"]::before,
+    .rail-fill {
+      animation: mv-progress-x linear both;
+      animation-timeline: scroll(root block);
+    }
+    .rail-fill {
+      animation-name: mv-progress-y;
+    }
+    [data-motion="site-header"]::after {
+      animation: mv-appear linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0px 72px;
+    }
+  }
+}

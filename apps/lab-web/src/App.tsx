@@ -10,9 +10,11 @@ import { Logbook } from "./sections/Logbook";
 import { GetIt } from "./sections/GetIt";
 import { SiteFooter } from "./sections/SiteFooter";
 import { useActiveChapter, useReveal } from "./ui/useReveal";
+import { useScrollChrome } from "./motion/useScrollChrome";
 
 export default function App() {
   useReveal();
+  useScrollChrome();
   const active = useActiveChapter();
 
   return (

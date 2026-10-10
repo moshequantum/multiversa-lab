@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 /**
- * Motion baseline. One IntersectionObserver for every [data-reveal] element:
- * adds `.is-revealed` once it enters the viewport. Marks <html class="reveal-ready">
+ * Motion baseline. Shared IntersectionObservers (one per trigger threshold) for every
+ * [data-reveal] element: add `.is-revealed` once it enters the viewport. Marks <html class="reveal-ready">
  * first, so nothing is hidden when JS never runs. Reduced motion: CSS shows everything.
  */
 export function useReveal(): void {
@@ -20,21 +20,33 @@ export function useReveal(): void {
     });
     root.classList.add("reveal-ready");
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-revealed");
-            io.unobserve(e.target);
-          }
-        }
-      },
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
-    );
+    // Default trigger: 8% visible. Figures that build in sequence (e.g. the strata diagram, which
+    // builds bottom-up) opt into a later trigger with data-reveal-at="0.45".
+    const observers = new Map<number, IntersectionObserver>();
+    const observerFor = (threshold: number) => {
+      let io = observers.get(threshold);
+      if (!io) {
+        io = new IntersectionObserver(
+          (entries, obs) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add("is-revealed");
+                obs.unobserve(e.target);
+              }
+            }
+          },
+          { threshold, rootMargin: "0px 0px -40px 0px" }
+        );
+        observers.set(threshold, io);
+      }
+      return io;
+    };
     nodes.forEach((n) => {
-      if (!n.classList.contains("is-revealed")) io.observe(n);
+      if (n.classList.contains("is-revealed")) return;
+      const at = Number(n.dataset.revealAt);
+      observerFor(at > 0 && at <= 1 ? at : 0.08).observe(n);
     });
-    return () => io.disconnect();
+    return () => observers.forEach((io) => io.disconnect());
   }, []);
 }
 
