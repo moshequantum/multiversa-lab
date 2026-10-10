@@ -6,6 +6,7 @@ import { Integrity } from "./sections/Integrity";
 import { Governance } from "./sections/Governance";
 import { Position } from "./sections/Position";
 import { Notebook } from "./sections/Notebook";
+import { Logbook } from "./sections/Logbook";
 import { GetIt } from "./sections/GetIt";
 import { SiteFooter } from "./sections/SiteFooter";
 import { useActiveChapter, useReveal } from "./ui/useReveal";
@@ -28,6 +29,7 @@ export default function App() {
         <Governance />
         <Position />
         <Notebook />
+        <Logbook />
         <GetIt />
       </main>
       <SiteFooter />
