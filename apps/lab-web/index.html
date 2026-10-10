@@ -3,49 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Multiversa Lab — OpenPassport v1.0 & Sovereign AI Tooling</title>
-    <meta name="description" content="Laboratorio público de ingeniería determinista para IA: estándar OpenPassport v1.0, CLI en Go, MCP Server y contratos cognitivos de soberanía." />
-    <meta name="keywords" content="OpenPassport, Multiversa Lab, MCP Server, Sovereign AI, Claude Code, Cursor, Go CLI, Deterministic Context, SHA-256, Agentic AI, Moisés David Vera, Multiversa Group" />
+    <title>Multiversa Lab — OpenPassport: contexto portable, versionado y verificable</title>
+    <meta name="description" content="Cuaderno abierto de OpenPassport: Markdown versionado, manifest con SHA-256 y perfiles de exposición para que la verdad de un negocio viaje entre modelos. Prototipo funcional; Contrato V0 pendiente." />
+    <meta name="keywords" content="OpenPassport, Passport-Context, Multiversa Lab, SHA-256, manifest, MCP, Go CLI, TypeScript, contexto portable, Moisés David Vera" />
     <meta name="author" content="Moisés David Vera" />
-    <meta name="theme-color" content="#07090E" />
+    <meta name="theme-color" content="#0f0f1a" />
+    <meta name="color-scheme" content="dark" />
 
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://lab.multiversa.group/" />
-
-    <!-- Brand Favicons and Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="512x512" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
-    <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lab.multiversa.group/" />
     <meta property="og:site_name" content="Multiversa Lab" />
-    <meta property="og:title" content="Multiversa Lab — OpenPassport v1.0 & Sovereign AI Tooling" />
-    <meta property="og:description" content="Laboratorio público de ingeniería determinista para IA: estándar OpenPassport v1.0, CLI en Go, MCP Server y contratos cognitivos de soberanía." />
+    <meta property="og:title" content="Multiversa Lab — OpenPassport: contexto portable, versionado y verificable" />
+    <meta property="og:description" content="Cuaderno abierto de OpenPassport: Markdown versionado, manifest con SHA-256 y perfiles de exposición para que la verdad de un negocio viaje entre modelos. Prototipo funcional; Contrato V0 pendiente." />
     <meta property="og:image" content="https://lab.multiversa.group/og-image.png" />
     <meta property="og:image:secure_url" content="https://lab.multiversa.group/og-image.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Multiversa Lab — OpenPassport v1.0 & Sovereign AI Tooling" />
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:image:alt" content="Multiversa Lab — OpenPassport" />
+    <meta property="og:locale" content="es_419" />
 
-    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://lab.multiversa.group/" />
-    <meta name="twitter:title" content="Multiversa Lab — OpenPassport v1.0 & Sovereign AI Tooling" />
-    <meta name="twitter:description" content="Laboratorio público de ingeniería determinista para IA: estándar OpenPassport v1.0, CLI en Go, MCP Server y contratos cognitivos de soberanía." />
+    <meta name="twitter:title" content="Multiversa Lab — OpenPassport: contexto portable, versionado y verificable" />
+    <meta name="twitter:description" content="Cuaderno abierto de OpenPassport: Markdown versionado, manifest con SHA-256 y perfiles de exposición para que la verdad de un negocio viaje entre modelos. Prototipo funcional; Contrato V0 pendiente." />
     <meta name="twitter:image" content="https://lab.multiversa.group/og-image.png" />
     <meta name="twitter:creator" content="@moshequantum" />
     <meta name="twitter:site" content="@multiversagroup" />
 
-    <!-- Brand Typography: Plus Jakarta Sans, Newsreader, JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+    <!-- Brand typography is self-hosted via @fontsource-variable (see src/main.tsx). -->
 
-    <!-- GEO & AEO Structured Data (JSON-LD Graph) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -56,81 +48,34 @@
           "name": "Multiversa Group",
           "url": "https://multiversa.group",
           "logo": "https://lab.multiversa.group/favicon.svg",
-          "sameAs": [
-            "https://github.com/moshequantum"
-          ]
+          "sameAs": ["https://github.com/moshequantum"]
         },
         {
           "@type": "Person",
           "@id": "https://lab.multiversa.group/#author",
           "name": "Moisés David Vera",
-          "jobTitle": "Founding AI Product Engineer & Architect",
-          "worksFor": {
-            "@id": "https://multiversa.group/#organization"
-          },
-          "url": "https://github.com/moshequantum",
-          "sameAs": [
-            "https://github.com/moshequantum"
-          ]
+          "worksFor": { "@id": "https://multiversa.group/#organization" },
+          "url": "https://github.com/moshequantum"
         },
         {
           "@type": "WebSite",
           "@id": "https://lab.multiversa.group/#website",
           "url": "https://lab.multiversa.group/",
           "name": "Multiversa Lab",
-          "description": "Laboratorio público de ingeniería determinista para IA: estándar OpenPassport v1.0, CLI en Go, MCP Server y contratos cognitivos de soberanía.",
-          "publisher": {
-            "@id": "https://multiversa.group/#organization"
-          },
+          "description": "Cuaderno abierto de OpenPassport: Markdown versionado, manifest con SHA-256 y perfiles de exposición para que la verdad de un negocio viaje entre modelos. Prototipo funcional; Contrato V0 pendiente.",
+          "publisher": { "@id": "https://multiversa.group/#organization" },
           "inLanguage": "es"
         },
         {
           "@type": "SoftwareSourceCode",
           "@id": "https://lab.multiversa.group/#software",
-          "name": "Multiversa CLI & OpenPassport Standard",
-          "description": "Herramienta CLI en Go y servidor MCP para Claude, Cursor y Gemini que implementa el estándar OpenPassport v1.0 con integridad SHA-256 en 7 capas.",
-          "codeRepository": "https://github.com/moshequantum/multiversa-cli",
-          "programmingLanguage": [
-            "Go",
-            "TypeScript"
-          ],
-          "runtimePlatform": "Cross-platform (Linux, macOS, Windows)",
+          "name": "OpenPassport (prototipo) — passport-core, CLI multiversa passport y plantilla",
+          "description": "Prototipo de laboratorio: paquete de contexto en Markdown con manifest, hashes SHA-256 por archivo y perfiles. Sin release etiquetada todavía.",
+          "codeRepository": "https://github.com/moshequantum/multiversa-lab",
+          "programmingLanguage": ["TypeScript", "Go"],
           "license": "https://opensource.org/licenses/MIT",
-          "author": {
-            "@id": "https://lab.multiversa.group/#author"
-          },
-          "publisher": {
-            "@id": "https://multiversa.group/#organization"
-          },
-          "version": "1.0.0"
-        },
-        {
-          "@type": "TechArticle",
-          "@id": "https://lab.multiversa.group/#standard-spec",
-          "headline": "OpenPassport v1.0: Arquitectura Determinista de 7 Capas para Contexto e Identidad Agéntica",
-          "description": "Especificación canónica del estándar OpenPassport v1.0 para erradicar la deriva contextual, alucinaciones y pérdida de soberanía en modelos LLM y agentes autónomos mediante verificación criptográfica SHA-256.",
-          "author": {
-            "@id": "https://lab.multiversa.group/#author"
-          },
-          "publisher": {
-            "@id": "https://multiversa.group/#organization"
-          },
-          "inLanguage": "es",
-          "mainEntityOfPage": "https://lab.multiversa.group/",
-          "about": [
-            {
-              "@type": "Thing",
-              "name": "Model Context Protocol (MCP)"
-            },
-            {
-              "@type": "Thing",
-              "name": "Deterministic AI Context"
-            },
-            {
-              "@type": "Thing",
-              "name": "Cryptographic Verification SHA-256"
-            }
-          ]
+          "author": { "@id": "https://lab.multiversa.group/#author" },
+          "publisher": { "@id": "https://multiversa.group/#organization" }
         },
         {
           "@type": "FAQPage",
@@ -138,35 +83,18 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "What is Multiversa Lab?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Multiversa Lab (lab.multiversa.group) es el laboratorio público de investigación e ingeniería determinista para inteligencia artificial de Multiversa Group. Desarrolla tooling soberano de código abierto, incluyendo el estándar OpenPassport v1.0, multiversa-cli en Go y servidores MCP para Claude, Cursor y agentes autónomos."
-              }
+              "name": "¿Qué es OpenPassport?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Un formato experimental para la verdad canónica de un negocio: siete capas en Markdown y un manifest.json que declara cada archivo con su hash SHA-256, su visibilidad y los perfiles que lo exponen. Se carga en cualquier modelo y pertenece a quien lo origina." }
             },
             {
               "@type": "Question",
-              "name": "What is OpenPassport v1.0?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "OpenPassport v1.0 es un estándar canónico de arquitectura de 7 capas (Identity, Doctrine, Voice, Offer, Governance, Current-State, Evidence) que estructura el contexto y contratos de soberanía para agentes de IA, garantizando inmutabilidad y verificabilidad criptográfica con sumas de verificación SHA-256."
-              }
+              "name": "¿En qué estado está OpenPassport?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Prototipo funcional al 10 de octubre de 2026: passport-core (TypeScript) pasa 3 de 3 tests y no está publicado en npm; la CLI en Go verifica Passports reales; el Contrato V0 (JSON Schema, fixtures, paridad TS/Go, MCP fail-closed, release) está pendiente y no existe ninguna etiqueta de versión." }
             },
             {
               "@type": "Question",
-              "name": "How do I integrate the Multiversa MCP Server in Cursor or Claude Code?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Para integrar el servidor MCP de Multiversa, instala el CLI ejecutando 'curl -fsSL https://lab.multiversa.group/install.sh | bash'. Posteriormente, en el archivo de configuración mcpServers de Cursor o Claude Desktop/Code, añade la entrada del binario 'multiversa mcp' apuntando al directorio de tu passport local para habilitar inyección determinista de contexto."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How does SHA-256 verification prevent LLM hallucination?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Al sellar criptográficamente cada una de las 7 capas con hashes SHA-256, el runtime y el servidor MCP auditan la integridad del árbol de contexto antes de cada inferencia. Si una capa muta indebidamente o un modelo deriva de su identidad o doctrina, el sistema detecta la discrepancia en el árbol de hashes e interrumpe la ejecución antes de emitir respuestas no fidedignas."
-              }
+              "name": "¿En qué se diferencia de un sistema de memoria?",
+              "acceptedAnswer": { "@type": "Answer", "text": "La memoria de trabajo (pgvector, memoria del proveedor, Engram) guarda lo que ocurrió en sesiones. El Passport fija lo que es verdad para el negocio, con versión y hash, y lo gobierna su originador. Se complementan." }
             }
           ]
         }
@@ -174,8 +102,9 @@
     }
     </script>
   </head>
-  <body class="bg-canvas text-ivory font-sans antialiased selection:bg-primary/20 selection:text-gold min-h-screen">
-    <div id="root"></div>
+  <body class="bg-canvas text-ivory font-sans antialiased min-h-screen">
+    <div id="root"><!-- Static first paint: header + chapter 00, generated from src/shell.tsx by
+         scripts/hero-shell.mjs. React replaces it on mount with identical markup. Do not edit by hand. --><!--hero-shell:start--><header data-motion="site-header" class="fixed inset-x-0 top-0 z-50 border-b hairline bg-canvas/75 backdrop-blur-xl backdrop-saturate-150 px-5 sm:px-8 lg:px-12"><div class="max-w-page mx-auto flex h-14 sm:h-16 items-center justify-between gap-4"><a href="#top" class="flex items-center gap-2.5 text-ivory" aria-label="Multiversa.Lab, inicio"><svg viewBox="116 150 280 212" class="h-5 w-5 text-primary" fill="currentColor" aria-hidden="true"><path d="M189.25 355.03H116.00L143.47 156.97H216.77L189.25 355.03Z"></path><path d="M280.71 355.03H207.41L234.93 156.97H308.18L280.71 355.03Z"></path><path d="M372.12 355.03H298.87L326.34 156.97H343.97C373.37 156.97 396.00 182.93 391.94 212.06L372.12 355.03Z"></path></svg><span class="font-sans text-[15px] font-semibold tracking-tight">Multiversa<span class="text-muted">.Lab</span></span><span class="ml-1 hidden sm:inline-flex rounded-pill border hairline px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">Research preview</span></a><nav aria-label="Capítulos" class="hidden lg:flex items-center gap-1 font-mono text-[11px]"><a href="#anatomia" class="rounded-md px-2.5 py-1.5 transition-colors text-muted hover:text-ivory"><span class="text-primary/80">01</span> Anatomía</a><a href="#integridad" class="rounded-md px-2.5 py-1.5 transition-colors text-muted hover:text-ivory"><span class="text-primary/80">02</span> Integridad</a><a href="#gobernanza" class="rounded-md px-2.5 py-1.5 transition-colors text-muted hover:text-ivory"><span class="text-primary/80">03</span> Gobernanza</a><a href="#posicion" class="rounded-md px-2.5 py-1.5 transition-colors text-muted hover:text-ivory"><span class="text-primary/80">04</span> Posición</a><a href="#cuaderno" class="rounded-md px-2.5 py-1.5 transition-colors text-muted hover:text-ivory"><span class="text-primary/80">05</span> Cuaderno</a><a href="#bitacora" class="rounded-md px-2.5 py-1.5 transition-colors text-muted hover:text-ivory"><span class="text-primary/80">06</span> Bitácora</a><a href="#usalo" class="rounded-md px-2.5 py-1.5 transition-colors text-muted hover:text-ivory"><span class="text-primary/80">07</span> Úsalo</a></nav><a href="https://github.com/moshequantum/multiversa-lab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-pill border hairline bg-surface/60 px-3.5 py-1.5 font-mono text-[11px] text-ivory transition-colors hover:border-primary/50"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-git-branch h-3.5 w-3.5" aria-hidden="true"><path d="M15 6a9 9 0 0 0-9 9V3"></path><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle></svg><span>Código · MIT</span></a></div></header><main id="main"><section id="top" data-chapter="00" class="hero relative overflow-hidden grain px-5 sm:px-8 lg:px-12 pt-28 sm:pt-36 lg:pt-32 pb-20 sm:pb-28"><div aria-hidden="true" data-motion="hero-glow" class="absolute inset-0 pointer-events-none" style="background:radial-gradient(55% 45% at 78% 30%, rgba(124,92,255,0.20), transparent 70%), radial-gradient(40% 35% at 10% 80%, rgba(192,132,252,0.08), transparent 70%)"></div><div aria-hidden="true" class="absolute inset-0 grid-paper opacity-40 pointer-events-none [mask-image:radial-gradient(70%_60%_at_70%_30%,black,transparent)]"></div><div class="relative max-w-page mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-12 items-center"><div class="lg:col-span-7"><p class="kicker flex items-center gap-3"><span class="h-px w-8 bg-primary" aria-hidden="true" data-motion="hero-rule"></span><span data-motion="hero-kicker"><span class="text-primary">00</span> — Cuaderno abierto de OpenPassport</span></p><h1 data-motion="hero-title" class="mt-7 display font-sans font-semibold text-[2.6rem] sm:text-6xl lg:text-[4.6rem] text-ivory"><span class="hw" style="--i:0">Cada</span> <span class="hw" style="--i:1">modelo</span> <span class="hw" style="--i:2">empieza</span> <span class="hw" style="--i:3">de</span> <span class="hw" style="--i:4">cero.</span> <span class="hw" style="--i:5">La</span> <span class="hw" style="--i:6">verdad</span> <span class="hw" style="--i:7">de</span> <span class="hw" style="--i:8">tu</span> <span class="hw" style="--i:9">negocio</span> <span class="hw" style="--i:10">se</span> <span class="accent-serif text-primary" data-motion="hero-accent">diluye.</span></h1><p class="mt-6 max-w-prose lede text-base sm:text-lg text-muted font-light">Cambias de ChatGPT a Claude, de Claude a Gemini, de una persona a otra, y el contexto se reconstruye a mano. Cada copia diverge. OpenPassport es nuestro experimento para fijar esa verdad: Markdown versionado, un manifest con hashes SHA-256 y perfiles de exposición. Lo carga cualquier modelo; lo verifica cualquier persona; le pertenece a quien lo origina.</p><dl data-motion="hero-meta" class="mt-8 grid grid-cols-3 border-y hairline py-4 max-w-xl"><div class="pr-3"><dt class="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Formato</dt><dd class="mt-1 text-[13px] sm:text-sm font-medium text-ivory">Markdown + manifest</dd></div><div class="border-x hairline px-3"><dt class="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Integridad</dt><dd class="mt-1 text-[13px] sm:text-sm font-medium text-ivory">SHA-256 · UTF-8 · LF</dd></div><div class="pl-3"><dt class="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Estado</dt><dd class="mt-1 text-[13px] sm:text-sm font-medium text-ok">Prototipo funcional</dd></div></dl><div data-motion="hero-cta" class="mt-8 flex flex-wrap items-center gap-3"><a href="#anatomia" class="inline-flex items-center gap-2 rounded-pill bg-ivory px-6 py-3.5 text-sm font-semibold text-canvas transition-transform hover:scale-[1.02]">Leer el cuaderno<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down h-4 w-4" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></a><a href="https://github.com/moshequantum/multiversa-lab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-pill border hairline bg-surface/60 px-6 py-3.5 text-sm font-medium text-ivory transition-colors hover:border-primary/50"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-git-branch h-4 w-4" aria-hidden="true"><path d="M15 6a9 9 0 0 0-9 9V3"></path><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle></svg>Ver el repositorio</a></div></div><figure data-motion="hero-fragments" data-reveal="fade" class="lg:col-span-5 code-surface rounded-2xl p-5 sm:p-6"><figcaption class="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-muted"><span>Fig. 0</span><span>La misma empresa, tres verdades</span></figcaption><ul class="mt-5 divide-y divide-white/[0.06]"><li data-fragment="" style="--i:0" class="flex items-center justify-between gap-3 py-3.5"><div class="min-w-0"><p class="text-sm font-medium text-ivory">ChatGPT</p><p class="mt-0.5 font-mono text-[12px] text-muted truncate">oferta: la del PDF de marzo</p></div><span class="shrink-0 font-mono text-[10px] uppercase tracking-[0.12em] text-warn/90">desactualizado</span></li><li data-fragment="" style="--i:1" class="flex items-center justify-between gap-3 py-3.5"><div class="min-w-0"><p class="text-sm font-medium text-ivory">Claude</p><p class="mt-0.5 font-mono text-[12px] text-muted truncate">tono: el del último chat</p></div><span class="shrink-0 font-mono text-[10px] uppercase tracking-[0.12em] text-warn/90">deriva</span></li><li data-fragment="" style="--i:2" class="flex items-center justify-between gap-3 py-3.5"><div class="min-w-0"><p class="text-sm font-medium text-ivory">Gemini</p><p class="mt-0.5 font-mono text-[12px] text-muted truncate">estado actual: —</p></div><span class="shrink-0 font-mono text-[10px] uppercase tracking-[0.12em] text-warn/90">sin contexto</span></li></ul><p data-motion="hero-converge" class="mt-2 flex items-center gap-3 font-mono text-[11px] text-muted"><span class="h-px flex-1 bg-white/10" aria-hidden="true"></span><span>un Passport, cargado en los tres</span><span class="h-px flex-1 bg-white/10" aria-hidden="true"></span></p><div data-motion="hero-passport" class="mt-4 rounded-xl border border-primary/35 bg-primary/[0.06] p-4"><p class="font-mono text-[12px] text-ivory">passport/ · manifest.json</p><p class="mt-1 font-mono text-[11px] text-muted">7 capas · sha256 por archivo · perfiles</p><p class="mt-3 font-mono text-[11px] text-ok"><span data-motion="hero-verify" class="inline-block">verify → 100% PASS</span></p></div></figure></div></section></main><!--hero-shell:end--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

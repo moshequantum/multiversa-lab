@@ -5,10 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "node scripts/hero-shell.mjs --check && tsc && vite build",
+    "preview": "vite preview",
+    "hero-shell": "node scripts/hero-shell.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
     "@multiversa/passport-core": "workspace:*",
     "lucide-react": "^1.16.0",
     "react": "^18.3.1",
