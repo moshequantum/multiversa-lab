@@ -10,7 +10,15 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const START = "<!--hero-shell:start-->";
 const END = "<!--hero-shell:end-->";
 
-const vite = await createServer({ root, logLevel: "error", server: { middlewareMode: true }, appType: "custom" });
+// noDiscovery: this throwaway SSR server never serves a browser, so skip the dep scan (it would
+// otherwise log "server is being restarted or closed" when we close it mid-scan).
+const vite = await createServer({
+  root,
+  logLevel: "error",
+  server: { middlewareMode: true },
+  appType: "custom",
+  optimizeDeps: { noDiscovery: true, include: [] },
+});
 try {
   const { renderShell } = await vite.ssrLoadModule("/src/shell.tsx");
   const markup = renderShell();
