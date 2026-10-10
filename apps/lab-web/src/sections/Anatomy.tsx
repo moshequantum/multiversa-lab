@@ -1,11 +1,33 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Chapter, Accent } from "../ui/Chapter";
 import { EXTRAS, LAYERS } from "../content/passport";
+import { ScrambleText } from "../motion/ScrambleText";
+import { EASE_OUT_EXPO, prefersReducedMotion } from "../motion/env";
 
 /** Chapter 01 — anatomy of a Passport: the seven layers, the manifest entry, the files outside. */
 export function Anatomy() {
   const [active, setActive] = useState(0);
   const layer = LAYERS[active];
+  const swapRef = useRef<HTMLDivElement>(null);
+  const firstSwap = useRef(true);
+
+  // Manifest swap: the explanatory copy and the entry crossfade; the hash scrambles to settle.
+  useEffect(() => {
+    if (firstSwap.current) {
+      firstSwap.current = false;
+      return;
+    }
+    const root = swapRef.current;
+    if (!root || prefersReducedMotion() || typeof root.animate !== "function") return;
+    root.querySelectorAll<HTMLElement>("[data-swap]").forEach((el, i) => {
+      el.animate([{ opacity: 0.2, transform: "translate3d(0, 4px, 0)" }, { opacity: 1, transform: "none" }], {
+        duration: 420,
+        delay: i * 40,
+        easing: EASE_OUT_EXPO,
+        fill: "backwards",
+      });
+    });
+  }, [active]);
 
   return (
     <Chapter
@@ -26,7 +48,7 @@ export function Anatomy() {
           {LAYERS.map((l, i) => {
             const on = i === active;
             return (
-              <li key={l.n} data-reveal style={{ ["--reveal-delay" as string]: `${i * 50}ms` }} data-layer={l.layer}>
+              <li key={l.n} data-reveal style={{ ["--reveal-delay" as string]: `${i * 70}ms` }} data-layer={l.layer}>
                 <button
                   type="button"
                   onClick={() => setActive(i)}
@@ -38,7 +60,7 @@ export function Anatomy() {
                 >
                   <span
                     aria-hidden="true"
-                    className={`absolute left-0 top-0 h-full w-px transition-colors ${on ? "bg-primary" : "bg-transparent"}`}
+                    className={`absolute left-0 top-0 h-full w-px origin-top bg-primary transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] ${on ? "scale-y-100" : "scale-y-0"}`}
                   />
                   <span
                     className={`pl-3 font-serif italic text-3xl sm:text-5xl leading-none transition-colors ${
@@ -64,8 +86,8 @@ export function Anatomy() {
 
         {/* Detail: real manifest entry */}
         <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-28 space-y-6" data-reveal>
-            <p className="text-xl sm:text-2xl font-light leading-snug text-ivory" aria-live="polite">
+          <div ref={swapRef} className="lg:sticky lg:top-28 space-y-6" data-reveal style={{ ["--reveal-delay" as string]: "200ms" }}>
+            <p className="text-xl sm:text-2xl font-light leading-snug text-ivory" aria-live="polite" data-swap>
               <span className="font-serif italic text-primary">{layer.title}.</span> {layer.body}
             </p>
 
@@ -74,7 +96,7 @@ export function Anatomy() {
                 <span>manifest.json → files[{active + 1}]</span>
                 <span>real</span>
               </figcaption>
-              <pre className="px-4 py-4 font-mono text-[12px] leading-[1.8] whitespace-pre-wrap [overflow-wrap:anywhere] text-muted">
+              <pre data-swap className="px-4 py-4 font-mono text-[12px] leading-[1.8] whitespace-pre-wrap [overflow-wrap:anywhere] text-muted">
                 <span className="text-ivory">{"{"}</span>
                 {"\n  "}
                 <span className="text-secondary">"path"</span>: <span className="text-ivory">"{layer.path}"</span>,
@@ -83,7 +105,7 @@ export function Anatomy() {
                 {"\n  "}
                 <span className="text-secondary">"mediaType"</span>: <span className="text-ivory">"text/markdown"</span>,
                 {"\n  "}
-                <span className="text-secondary">"sha256"</span>: <span className="text-primary" data-motion="hash">"{layer.sha256}"</span>,
+                <span className="text-secondary">"sha256"</span>: <span className="text-primary" data-motion="hash">"<ScrambleText text={layer.sha256} />"</span>,
                 {"\n  "}
                 <span className="text-secondary">"visibility"</span>: <span className="text-ivory">"public"</span>
                 {"\n"}

@@ -57,6 +57,64 @@
   transform: scaleY(var(--mv-progress, 0));
 }
 
+/* Chapter rule sweep (decorative overlay on the kicker hairline) */
+.chapter-sweep {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: left center;
+  background: linear-gradient(90deg, oklch(var(--primary) / 0.95), oklch(var(--primary) / 0.15));
+}
+
+/* Notebook progress: fill = data-value %, as a transform (never width). */
+[data-motion="progress"] {
+  transform: scaleX(calc(var(--v, 0) / 100));
+}
+
+/* Bitácora timeline: track + fill + entry nodes */
+.timeline {
+  --gutter: 1.5rem;
+  view-timeline: --logbook block;
+}
+@media (min-width: 640px) {
+  .timeline {
+    --gutter: 2.25rem;
+  }
+}
+.timeline::before,
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  pointer-events: none;
+}
+.timeline::before {
+  background: oklch(var(--border) / 0.7);
+}
+.timeline::after {
+  background: linear-gradient(180deg, oklch(var(--primary) / 0.9), oklch(var(--primary) / 0.35));
+  transform-origin: top center;
+}
+.timeline > li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--gutter) + 1px);
+  top: 25.5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--color-canvas);
+  border: 1px solid oklch(var(--primary) / 0.9);
+  box-shadow: 0 0 10px oklch(var(--primary) / 0.45);
+}
+
 /* Hero passport: lock pulse overlay */
 [data-motion="hero-passport"] {
   position: relative;
@@ -264,6 +322,218 @@
     }
   }
 
+  /* ----------------------------------------------------------------------------------
+   * Scroll reveals. Pattern: the pending state applies instantly (no transition) when
+   * <html> gets .reveal-ready, and transitions are declared ONLY on the revealed state
+   * (CSS uses the after-change style's transition). This keeps the load free of hundreds
+   * of invisible main-thread transitions (clip-path / blur are not composited).
+   * Shorthand below: P = `.reveal-ready [data-reveal]:not(.is-revealed)` (pending),
+   *                  R = `.reveal-ready .is-revealed` (revealed).
+   * ---------------------------------------------------------------------------------- */
+
+  /* Chapter signature: rule sweeps, kicker types, headline words rise, accent resolves last */
+  .reveal-ready [data-chapter] [data-reveal="fade"]:has(> [data-motion="kicker"]) {
+    --reveal-duration: 0.35s;
+  }
+  .reveal-ready [data-reveal]:not(.is-revealed) > [data-motion="kicker"] {
+    clip-path: inset(0 100% 0 0);
+  }
+  .reveal-ready .is-revealed > [data-motion="kicker"] {
+    transition: clip-path 0.75s steps(24, end) 0.1s;
+  }
+  .reveal-ready .is-revealed > .chapter-sweep {
+    animation: mv-sweep 1.8s var(--ease-out-expo) both;
+  }
+
+  .reveal-ready [data-motion="headline"][data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-ready [data-motion="headline"]:not(.is-revealed) .hw {
+    transform: translate3d(0, 100%, 0);
+    clip-path: inset(-0.3em -0.3em 100% -0.3em);
+  }
+  .reveal-ready [data-motion="headline"].is-revealed .hw {
+    clip-path: inset(-0.3em);
+    transition:
+      transform var(--dur-slow) var(--ease-out-expo),
+      clip-path var(--dur-slow) var(--ease-out-expo);
+    transition-delay: calc(80ms + var(--i) * 38ms);
+  }
+  .reveal-ready [data-motion="headline"]:not(.is-revealed) .accent-serif {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translate3d(0, 0.12em, 0);
+  }
+  .reveal-ready [data-motion="headline"].is-revealed .accent-serif {
+    transition:
+      opacity 1.3s var(--ease-out-expo),
+      filter 1.3s var(--ease-out-expo),
+      transform 1.4s var(--ease-out-expo);
+    transition-delay: calc(var(--words, 6) * 38ms + 320ms);
+  }
+
+  /* 01 · Anatomía: layers laid down like dossier pages (opacity/transform via the base reveal) */
+  .reveal-ready [data-motion="layer-stack"] > li[data-reveal]:not(.is-revealed) {
+    transform-origin: 50% 0;
+    transform: perspective(900px) rotateX(-14deg) translate3d(0, 14px, 0);
+  }
+  .reveal-ready [data-motion="layer-stack"] > li[data-reveal]:not(.is-revealed) .font-serif {
+    filter: blur(8px);
+  }
+  .reveal-ready [data-motion="layer-stack"] > li.is-revealed .font-serif {
+    transition:
+      filter 1.2s var(--ease-out-expo) calc(var(--reveal-delay, 0ms) + 140ms),
+      color 0.15s;
+  }
+
+  /* 03 · Gobernanza: matrix lights column by column */
+  .reveal-ready [data-motion="profile-matrix"]:not(.is-revealed) [data-cell="in"] {
+    opacity: 0;
+    transform: scale(0.2);
+    filter: brightness(2.2);
+  }
+  .reveal-ready [data-motion="profile-matrix"]:not(.is-revealed) [data-cell="out"] {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  .reveal-ready [data-motion="profile-matrix"].is-revealed [data-cell] {
+    transition:
+      opacity 0.6s var(--ease-out-expo),
+      transform 0.8s var(--ease-out-expo),
+      filter 1s var(--ease-out-expo);
+    transition-delay: calc(260ms + var(--c, 0) * 130ms + var(--r, 0) * 24ms);
+  }
+  /* Pull quote: words settle from a wider tracking (transform only, no reflow) */
+  .reveal-ready [data-reveal]:not(.is-revealed) .qw {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translate3d(calc(var(--d, 0) * 0.3em), 0, 0);
+  }
+  .reveal-ready .is-revealed .qw {
+    transition:
+      opacity 1.4s var(--ease-out-expo),
+      transform 2.2s var(--ease-out-expo),
+      filter 1.4s var(--ease-out-expo);
+    transition-delay: 120ms;
+  }
+
+  /* 04 · Posición: strata build bottom-up (memoria → modelos → canónica), connectors draw */
+  .reveal-ready [data-motion="strata"][data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-stratum="memory"] { --sd: 0ms; }
+  [data-stratum="models"] { --sd: 560ms; }
+  [data-stratum="canonical"] { --sd: 1240ms; }
+  [data-motion="strata"] [data-link] { --ld: 320ms; }
+  [data-motion="strata"] [data-link="load"] { --ld: 960ms; }
+  [data-motion="strata"] .strata-link path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+  .reveal-ready [data-motion="strata"]:not(.is-revealed) [data-stratum] {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0) scale(0.985);
+  }
+  .reveal-ready [data-motion="strata"]:not(.is-revealed) [data-stratum="canonical"] {
+    filter: brightness(1.6);
+  }
+  .reveal-ready [data-motion="strata"]:not(.is-revealed) [data-link] > span,
+  .reveal-ready [data-motion="strata"]:not(.is-revealed) [data-stratum="models"] li {
+    opacity: 0;
+  }
+  .reveal-ready [data-motion="strata"]:not(.is-revealed) [data-stratum="models"] li {
+    transform: translate3d(0, 6px, 0);
+  }
+  .reveal-ready [data-motion="strata"]:not(.is-revealed) .strata-link path {
+    stroke-dashoffset: 1;
+  }
+  .reveal-ready [data-motion="strata"].is-revealed [data-stratum] {
+    transition:
+      opacity 0.9s var(--ease-out-expo),
+      transform 1.1s var(--ease-out-expo),
+      filter 1.6s var(--ease-out-expo);
+    transition-delay: var(--sd, 0ms);
+  }
+  .reveal-ready [data-motion="strata"].is-revealed [data-link] > span {
+    transition: opacity 0.6s var(--ease-out-expo) calc(var(--ld) + 260ms);
+  }
+  .reveal-ready [data-motion="strata"].is-revealed .strata-link path {
+    transition: stroke-dashoffset 0.75s var(--ease-in-out-sine) var(--ld);
+  }
+  .reveal-ready [data-motion="strata"].is-revealed [data-stratum="models"] li {
+    transition:
+      opacity 0.6s var(--ease-out-expo),
+      transform 0.8s var(--ease-out-expo);
+    transition-delay: calc(700ms + var(--i, 0) * 55ms);
+  }
+  /* Comparison rows follow the diagram */
+  .reveal-ready [data-reveal]:not(.is-revealed) [data-motion="compare-table"] > div {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  .reveal-ready .is-revealed [data-motion="compare-table"] > div {
+    transition:
+      opacity 0.8s var(--ease-out-expo),
+      transform 1s var(--ease-out-expo);
+    transition-delay: calc(240ms + var(--i, 0) * 70ms);
+  }
+
+  /* 05 · Cuaderno: rows cascade, tags land, the track draws, nothing ticks (0 of 10) */
+  .reveal-ready [data-motion="status-board"] > li:not(.is-revealed) span[data-status] {
+    opacity: 0;
+    transform: translate3d(-8px, 0, 0);
+  }
+  .reveal-ready [data-motion="status-board"] > li.is-revealed span[data-status] {
+    transition:
+      opacity 0.6s var(--ease-out-expo),
+      transform 0.8s var(--ease-out-expo);
+    transition-delay: calc(var(--reveal-delay, 0ms) + 280ms);
+  }
+  .reveal-ready [data-reveal]:not(.is-revealed) [data-motion="progress-track"],
+  .reveal-ready [data-reveal]:not(.is-revealed) [data-motion="progress"] {
+    transform: scaleX(0);
+  }
+  .reveal-ready .is-revealed [data-motion="progress-track"] {
+    transition: transform 1.2s var(--ease-out-expo) 150ms;
+  }
+  .reveal-ready .is-revealed [data-motion="progress"] {
+    transition: transform 1.4s var(--ease-out-expo) 700ms;
+  }
+  .reveal-ready [data-reveal]:not(.is-revealed) [data-task] {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  .reveal-ready [data-reveal]:not(.is-revealed) [data-task] > span:first-child {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  .reveal-ready .is-revealed [data-task] {
+    transition:
+      opacity 0.6s var(--ease-out-expo),
+      transform 0.8s var(--ease-out-expo);
+    transition-delay: calc(380ms + var(--i, 0) * 55ms);
+  }
+  .reveal-ready .is-revealed [data-task] > span:first-child {
+    transition:
+      opacity 0.5s var(--ease-out-expo),
+      transform 0.7s var(--ease-out-expo);
+    transition-delay: calc(500ms + var(--i, 0) * 55ms);
+  }
+
+  /* 06 · Bitácora: entry nodes land on a line that draws as you read (scroll-driven below) */
+  .reveal-ready .timeline > li[data-reveal]:not(.is-revealed)::before {
+    opacity: 0;
+    transform: scale(0);
+  }
+  .reveal-ready .timeline > li.is-revealed::before {
+    transition:
+      transform 0.7s var(--ease-out-expo),
+      opacity 0.5s var(--ease-out-expo);
+    transition-delay: calc(var(--reveal-delay, 0ms) + 160ms);
+  }
+
   /* ---------------- Scroll-driven (progress, header hairline, timeline) ---------------- */
   @supports (animation-timeline: scroll()) {
     [data-motion="site-header"]::before,
@@ -278,6 +548,11 @@
       animation: mv-appear linear both;
       animation-timeline: scroll(root block);
       animation-range: 0px 72px;
+    }
+    .timeline::after {
+      animation: mv-progress-y linear both;
+      animation-timeline: --logbook;
+      animation-range: cover 8% cover 72%;
     }
   }
 }

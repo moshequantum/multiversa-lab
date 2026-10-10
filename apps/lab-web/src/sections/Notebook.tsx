@@ -52,12 +52,13 @@ export function Notebook() {
             </h3>
             <span className="font-mono text-[11px] text-muted break-all">odd/tasks/openpassport-contract-v0.md</span>
           </div>
-          <div className="mt-4 h-px w-full bg-white/[0.08]" aria-hidden="true">
-            <div className="h-px w-0 bg-primary" data-motion="progress" data-value="0" />
+          <div className="mt-4 h-px w-full origin-left bg-white/[0.08]" aria-hidden="true" data-motion="progress-track">
+            {/* Fill = data-value % (scaleX, never width). 0 of 10 done: it stays empty, honestly. */}
+            <div className="h-px w-full origin-left bg-primary" data-motion="progress" data-value="0" style={{ ["--v" as string]: 0 }} />
           </div>
           <ol className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-8">
-            {LAB_TASKS.map((t) => (
-              <li key={t.id} className="flex gap-3 border-b hairline py-3" data-task={t.id}>
+            {LAB_TASKS.map((t, i) => (
+              <li key={t.id} className="flex gap-3 border-b hairline py-3" data-task={t.id} style={{ ["--i" as string]: i }}>
                 <span aria-hidden="true" className="mt-1 h-3 w-3 shrink-0 rounded-[3px] border border-white/25" />
                 <span className="min-w-0">
                   <span className="block font-mono text-[11px] text-primary">{t.id}</span>

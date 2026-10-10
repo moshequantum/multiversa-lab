@@ -1,6 +1,10 @@
+import { Fragment } from "react";
 import { Chapter, Accent } from "../ui/Chapter";
 import { StatusTag } from "../ui/StatusTag";
 import { PROFILES, PROFILE_ROWS } from "../content/passport";
+
+const QUOTE_A = ["“La", "IA", "propone;"];
+const QUOTE_B = ["el", "humano", "decide."];
 
 /** Chapter 03 — governance: profiles matrix, fail-closed, human authority. */
 export function Governance() {
@@ -50,9 +54,9 @@ export function Governance() {
                     {r.in.map((v, i) => (
                       <td key={i} className="py-3 text-center">
                         {v ? (
-                          <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_12px_rgba(164,143,255,0.55)]" data-cell="in" aria-label="incluido" />
+                          <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_12px_rgba(164,143,255,0.55)]" data-cell="in" aria-label="incluido" style={{ ["--c" as string]: i, ["--r" as string]: ri }} />
                         ) : (
-                          <span className="inline-block h-2.5 w-2.5 rounded-full border border-white/15" data-cell="out" aria-label="excluido" />
+                          <span className="inline-block h-2.5 w-2.5 rounded-full border border-white/15" data-cell="out" aria-label="excluido" style={{ ["--c" as string]: i, ["--r" as string]: ri }} />
                         )}
                       </td>
                     ))}
@@ -101,7 +105,21 @@ export function Governance() {
 
       <blockquote className="mt-20 sm:mt-28 text-center" data-reveal data-motion="pull-quote">
         <p className="font-serif italic text-3xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-ivory">
-          “La IA propone; <span className="text-primary">el humano decide.</span>”
+          {/* Words drift in from a wider tracking and settle (transform only, no reflow). */}
+          {QUOTE_A.map((w, i) => (
+            <Fragment key={w}>
+              <span className="qw" style={{ ["--d" as string]: i - 2.5 }}>{w}</span>{" "}
+            </Fragment>
+          ))}
+          <span className="text-primary">
+            {QUOTE_B.map((w, i) => (
+              <Fragment key={w}>
+                {i > 0 && " "}
+                <span className="qw" style={{ ["--d" as string]: i + 0.5 }}>{w}</span>
+              </Fragment>
+            ))}
+          </span>
+          <span className="qw" style={{ ["--d" as string]: 3 }}>”</span>
         </p>
       </blockquote>
     </Chapter>

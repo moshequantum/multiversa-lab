@@ -10,6 +10,15 @@ const ROWS = [
   { k: "Propiedad", mem: "Según la herramienta o el proveedor.", pp: "originator-owned, declarado en el manifest." },
 ];
 
+/** Connector between strata: a hairline that draws upward (stroke-dashoffset), bottom-up build. */
+function StrataLink() {
+  return (
+    <svg className="strata-link absolute left-6 -top-3 text-primary/60" width="2" height="41" viewBox="0 0 2 41" fill="none" aria-hidden="true">
+      <path d="M1 41V0" stroke="currentColor" strokeWidth="1" pathLength={1} />
+    </svg>
+  );
+}
+
 /** Chapter 04 — where Passport sits relative to working-memory systems. */
 export function Position() {
   return (
@@ -27,24 +36,30 @@ export function Position() {
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 items-start">
         {/* Strata diagram */}
-        <figure className="lg:col-span-5" data-motion="strata" data-reveal>
+        <figure className="lg:col-span-5" data-motion="strata" data-reveal data-reveal-at="0.45">
           <ol className="relative space-y-3">
             <li data-stratum="canonical" className="rounded-2xl border border-primary/45 bg-primary/[0.07] p-5 sm:p-6 shadow-[0_0_60px_-20px_rgba(164,143,255,0.45)]">
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">Capa canónica</p>
               <p className="mt-2 text-xl font-semibold tracking-tight text-ivory">Passport-Context</p>
               <p className="mt-1 font-mono text-[11px] text-muted">versionado · hasheado · gobernado · del originador</p>
             </li>
-            <li aria-hidden="true" className="pl-6 font-mono text-[11px] text-muted">↓ se carga en</li>
+            <li aria-hidden="true" data-link="load" className="relative pl-10 font-mono text-[11px] text-muted">
+              <StrataLink />
+              <span>↓ se carga en</span>
+            </li>
             <li data-stratum="models" className="rounded-2xl border hairline bg-surface/50 p-5 sm:p-6">
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Modelos y agentes</p>
               <ul className="mt-3 flex flex-wrap gap-2">
-                {MODELS.map((m) => (
-                  <li key={m} className="rounded-pill border hairline px-3 py-1 text-[13px] text-ivory/90">{m}</li>
+                {MODELS.map((m, i) => (
+                  <li key={m} style={{ ["--i" as string]: i }} className="rounded-pill border hairline px-3 py-1 text-[13px] text-ivory/90">{m}</li>
                 ))}
                 <li className="rounded-pill px-2 py-1 text-[13px] text-muted">…</li>
               </ul>
             </li>
-            <li aria-hidden="true" className="pl-6 font-mono text-[11px] text-muted">↓ consultan</li>
+            <li aria-hidden="true" data-link="query" className="relative pl-10 font-mono text-[11px] text-muted">
+              <StrataLink />
+              <span>↓ consultan</span>
+            </li>
             <li data-stratum="memory" className="rounded-2xl border border-dashed border-white/15 p-5 sm:p-6">
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Memoria de trabajo</p>
               <p className="mt-2 text-[15px] text-ivory/85">pgvector · memoria del proveedor · Engram</p>
@@ -61,8 +76,8 @@ export function Position() {
             <span className="text-primary">Passport</span>
           </div>
           <dl data-motion="compare-table">
-            {ROWS.map((r) => (
-              <div key={r.k} className="grid grid-cols-[1fr_1fr] sm:grid-cols-[9rem_1fr_1fr] gap-x-5 gap-y-2 border-b hairline py-5">
+            {ROWS.map((r, i) => (
+              <div key={r.k} style={{ ["--i" as string]: i }} className="grid grid-cols-[1fr_1fr] sm:grid-cols-[9rem_1fr_1fr] gap-x-5 gap-y-2 border-b hairline py-5">
                 <dt className="col-span-2 sm:col-span-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ivory/70">{r.k}</dt>
                 <dd className="text-[14px] leading-relaxed text-muted">{r.mem}</dd>
                 <dd className="text-[14px] leading-relaxed text-ivory">{r.pp}</dd>

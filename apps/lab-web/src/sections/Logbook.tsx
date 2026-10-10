@@ -21,14 +21,14 @@ export function Logbook() {
       }
       lede="Un registro fechado de cómo trabaja el Lab y qué herramientas usa. Una línea por entrada; lo más reciente arriba."
     >
-      <ol data-motion="logbook" className="border-t hairline">
+      <ol data-motion="logbook" className="timeline relative border-t hairline pl-6 sm:pl-9">
         {LOGBOOK.map((e, i) => (
           <li
             key={`${e.date}-${i}`}
             data-reveal
             data-log-tag={e.tag}
             style={{ ["--reveal-delay" as string]: `${i * 60}ms` }}
-            className="grid grid-cols-[auto_1fr] sm:grid-cols-[9rem_6rem_1fr] gap-x-4 sm:gap-x-6 gap-y-1.5 border-b hairline py-5"
+            className="relative grid grid-cols-[auto_1fr] sm:grid-cols-[9rem_6rem_1fr] gap-x-4 sm:gap-x-6 gap-y-1.5 border-b hairline py-5"
           >
             <time dateTime={e.date} className="font-mono text-[12px] text-ivory/80 tabular-nums">
               {formatDate(e.date)}
