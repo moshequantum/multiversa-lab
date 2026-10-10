@@ -4,11 +4,11 @@ Este archivo es generado. La fuente canónica es [ecosystem.public.json](./ecosy
 
 El loop documental produce y valida:
 
-- `landing/static/robots.txt`
-- `landing/static/llms.txt`
-- `landing/static/llms-full.txt`
-- `landing/static/agents.txt`
-- `landing/static/ecosystem.json`
-- `landing/static/sitemap.xml`
+- `apps/lab-web/public/robots.txt`
+- `apps/lab-web/public/llms.txt`
+- `apps/lab-web/public/llms-full.txt`
+- `apps/lab-web/public/agents.txt`
+- `apps/lab-web/public/ecosystem.json`
+- `apps/lab-web/public/sitemap.xml`
 
 Ejecutar `pnpm context:sync` después de cambiar la fuente y `pnpm context:check` para detectar deriva.

@@ -1,14 +1,14 @@
 {
   "$schema": "https://schemas.multiversa.dev/ecosystem-public/v1",
   "schema_version": "1.0.0",
-  "updated": "2026-08-21",
+  "updated": "2026-10-10",
   "site": {
     "name": "Multiversa Lab",
     "url": "https://lab.multiversa.group",
     "repository": "https://github.com/moshequantum/multiversa-lab",
     "language": "es-419",
     "visibility": "public",
-    "summary": "Research Preview público para convertir memoria, estructura y criterio en un proceso portable y verificable entre hosts de IA."
+    "summary": "Laboratorio abierto de OpenPassport: un Passport-Context portable, versionado y verificable con SHA-256 que fija la verdad de un negocio entre modelos y personas. Prototipo funcional; Contrato V0 pendiente."
   },
   "positioning": {
     "statement": "Multiversa Lab empaqueta contexto portable, conecta proyectos de origen y verifica adaptadores; no es otro agente ni reclama autoría ajena.",
@@ -30,22 +30,16 @@
       "status": "public"
     },
     {
+      "name": "OpenPassport",
+      "url": "https://github.com/moshequantum/multiversa-lab/tree/main/packages/passport-core",
+      "description": "Núcleo TypeScript (passport-core), CLI en Go (multiversa passport verify), servidor MCP y plantilla open-passport-template. Prototipo funcional: passport-core 3/3 tests; la CLI verifica Passports reales. Contrato V0 (JSON Schema, fixtures, paridad TS/Go, MCP fail-closed, release) pendiente; sin versión etiquetada todavía.",
+      "status": "prototype"
+    },
+    {
       "name": "Multiversa CLI",
       "url": "https://github.com/moshequantum/multiversa-cli",
       "description": "Plano de control experimental y MCP de solo lectura; varios adaptadores todavía no están implementados.",
       "status": "experimental"
-    },
-    {
-      "name": "Multiversa Installer",
-      "url": "https://github.com/moshequantum/multiversa-installer",
-      "description": "Instalador gráfico multiplataforma que delega operaciones en el CLI.",
-      "status": "experimental"
-    },
-    {
-      "name": "Multiversa SDK",
-      "url": "https://github.com/moshequantum/multiversa-sdk",
-      "description": "Contratos públicos versionados, incluidos CLI Envelope, perfiles, misiones y VoiceProfile.",
-      "status": "release-candidate"
     }
   ],
   "components": [
@@ -63,14 +57,14 @@
     },
     {
       "name": "gentle-ai",
-      "role": "Configuración de ecosistemas agénticos; Multiversa usa su modo custom",
+      "role": "Configura los agentes de código que ya se usan (Claude Code, Cursor, Codex, Pi…); Multiversa usa su modo custom",
       "upstream": "https://github.com/Gentleman-Programming/gentle-ai",
       "license": "MIT"
     },
     {
-      "name": "gentle-pi",
-      "role": "Arnés SDD para Pi; no perfila a las personas de Multiversa",
-      "upstream": "https://github.com/Gentleman-Programming/gentle-pi",
+      "name": "Gentle Shell (antes gentle-pi)",
+      "role": "Arnés de agente de código nativo de Pi para desarrollo controlado; atribución, no respaldo",
+      "upstream": "https://github.com/Gentleman-Programming/gentle-shell",
       "license": "MIT"
     },
     {
@@ -115,6 +109,7 @@
   ],
   "boundaries": [
     "El Lab es un Research Preview: la integración completa no está lista para uso general.",
+    "OpenPassport no es todavía un estándar publicado: no existe release etiquetada ni paquete en npm.",
     "Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de perfiles.",
     "La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.",
     "Telegram es un canal opcional; nunca es memoria ni fuente de verdad.",

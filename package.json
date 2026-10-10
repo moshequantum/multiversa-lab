@@ -11,7 +11,9 @@
     "build:mcp": "pnpm --filter @multiversa/mcp-passport build",
     "build:cli": "cd cli && go build -o multiversa.exe .",
     "test": "pnpm --filter @multiversa/passport-core test",
-    "preview": "pnpm --filter @multiversa/lab-web preview"
+    "preview": "pnpm --filter @multiversa/lab-web preview",
+    "context:sync": "node scripts/sync-public-context.mjs",
+    "context:check": "node scripts/sync-public-context.mjs --check"
   },
   "devDependencies": {
     "typescript": "^5.8.2"
