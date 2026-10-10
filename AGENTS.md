@@ -20,7 +20,7 @@ alwaysApply: true
 `docs/ecosystem.public.json` es la fuente canónica para superficies, componentes, límites y política de agentes que pueden publicarse. Después de modificarla:
 
 1. Ejecutar `pnpm context:sync`.
-2. Revisar los archivos generados en `landing/static/` y `docs/PUBLIC-CONTEXT.md`.
+2. Revisar los archivos generados en `apps/lab-web/public/` y `docs/PUBLIC-CONTEXT.md`.
 3. Ejecutar `pnpm context:check` y `pnpm build`.
 
 No editar manualmente `robots.txt`, `llms.txt`, `llms-full.txt`, `agents.txt`, `ecosystem.json` ni `sitemap.xml`. CI rechaza cualquier deriva. `robots.txt` guía crawlers; no reemplaza autenticación ni autorización.
