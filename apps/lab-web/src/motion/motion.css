@@ -14,6 +14,15 @@
  *     "Pending" = `.reveal-ready [data-reveal]:not(.is-revealed) …`.
  */
 
+/* ---------- Layout-neutral hooks (all modes) ---------- */
+.hw,
+.qw,
+[data-motion="hero-accent"],
+[data-motion="hero-kicker"],
+[data-motion="headline"] .accent-serif {
+  display: inline-block;
+}
+
 /* Site header: hairline + reading progress live on pseudo-elements (opacity/transform only). */
 [data-motion="site-header"] {
   border-bottom-color: transparent;
@@ -46,6 +55,21 @@
 /* Chapter rail progress */
 .rail-fill {
   transform: scaleY(var(--mv-progress, 0));
+}
+
+/* Hero passport: lock pulse overlay */
+[data-motion="hero-passport"] {
+  position: relative;
+}
+[data-motion="hero-passport"]::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid oklch(var(--primary) / 0.85);
+  box-shadow: 0 0 36px -8px oklch(var(--primary) / 0.7);
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ====================================================================================== */
@@ -157,6 +181,87 @@
   @keyframes mv-appear {
     from { opacity: 0; }
     to { opacity: 1; }
+  }
+
+  /* ---------------- 00 · Hero ----------------
+   * Runs from first paint of the static shell (CSS only); heroSync.ts keeps React's nodes on
+   * the same clock. Timeline (ms): rule 60 · kicker types 160 · words rise 140→620 ·
+   * "diluye." focuses 820 · meta/CTA 760/860 · truths drift 380→1900 · converge 1500 ·
+   * passport settles 1850 · verify types 2450 · PASS glows 3050. Glow breathes (14s).
+   */
+  [data-motion="hero-glow"] {
+    transform-origin: 78% 30%;
+    animation: mv-breathe 14s var(--ease-in-out-sine) infinite alternate;
+  }
+  html[data-active-chapter]:not([data-active-chapter="00"]) [data-motion="hero-glow"] {
+    animation-play-state: paused;
+  }
+  [data-motion="hero-rule"] {
+    transform-origin: left center;
+    animation: mv-draw-x 0.9s var(--ease-out-expo) 60ms both;
+  }
+  [data-motion="hero-kicker"] {
+    animation: mv-type 0.7s steps(30, end) 160ms both;
+  }
+  .hero .hw {
+    animation: mv-mask-rise var(--dur-slow) var(--ease-out-expo) both;
+    animation-delay: calc(140ms + var(--i) * 48ms);
+  }
+  [data-motion="hero-accent"] {
+    animation: mv-focus var(--dur-story) var(--ease-out-expo) 820ms both;
+  }
+  [data-motion="hero-meta"] {
+    animation: mv-lift 1s var(--ease-out-expo) 760ms both;
+  }
+  [data-motion="hero-cta"] {
+    animation: mv-lift 1s var(--ease-out-expo) 860ms both;
+  }
+
+  [data-motion="hero-fragments"] [data-fragment] {
+    animation: mv-drift var(--fd, 1.5s) var(--ease-in-out-sine) var(--fdelay, 400ms) both;
+  }
+  [data-motion="hero-fragments"] [data-fragment]:nth-child(1) {
+    --dx: -16px; --dy: 3px; --rot: -0.7deg; --fd: 1.45s; --fdelay: 380ms;
+  }
+  [data-motion="hero-fragments"] [data-fragment]:nth-child(2) {
+    --dx: 13px; --dy: -2px; --rot: 0.6deg; --fd: 1.9s; --fdelay: 520ms;
+  }
+  [data-motion="hero-fragments"] [data-fragment]:nth-child(3) {
+    --dx: -7px; --dy: 4px; --rot: -0.35deg; --fd: 1.6s; --fdelay: 470ms;
+  }
+  [data-motion="hero-fragments"] [data-fragment] > span:last-child {
+    animation: mv-flicker 1.3s linear both;
+    animation-delay: calc(var(--fdelay, 400ms) + 450ms);
+  }
+  [data-motion="hero-converge"] > span:first-child {
+    transform-origin: left center;
+    animation: mv-draw-x 0.8s var(--ease-out-expo) 1500ms both;
+  }
+  [data-motion="hero-converge"] > span:last-child {
+    transform-origin: right center;
+    animation: mv-draw-x 0.8s var(--ease-out-expo) 1500ms both;
+  }
+  [data-motion="hero-converge"] > span:nth-child(2) {
+    animation: mv-fade 0.8s var(--ease-out-expo) 1620ms both;
+  }
+  [data-motion="hero-passport"] {
+    animation: mv-settle var(--dur-slow) var(--ease-out-expo) 1850ms both;
+  }
+  [data-motion="hero-passport"]::after {
+    animation: mv-lock 1.8s var(--ease-out-quart) 2900ms both;
+  }
+  [data-motion="hero-verify"] {
+    animation:
+      mv-type 0.6s steps(18, end) 2450ms both,
+      mv-glow-ok 1.6s ease-out 3050ms both;
+  }
+  /* Below lg the figure sits off-screen at load: hold its story until it is revealed. */
+  @media (max-width: 1023.98px) {
+    .reveal-ready [data-motion="hero-fragments"]:not(.is-revealed) *,
+    .reveal-ready [data-motion="hero-fragments"]:not(.is-revealed) *::after {
+      /* !important: the per-element `animation` shorthands would otherwise reset it to running. */
+      animation-play-state: paused !important;
+    }
   }
 
   /* ---------------- Scroll-driven (progress, header hairline, timeline) ---------------- */

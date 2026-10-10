@@ -8,11 +8,14 @@ import "@fontsource-variable/newsreader/opsz-italic.css";
 import "@fontsource-variable/jetbrains-mono";
 import "./index.css";
 import "./motion/motion.css";
+import { captureShellTimeline } from "./motion/heroSync";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
   throw new Error("Root element not found");
 }
+
+captureShellTimeline();
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
