@@ -26,3 +26,5 @@ jobs:
         run: pnpm context:check
       - name: Build landing and PWA
         run: pnpm build
+      - name: Tests (passport-core, design-system, brand assets)
+        run: pnpm test
