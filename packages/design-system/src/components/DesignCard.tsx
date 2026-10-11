@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import { colors } from '../tokens/colors.js';
+import { colors, withAlpha } from '../tokens/colors.js';
 
 export type DesignCardVariant =
   | 'default'
@@ -8,7 +8,7 @@ export type DesignCardVariant =
   | 'ghost'
   | 'flat';
 
-export type DesignCardAccent = 'violet' | 'gold' | 'slate' | 'none';
+export type DesignCardAccent = 'primary' | 'gold' | 'slate' | 'none';
 
 export interface DesignCardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /** Visual display variant */
@@ -39,23 +39,23 @@ export interface DesignCardProps extends Omit<HTMLAttributes<HTMLDivElement>, 't
 }
 
 const accentBorderMap: Record<DesignCardAccent, string> = {
-  violet: 'rgba(109, 40, 217, 0.35)',
-  gold: 'rgba(217, 119, 6, 0.35)',
-  slate: colors.slate.borderDark, // #334155
-  none: 'rgba(226, 232, 240, 0.08)',
+  primary: withAlpha('primary', 0.35),
+  gold: withAlpha('alternative', 0.35),
+  slate: colors.border,
+  none: colors.hairline,
 };
 
 const accentGlowMap: Record<DesignCardAccent, string> = {
-  violet: '0 0 24px -4px rgba(109, 40, 217, 0.18)',
-  gold: '0 0 24px -4px rgba(217, 119, 6, 0.18)',
-  slate: '0 0 20px -4px rgba(100, 116, 139, 0.15)',
+  primary: `0 0 24px -4px ${colors.primaryGlow}`,
+  gold: `0 0 24px -4px ${withAlpha('alternative', 0.18)}`,
+  slate: `0 0 20px -4px ${withAlpha('mutedForeground', 0.15)}`,
   none: 'none',
 };
 
 /**
  * DesignCard
  *
- * Clean architectural card component matching the Multiversa titanium & cosmic aesthetic.
+ * Clean architectural card component in the Cosmic Night palette.
  * Incorporates subtle border illumination, high-craft typography, and responsive micro-elevations.
  */
 export function DesignCard({
@@ -78,16 +78,16 @@ export function DesignCard({
   const baseBg = isGhost
     ? 'transparent'
     : variant === 'flat'
-    ? colors.titanium.ink
-    : colors.titanium.surface; // #0F172A
+    ? colors.background
+    : colors.card;
 
   const borderColor = isGlow || accent !== 'none'
-    ? accentBorderMap[accent === 'none' ? 'violet' : accent]
-    : colors.borders.subtle;
+    ? accentBorderMap[accent === 'none' ? 'primary' : accent]
+    : colors.hairline;
 
   const boxShadow = isGlow
-    ? accentGlowMap[accent === 'none' ? 'violet' : accent]
-    : '0 4px 20px -2px rgba(7, 10, 17, 0.5)';
+    ? accentGlowMap[accent === 'none' ? 'primary' : accent]
+    : '0 4px 20px -2px rgba(0, 0, 0, 0.5)';
 
   return (
     <div
@@ -103,8 +103,8 @@ export function DesignCard({
         border: `1px solid ${borderColor}`,
         boxShadow,
         padding: '1.5rem',
-        color: '#F8FAFC',
-        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+        color: colors.foreground,
+        fontFamily: "'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif",
         transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease',
         cursor: isInteractive ? 'pointer' : undefined,
         overflow: 'hidden',
@@ -133,9 +133,9 @@ export function DesignCard({
                   width: '2.5rem',
                   height: '2.5rem',
                   borderRadius: '0.625rem',
-                  backgroundColor: 'rgba(109, 40, 217, 0.12)',
-                  border: '1px solid rgba(109, 40, 217, 0.25)',
-                  color: colors.violet.cosmic,
+                  backgroundColor: withAlpha('primary', 0.12),
+                  border: `1px solid ${withAlpha('primary', 0.25)}`,
+                  color: colors.primary,
                   flexShrink: 0,
                 }}
               >
@@ -150,7 +150,7 @@ export function DesignCard({
                     fontSize: '1.125rem',
                     fontWeight: 600,
                     lineHeight: 1.3,
-                    color: '#F8FAFC',
+                    color: colors.foreground,
                     letterSpacing: '-0.015em',
                   }}
                 >
@@ -162,7 +162,7 @@ export function DesignCard({
                   style={{
                     margin: '0.25rem 0 0 0',
                     fontSize: '0.875rem',
-                    color: colors.slate[400],
+                    color: colors.mutedForeground,
                     lineHeight: 1.4,
                   }}
                 >
@@ -187,7 +187,7 @@ export function DesignCard({
             flex: '1 1 auto',
             fontSize: '0.9375rem',
             lineHeight: 1.6,
-            color: '#CBD5E1',
+            color: colors.foreground,
           }}
         >
           {children}
@@ -200,12 +200,12 @@ export function DesignCard({
           style={{
             marginTop: '1.25rem',
             paddingTop: '1rem',
-            borderTop: `1px solid ${colors.borders.subtle}`,
+            borderTop: `1px solid ${colors.hairline}`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             fontSize: '0.8125rem',
-            color: colors.slate[400],
+            color: colors.mutedForeground,
           }}
         >
           {footer}

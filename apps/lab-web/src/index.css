@@ -1,42 +1,21 @@
+/*
+ * Brand tokens (Cosmic Night) come from the design system: one source for Lab and Group.
+ * tokens.css defines the oklch channels (`--primary: L C H`, so Tailwind can apply alpha:
+ * `oklch(var(--primary) / 0.2)`) and the full-color aliases (--color-canvas, --color-ivory…).
+ * @import must precede the @tailwind directives; Vite inlines it at build time.
+ */
+@import "@multiversa/design-system/tokens.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/*
- * Multiversa brand tokens — Cosmic Night, identical values to the Group site
- * (multiversaos/apps/web/src/index.css). Stored as oklch channels so Tailwind can
- * apply alpha: `oklch(var(--primary) / 0.2)`.
- */
+/* Lab-only additions on top of the shared tokens. */
 @layer base {
   :root {
-    --background: 0.1743 0.0227 283.7998;
-    --foreground: 0.9185 0.0257 285.8834;
-    --card: 0.2284 0.0384 282.9324;
-    --card-hover: 0.25 0.045 282.93;
-    --primary: 0.7162 0.1597 290.3962;
-    --primary-hover: 0.78 0.15 290.4;
-    --primary-foreground: 0.1743 0.0227 283.7998;
-    --secondary: 0.3139 0.0736 283.4591;
-    --secondary-foreground: 0.8367 0.0849 285.9111;
-    --muted: 0.271 0.0621 281.4377;
-    --muted-foreground: 0.7166 0.0462 285.1741;
-    --accent: 0.3354 0.0828 280.9705;
-    --destructive: 0.6861 0.2061 14.9941;
-    --border: 0.3261 0.0597 282.5832;
-    --alternative: 0.75 0.14 65;
-
-    /* Lab-only status signals */
+    /* Lab status signals (kept low-chroma so they sit inside the palette) */
     --signal-ok: 0.8 0.11 165;
     --signal-warn: 0.82 0.12 75;
-
-    /* Group-compatible aliases (full colors) */
-    --color-canvas: oklch(var(--background));
-    --color-surface: oklch(var(--card));
-    --color-primary: oklch(var(--primary));
-    --color-primary-glow: rgba(182, 140, 255, 0.22);
-    --color-ivory: oklch(var(--foreground));
-    --color-muted: oklch(var(--muted-foreground));
-    --hairline: oklch(var(--border) / 0.7);
 
     /* Motion tokens (choreography lives in src/motion/motion.css) */
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -49,8 +28,6 @@
     --stagger: 45ms;
     --reveal-duration: 1s;
     --reveal-distance: 22px;
-
-    color-scheme: dark;
   }
 
   html {

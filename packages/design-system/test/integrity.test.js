@@ -53,35 +53,53 @@ test('Canonical Brand Assets (SVG) integrity', () => {
   assert.equal((156.97 + 355.03) / 2, 256.00, 'Y is mathematically centered at 256');
 });
 
-test('Color tokens & Brand Rules integrity', async () => {
-  // Check source files directly
-  const colorsFile = fs.readFileSync(path.join(pkgRoot, 'src', 'tokens', 'colors.ts'), 'utf8');
+// Cosmic Night: the values both live sites ship (lab.multiversa.group, multiversa.group).
+const CANONICAL_CHANNELS = {
+  background: '0.1743 0.0227 283.7998',
+  foreground: '0.9185 0.0257 285.8834',
+  card: '0.2284 0.0384 282.9324',
+  primary: '0.7162 0.1597 290.3962',
+  'secondary-foreground': '0.8367 0.0849 285.9111',
+  'muted-foreground': '0.7166 0.0462 285.1741',
+  border: '0.3261 0.0597 282.5832',
+  alternative: '0.75 0.14 65',
+};
 
-  // Verify mandatory color tokens
-  assert.ok(colorsFile.includes('#0E1422'), 'Titanium Ink #0E1422 present');
-  assert.ok(colorsFile.includes('#0F172A'), 'Titanium Surface #0F172A present');
-  assert.ok(colorsFile.includes('#6D28D9'), 'Cosmic Violet #6D28D9 present');
-  assert.ok(colorsFile.includes('#F5F3FF'), 'Lavender Accent #F5F3FF present');
-  assert.ok(colorsFile.includes('#EDE9FE'), 'Lavender Subtle #EDE9FE present');
-  assert.ok(colorsFile.includes('#D97706'), 'Semantic Gold #D97706 present');
-  assert.ok(colorsFile.includes('#334155'), 'Slate Border Dark #334155 present');
-  assert.ok(colorsFile.includes('#64748B'), 'Slate #64748B present');
-  assert.ok(colorsFile.includes('#E2E8F0'), 'Slate Border Light #E2E8F0 present');
+// Discontinued palette (before Cosmic Night). Must not come back as tokens.
+const DISCONTINUED_HEX = ['#0e1422', '#6d28d9', '#f5f3ff', '#d97706'];
 
-  // STRICT INVARIANT: NO Chartreuse (#d4ff00)
-  assert.ok(!colorsFile.toLowerCase().includes('#d4ff00'), 'NO chartreuse in colors.ts');
+const read = (...p) => fs.readFileSync(path.join(pkgRoot, ...p), 'utf8');
 
-  // Scan all files in src/
-  const srcFiles = fs.readdirSync(path.join(pkgRoot, 'src'), { recursive: true });
-  for (const file of srcFiles) {
-    const fullPath = path.join(pkgRoot, 'src', file);
-    if (fs.statSync(fullPath).isFile()) {
-      const content = fs.readFileSync(fullPath, 'utf8');
-      assert.ok(
-        !content.toLowerCase().includes('#d4ff00'),
-        `File ${file} must not contain chartreuse #d4ff00`
-      );
-    }
+test('tokens.css carries the canonical Cosmic Night values', () => {
+  const css = read('tokens.css');
+  for (const [name, value] of Object.entries(CANONICAL_CHANNELS)) {
+    assert.ok(css.includes(`--${name}: ${value};`), `tokens.css defines --${name}: ${value}`);
+  }
+  for (const alias of ['--color-primary', '--color-canvas', '--color-ivory', '--color-muted', '--color-alternative', '--color-surface']) {
+    assert.match(css, new RegExp(`${alias}:\\s*oklch\\(var\\(--`), `tokens.css defines full-color alias ${alias}`);
+  }
+  const pkg = JSON.parse(read('package.json'));
+  assert.equal(pkg.exports['./tokens.css'], './tokens.css', 'package exports ./tokens.css');
+  assert.ok(pkg.files.includes('tokens.css'), 'tokens.css is published');
+});
+
+test('Color tokens & Brand Rules integrity', () => {
+  const colorsFile = read('src', 'tokens', 'colors.ts');
+  for (const value of Object.values(CANONICAL_CHANNELS)) {
+    assert.ok(colorsFile.includes(`'${value}'`), `colors.ts mirrors ${value}`);
+  }
+  for (const hex of DISCONTINUED_HEX) {
+    assert.ok(!colorsFile.toLowerCase().includes(hex), `colors.ts does not ship discontinued ${hex}`);
+  }
+
+  // STRICT INVARIANT: NO Chartreuse (#d4ff00), anywhere in the package sources.
+  const files = ['tokens.css', 'preset.cjs', 'README.md', ...fs.readdirSync(path.join(pkgRoot, 'src'), { recursive: true }).map((f) => path.join('src', f))];
+  for (const file of files) {
+    const fullPath = path.join(pkgRoot, file);
+    if (!fs.statSync(fullPath).isFile()) continue;
+    const content = fs.readFileSync(fullPath, 'utf8').toLowerCase();
+    assert.ok(!content.includes('#d4ff00'), `${file} must not contain chartreuse #d4ff00`);
+    if (file !== 'README.md') assert.ok(!content.includes('chartreuse:'), `${file} must not define a chartreuse token`);
   }
 });
 
@@ -92,17 +110,51 @@ test('Typography tokens integrity', () => {
   assert.ok(typoFile.includes('JetBrains Mono'), 'Monospace / Code includes JetBrains Mono');
 });
 
-test('Tailwind preset integrity', () => {
-  const presetCjs = fs.readFileSync(path.join(pkgRoot, 'preset.js'), 'utf8');
-  assert.ok(presetCjs.includes('titanium'), 'Preset defines titanium');
-  assert.ok(presetCjs.includes('violet'), 'Preset defines violet');
-  assert.ok(presetCjs.includes('lavender'), 'Preset defines lavender');
-  assert.ok(presetCjs.includes('gold'), 'Preset defines gold');
-  assert.ok(presetCjs.includes('slate'), 'Preset defines slate');
-  assert.ok(presetCjs.includes('Plus Jakarta Sans'), 'Preset defines Plus Jakarta Sans');
-  assert.ok(presetCjs.includes('Newsreader'), 'Preset defines Newsreader');
-  assert.ok(presetCjs.includes('JetBrains Mono'), 'Preset defines JetBrains Mono');
-  assert.ok(!presetCjs.toLowerCase().includes('#d4ff00'), 'Preset does not contain chartreuse');
+test('Tailwind preset integrity', async () => {
+  const { createRequire } = await import('node:module');
+  const require = createRequire(import.meta.url);
+  const presetCjs = require(path.join(pkgRoot, 'preset.cjs'));
+  const c = presetCjs.theme.extend.colors;
+  assert.equal(c.primary, 'oklch(var(--primary) / <alpha-value>)', 'primary reads the tokens.css channel');
+  assert.equal(c.canvas, 'oklch(var(--background) / <alpha-value>)');
+  assert.equal(c.ivory, 'oklch(var(--foreground) / <alpha-value>)');
+  assert.equal(c.muted, 'oklch(var(--muted-foreground) / <alpha-value>)');
+  for (const old of ['titanium', 'violet', 'lavender']) assert.equal(c[old], undefined, `no discontinued ${old} scale`);
+  assert.equal(presetCjs.multiversaPreset, presetCjs, 'named export');
+  const fonts = JSON.stringify(presetCjs.theme.extend.fontFamily);
+  for (const f of ['Plus Jakarta Sans', 'Newsreader', 'JetBrains Mono']) assert.ok(fonts.includes(f), `preset defines ${f}`);
+
+  const pkg = JSON.parse(read('package.json'));
+  assert.equal(pkg.exports['./preset'].require, './preset.cjs', 'require() resolves to the CommonJS preset');
+});
+
+test('MultiversaLogo uses the exact paths of the official lockup asset', async () => {
+  const { pathToFileURL } = await import('node:url');
+  const asset = read('assets', 'multiversa-wordmark-light.svg');
+  assert.ok(asset.includes('viewBox="0 0 680 135"'), 'asset viewBox is 0 0 680 135');
+  const assetPaths = [...asset.matchAll(/<path d="([^"]+)"/g)].map((m) => m[1]);
+  assert.equal(assetPaths.length, 15, 'asset has 15 paths (wordmark + pillars + squircle)');
+
+  const { MULTIVERSA_LOCKUP_PATHS, MULTIVERSA_LOCKUP_VIEWBOX } = await import(pathToFileURL(path.join(pkgRoot, 'dist', 'assets', 'svg.js')).href);
+  assert.deepEqual([...MULTIVERSA_LOCKUP_PATHS], assetPaths, 'lockup paths match the asset byte for byte');
+  assert.equal(MULTIVERSA_LOCKUP_VIEWBOX, '0 0 680 135');
+
+  const logo = read('src', 'components', 'MultiversaLogo.tsx');
+  assert.ok(logo.includes('export function MultiversaLogo'), 'MultiversaLogo exported');
+  assert.ok(logo.includes('MULTIVERSA_LOCKUP_PATHS'), 'MultiversaLogo renders the canonical paths');
+  assert.ok(logo.includes('fill="currentColor"'), 'MultiversaLogo paints with currentColor');
+  assert.ok(logo.includes("'aria-label': title"), 'MultiversaLogo has an accessible label');
+
+  // Rendered markup: every asset path is present, painted with currentColor, labelled.
+  const React = await import('react');
+  const { renderToStaticMarkup } = await import('react-dom/server');
+  const { MultiversaLogo } = await import(pathToFileURL(path.join(pkgRoot, 'dist', 'components', 'MultiversaLogo.js')).href);
+  const html = renderToStaticMarkup(React.createElement(MultiversaLogo, { height: 27 }));
+  for (const d of assetPaths) assert.ok(html.includes(`d="${d}"`), 'rendered logo contains asset path');
+  assert.ok(html.includes('aria-label="Multiversa"') && html.includes('role="img"'), 'rendered logo is labelled');
+  assert.ok(!html.includes('#'), 'rendered logo has no hard-coded color');
+  const deco = renderToStaticMarkup(React.createElement(MultiversaLogo, { decorative: true }));
+  assert.ok(deco.includes('aria-hidden="true"') && !deco.includes('aria-label'), 'decorative logo is hidden from AT');
 });
 
 test('React Components export integrity', () => {
@@ -128,6 +180,7 @@ test('Compiled dist export and bundle integrity', async () => {
   assert.ok(fs.existsSync(distIndex), 'dist/index.js exists');
 
   const mainExports = await import(pathToFileURL(distIndex).href);
+  assert.ok(mainExports.MultiversaLogo, 'MultiversaLogo is exported from dist/index.js');
   assert.ok(mainExports.MultiversaIsotype, 'MultiversaIsotype is exported from dist/index.js');
   assert.ok(mainExports.StatusPill, 'StatusPill is exported from dist/index.js');
   assert.ok(mainExports.DesignCard, 'DesignCard is exported from dist/index.js');
@@ -141,8 +194,14 @@ test('Compiled dist export and bundle integrity', async () => {
   assert.ok(fs.existsSync(distPreset), 'dist/preset.js exists');
   const presetExports = await import(pathToFileURL(distPreset).href);
   assert.ok(presetExports.multiversaPreset, 'multiversaPreset exported from dist/preset.js');
-  assert.equal(presetExports.multiversaPreset.theme.extend.colors.brand.ink, '#0E1422');
-  assert.equal(presetExports.multiversaPreset.theme.extend.colors.brand.cosmic, '#6D28D9');
-  assert.equal(presetExports.multiversaPreset.theme.extend.colors.brand.gold, '#D97706');
+  assert.equal(presetExports.multiversaPreset.theme.extend.colors.primary, 'oklch(var(--primary) / <alpha-value>)');
+  assert.equal(mainExports.colors.primary, 'oklch(0.7162 0.1597 290.3962)', 'colors.primary is Cosmic Night primary');
+  assert.equal(mainExports.colors.background, 'oklch(0.1743 0.0227 283.7998)', 'colors.background is Cosmic Night canvas');
+  assert.equal(mainExports.withAlpha('primary', 0.2), 'oklch(0.7162 0.1597 290.3962 / 0.2)');
+
+  // ESM and CommonJS presets stay in sync.
+  const { createRequire } = await import('node:module');
+  const cjs = createRequire(import.meta.url)(path.join(pkgRoot, 'preset.cjs'));
+  assert.deepEqual(JSON.parse(JSON.stringify(cjs.theme)), JSON.parse(JSON.stringify(presetExports.multiversaPreset.theme)), 'preset.cjs mirrors src/preset.ts');
 });
 

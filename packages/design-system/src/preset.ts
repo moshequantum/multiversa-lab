@@ -1,4 +1,3 @@
-import { colors } from './tokens/colors.js';
 import { typography } from './tokens/typography.js';
 import { radii, shadows } from './tokens/spacing.js';
 
@@ -16,25 +15,23 @@ export interface TailwindConfigPreset {
   };
 }
 
+/** Tailwind color that reads a tokens.css channel, so opacity modifiers work (bg-primary/10). */
+const ok = (name: string) => `oklch(var(--${name}) / <alpha-value>)`;
+
 /**
- * Official Tailwind CSS Preset for Multiversa
+ * Official Tailwind CSS preset for Multiversa — Cosmic Night.
  *
- * Consumption in tailwind.config.js / tailwind.config.ts:
+ * Colors are CSS variables, so load the tokens once (`@multiversa/design-system/tokens.css`)
+ * and the preset maps them to the same utility names both sites use (bg-canvas, text-ivory,
+ * text-muted, border-border, bg-primary/10…).
  *
  * ```js
- * // ESM:
+ * // ESM (built package):
  * import { multiversaPreset } from '@multiversa/design-system/preset';
- * export default {
- *   presets: [multiversaPreset],
- *   content: ['./src/**\/*.{js,ts,jsx,tsx}']
- * };
- *
- * // CommonJS:
+ * // CommonJS / any config without a build step:
  * const multiversaPreset = require('@multiversa/design-system/preset');
- * module.exports = {
- *   presets: [multiversaPreset],
- *   content: ['./src/**\/*.{js,ts,jsx,tsx}']
- * };
+ *
+ * export default { presets: [multiversaPreset], content: ['./src/**\/*.{js,ts,jsx,tsx}'] };
  * ```
  */
 export const multiversaPreset: TailwindConfigPreset = {
@@ -42,19 +39,33 @@ export const multiversaPreset: TailwindConfigPreset = {
   theme: {
     extend: {
       colors: {
-        titanium: colors.titanium,
-        violet: colors.violet,
-        lavender: colors.lavender,
-        gold: colors.gold,
-        slate: colors.slate,
-        brand: {
-          ink: colors.titanium.ink,       // #0E1422
-          surface: colors.titanium.surface, // #0F172A
-          cosmic: colors.violet.cosmic,   // #6D28D9
-          lavender: colors.lavender.accent, // #F5F3FF
-          gold: colors.gold.semantic,     // #D97706
-          border: colors.slate.borderDark, // #334155
-        },
+        // Cosmic Night semantic tokens (same names as the Group site)
+        background: ok('background'),
+        foreground: ok('foreground'),
+        border: ok('border'),
+        input: ok('input'),
+        ring: ok('ring'),
+        'muted-fg': ok('muted-foreground'),
+
+        canvas: ok('background'),
+        void: ok('background'),
+        surface: ok('card'),
+        card: ok('card'),
+        'card-hover': ok('card-hover'),
+
+        primary: ok('primary'),
+        'primary-hover': ok('primary-hover'),
+        secondary: ok('secondary-foreground'),
+        accent: ok('primary'),
+        alternative: ok('alternative'),
+        gold: ok('alternative'),
+        destructive: ok('destructive'),
+
+        // Typographic tones
+        ivory: ok('foreground'),
+        copy: ok('foreground'),
+        sand: ok('muted-foreground'),
+        muted: ok('muted-foreground'),
       },
       fontFamily: {
         sans: typography.fontFamily.sans,
@@ -65,6 +76,7 @@ export const multiversaPreset: TailwindConfigPreset = {
         code: typography.fontFamily.code,
       },
       borderRadius: {
+        pill: radii.full,
         squircle: radii.squircle,
       },
       boxShadow: {

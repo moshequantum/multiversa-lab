@@ -1,138 +1,96 @@
 /**
- * Multiversa Design System Color Tokens
+ * Multiversa Design System — Cosmic Night color tokens (canonical).
  *
- * Titanium Ink (#0E1422 / #0F172A)
- * Cosmic Violet (#6D28D9)
- * Lavender Accent (#F5F3FF / #EDE9FE)
- * Semantic Gold (#D97706)
- * Slate & Borders (#334155, #64748B, #E2E8F0)
+ * These are the exact values shipped today by lab.multiversa.group and multiversa.group.
+ * The CSS source of truth is `tokens.css` at the package root; this module mirrors it for
+ * JS/TS consumers (inline styles, canvas, charts, emails).
+ *
+ * - `channels`: raw oklch components ("L C H"), for `oklch(var(--x) / alpha)` style usage.
+ * - `colors`:   full `oklch(...)` color strings.
+ * - `withAlpha(name, a)`: one token at a given opacity.
+ *
+ * Paleta descontinuada (anterior a Cosmic Night): Titanium Ink / Cosmic Violet / Semantic Gold.
+ * It is not an alternative theme and none of its tokens are exported.
  *
  * STRICT BRAND INVARIANT:
  * NO Chartreuse. Legacy chartreuse / neon green is strictly forbidden.
  */
 
-export const titanium = {
-  DEFAULT: '#0E1422',
-  ink: '#0E1422',
-  surface: '#0F172A',
-  50: '#F8FAFC',
-  100: '#F1F5F9',
-  200: '#E2E8F0',
-  300: '#CBD5E1',
-  400: '#94A3B8',
-  500: '#64748B',
-  600: '#475569',
-  700: '#334155',
-  800: '#0F172A',
-  900: '#0E1422',
-  950: '#070A11',
+export const channels = {
+  background: '0.1743 0.0227 283.7998',
+  foreground: '0.9185 0.0257 285.8834',
+  card: '0.2284 0.0384 282.9324',
+  cardForeground: '0.9185 0.0257 285.8834',
+  cardHover: '0.25 0.045 282.93',
+  popover: '0.2284 0.0384 282.9324',
+  popoverForeground: '0.9185 0.0257 285.8834',
+  primary: '0.7162 0.1597 290.3962',
+  primaryHover: '0.78 0.15 290.4',
+  primaryForeground: '0.1743 0.0227 283.7998',
+  secondary: '0.3139 0.0736 283.4591',
+  secondaryForeground: '0.8367 0.0849 285.9111',
+  muted: '0.271 0.0621 281.4377',
+  mutedForeground: '0.7166 0.0462 285.1741',
+  accent: '0.3354 0.0828 280.9705',
+  accentForeground: '0.9185 0.0257 285.8834',
+  destructive: '0.6861 0.2061 14.9941',
+  destructiveForeground: '1 0 0',
+  border: '0.3261 0.0597 282.5832',
+  borderMedium: '0.38 0.05 282.6',
+  input: '0.3261 0.0597 282.5832',
+  ring: '0.7162 0.1597 290.3962',
+  alternative: '0.75 0.14 65',
+  alternativeHover: '0.82 0.13 65',
 } as const;
 
-export const violet = {
-  DEFAULT: '#6D28D9',
-  cosmic: '#6D28D9',
-  50: '#F5F3FF',
-  100: '#EDE9FE',
-  200: '#DDD6FE',
-  300: '#C4B5FD',
-  400: '#A78BFA',
-  500: '#8B5CF6',
-  600: '#7C3AED',
-  700: '#6D28D9',
-  800: '#5B21B6',
-  900: '#4C1D95',
+export type ColorToken = keyof typeof channels;
+
+/** `oklch(L C H)` or `oklch(L C H / alpha)` for a Cosmic Night token. */
+export function withAlpha(token: ColorToken, alpha?: number): string {
+  return alpha === undefined ? `oklch(${channels[token]})` : `oklch(${channels[token]} / ${alpha})`;
+}
+
+const full = Object.fromEntries(
+  Object.entries(channels).map(([k, v]) => [k, `oklch(${v})`])
+) as { readonly [K in ColorToken]: string };
+
+/** Cosmic Night semantic colors, plus the Group-site aliases (canvas, surface, ivory, sand…). */
+export const colors = {
+  ...full,
+  canvas: full.background,
+  surface: full.card,
+  ivory: full.foreground,
+  sand: full.mutedForeground,
+  primaryGlow: 'rgba(182, 140, 255, 0.22)',
+  accentGlow: 'rgba(182, 140, 255, 0.15)',
+  hairline: withAlpha('border', 0.7),
 } as const;
 
-export const lavender = {
-  DEFAULT: '#EDE9FE',
-  50: '#F5F3FF',
-  100: '#EDE9FE',
-  accent: '#F5F3FF',
-  subtle: '#EDE9FE',
-  200: '#DDD6FE',
-} as const;
-
-export const gold = {
-  DEFAULT: '#D97706',
-  semantic: '#D97706',
-  50: '#FFFBEB',
-  100: '#FEF3C7',
-  200: '#FDE68A',
-  300: '#FCD34D',
-  400: '#FBBF24',
-  500: '#F59E0B',
-  600: '#D97706',
-  700: '#B45309',
-  800: '#92400E',
-  900: '#78350F',
-} as const;
-
-export const slate = {
-  DEFAULT: '#64748B',
-  border: '#E2E8F0',
-  borderDark: '#334155',
-  50: '#F8FAFC',
-  100: '#F1F5F9',
-  200: '#E2E8F0',
-  300: '#CBD5E1',
-  400: '#94A3B8',
-  500: '#64748B',
-  600: '#475569',
-  700: '#334155',
-  800: '#1E293B',
-  900: '#0F172A',
-} as const;
-
-export const borders = {
-  light: '#E2E8F0',
-  DEFAULT: '#334155',
-  dark: '#334155',
-  subtle: 'rgba(226, 232, 240, 0.1)',
-  glow: 'rgba(109, 40, 217, 0.35)',
-} as const;
-
+/** Status colors used by StatusPill, derived from the palette (no chartreuse, no neon). */
 export const statusColors = {
   production: {
-    dot: '#10B981',
-    bg: 'rgba(16, 185, 129, 0.08)',
-    border: 'rgba(16, 185, 129, 0.25)',
-    text: '#34D399',
+    dot: 'oklch(0.8 0.11 165)',
+    bg: 'oklch(0.8 0.11 165 / 0.08)',
+    border: 'oklch(0.8 0.11 165 / 0.3)',
+    text: 'oklch(0.8 0.11 165)',
   },
   operating: {
-    dot: '#6D28D9',
-    bg: 'rgba(109, 40, 217, 0.10)',
-    border: 'rgba(109, 40, 217, 0.35)',
-    text: '#A78BFA',
+    dot: colors.primary,
+    bg: withAlpha('primary', 0.1),
+    border: withAlpha('primary', 0.35),
+    text: colors.primary,
   },
   standard: {
-    dot: '#64748B',
-    bg: 'rgba(100, 116, 139, 0.08)',
-    border: 'rgba(100, 116, 139, 0.25)',
-    text: '#94A3B8',
+    dot: colors.mutedForeground,
+    bg: withAlpha('mutedForeground', 0.08),
+    border: withAlpha('mutedForeground', 0.25),
+    text: colors.mutedForeground,
   },
   delivers: {
-    dot: '#D97706',
-    bg: 'rgba(217, 119, 6, 0.10)',
-    border: 'rgba(217, 119, 6, 0.35)',
-    text: '#FBBF24',
-  },
-} as const;
-
-export const colors = {
-  titanium,
-  violet,
-  lavender,
-  gold,
-  slate,
-  borders,
-  status: statusColors,
-  brand: {
-    ink: titanium.ink,
-    surface: titanium.surface,
-    cosmic: violet.cosmic,
-    lavender: lavender.accent,
-    gold: gold.semantic,
-    border: slate.borderDark,
+    dot: colors.alternative,
+    bg: withAlpha('alternative', 0.1),
+    border: withAlpha('alternative', 0.35),
+    text: colors.alternativeHover,
   },
 } as const;
 

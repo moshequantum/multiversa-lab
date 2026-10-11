@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { RotateCcw } from "lucide-react";
 import { EASE_OUT_EXPO, prefersReducedMotion } from "../motion/env";
+import { useI18n } from "../i18n";
 
 export type TermLine =
   | { kind: "cmd"; text: string }
@@ -169,6 +170,7 @@ export function Terminal({
   /** Play the lines as a live session when the window scrolls into view. */
   session?: boolean;
 }) {
+  const { t } = useI18n();
   const [motionOk] = useState(() => session && !prefersReducedMotion());
   const { ref, state, run } = useTerminalRun(motionOk);
 
@@ -190,11 +192,11 @@ export function Terminal({
           <button
             type="button"
             onClick={run}
-            aria-label="Repetir la ejecución"
+            aria-label={t.common.replayRun}
             className="-my-1 inline-flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-muted transition-colors hover:bg-white/5 hover:text-ivory"
           >
             <RotateCcw className="h-3 w-3" aria-hidden="true" />
-            <span className="hidden sm:inline">Repetir</span>
+            <span className="hidden sm:inline">{t.common.replay}</span>
           </button>
         )}
       </div>

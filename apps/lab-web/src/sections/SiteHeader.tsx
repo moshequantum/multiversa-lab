@@ -1,35 +1,72 @@
 import { GitBranch } from "lucide-react";
-import { Isotype } from "../ui/Isotype";
+import { MultiversaLogo } from "@multiversa/design-system";
 import { REPO_URL } from "../content/passport";
+import { useI18n, type Language } from "../i18n";
 
+/** Chapter anchors stay stable across languages (shared links keep working); labels are translated. */
 export const CHAPTERS = [
-  { n: "01", id: "anatomia", label: "Anatomía" },
-  { n: "02", id: "integridad", label: "Integridad" },
-  { n: "03", id: "gobernanza", label: "Gobernanza" },
-  { n: "04", id: "posicion", label: "Posición" },
-  { n: "05", id: "cuaderno", label: "Cuaderno" },
-  { n: "06", id: "bitacora", label: "Bitácora" },
-  { n: "07", id: "usalo", label: "Úsalo" },
-];
+  { n: "01", id: "anatomia" },
+  { n: "02", id: "integridad" },
+  { n: "03", id: "gobernanza" },
+  { n: "04", id: "posicion" },
+  { n: "05", id: "cuaderno" },
+  { n: "06", id: "bitacora" },
+  { n: "07", id: "usalo" },
+] as const;
+
+const LANGUAGES: Language[] = ["es", "en"];
+
+/** ES/EN pill, same pattern as the Group navbar in the Lab's hairline style. */
+function LanguageToggle() {
+  const { language, setLanguage, t } = useI18n();
+  return (
+    <div
+      role="group"
+      aria-label={t.header.languageGroup}
+      data-motion="lang-toggle"
+      className="flex items-center rounded-pill border hairline bg-surface/60 p-0.5 font-mono text-[10px] sm:text-[11px]"
+    >
+      {LANGUAGES.map((lang) => {
+        const on = language === lang;
+        return (
+          <button
+            key={lang}
+            type="button"
+            lang={lang}
+            onClick={() => setLanguage(lang)}
+            aria-pressed={on}
+            aria-label={t.header.languages[lang]}
+            className={`rounded-pill px-2 sm:px-2.5 py-1 uppercase tracking-[0.08em] transition-colors ${
+              on ? "bg-ivory font-semibold text-canvas" : "text-muted hover:text-ivory"
+            }`}
+          >
+            {lang}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export function SiteHeader({ active }: { active: string }) {
+  const { t } = useI18n();
   return (
     <header
       data-motion="site-header"
       className="fixed inset-x-0 top-0 z-50 border-b hairline bg-canvas/75 backdrop-blur-xl backdrop-saturate-150 px-5 sm:px-8 lg:px-12"
     >
-      <div className="max-w-page mx-auto flex h-14 sm:h-16 items-center justify-between gap-4">
-        <a href="#top" className="flex items-center gap-2.5 text-ivory" aria-label="Multiversa.Lab, inicio">
-          <Isotype className="h-5 w-5 text-primary" />
-          <span className="font-sans text-[15px] font-semibold tracking-tight">
-            Multiversa<span className="text-muted">.Lab</span>
-          </span>
-          <span className="ml-1 hidden sm:inline-flex rounded-pill border hairline px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
-            Research preview
+      <div className="max-w-page mx-auto flex h-14 sm:h-16 items-center justify-between gap-3 sm:gap-4">
+        {/* Official lockup (white, from the design system) + "Lab" as the sub-brand. */}
+        <a href="#top" className="flex min-w-0 items-center gap-2.5 sm:gap-3 text-white" aria-label={t.header.homeLabel}>
+          <MultiversaLogo decorative height={22} className="h-[19px] w-auto shrink-0 sm:h-[22px]" />
+          <span aria-hidden="true" className="h-4 w-px shrink-0 bg-white/20" />
+          <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-muted">{t.header.lab}</span>
+          <span className="ml-1 hidden sm:inline-flex lg:hidden 2xl:inline-flex shrink-0 rounded-pill border hairline px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+            {t.header.researchPreview}
           </span>
         </a>
 
-        <nav aria-label="Capítulos" className="hidden lg:flex items-center gap-1 font-mono text-[11px]">
+        <nav aria-label={t.header.chaptersNav} className="hidden lg:flex items-center gap-1 font-mono text-[11px]">
           {CHAPTERS.map((c) => (
             <a
               key={c.n}
@@ -39,20 +76,24 @@ export function SiteHeader({ active }: { active: string }) {
                 active === c.n ? "text-ivory bg-white/[0.05]" : "text-muted hover:text-ivory"
               }`}
             >
-              <span className="text-primary/80">{c.n}</span> {c.label}
+              <span className="text-primary/80">{c.n}</span> {t.header.chapters[c.n]}
             </a>
           ))}
         </nav>
 
-        <a
-          href={REPO_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-pill border hairline bg-surface/60 px-3.5 py-1.5 font-mono text-[11px] text-ivory transition-colors hover:border-primary/50"
-        >
-          <GitBranch className="h-3.5 w-3.5" aria-hidden="true" />
-          <span>Código · MIT</span>
-        </a>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <LanguageToggle />
+          <a
+            href={REPO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.header.codeLabel}
+            className="inline-flex items-center gap-2 rounded-pill border hairline bg-surface/60 p-2 sm:px-3.5 sm:py-1.5 font-mono text-[11px] text-ivory transition-colors hover:border-primary/50"
+          >
+            <GitBranch className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="hidden sm:inline">{t.header.code}</span>
+          </a>
+        </div>
       </div>
     </header>
   );

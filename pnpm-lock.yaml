@@ -23,6 +23,9 @@ importers:
       '@fontsource-variable/plus-jakarta-sans':
         specifier: ^5.3.0
         version: 5.3.0
+      '@multiversa/design-system':
+        specifier: workspace:*
+        version: link:../../packages/design-system
       '@multiversa/passport-core':
         specifier: workspace:*
         version: link:../../packages/passport-core

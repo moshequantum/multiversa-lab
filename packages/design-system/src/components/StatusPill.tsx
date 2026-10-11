@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import { colors } from '../tokens/colors.js';
+import { statusColors, withAlpha } from '../tokens/colors.js';
 
 export type StatusPillVariant = 'production' | 'operating' | 'standard' | 'delivers';
 export type StatusPillSize = 'sm' | 'md' | 'lg';
@@ -7,10 +7,10 @@ export type StatusPillSize = 'sm' | 'md' | 'lg';
 export interface StatusPillProps extends HTMLAttributes<HTMLSpanElement> {
   /**
    * Semantic badge variant:
-   * - 'production': Active production deployment (Emerald)
-   * - 'operating': Visionary / ongoing autonomous operations (Cosmic Violet)
-   * - 'standard': Standard benchmark or baseline specification (Slate)
-   * - 'delivers': Milestone delivery / commitment verified (Semantic Gold)
+   * - 'production': Active production deployment (signal green, low chroma)
+   * - 'operating': Ongoing autonomous operations (Cosmic Night primary)
+   * - 'standard': Standard benchmark or baseline specification (muted foreground)
+   * - 'delivers': Milestone delivery / commitment verified (alternative gold)
    */
   variant?: StatusPillVariant;
 
@@ -34,47 +34,12 @@ export interface StatusPillProps extends HTMLAttributes<HTMLSpanElement> {
 
 const variantStyles: Record<
   StatusPillVariant,
-  {
-    bg: string;
-    border: string;
-    text: string;
-    dot: string;
-    pulseRgb: string;
-    defaultLabel: string;
-  }
+  { bg: string; border: string; text: string; dot: string; glow: string; defaultLabel: string }
 > = {
-  production: {
-    bg: 'rgba(16, 185, 129, 0.08)',
-    border: 'rgba(16, 185, 129, 0.28)',
-    text: '#34D399',
-    dot: '#10B981',
-    pulseRgb: '16, 185, 129',
-    defaultLabel: 'Production',
-  },
-  operating: {
-    bg: 'rgba(109, 40, 217, 0.10)',
-    border: 'rgba(109, 40, 217, 0.35)',
-    text: '#C4B5FD',
-    dot: '#6D28D9',
-    pulseRgb: '109, 40, 217',
-    defaultLabel: 'Operating',
-  },
-  standard: {
-    bg: 'rgba(100, 116, 139, 0.08)',
-    border: 'rgba(100, 116, 139, 0.25)',
-    text: '#94A3B8',
-    dot: '#64748B',
-    pulseRgb: '100, 116, 139',
-    defaultLabel: 'Standard',
-  },
-  delivers: {
-    bg: 'rgba(217, 119, 6, 0.10)',
-    border: 'rgba(217, 119, 6, 0.35)',
-    text: '#FCD34D',
-    dot: '#D97706',
-    pulseRgb: '217, 119, 6',
-    defaultLabel: 'Delivers',
-  },
+  production: { ...statusColors.production, glow: 'oklch(0.8 0.11 165 / 0.5)', defaultLabel: 'Production' },
+  operating: { ...statusColors.operating, glow: withAlpha('primary', 0.5), defaultLabel: 'Operating' },
+  standard: { ...statusColors.standard, glow: withAlpha('mutedForeground', 0.4), defaultLabel: 'Standard' },
+  delivers: { ...statusColors.delivers, glow: withAlpha('alternative', 0.5), defaultLabel: 'Delivers' },
 };
 
 const sizeStyles: Record<
@@ -137,7 +102,7 @@ export function StatusPill({
         fontSize: s.fontSize,
         lineHeight: 1.2,
         fontWeight: 600,
-        fontFamily: "'JetBrains Mono', 'Plus Jakarta Sans', monospace",
+        fontFamily: "'JetBrains Mono Variable', 'JetBrains Mono', monospace",
         letterSpacing: '0.04em',
         textTransform: 'uppercase',
         borderRadius: '9999px',
@@ -183,7 +148,7 @@ export function StatusPill({
             height: '100%',
             borderRadius: '9999px',
             backgroundColor: v.dot,
-            boxShadow: `0 0 6px rgba(${v.pulseRgb}, 0.5)`,
+            boxShadow: `0 0 6px ${v.glow}`,
           }}
         />
       </span>

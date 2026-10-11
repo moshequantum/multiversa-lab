@@ -8,7 +8,7 @@ import { colors } from '../tokens/colors.js';
 export type MultiversaIsotypeTheme =
   | 'light'
   | 'dark'
-  | 'violet'
+  | 'primary'
   | 'gold'
   | 'monochrome'
   | 'currentColor';
@@ -46,7 +46,8 @@ export interface MultiversaIsotypeProps extends SVGProps<SVGSVGElement> {
 /**
  * MultiversaIsotype
  *
- * Renders the authentic Multiversa isotype vector glyph.
+ * Renders the authentic Multiversa isotype vector glyph (the emblem only).
+ * For the brand logo use `MultiversaLogo` (full lockup); the bare pillars are not a logo.
  * Extracted directly from `multiversa-wordmark-light.svg` (paths 12, 13, 14)
  * and mathematically centered on a 512x512 canvas.
  * Geometry is never approximated or redrawn.
@@ -67,11 +68,11 @@ export function MultiversaIsotype({
       case 'light':
         return '#FFFFFF';
       case 'dark':
-        return colors.titanium.ink; // #0E1422
-      case 'violet':
-        return colors.violet.cosmic; // #6D28D9
+        return colors.background; // Cosmic Night canvas
+      case 'primary':
+        return colors.primary; // oklch(0.7162 0.1597 290.3962)
       case 'gold':
-        return colors.gold.semantic; // #D97706
+        return colors.alternative; // oklch(0.75 0.14 65)
       case 'monochrome':
         return '#000000';
       case 'currentColor':
@@ -83,12 +84,8 @@ export function MultiversaIsotype({
   const glyphFill = resolveFill();
 
   if (variant === 'circle') {
-    const bgFill =
-      theme === 'light'
-        ? colors.lavender.accent
-        : colors.titanium.ink;
-    const pillarFill =
-      theme === 'light' ? colors.titanium.ink : '#FFFFFF';
+    const bgFill = theme === 'light' ? colors.foreground : colors.background;
+    const pillarFill = theme === 'light' ? colors.background : '#FFFFFF';
 
     return (
       <svg
