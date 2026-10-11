@@ -229,7 +229,7 @@ export const esTranslations: TranslationSchema = {
     release: [
       { k: "Repositorio", v: "Laboratorio abierto. main se mueve." },
       { k: "Versión estable", v: "La release etiquetada que controla el fundador." },
-      { k: "Etiquetas publicadas", v: "Ninguna." },
+      { k: "Etiquetas de OpenPassport", v: "Ninguna. Las prereleases MV-2026.07.0-rc.* del repositorio son del release paraguas del Lab, no de OpenPassport." },
       { k: "Primera etiqueta", v: "v0.1.0 · pendiente" },
     ],
     errataTitle: "Erratas",
@@ -251,7 +251,7 @@ export const esTranslations: TranslationSchema = {
       "2026-10-10-landing":
         "Landing del Lab alineada al ADN visual de Multiversa: mismos tokens Cosmic Night y tipografía que Multiversa.Group.",
       "2026-10-10-release-model":
-        "Modelo de publicación: el repositorio es el laboratorio; la versión estable será una release etiquetada. Todavía no hay etiquetas.",
+        "Modelo de publicación: el repositorio es el laboratorio; la versión estable será una release etiquetada. OpenPassport todavía no tiene etiquetas propias.",
       "2026-10-10-passport-030":
         "Passport 0.3.0/0.3.1: verdad única entre web, CV y Passport; hashes verificados con la CLI `multiversa passport verify`.",
     },
