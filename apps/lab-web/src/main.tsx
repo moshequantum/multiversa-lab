@@ -15,7 +15,11 @@ if (!rootElement) {
   throw new Error("Root element not found");
 }
 
-const language = languageFromPath(window.location.pathname);
+// Prerendered pages hydrate in the language they were rendered in (<html lang>), whatever path
+// served them; `vite dev` serves the empty template, so the path decides there.
+const prerendered = rootElement.firstElementChild !== null;
+const htmlLang = document.documentElement.lang;
+const language = prerendered && isLanguage(htmlLang) ? htmlLang : languageFromPath(window.location.pathname);
 
 // Legacy ?lang=es|en links: the URL path is the language now. vercel.json redirects these on the
 // edge; this covers local preview and any host without those rules. No other automatic redirect.
@@ -39,6 +43,6 @@ if (isLanguage(requested) && requested !== language) {
 
   // Production pages are prerendered (scripts/prerender.mjs): hydrate them. `vite dev` serves the
   // empty template, so render from scratch there.
-  if (rootElement.firstElementChild) ReactDOM.hydrateRoot(rootElement, app);
+  if (prerendered) ReactDOM.hydrateRoot(rootElement, app);
   else ReactDOM.createRoot(rootElement).render(app);
 }
