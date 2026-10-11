@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+  Social preview (Open Graph / Twitter), 1200×630. Rendered by scripts/og-image.mjs with Playwright.
+  {{…}} placeholders are filled from src/i18n; do not hard-code copy here.
+  Brand: Cosmic Night tokens (packages/design-system/tokens.css) and the official white lockup.
+-->
+<html lang="{{lang}}">
+<head>
+<meta charset="UTF-8" />
+<style>
+  @font-face { font-family: "Plus Jakarta Sans"; src: url("{{fontSans}}") format("woff2"); font-weight: 200 800; }
+  @font-face { font-family: "Newsreader"; font-style: italic; src: url("{{fontSerifItalic}}") format("woff2"); font-weight: 200 800; }
+  @font-face { font-family: "JetBrains Mono"; src: url("{{fontMono}}") format("woff2"); font-weight: 100 800; }
+  :root {
+    --canvas: oklch(0.1743 0.0227 283.7998);
+    --surface: oklch(0.2284 0.0384 282.9324);
+    --ivory: oklch(0.9185 0.0257 285.8834);
+    --muted: oklch(0.7166 0.0462 285.1741);
+    --primary: oklch(0.7162 0.1597 290.3962);
+    --border: 0.3261 0.0597 282.5832;
+    --ok: oklch(0.8 0.11 165);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; background: var(--canvas); overflow: hidden; }
+  body { position: relative; font-family: "Plus Jakarta Sans", sans-serif; color: var(--ivory); -webkit-font-smoothing: antialiased; }
+  .glow { position: absolute; inset: 0; background:
+    radial-gradient(52% 60% at 84% 18%, rgba(124, 92, 255, 0.24), transparent 70%),
+    radial-gradient(40% 45% at 6% 100%, rgba(192, 132, 252, 0.10), transparent 70%); }
+  .grid { position: absolute; inset: 0; opacity: 0.45;
+    background-image:
+      linear-gradient(to right, oklch(var(--border) / 0.25) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(var(--border) / 0.25) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(70% 80% at 78% 20%, black, transparent); }
+  .frame { position: absolute; inset: 64px 72px 60px; display: flex; flex-direction: column; }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .lockup { display: flex; align-items: center; gap: 18px; color: #fff; }
+  .lockup svg { height: 34px; width: auto; display: block; }
+  .rule { width: 1px; height: 24px; background: rgba(255, 255, 255, 0.22); }
+  .sub { font-family: "JetBrains Mono", monospace; font-size: 18px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .pill { font-family: "JetBrains Mono", monospace; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    border: 1px solid oklch(var(--border) / 0.9); border-radius: 999px; padding: 8px 16px; }
+  .kicker { margin-top: 70px; display: flex; align-items: center; gap: 16px; font-family: "JetBrains Mono", monospace; font-size: 17px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .kicker .bar { width: 40px; height: 1px; background: var(--primary); }
+  .kicker b { color: var(--primary); font-weight: 500; }
+  h1 { margin-top: 26px; max-width: 980px; font-size: 66px; line-height: 1.04; font-weight: 600; letter-spacing: -0.035em; }
+  h1 em { font-family: "Newsreader", serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: var(--primary); }
+  .foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid oklch(var(--border) / 0.7); padding-top: 22px;
+    font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--muted); }
+  .status { display: flex; align-items: center; gap: 14px; }
+  .status .name { color: var(--ivory); }
+  .status .ok { color: var(--ok); display: inline-flex; align-items: center; gap: 10px; }
+  .status .ok::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 12px var(--ok); }
+  .dot { color: oklch(var(--border)); }
+  .url { color: var(--ivory); opacity: 0.85; }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="grid"></div>
+  <main class="frame">
+    <div class="top">
+      <div class="lockup">{{wordmark}}<span class="rule"></span><span class="sub">Lab</span></div>
+      <span class="pill">{{preview}}</span>
+    </div>
+    <p class="kicker"><span class="bar"></span><span><b>00</b> — {{kicker}}</span></p>
+    <h1>{{title}} <em>{{accent}}</em></h1>
+    <div class="foot">
+      <p class="status"><span class="name">OpenPassport</span><span class="dot">·</span><span class="ok">{{state}}</span><span class="dot">·</span><span>{{integrity}}</span></p>
+      <p class="url">lab.multiversa.group{{path}}</p>
+    </div>
+  </main>
+</body>
+</html>
