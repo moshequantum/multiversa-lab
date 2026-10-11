@@ -1,0 +1,62 @@
+/*
+ * @multiversa/design-system — Cosmic Night tokens (canonical).
+ *
+ * The palette both live sites ship today: lab.multiversa.group (multiversa-lab/apps/lab-web)
+ * and multiversa.group (multiversaOS/apps/web). Framework-agnostic: plain CSS custom properties.
+ *
+ *   1. Channels (`--primary: L C H`): raw oklch components, so utilities can add alpha:
+ *      `oklch(var(--primary) / 0.2)`. This is the form the Tailwind preset consumes.
+ *   2. Full-color aliases (`--color-primary: oklch(...)`): ready-to-use colors, same names
+ *      the Group site uses in its components.
+ *
+ * Brand invariant: no chartreuse. Not as a token, not as an alias.
+ * Usage: `@import "@multiversa/design-system/tokens.css";` (or import it from JS with a bundler).
+ */
+:root {
+  /* 1 · Channels (oklch L C H) */
+  --background: 0.1743 0.0227 283.7998;
+  --foreground: 0.9185 0.0257 285.8834;
+  --card: 0.2284 0.0384 282.9324;
+  --card-foreground: 0.9185 0.0257 285.8834;
+  --card-hover: 0.25 0.045 282.93;
+  --popover: 0.2284 0.0384 282.9324;
+  --popover-foreground: 0.9185 0.0257 285.8834;
+  --primary: 0.7162 0.1597 290.3962;
+  --primary-hover: 0.78 0.15 290.4;
+  --primary-foreground: 0.1743 0.0227 283.7998;
+  --secondary: 0.3139 0.0736 283.4591;
+  --secondary-foreground: 0.8367 0.0849 285.9111;
+  --muted: 0.271 0.0621 281.4377;
+  --muted-foreground: 0.7166 0.0462 285.1741;
+  --accent: 0.3354 0.0828 280.9705;
+  --accent-foreground: 0.9185 0.0257 285.8834;
+  --destructive: 0.6861 0.2061 14.9941;
+  --destructive-foreground: 1 0 0;
+  --border: 0.3261 0.0597 282.5832;
+  --border-medium: 0.38 0.05 282.6;
+  --input: 0.3261 0.0597 282.5832;
+  --ring: 0.7162 0.1597 290.3962;
+  --alternative: 0.75 0.14 65;
+  --alternative-hover: 0.82 0.13 65;
+
+  /* 2 · Full-color aliases (Group-compatible names) */
+  --color-canvas: oklch(var(--background));
+  --color-surface: oklch(var(--card));
+  --color-card: oklch(var(--card));
+  --color-card-hover: oklch(var(--card-hover));
+  --color-primary: oklch(var(--primary));
+  --color-primary-hover: oklch(var(--primary-hover));
+  --color-primary-glow: rgba(182, 140, 255, 0.22);
+  --color-secondary: oklch(var(--secondary-foreground));
+  --color-accent: oklch(var(--primary));
+  --color-accent-glow: rgba(182, 140, 255, 0.15);
+  --color-alternative: oklch(var(--alternative));
+  --color-alternative-hover: oklch(var(--alternative-hover));
+  --color-ivory: oklch(var(--foreground));
+  --color-sand: oklch(var(--muted-foreground));
+  --color-muted: oklch(var(--muted-foreground));
+  --color-border: oklch(var(--border));
+  --hairline: oklch(var(--border) / 0.7);
+
+  color-scheme: dark;
+}

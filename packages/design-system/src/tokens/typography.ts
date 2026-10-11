@@ -4,11 +4,15 @@
  * Display / Sans: 'Plus Jakarta Sans'
  * Editorial / Serif: 'Newsreader'
  * Monospace / Code: 'JetBrains Mono'
+ *
+ * Both sites self-host the variable builds (@fontsource-variable/*), whose family names end in
+ * " Variable"; the static names stay as fallbacks.
  */
 
 export const typography = {
   fontFamily: {
     sans: [
+      'Plus Jakarta Sans Variable',
       'Plus Jakarta Sans',
       'system-ui',
       '-apple-system',
@@ -18,6 +22,7 @@ export const typography = {
       'sans-serif',
     ],
     display: [
+      'Plus Jakarta Sans Variable',
       'Plus Jakarta Sans',
       'system-ui',
       '-apple-system',
@@ -25,6 +30,7 @@ export const typography = {
       'sans-serif',
     ],
     serif: [
+      'Newsreader Variable',
       'Newsreader',
       'Georgia',
       'Cambria',
@@ -33,11 +39,13 @@ export const typography = {
       'serif',
     ],
     editorial: [
+      'Newsreader Variable',
       'Newsreader',
       'Georgia',
       'serif',
     ],
     mono: [
+      'JetBrains Mono Variable',
       'JetBrains Mono',
       'ui-monospace',
       'SFMono-Regular',
@@ -47,6 +55,7 @@ export const typography = {
       'monospace',
     ],
     code: [
+      'JetBrains Mono Variable',
       'JetBrains Mono',
       'monospace',
     ],

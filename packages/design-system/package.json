@@ -1,31 +1,34 @@
 {
   "name": "@multiversa/design-system",
   "version": "1.0.0",
-  "description": "Official design system, brand vector assets, and Tailwind preset for the Multiversa ecosystem",
+  "description": "Official design system (Cosmic Night tokens), brand vector assets, logo and Tailwind preset for the Multiversa ecosystem",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
     "./tokens": {
+      "source": "./src/tokens/index.ts",
       "types": "./dist/tokens/index.d.ts",
       "import": "./dist/tokens/index.js",
       "default": "./dist/tokens/index.js"
     },
+    "./tokens.css": "./tokens.css",
     "./preset": {
       "types": "./dist/preset.d.ts",
+      "require": "./preset.cjs",
       "import": "./dist/preset.js",
-      "require": "./preset.js",
       "default": "./dist/preset.js"
     },
     "./tailwind": {
       "types": "./dist/preset.d.ts",
+      "require": "./preset.cjs",
       "import": "./dist/preset.js",
-      "require": "./preset.js",
       "default": "./dist/preset.js"
     },
     "./assets/*": "./assets/*",
@@ -33,14 +36,16 @@
   },
   "files": [
     "dist",
+    "src",
     "assets",
-    "preset.js",
+    "tokens.css",
+    "preset.cjs",
     "README.md"
   ],
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "test": "node --test test/*.test.js"
+    "test": "tsc && node --test test/*.test.js"
   },
   "keywords": [
     "multiversa",
@@ -49,7 +54,9 @@
     "preset",
     "brand-assets",
     "isotype",
-    "tokens"
+    "tokens",
+    "cosmic-night",
+    "logo"
   ],
   "author": "Multiversa Group LLC",
   "license": "MIT",
@@ -73,5 +80,8 @@
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.8.2"
-  }
+  },
+  "sideEffects": [
+    "*.css"
+  ]
 }

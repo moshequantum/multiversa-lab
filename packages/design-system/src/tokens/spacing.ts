@@ -20,10 +20,12 @@ export const shadows = {
   md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
   lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
   xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-  'card-glow': '0 0 24px -4px rgba(109, 40, 217, 0.15)',
-  'card-hover': '0 12px 32px -8px rgba(14, 20, 34, 0.45), 0 0 16px -2px rgba(109, 40, 217, 0.22)',
-  'pill-glow': '0 0 12px -2px rgba(109, 40, 217, 0.3)',
-  'gold-glow': '0 0 16px -2px rgba(217, 119, 6, 0.3)',
+  // Cosmic Night glows: primary = rgba(182, 140, 255) (the Group site's --color-primary-glow),
+  // gold = the alternative token oklch(0.75 0.14 65).
+  'card-glow': '0 0 24px -4px rgba(182, 140, 255, 0.15)',
+  'card-hover': '0 12px 32px -8px rgba(0, 0, 0, 0.6), 0 0 30px -5px rgba(182, 140, 255, 0.22)',
+  'pill-glow': '0 0 12px -2px rgba(182, 140, 255, 0.3)',
+  'gold-glow': '0 0 16px -2px oklch(0.75 0.14 65 / 0.3)',
 } as const;
 
 export const transitions = {
