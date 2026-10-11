@@ -5,7 +5,7 @@
   "outputDirectory": "apps/lab-web/dist",
   "installCommand": "pnpm install",
   "cleanUrls": true,
-  "trailingSlash": false,
+  "trailingSlash": true,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -25,7 +25,12 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/", "has": [{ "type": "query", "key": "lang", "value": "en" }], "destination": "/en/", "permanent": true },
+    { "source": "/en/", "has": [{ "type": "query", "key": "lang", "value": "es" }], "destination": "/", "permanent": true }
+  ],
   "rewrites": [
+    { "source": "/en/:path*", "destination": "/en/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

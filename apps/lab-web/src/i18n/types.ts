@@ -24,6 +24,8 @@ export interface TranslationSchema {
   meta: {
     title: string;
     description: string;
+    /** Alt text of the social preview image (public/og-image*.png). */
+    ogImageAlt: string;
   };
   common: {
     cutoffLabel: string;
@@ -142,6 +144,16 @@ export interface TranslationSchema {
     ownerTitle: string;
     ownerBody: string;
   };
+  /**
+   * Visible FAQ. It is also the only source of the FAQPage JSON-LD (src/seo.ts), so every answer
+   * must restate what the page already says. Rich markers (`code`, *em*) are stripped for JSON-LD.
+   */
+  faq: {
+    label: string;
+    title: string;
+    accent: string;
+    items: { q: string; a: Rich }[];
+  };
   footer: {
     quote: string;
     quoteAccent: string;
@@ -152,5 +164,6 @@ export interface TranslationSchema {
     repo: string;
     roadmap: string;
     credits: string;
+    faq: string;
   };
 }

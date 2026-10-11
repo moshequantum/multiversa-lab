@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { prefersReducedMotion } from "./env";
 
 const HEX = "0123456789abcdef";
@@ -6,13 +6,18 @@ const HEX = "0123456789abcdef";
 /**
  * Renders `text`; when it changes, unsettled characters cycle through hex glyphs and settle
  * left to right (~0.5 s). The DOM text is owned here (not by React children) so the scramble
- * never fights reconciliation. First paint and reduced motion show the final value directly.
+ * never fights reconciliation. The first value is server-rendered as constant inner HTML (so the
+ * prerendered page and crawlers see the real hash and hydration matches); React never touches it
+ * again. Reduced motion shows every value directly.
  */
+const escapeHtml = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
 export function ScrambleText({ text, duration = 520 }: { text: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const shown = useRef<string | null>(null);
+  const [initial] = useState(() => ({ __html: escapeHtml(text) }));
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (shown.current === null || prefersReducedMotion()) {
@@ -40,5 +45,5 @@ export function ScrambleText({ text, duration = 520 }: { text: string; duration?
     };
   }, [text, duration]);
 
-  return <span ref={ref} />;
+  return <span ref={ref} dangerouslySetInnerHTML={initial} />;
 }

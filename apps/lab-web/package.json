@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-brand-assets.mjs && node scripts/hero-shell.mjs --check && tsc && vite build",
+    "build": "node scripts/check-brand-assets.mjs && tsc && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
-    "hero-shell": "node scripts/hero-shell.mjs",
-    "check:brand": "node scripts/check-brand-assets.mjs"
+    "check:brand": "node scripts/check-brand-assets.mjs",
+    "prerender:check": "node scripts/prerender.mjs --check"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.3.0",

@@ -242,8 +242,8 @@
   }
 
   /* ---------------- 00 · Hero ----------------
-   * Runs from first paint of the static shell (CSS only); heroSync.ts keeps React's nodes on
-   * the same clock. Timeline (ms): rule 60 · kicker types 160 · words rise 140→620 ·
+   * Runs from first paint of the prerendered HTML (CSS only); hydration keeps the same nodes,
+   * so the clock never restarts. Timeline (ms): rule 60 · kicker types 160 · words rise 140→620 ·
    * "diluye." focuses 820 · meta/CTA 760/860 · truths drift 380→1900 · converge 1500 ·
    * passport settles 1850 · verify types 2450 · PASS glows 3050. Glow breathes (14s).
    */
