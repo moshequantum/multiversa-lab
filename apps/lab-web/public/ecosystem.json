@@ -1,12 +1,25 @@
 {
   "$schema": "https://schemas.multiversa.dev/ecosystem-public/v1",
   "schema_version": "1.0.0",
-  "updated": "2026-10-10",
+  "updated": "2026-10-11",
   "site": {
     "name": "Multiversa Lab",
     "url": "https://lab.multiversa.group",
     "repository": "https://github.com/moshequantum/multiversa-lab",
     "language": "es-419",
+    "languages": [
+      {
+        "code": "es-419",
+        "hreflang": "es",
+        "url": "https://lab.multiversa.group/",
+        "default": true
+      },
+      {
+        "code": "en",
+        "hreflang": "en",
+        "url": "https://lab.multiversa.group/en/"
+      }
+    ],
     "visibility": "public",
     "summary": "Laboratorio abierto de OpenPassport: un Passport-Context portable, versionado y verificable con SHA-256 que fija la verdad de un negocio entre modelos y personas. Prototipo funcional; Contrato V0 pendiente."
   },
@@ -19,9 +32,14 @@
     {
       "name": "Sitio público del Lab",
       "url": "https://lab.multiversa.group/",
-      "description": "Landing, bitácora y roadmap Build in Public del laboratorio.",
+      "description": "Landing, bitácora y roadmap Build in Public del laboratorio. Prerenderizada en español (/) y en inglés (/en/).",
       "status": "research-preview",
-      "sitemap": true
+      "sitemap": true,
+      "alternates": {
+        "es": "https://lab.multiversa.group/",
+        "en": "https://lab.multiversa.group/en/",
+        "x-default": "https://lab.multiversa.group/"
+      }
     },
     {
       "name": "Repositorio Lab",
@@ -32,7 +50,7 @@
     {
       "name": "OpenPassport",
       "url": "https://github.com/moshequantum/multiversa-lab/tree/main/packages/passport-core",
-      "description": "Núcleo TypeScript (passport-core), CLI en Go (multiversa passport verify), servidor MCP y plantilla open-passport-template. Prototipo funcional: passport-core 3/3 tests; la CLI verifica Passports reales. Contrato V0 (JSON Schema, fixtures, paridad TS/Go, MCP fail-closed, release) pendiente; sin versión etiquetada todavía.",
+      "description": "Núcleo TypeScript (passport-core), CLI en Go (multiversa passport verify), servidor MCP y plantilla open-passport-template. Prototipo funcional: passport-core 3/3 tests; la CLI verifica Passports reales. Contrato V0 (JSON Schema, fixtures, paridad TS/Go, MCP fail-closed, release) pendiente; OpenPassport no tiene versión etiquetada propia.",
       "status": "prototype"
     },
     {
@@ -80,6 +98,36 @@
       "license": "AGPL-3.0"
     }
   ],
+  "releases": {
+    "as_of": "2026-10-11",
+    "note": "Estado verificado contra las etiquetas públicas de cada repositorio. Una prerelease no es una versión estable.",
+    "items": [
+      {
+        "name": "OpenPassport",
+        "repository": "https://github.com/moshequantum/multiversa-lab",
+        "status": "sin release propia",
+        "detail": "Prototipo funcional; el Contrato V0 está pendiente. No hay etiqueta de versión de OpenPassport ni paquete en npm."
+      },
+      {
+        "name": "Release paraguas de Multiversa.Lab",
+        "repository": "https://github.com/moshequantum/multiversa-lab",
+        "status": "prerelease",
+        "detail": "Etiquetas MV-2026.07.0-rc.1, rc.2 y rc.3 (release candidates del manifiesto paraguas)."
+      },
+      {
+        "name": "Multiversa CLI",
+        "repository": "https://github.com/moshequantum/multiversa-cli",
+        "status": "versiones etiquetadas",
+        "detail": "Etiquetas publicadas hasta v0.10.1."
+      },
+      {
+        "name": "Multiversa Installer",
+        "repository": "https://github.com/moshequantum/multiversa-installer",
+        "status": "prerelease",
+        "detail": "Etiquetas v0.2.0-rc.1 a v0.2.0-rc.4."
+      }
+    ]
+  },
   "public_documents": [
     {
       "title": "Roadmap público",
@@ -109,7 +157,7 @@
   ],
   "boundaries": [
     "El Lab es un Research Preview: la integración completa no está lista para uso general.",
-    "OpenPassport no es todavía un estándar publicado: no existe release etiquetada ni paquete en npm.",
+    "OpenPassport no es un estándar publicado: no tiene release etiquetada propia ni paquete en npm.",
     "Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de perfiles.",
     "La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.",
     "Telegram es un canal opcional; nunca es memoria ni fuente de verdad.",
@@ -140,6 +188,19 @@
       "/llms-full.txt",
       "/agents.txt",
       "/ecosystem.json"
+    ],
+    "ai_agents": [
+      "GPTBot",
+      "OAI-SearchBot",
+      "ChatGPT-User",
+      "ClaudeBot",
+      "Claude-SearchBot",
+      "Claude-User",
+      "PerplexityBot",
+      "Perplexity-User",
+      "Google-Extended",
+      "Applebot-Extended",
+      "CCBot"
     ]
   },
   "generated_by": "scripts/sync-public-context.mjs"

@@ -18,6 +18,20 @@ if (source.site.visibility !== 'public') throw new Error('El contexto web genera
 if (!/^\d{4}-\d{2}-\d{2}$/.test(source.updated)) throw new Error('updated debe usar YYYY-MM-DD');
 if (new Set(source.surfaces.map(({ name }) => name)).size !== source.surfaces.length) throw new Error('Las superficies deben tener nombres únicos');
 if (source.crawl.disallow.some((path) => !path.startsWith('/'))) throw new Error('Cada ruta Disallow debe comenzar con /');
+const languages = source.site.languages ?? [];
+const siteRoot = `${source.site.url}/`;
+for (const lang of languages) {
+  if (!lang.hreflang || !lang.url?.startsWith(siteRoot)) throw new Error(`site.languages: idioma inválido ${JSON.stringify(lang)}`);
+}
+if (languages.length && languages.filter((lang) => lang.default).length !== 1) throw new Error('site.languages: debe haber exactamente un idioma por defecto');
+for (const surface of source.surfaces) {
+  for (const [hreflang, url] of Object.entries(surface.alternates ?? {})) {
+    if (!url.startsWith('https://')) throw new Error(`${surface.name}: alternate ${hreflang} debe usar HTTPS`);
+  }
+}
+const aiAgents = source.crawl.ai_agents ?? [];
+if (aiAgents.some((agent) => !/^[A-Za-z0-9-]+$/.test(agent))) throw new Error('crawl.ai_agents: nombres de user-agent inválidos');
+const releases = source.releases?.items ?? [];
 
 const forbiddenKeys = /^(api_?key|secret|password|access_?token|tenant_?id|client_?name|contract)$/i;
 const inspectKeys = (value, path = '$') => {
@@ -45,7 +59,17 @@ ${lines(source.surfaces, (item) => `- [${item.name}](${item.url}): ${item.descri
 
 ${lines(source.components, (item) => `- [${item.name}](${item.upstream}): ${item.role}. Licencia upstream: ${item.license}.`)}
 
-## Documentación
+${languages.length ? `## Idiomas
+
+${lines(languages, (lang) => `- [${lang.code}${lang.default ? ', por defecto' : ''}](${lang.url})`)}
+
+` : ''}${releases.length ? `## Estado de releases (${source.releases.as_of})
+
+${source.releases.note}
+
+${lines(releases, (item) => `- [${item.name}](${item.repository}): ${item.status}. ${item.detail}`)}
+
+` : ''}## Documentación
 
 ${lines(source.public_documents, (item) => `- [${item.title}](${item.url}): ${item.description}`)}
 
@@ -91,21 +115,42 @@ Full-Context: ${source.site.url}/llms-full.txt
 Machine-Context: ${source.site.url}/ecosystem.json
 `;
 
+const crawlRules = `Allow: /
+${lines(source.crawl.disallow, (path) => `Disallow: ${path}`)}`;
 const robots = `# ${source.site.name} — generado desde docs/ecosystem.public.json
 User-agent: *
-Allow: /
-${lines(source.crawl.disallow, (path) => `Disallow: ${path}`)}
-
+${crawlRules}
+${aiAgents.length ? `
+# Crawlers de IA: el Lab quiere ser leído por modelos. Se listan para que su política sea
+# explícita; un grupo propio reemplaza al de *, por eso repite las mismas reglas.
+${lines(aiAgents, (agent) => `User-agent: ${agent}`)}
+${crawlRules}
+` : ''}
 Sitemap: ${source.site.url}/sitemap.xml
 
 # Contexto para modelos y agentes (informativo; robots.txt no es autorización)
 ${lines(source.crawl.context_paths, (path) => `# ${source.site.url}${path}`)}
 `;
 
-const sitemapUrls = source.surfaces.filter((item) => item.sitemap).map((item) => item.url);
+// Each sitemap surface contributes its URL and, if it has hreflang alternates, one <url> per
+// language; every entry lists all alternates (itself included), as the hreflang spec requires.
+const sitemapEntries = source.surfaces
+  .filter((item) => item.sitemap)
+  .flatMap((item) => {
+    const alternates = Object.entries(item.alternates ?? {});
+    const locs = alternates.length ? [...new Set(alternates.filter(([lang]) => lang !== 'x-default').map(([, url]) => url))] : [item.url];
+    return locs.map((loc) => ({ loc, alternates }));
+  });
+const sitemapEntry = ({ loc, alternates }) => alternates.length
+  ? `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${source.updated}</lastmod>
+${lines(alternates, ([lang, url]) => `    <xhtml:link rel="alternate" hreflang="${lang}" href="${url}"/>`)}
+  </url>`
+  : `  <url><loc>${loc}</loc><lastmod>${source.updated}</lastmod></url>`;
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${lines(sitemapUrls, (url) => `  <url><loc>${url}</loc><lastmod>${source.updated}</lastmod></url>`)}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${lines(sitemapEntries, sitemapEntry)}
 </urlset>
 `;
 

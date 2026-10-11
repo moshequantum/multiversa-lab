@@ -6,9 +6,9 @@ Multiversa Lab empaqueta contexto portable, conecta proyectos de origen y verifi
 
 ## Superficies
 
-- [Sitio público del Lab](https://lab.multiversa.group/): Landing, bitácora y roadmap Build in Public del laboratorio. Estado: research-preview.
+- [Sitio público del Lab](https://lab.multiversa.group/): Landing, bitácora y roadmap Build in Public del laboratorio. Prerenderizada en español (/) y en inglés (/en/). Estado: research-preview.
 - [Repositorio Lab](https://github.com/moshequantum/multiversa-lab): Documentación pública, sitio, inicio e integración del laboratorio. Estado: public.
-- [OpenPassport](https://github.com/moshequantum/multiversa-lab/tree/main/packages/passport-core): Núcleo TypeScript (passport-core), CLI en Go (multiversa passport verify), servidor MCP y plantilla open-passport-template. Prototipo funcional: passport-core 3/3 tests; la CLI verifica Passports reales. Contrato V0 (JSON Schema, fixtures, paridad TS/Go, MCP fail-closed, release) pendiente; sin versión etiquetada todavía. Estado: prototype.
+- [OpenPassport](https://github.com/moshequantum/multiversa-lab/tree/main/packages/passport-core): Núcleo TypeScript (passport-core), CLI en Go (multiversa passport verify), servidor MCP y plantilla open-passport-template. Prototipo funcional: passport-core 3/3 tests; la CLI verifica Passports reales. Contrato V0 (JSON Schema, fixtures, paridad TS/Go, MCP fail-closed, release) pendiente; OpenPassport no tiene versión etiquetada propia. Estado: prototype.
 - [Multiversa CLI](https://github.com/moshequantum/multiversa-cli): Plano de control experimental y MCP de solo lectura; varios adaptadores todavía no están implementados. Estado: experimental.
 
 ## Componentes curados
@@ -19,6 +19,20 @@ Multiversa Lab empaqueta contexto portable, conecta proyectos de origen y verifi
 - [Gentle Shell (antes gentle-pi)](https://github.com/Gentleman-Programming/gentle-shell): Arnés de agente de código nativo de Pi para desarrollo controlado; atribución, no respaldo. Licencia upstream: MIT.
 - [codegraph](https://github.com/colbymchenry/codegraph): Grafo semántico de código. Licencia upstream: MIT.
 - [MiroFish](https://github.com/666ghj/MiroFish): Simulación multiagente opcional, siempre como servicio/binario externo. Licencia upstream: AGPL-3.0.
+
+## Idiomas
+
+- [es-419, por defecto](https://lab.multiversa.group/)
+- [en](https://lab.multiversa.group/en/)
+
+## Estado de releases (2026-10-11)
+
+Estado verificado contra las etiquetas públicas de cada repositorio. Una prerelease no es una versión estable.
+
+- [OpenPassport](https://github.com/moshequantum/multiversa-lab): sin release propia. Prototipo funcional; el Contrato V0 está pendiente. No hay etiqueta de versión de OpenPassport ni paquete en npm.
+- [Release paraguas de Multiversa.Lab](https://github.com/moshequantum/multiversa-lab): prerelease. Etiquetas MV-2026.07.0-rc.1, rc.2 y rc.3 (release candidates del manifiesto paraguas).
+- [Multiversa CLI](https://github.com/moshequantum/multiversa-cli): versiones etiquetadas. Etiquetas publicadas hasta v0.10.1.
+- [Multiversa Installer](https://github.com/moshequantum/multiversa-installer): prerelease. Etiquetas v0.2.0-rc.1 a v0.2.0-rc.4.
 
 ## Documentación
 
@@ -31,7 +45,7 @@ Multiversa Lab empaqueta contexto portable, conecta proyectos de origen y verifi
 ## Límites
 
 - El Lab es un Research Preview: la integración completa no está lista para uso general.
-- OpenPassport no es todavía un estándar publicado: no existe release etiquetada ni paquete en npm.
+- OpenPassport no es un estándar publicado: no tiene release etiquetada propia ni paquete en npm.
 - Lab es público: no contiene clientes, contratos, precios privados, credenciales ni datos de perfiles.
 - La PWA Companion no ejecuta por sí sola el runtime local ni reemplaza autenticación o emparejamiento seguro.
 - Telegram es un canal opcional; nunca es memoria ni fuente de verdad.
