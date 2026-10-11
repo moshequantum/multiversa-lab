@@ -9,8 +9,8 @@
  * - `colors`:   full `oklch(...)` color strings.
  * - `withAlpha(name, a)`: one token at a given opacity.
  *
- * Superseded: the earlier Titanium Ink / Cosmic Violet / Semantic Gold palette never shipped
- * on either site and is no longer part of the package.
+ * Paleta descontinuada (anterior a Cosmic Night): Titanium Ink / Cosmic Violet / Semantic Gold.
+ * It is not an alternative theme and none of its tokens are exported.
  *
  * STRICT BRAND INVARIANT:
  * NO Chartreuse. Legacy chartreuse / neon green is strictly forbidden.
