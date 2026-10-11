@@ -161,7 +161,7 @@ export function renderHead(language: Language): string {
     meta("name", "twitter:description", t.meta.description),
     meta("name", "twitter:image", image),
     meta("name", "twitter:image:alt", t.meta.ogImageAlt),
-    meta("name", "twitter:creator", "@moshequantum"),
+    meta("name", "twitter:creator", "@soymoisesvera"),
     meta("name", "twitter:site", "@multiversagroup"),
     `<script type="application/ld+json">\n${jsonForScript(structuredData(language))}\n</script>`,
   ]
