@@ -2,35 +2,38 @@ import { Fragment } from "react";
 import { Chapter, Accent } from "../ui/Chapter";
 import { StatusTag } from "../ui/StatusTag";
 import { PROFILES, PROFILE_ROWS } from "../content/passport";
-
-const QUOTE_A = ["“La", "IA", "propone;"];
-const QUOTE_B = ["el", "humano", "decide."];
+import { useI18n } from "../i18n";
+import { Rich } from "../ui/Rich";
 
 /** Chapter 03 — governance: profiles matrix, fail-closed, human authority. */
 export function Governance() {
+  const { t } = useI18n();
+  const g = t.governance;
+  const quoteA = g.quoteA.split(" ");
+  const quoteB = g.quoteB.split(" ");
   return (
     <Chapter
       id="gobernanza"
       n="03"
-      label="Gobernanza"
+      label={g.label}
       aside="profiles[] · fail-closed"
       title={
         <>
-          El modelo propone. Quien origina el Passport <Accent>decide.</Accent>
+          {g.title} <Accent>{g.accent}</Accent>
         </>
       }
-      lede="Un perfil define qué archivos ve cada consumidor. El mismo Passport alimenta un chat público y un asistente interno sin mezclar lo que cada uno puede leer."
+      lede={g.lede}
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10">
         {/* Profile matrix */}
         <figure className="lg:col-span-7" data-reveal data-motion="profile-matrix">
           <div className="overflow-hidden rounded-2xl border hairline">
             <table className="w-full table-fixed border-collapse text-left">
-              <caption className="sr-only">Archivos incluidos por perfil</caption>
+              <caption className="sr-only">{g.tableCaption}</caption>
               <thead>
                 <tr className="border-b hairline bg-white/[0.02]">
                   <th scope="col" className="w-[50%] sm:w-[40%] px-3 sm:px-5 py-4 font-mono text-[10px] font-normal uppercase tracking-[0.14em] text-muted">
-                    Archivo
+                    {g.fileColumn}
                   </th>
                   {PROFILES.map((p) => {
                     const [a, b] = p.split("-");
@@ -39,7 +42,7 @@ export function Governance() {
                         <span className="sm:hidden" aria-hidden="true">{a.slice(0, 4)}</span>
                         <span className="sr-only sm:not-sr-only">{a}</span>
                         <br />
-                        <span className="text-muted">{b === "private" ? "priv" : "pub"}</span>
+                        <span className="text-muted">{b === "private" ? g.priv : g.pub}</span>
                       </th>
                     );
                   })}
@@ -54,9 +57,9 @@ export function Governance() {
                     {r.in.map((v, i) => (
                       <td key={i} className="py-3 text-center">
                         {v ? (
-                          <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_12px_rgba(164,143,255,0.55)]" data-cell="in" aria-label="incluido" style={{ ["--c" as string]: i, ["--r" as string]: ri }} />
+                          <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_12px_rgba(164,143,255,0.55)]" data-cell="in" aria-label={g.included} style={{ ["--c" as string]: i, ["--r" as string]: ri }} />
                         ) : (
-                          <span className="inline-block h-2.5 w-2.5 rounded-full border border-white/15" data-cell="out" aria-label="excluido" style={{ ["--c" as string]: i, ["--r" as string]: ri }} />
+                          <span className="inline-block h-2.5 w-2.5 rounded-full border border-white/15" data-cell="out" aria-label={g.excluded} style={{ ["--c" as string]: i, ["--r" as string]: ri }} />
                         )}
                       </td>
                     ))}
@@ -66,7 +69,7 @@ export function Governance() {
             </table>
           </div>
           <figcaption className="mt-4 font-mono text-[11px] text-muted">
-            Fig. 3 — Perfiles reales del Passport de Multiversa.Group v0.3.0 (manifest.json).
+            {g.figCaption}
           </figcaption>
         </figure>
 
@@ -74,30 +77,30 @@ export function Governance() {
         <div className="lg:col-span-5 space-y-10">
           <article data-reveal>
             <div className="flex flex-wrap items-center gap-3">
-              <h3 className="text-xl font-semibold tracking-tight text-ivory">Fail-closed</h3>
-              <StatusTag status="lab" label="Parcial" />
+              <h3 className="text-xl font-semibold tracking-tight text-ivory">{g.failClosedTitle}</h3>
+              <StatusTag status="lab" label={g.failClosedTag} />
             </div>
             <p className="mt-3 text-[15px] leading-relaxed text-muted">
-              Un perfil desconocido es un error, nunca acceso total. La CLI ya lo cumple al exportar: <span className="font-mono text-[13px] text-ivory">perfil 'nope' no encontrado en manifest.json</span>. El servidor MCP todavía no: si no encuentra el perfil, no filtra. Corregirlo es <span className="font-mono text-[13px] text-ivory">LAB-007</span>.
+              <Rich text={g.failClosedBody} />
             </p>
           </article>
 
           <article data-reveal>
-            <h3 className="text-xl font-semibold tracking-tight text-ivory">El paquete no concede autoridad</h3>
+            <h3 className="text-xl font-semibold tracking-tight text-ivory">{g.authorityTitle}</h3>
             <pre className="mt-4 code-surface rounded-xl px-4 py-4 font-mono text-[12px] leading-[1.8] whitespace-pre-wrap [overflow-wrap:anywhere] text-muted">
               <span className="text-secondary">"ownership"</span>: <span className="text-ivory">"originator-owned"</span>,{"\n"}
               <span className="text-secondary">"authorityGrantedByPackage"</span>: <span className="text-primary">false</span>,{"\n"}
               <span className="text-secondary">"implicitMemory"</span>: <span className="text-primary">false</span>
             </pre>
             <p className="mt-3 text-[15px] leading-relaxed text-muted">
-              Cargar un Passport no le da a ningún agente permiso para actuar ni crea memoria implícita. Las decisiones sensibles pasan por una persona.
+              {g.authorityBody}
             </p>
           </article>
 
           <article data-reveal>
-            <h3 className="text-xl font-semibold tracking-tight text-ivory">Un vocabulario, no dos</h3>
+            <h3 className="text-xl font-semibold tracking-tight text-ivory">{g.vocabularyTitle}</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-muted">
-              Hoy la plantilla identifica perfiles con <span className="font-mono text-[13px] text-ivory">id</span> y el Passport de Group con <span className="font-mono text-[13px] text-ivory">name</span>. Dos consumidores pueden leer distinto el mismo archivo. Unificarlo es <span className="font-mono text-[13px] text-ivory">LAB-001</span> y <span className="font-mono text-[13px] text-ivory">LAB-004</span>.
+              <Rich text={g.vocabularyBody} />
             </p>
           </article>
         </div>
@@ -106,20 +109,20 @@ export function Governance() {
       <blockquote className="mt-20 sm:mt-28 text-center" data-reveal data-motion="pull-quote">
         <p className="font-serif italic text-3xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-ivory">
           {/* Words drift in from a wider tracking and settle (transform only, no reflow). */}
-          {QUOTE_A.map((w, i) => (
-            <Fragment key={w}>
-              <span className="qw" style={{ ["--d" as string]: i - 2.5 }}>{w}</span>{" "}
+          {quoteA.map((w, i) => (
+            <Fragment key={`a${i}`}>
+              <span className="qw" style={{ ["--d" as string]: i - quoteA.length + 0.5 }}>{w}</span>{" "}
             </Fragment>
           ))}
           <span className="text-primary">
-            {QUOTE_B.map((w, i) => (
-              <Fragment key={w}>
+            {quoteB.map((w, i) => (
+              <Fragment key={`b${i}`}>
                 {i > 0 && " "}
                 <span className="qw" style={{ ["--d" as string]: i + 0.5 }}>{w}</span>
               </Fragment>
             ))}
           </span>
-          <span className="qw" style={{ ["--d" as string]: 3 }}>”</span>
+          <span className="qw" style={{ ["--d" as string]: quoteB.length }}>”</span>
         </p>
       </blockquote>
     </Chapter>

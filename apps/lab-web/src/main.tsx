@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
+import { I18nProvider } from "./i18n";
 // Brand typography, self-hosted (same origin; CSP font-src 'self'). Same families as Multiversa.Group.
 import "@fontsource-variable/plus-jakarta-sans";
 import "@fontsource-variable/newsreader/opsz.css";
@@ -19,6 +20,8 @@ captureShellTimeline();
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <App />
+    <I18nProvider>
+      <App />
+    </I18nProvider>
   </React.StrictMode>
 );
