@@ -24,6 +24,7 @@ export function SiteFooter() {
             <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="text-ivory/85 hover:text-primary">{t.footer.repo}</a>
             <a href={`${REPO_URL}/blob/main/ROADMAP.md`} target="_blank" rel="noopener noreferrer" className="text-ivory/85 hover:text-primary">{t.footer.roadmap}</a>
             <a href="#creditos" className="text-ivory/85 hover:text-primary">{t.footer.credits}</a>
+            <a href="#preguntas" className="text-ivory/85 hover:text-primary">{t.footer.faq}</a>
             <a href={GROUP_URL} target="_blank" rel="noopener noreferrer" className="text-ivory/85 hover:text-primary">Multiversa.Group</a>
           </nav>
         </div>

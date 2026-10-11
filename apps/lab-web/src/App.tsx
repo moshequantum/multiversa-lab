@@ -8,16 +8,13 @@ import { Position } from "./sections/Position";
 import { Notebook } from "./sections/Notebook";
 import { Logbook } from "./sections/Logbook";
 import { GetIt } from "./sections/GetIt";
+import { Faq } from "./sections/Faq";
 import { SiteFooter } from "./sections/SiteFooter";
-import { useLayoutEffect } from "react";
 import { useActiveChapter, useReveal } from "./ui/useReveal";
 import { useScrollChrome } from "./motion/useScrollChrome";
-import { resyncHeroTimeline } from "./motion/heroSync";
 import { useI18n } from "./i18n";
 
 export default function App() {
-  // Continue the hero entrance that started on the static shell (no restart on mount).
-  useLayoutEffect(resyncHeroTimeline, []);
   useReveal();
   useScrollChrome();
   const active = useActiveChapter();
@@ -39,6 +36,7 @@ export default function App() {
         <Notebook />
         <Logbook />
         <GetIt />
+        <Faq />
       </main>
       <SiteFooter />
     </>

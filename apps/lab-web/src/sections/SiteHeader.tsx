@@ -1,7 +1,7 @@
 import { GitBranch } from "lucide-react";
 import { MultiversaLogo } from "@multiversa/design-system";
 import { REPO_URL } from "../content/passport";
-import { useI18n, type Language } from "../i18n";
+import { LANGUAGE_PATHS, LANGUAGES, useI18n } from "../i18n";
 
 /** Chapter anchors stay stable across languages (shared links keep working); labels are translated. */
 export const CHAPTERS = [
@@ -14,37 +14,48 @@ export const CHAPTERS = [
   { n: "07", id: "usalo" },
 ] as const;
 
-const LANGUAGES: Language[] = ["es", "en"];
-
-/** ES/EN pill, same pattern as the Group navbar in the Lab's hairline style. */
+/**
+ * ES/EN pill, same pattern as the Group navbar in the Lab's hairline style. Each language is its own
+ * prerendered page (/ and /en/), so these are real links (crawlable, work without JS). With JS the
+ * current #chapter is carried over, since anchors are identical in both languages.
+ */
 function LanguageToggle() {
-  const { language, setLanguage, t } = useI18n();
+  const { language, t } = useI18n();
   return (
-    <div
-      role="group"
+    <nav
       aria-label={t.header.languageGroup}
       data-motion="lang-toggle"
       className="flex items-center rounded-pill border hairline bg-surface/60 p-0.5 font-mono text-[10px] sm:text-[11px]"
     >
       {LANGUAGES.map((lang) => {
         const on = language === lang;
+        const href = LANGUAGE_PATHS[lang];
         return (
-          <button
+          <a
             key={lang}
-            type="button"
+            href={href}
             lang={lang}
-            onClick={() => setLanguage(lang)}
-            aria-pressed={on}
+            hrefLang={lang}
+            aria-current={on ? "page" : undefined}
             aria-label={t.header.languages[lang]}
+            onClick={(e) => {
+              if (on) {
+                e.preventDefault();
+                return;
+              }
+              if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+              e.preventDefault();
+              window.location.assign(href + window.location.hash);
+            }}
             className={`rounded-pill px-2 sm:px-2.5 py-1 uppercase tracking-[0.08em] transition-colors ${
               on ? "bg-ivory font-semibold text-canvas" : "text-muted hover:text-ivory"
             }`}
           >
             {lang}
-          </button>
+          </a>
         );
       })}
-    </div>
+    </nav>
   );
 }
 

@@ -57,9 +57,9 @@ export function Governance() {
                     {r.in.map((v, i) => (
                       <td key={i} className="py-3 text-center">
                         {v ? (
-                          <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_12px_rgba(164,143,255,0.55)]" data-cell="in" aria-label={g.included} style={{ ["--c" as string]: i, ["--r" as string]: ri }} />
+                          <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_12px_rgba(164,143,255,0.55)]" data-cell="in" role="img" aria-label={g.included} style={{ ["--c" as string]: i, ["--r" as string]: ri }} />
                         ) : (
-                          <span className="inline-block h-2.5 w-2.5 rounded-full border border-white/15" data-cell="out" aria-label={g.excluded} style={{ ["--c" as string]: i, ["--r" as string]: ri }} />
+                          <span className="inline-block h-2.5 w-2.5 rounded-full border border-white/15" data-cell="out" role="img" aria-label={g.excluded} style={{ ["--c" as string]: i, ["--r" as string]: ri }} />
                         )}
                       </td>
                     ))}

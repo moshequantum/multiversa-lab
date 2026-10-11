@@ -1,11 +1,13 @@
 import type { TranslationSchema } from "./types";
 
-/** Español (idioma por defecto; es también el del shell estático en index.html). */
+/** Español (idioma por defecto; se prerenderiza en / y el inglés en /en/). */
 export const esTranslations: TranslationSchema = {
   meta: {
     title: "Multiversa Lab — OpenPassport: contexto portable, versionado y verificable",
     description:
       "Cuaderno abierto de OpenPassport: Markdown versionado, manifest con SHA-256 y perfiles de exposición para que la verdad de un negocio viaje entre modelos. Prototipo funcional; Contrato V0 pendiente.",
+    ogImageAlt:
+      "Multiversa Lab: «Cada modelo empieza de cero. La verdad de tu negocio se diluye.» OpenPassport, prototipo funcional, SHA-256 por archivo.",
   },
   common: {
     cutoffLabel: "10 oct 2026",
@@ -227,7 +229,7 @@ export const esTranslations: TranslationSchema = {
     release: [
       { k: "Repositorio", v: "Laboratorio abierto. main se mueve." },
       { k: "Versión estable", v: "La release etiquetada que controla el fundador." },
-      { k: "Etiquetas publicadas", v: "Ninguna." },
+      { k: "Etiquetas de OpenPassport", v: "Ninguna. Las prereleases MV-2026.07.0-rc.* del repositorio son del release paraguas del Lab, no de OpenPassport." },
       { k: "Primera etiqueta", v: "v0.1.0 · pendiente" },
     ],
     errataTitle: "Erratas",
@@ -249,7 +251,7 @@ export const esTranslations: TranslationSchema = {
       "2026-10-10-landing":
         "Landing del Lab alineada al ADN visual de Multiversa: mismos tokens Cosmic Night y tipografía que Multiversa.Group.",
       "2026-10-10-release-model":
-        "Modelo de publicación: el repositorio es el laboratorio; la versión estable será una release etiquetada. Todavía no hay etiquetas.",
+        "Modelo de publicación: el repositorio es el laboratorio; la versión estable será una release etiquetada. OpenPassport todavía no tiene etiquetas propias.",
       "2026-10-10-passport-030":
         "Passport 0.3.0/0.3.1: verdad única entre web, CV y Passport; hashes verificados con la CLI `multiversa passport verify`.",
     },
@@ -290,6 +292,37 @@ export const esTranslations: TranslationSchema = {
     ownerBody:
       "Multiversa.Group construye el Passport contigo, en lenguaje de negocio. El Lab no vende nada: aquí está el código; allá, el acompañamiento.",
   },
+  faq: {
+    label: "Preguntas frecuentes",
+    title: "Lo que nos preguntan,",
+    accent: "en corto.",
+    items: [
+      {
+        q: "¿Qué es OpenPassport?",
+        a: "Nuestro experimento para fijar la verdad de un negocio: una carpeta con siete capas en Markdown y un `manifest.json` que declara cada archivo con su capa, tipo, visibilidad y hash SHA-256. Lo que no está en el manifest no forma parte del Passport. Le pertenece a quien lo origina.",
+      },
+      {
+        q: "¿Cómo verifico un Passport?",
+        a: "Con la CLI en Go del repositorio: compílala con `go build -o multiversa .` dentro de *cli/* y ejecuta `./multiversa passport verify <carpeta>`. Recalcula el SHA-256 de cada archivo y el manifestSelfHash; si alguien cambió un byte sin reconstruir el manifest, verify falla y dice qué archivo y qué hash.",
+      },
+      {
+        q: "¿Es estable? ¿En qué estado está?",
+        a: "No es estable. Es un prototipo funcional (corte: 10 oct 2026): passport-core pasa 3 de 3 tests y no está publicado en npm; la CLI verifica Passports reales; el servidor MCP no está verificado en uso. El Contrato V0 está pendiente (0 de 10 tareas) y OpenPassport no tiene ninguna release etiquetada propia.",
+      },
+      {
+        q: "¿Qué modelos pueden cargarlo?",
+        a: "Cualquiera que lea texto: un Passport es una carpeta de texto plano. En esta página lo mostramos con ChatGPT, Claude, Gemini, Grok, Qwen y Mistral. `MASTER-PROMPT.md` es lo primero que lee el modelo y el manifest fija el orden de carga.",
+      },
+      {
+        q: "¿En qué se diferencia de un sistema de memoria?",
+        a: "La memoria de trabajo (pgvector, la memoria del proveedor, Engram) guarda lo que ocurrió en las sesiones. El Passport fija lo que es verdad para el negocio, con versión y hash, y lo gobierna su originador. No compiten: el modelo consulta ambos.",
+      },
+      {
+        q: "¿Qué licencia tiene?",
+        a: "MIT. Todo lo de esta página, código incluido, está en el repositorio público *github.com/moshequantum/multiversa-lab*.",
+      },
+    ],
+  },
   footer: {
     quote: "Un cuaderno abierto: lo que intentamos, lo que pasó y",
     quoteAccent: "lo que falta.",
@@ -300,5 +333,6 @@ export const esTranslations: TranslationSchema = {
     repo: "Repositorio",
     roadmap: "Roadmap",
     credits: "Créditos",
+    faq: "Preguntas frecuentes",
   },
 };

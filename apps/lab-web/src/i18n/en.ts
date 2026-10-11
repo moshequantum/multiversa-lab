@@ -10,6 +10,8 @@ export const enTranslations: TranslationSchema = {
     title: "Multiversa Lab — OpenPassport: portable, versioned, verifiable context",
     description:
       "OpenPassport's open notebook: versioned Markdown, a SHA-256 manifest and exposure profiles so a business's truth can travel between models. Working prototype; Contract V0 pending.",
+    ogImageAlt:
+      "Multiversa Lab: “Every model starts from zero. Your business's truth gets diluted.” OpenPassport, working prototype, SHA-256 per file.",
   },
   common: {
     cutoffLabel: "Oct 10, 2026",
@@ -231,7 +233,7 @@ export const enTranslations: TranslationSchema = {
     release: [
       { k: "Repository", v: "Open lab. main moves." },
       { k: "Stable version", v: "The tagged release the founder controls." },
-      { k: "Published tags", v: "None." },
+      { k: "OpenPassport tags", v: "None. The repository's MV-2026.07.0-rc.* prereleases belong to the Lab's umbrella release, not to OpenPassport." },
       { k: "First tag", v: "v0.1.0 · pending" },
     ],
     errataTitle: "Errata",
@@ -253,7 +255,7 @@ export const enTranslations: TranslationSchema = {
       "2026-10-10-landing":
         "Lab landing aligned with Multiversa's visual DNA: the same Cosmic Night tokens and typography as Multiversa.Group.",
       "2026-10-10-release-model":
-        "Publishing model: the repository is the lab; the stable version will be a tagged release. No tags yet.",
+        "Publishing model: the repository is the lab; the stable version will be a tagged release. OpenPassport has no tags of its own yet.",
       "2026-10-10-passport-030":
         "Passport 0.3.0/0.3.1: a single truth across the website, CV and Passport; hashes verified with the CLI `multiversa passport verify`.",
     },
@@ -294,6 +296,37 @@ export const enTranslations: TranslationSchema = {
     ownerBody:
       "Multiversa.Group builds the Passport with you, in business language. The Lab sells nothing: the code is here; the hands-on support is over there.",
   },
+  faq: {
+    label: "FAQ",
+    title: "What people ask us,",
+    accent: "in short.",
+    items: [
+      {
+        q: "What is OpenPassport?",
+        a: "Our experiment to pin down a business's truth: a folder with seven Markdown layers and a `manifest.json` that declares every file with its layer, type, visibility and SHA-256 hash. Whatever isn't in the manifest isn't part of the Passport. It belongs to whoever originates it.",
+      },
+      {
+        q: "How do I verify a Passport?",
+        a: "With the Go CLI in the repository: build it with `go build -o multiversa .` inside *cli/* and run `./multiversa passport verify <folder>`. It recomputes every file's SHA-256 and the manifestSelfHash; if someone changed a byte without rebuilding the manifest, verify fails and tells you which file and which hash.",
+      },
+      {
+        q: "Is it stable? What's its status?",
+        a: "It isn't stable. It's a working prototype (cut-off: Oct 10, 2026): passport-core passes 3 of 3 tests and isn't published on npm; the CLI verifies real Passports; the MCP server isn't verified in use. Contract V0 is pending (0 of 10 tasks) and OpenPassport has no tagged release of its own.",
+      },
+      {
+        q: "Which models can load it?",
+        a: "Any model that reads text: a Passport is a folder of plain text. On this page we show it with ChatGPT, Claude, Gemini, Grok, Qwen and Mistral. `MASTER-PROMPT.md` is the first thing the model reads, and the manifest sets the load order.",
+      },
+      {
+        q: "How is it different from a memory system?",
+        a: "Working memory (pgvector, provider memory, Engram) keeps what happened in sessions. The Passport pins down what's true for the business, with a version and a hash, and its originator governs it. They don't compete: the model consults both.",
+      },
+      {
+        q: "What's the license?",
+        a: "MIT. Everything on this page, code included, is in the public repository *github.com/moshequantum/multiversa-lab*.",
+      },
+    ],
+  },
   footer: {
     quote: "An open notebook: what we tried, what happened and",
     quoteAccent: "what's missing.",
@@ -304,5 +337,6 @@ export const enTranslations: TranslationSchema = {
     repo: "Repository",
     roadmap: "Roadmap",
     credits: "Credits",
+    faq: "FAQ",
   },
 };

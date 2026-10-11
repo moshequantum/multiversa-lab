@@ -3,6 +3,22 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
+# Crawlers de IA: el Lab quiere ser leído por modelos. Se listan para que su política sea
+# explícita; un grupo propio reemplaza al de *, por eso repite las mismas reglas.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+
 Sitemap: https://lab.multiversa.group/sitemap.xml
 
 # Contexto para modelos y agentes (informativo; robots.txt no es autorización)

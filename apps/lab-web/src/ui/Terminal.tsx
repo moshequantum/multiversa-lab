@@ -171,7 +171,11 @@ export function Terminal({
   session?: boolean;
 }) {
   const { t } = useI18n();
-  const [motionOk] = useState(() => session && !prefersReducedMotion());
+  // Same value on the server and on the first client render (hydration); reduced motion opts out after mount.
+  const [motionOk, setMotionOk] = useState(session);
+  useEffect(() => {
+    if (session && prefersReducedMotion()) setMotionOk(false);
+  }, [session]);
   const { ref, state, run } = useTerminalRun(motionOk);
 
   return (

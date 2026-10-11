@@ -5,9 +5,8 @@ import { useI18n } from "../i18n";
 
 /**
  * Chapter 00 — the problem.
- * IMPORTANT: index.html contains a static copy of this markup (first paint before JS).
- * Keep both in sync: same classes, same text. Regenerate with `pnpm --filter @multiversa/lab-web hero-shell`
- * (the shell renders the Spanish dictionary; React re-renders in the visitor's language on mount).
+ * The whole page is prerendered per language at build time (scripts/prerender.mjs) and hydrated,
+ * so the CSS entrance starts on the static HTML and simply continues once React attaches.
  */
 export function Hero() {
   const { t } = useI18n();
